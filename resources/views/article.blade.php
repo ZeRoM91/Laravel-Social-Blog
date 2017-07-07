@@ -8,8 +8,11 @@
                     <div class="panel-heading">Номер статьи: <b>{{$text['id']}}</b> </div>
 
                     <div class="panel-body">
+<p>{{$text['time']}}</p>
+                        <span>{{$text['text']}}</span><br>
+                        <i>Автор статьи: {{$text['author']}}</i>
 
-{{$text['text']}}
+
 
                     </div>
                 </div>

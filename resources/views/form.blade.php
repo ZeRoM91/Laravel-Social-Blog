@@ -15,12 +15,16 @@
                             <div class="form-group">
                                 {{ csrf_field() }}
                                 <label for="title">Заголовок</label>
+
                                 <input type="text" class="form__input form-control" placeholder="Введите заголовок статьи" name="title" required>
                             </div>
                             <div class="form-group">
                                 <label for="text">Текст статьи</label>
                                 <textarea class="form__input form-control" placeholder="Введите текст статьи" name="text" rows="10" style="resize: none;" required>
             </textarea>
+
+                                <input type="text"  name="time" value="<?php echo date("Y-m-d H:i:s"); ?>" hidden>
+                                <input type="text"  name="author" value="{{ Auth::user()->name }}" hidden>
                             </div>
                             <input type="submit" class="btn btn-success" value="Добавить">
                         </form>

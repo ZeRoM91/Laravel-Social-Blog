@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,5 +9,6 @@ class Article extends Model
     // имя таблицы
     // protected $table = 'articles';
     public $timestamps = false;
+    protected $guarded = ['id'];
 
 }

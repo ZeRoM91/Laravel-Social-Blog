@@ -24,3 +24,10 @@ Route::get('/home', 'HomeController@index');
 # Выборка статей
 
 Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@text']);
+
+
+# Форма создания
+
+Route::get('/article', ['as' => 'formArticle', 'uses' => 'CreateArticleController@show']);
+
+Route::post('/article', ['as' => 'create', 'uses' => 'CreateArticleController@create']);

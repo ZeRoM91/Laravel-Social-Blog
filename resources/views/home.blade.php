@@ -12,8 +12,7 @@
 
                     @foreach($articles as $article)
 
-                        <h1>{{$article['title']}}</h1>
-
+                        <a href="/article/{{$article['id']}}"><h1>{{$article['title']}}</h1></a>
 
                     @endforeach
 

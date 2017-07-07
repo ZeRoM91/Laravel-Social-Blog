@@ -20,3 +20,7 @@ Route::get('/', function () { return "Hi";});
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+# Выборка статей
+
+Route::get('/article/{id}', 'ArticleController@text');

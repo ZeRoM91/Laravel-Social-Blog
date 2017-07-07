@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     // имя таблицы
-   // protected $table = 'articles';
+    // protected $table = 'articles';
     public $timestamps = false;
 
 }

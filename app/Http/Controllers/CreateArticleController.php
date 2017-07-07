@@ -17,14 +17,9 @@ class CreateArticleController extends Controller
         return view('form');
     }
 
-    public function create()
+    public function create(Request $request)
     {
-//        $article = [
-//            'title' => $title,
-//            'text'  => $text
-//        ];
-
-        $create = Article::create(['title' => \Request::get('title'), 'text' => \Request::get('text')]);
-        return redirect()->route('article', ['id' => $create->id]);
+        $article = Article::create($request->except('_token'));
+        return redirect()->route('article', ['id' => $article->id]);
     }
 }

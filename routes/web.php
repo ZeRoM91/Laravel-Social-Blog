@@ -23,4 +23,4 @@ Route::get('/home', 'HomeController@index');
 
 # Выборка статей
 
-Route::get('/article/{id}', 'ArticleController@text');
+Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@text']);

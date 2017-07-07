@@ -5,10 +5,18 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Список статей</div>
 
                 <div class="panel-body">
-                    You are logged in!
+
+
+                    @foreach($articles as $article)
+
+                        <h1>{{$article['title']}}</h1>
+
+
+                    @endforeach
+
                 </div>
             </div>
         </div>

@@ -1,0 +1,11 @@
+html {
+    margin: 0 auto;
+}
+h1,h2,h3,p,span {
+    font-family: 'Raleway', sans-serif;
+}
+.form {
+    background-color: #f3f2f9;
+    margin: 30px;
+    padding: 30px;
+}

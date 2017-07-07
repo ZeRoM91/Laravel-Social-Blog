@@ -14,7 +14,9 @@
 
 
 # Главная
-Route::get('/', 'Auth\LoginController@showMain');
+Route::get('/', function () { return "Hi";});
 
-# Авторизация
-Route::get('/test', 'Auth\LoginController@showName');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

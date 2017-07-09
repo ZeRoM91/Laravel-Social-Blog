@@ -31,3 +31,5 @@ Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@tex
 Route::get('/article', ['as' => 'formArticle', 'uses' => 'CreateArticleController@show']);
 
 Route::post('/article', ['as' => 'create', 'uses' => 'CreateArticleController@create']);
+
+Route::get('/lk', ['as' => 'lkAuthor', 'uses' => 'lkAuthorController@show']);

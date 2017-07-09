@@ -65,6 +65,9 @@
                                     </li>
 
                                     <li>
+                                        <a href="{{ route('lkAuthor') }}">
+                                            Личный кабинет
+                                        </a>
                                         <a href="{{ route('formArticle') }}">
                                            + Создать статью
                                         </a>

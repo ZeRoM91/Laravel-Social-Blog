@@ -21,10 +21,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="text">Текст статьи</label>
-                                <textarea class="form__input form-control" placeholder="Введите текст статьи" name="text" rows="10" style="resize: none;">
-                                    {{ isset($article) ? $article->text : '' }}
-                                </textarea>
-            </textarea>
+                                <textarea class="form__input form-control" placeholder="Введите текст статьи" name="text" rows="10" style="resize: none;">{{ isset($article) ? $article->text : '' }}</textarea>
 
                                 <input type="text"  name="time" value="<?php echo date("Y-m-d H:i:s"); ?>" hidden>
                                 <input type="text"  name="author" value="{{ Auth::user()->name }}" hidden>

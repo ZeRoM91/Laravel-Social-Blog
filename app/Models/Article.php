@@ -13,7 +13,9 @@ class Article extends Model
 
 
     public function scopeAuthor ($query) {
-        return $query -> where('author', '==', 'admin');
+
+        $author = \Auth::user()->name;
+        return $query -> where('author', $author);
     }
 
 }

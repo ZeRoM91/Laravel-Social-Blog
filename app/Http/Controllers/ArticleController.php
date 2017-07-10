@@ -15,10 +15,14 @@ class ArticleController extends Controller
     public function show($id)
     {
 
-        $text = Article::find($id);
+        $article = Article::find($id);
+
+        $articles = Article::author()->take(3)->get();
 
 
-        return view('article', compact('text'));
+
+
+        return view('article', compact('article', 'articles'));
     }
 
 

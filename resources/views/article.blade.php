@@ -11,8 +11,8 @@
 <p>{{$text['time']}}</p>
                         <span>{{$text['text']}}</span><br>
                         <i>Автор статьи: {{$text['author']}}</i>
-
-
+                        <br>
+<button class="btn btn-primary">Редактировать</button>
 
                     </div>
                 </div>

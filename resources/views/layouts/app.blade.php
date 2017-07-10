@@ -65,11 +65,11 @@
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('lkAuthor') }}">
+                                        <a href="{{ route('Author') }}">
                                             Личный кабинет
                                         </a>
                                         <a href="{{ route('formArticle') }}">
-                                           + Создать статью
+                                           Создать статью
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

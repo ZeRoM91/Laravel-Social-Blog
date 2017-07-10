@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
-class lkAuthorController extends Controller
+class LkAuthorController extends Controller
 {
     //
     public function show()
     {
-        return view('lk');
+       $author = \Auth::user()->name;
+      $articles = Article::where('author', $author)->get();
 
 
+        return view('lk', compact('articles'));
     }
 }

@@ -11,4 +11,9 @@ class Article extends Model
     public $timestamps = false;
     protected $guarded = ['id'];
 
+
+    public function scopeAuthor ($query) {
+        return $query -> where('author', '==', 'admin');
+    }
+
 }

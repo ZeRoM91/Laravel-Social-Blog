@@ -14,12 +14,12 @@
 
 
 # Главная
-Route::get('/', function () { return "Hi";});
+Route::get('/', 'IndexController@index');
 
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 # Выборка статей
 
@@ -32,4 +32,4 @@ Route::get('/article', ['as' => 'formArticle', 'uses' => 'CreateArticleControlle
 
 Route::post('/article', ['as' => 'create', 'uses' => 'CreateArticleController@create']);
 
-Route::get('/lk', ['as' => 'lkAuthor', 'uses' => 'lkAuthorController@show']);
+Route::get('/lk', ['as' => 'Author', 'uses' => 'LkAuthorController@show']);

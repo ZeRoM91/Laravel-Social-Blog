@@ -15,7 +15,7 @@
                             {{--<a href="/article/{{$article['id']}}"><h1>{{$article['title']}}</h1></a>--}}
                             <span>{{$article['time']}}</span>
                             <a href="{{ route('article', ['id' => $article['id']]) }}"><p><b>{{$article['title']}}</b></p></a>
-                           
+
                             <hr>
                         @endforeach
 

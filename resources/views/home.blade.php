@@ -12,10 +12,10 @@
 
                     @foreach($articles as $article)
 
-                        {{--<a href="/article/{{$article['id']}}"><h1>{{$article['title']}}</h1></a>--}}
+
                         <span>{{$article['time']}}</span>
                         <a href="{{ route('article', ['id' => $article['id']]) }}"><p><b>{{$article['title']}}</b></p></a>
-                        <i>Автор: {{$article['author']}}</i>
+                        <i>Автор: </i><span class="badge badge-primary">{{$article['author']}}</span>
                         <hr>
                     @endforeach
 

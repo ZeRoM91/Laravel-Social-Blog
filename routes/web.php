@@ -16,20 +16,24 @@
 # Главная
 Route::get('/', 'IndexController@index');
 
-
+# Роут для авторизации
 Route::auth();
 
+# В список статей для авторизованых пользователей
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
-
-# Выборка статей
-
-Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@text']);
 
 
 # Форма создания
 
-Route::get('/article', ['as' => 'formArticle', 'uses' => 'CreateArticleController@show']);
+Route::get('/article', ['as' => 'formArticle', 'uses' => 'ArticleController@form']);
 
-Route::post('/article', ['as' => 'create', 'uses' => 'CreateArticleController@create']);
+# Если метод post то создаем статью
+Route::post('/article', ['as' => 'create', 'uses' => 'ArticleController@create']);
 
 Route::get('/lk', ['as' => 'Author', 'uses' => 'LkAuthorController@show']);
+
+Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@show']);
+
+Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleController@delete']);
+
+Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@edit']);

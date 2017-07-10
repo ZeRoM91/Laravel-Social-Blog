@@ -10,7 +10,7 @@
                     <div class="panel-body">
 
 
-                        <form action="" method="post">
+                        <form action="" method="post" class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
                             <div class="form-group">
                                 {{ csrf_field() }}
@@ -28,7 +28,11 @@
                             </div>
                             <input type="submit" class="btn btn-success" value="Добавить">
                         </form>
-
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                        @endif
                     </div>
                 </div>
             </div>

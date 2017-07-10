@@ -8,11 +8,14 @@
                     <div class="panel-heading">Личный кабинет</b> </div>
 
                     <div class="panel-body">
+                        <p><b>Данные пользователя</b>
+                        <p>Ваш логин: {{Auth::user()->name}}</p>
 
-                <h1>Ваши статьи</h1>
+                        <p>Ваш email: {{Auth::user()->email}}</p>
+                <p><b>Список ваших статей</b></p>
                         @foreach($articles as $article)
 
-                            {{--<a href="/article/{{$article['id']}}"><h1>{{$article['title']}}</h1></a>--}}
+                            <span><b>#{{$article['id']}}.</b></span>
                             <span>{{$article['time']}}</span>
                             <a href="{{ route('article', ['id' => $article['id']]) }}"><p><b>{{$article['title']}}</b></p></a>
 

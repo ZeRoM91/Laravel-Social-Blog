@@ -11,7 +11,7 @@
                         <p>Название статьи: {{$article['title']}}</p>
 <p>Дата публикации: {{$article['time']}}</p>
                         <p>Содержание: <br> {{$article['text']}}</p><br>
-
+                        <span><b>Рейтинг статьи: 0 </b></span><button class="btn btn-success">+</button><button class="btn btn-danger">-</button><br>
                         @if(Auth::user()->name != $article['author'])
                         <i>Автор статьи: {{$article['author']}}</i>
                         <br>
@@ -37,6 +37,16 @@
                         <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
 
                         @endif
+                        <p>Оставить комментарий:</p>
+
+                        <textarea class="form-control" name="comment" cols="90" rows="4"></textarea><br>
+                        <button class="btn btn-default">Отправить</button>
+                        <p><b>Комментарии (2)</b></p>
+
+                        <span>admin: Текстовый комментарий</span>
+                        <hr>
+                        <span>dmitriy: Текстовый комментарий</span>
+                        <hr>
                         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content" style="padding: 20px;">

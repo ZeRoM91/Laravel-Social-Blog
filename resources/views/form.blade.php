@@ -10,29 +10,30 @@
                     <div class="panel-body">
 
 
-                        <form action="" method="post" class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <form action="{{ isset($article) ? route('editArticle',['id' => $article->id]) : ''}}" method="post">
 
                             <div class="form-group">
                                 {{ csrf_field() }}
                                 <label for="title">Заголовок</label>
 
-                                <input type="text" class="form__input form-control" placeholder="Введите заголовок статьи" name="title" required>
+                                <input type="text" class="form__input form-control" placeholder="Введите заголовок статьи" name="title" required
+                                       value="{{ isset($article) ? $article->title : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="text">Текст статьи</label>
-                                <textarea class="form__input form-control" placeholder="Введите текст статьи" name="text" rows="10" style="resize: none;" required>
+                                <textarea class="form__input form-control" placeholder="Введите текст статьи" name="text" rows="10" style="resize: none;">
+                                    {{ isset($article) ? $article->text : '' }}
+                                </textarea>
             </textarea>
 
                                 <input type="text"  name="time" value="<?php echo date("Y-m-d H:i:s"); ?>" hidden>
                                 <input type="text"  name="author" value="{{ Auth::user()->name }}" hidden>
                             </div>
-                            <input type="submit" class="btn btn-success" value="Добавить">
+                            <input type="submit" class="btn btn-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
+
+
                         </form>
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                        @endif
+
                     </div>
                 </div>
             </div>

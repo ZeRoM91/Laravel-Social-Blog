@@ -37,3 +37,5 @@ Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@sho
 Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleController@delete']);
 
 Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@edit']);
+
+Route::post('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@update']);

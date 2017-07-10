@@ -17,13 +17,23 @@
                         <br>
                          @else
                             <i>Вы автор данной статьи</i>
+
+                            <hr>
+
+                            <p><b>Другие ваши статьи</b>
+
+                            @foreach($text as $article)
+                                {
+
+                            }
+                            @endforeach
                         @endif
 
                         @if(Auth::user()->name == $text['author'])
 
                             <hr>
                         <p>Панель управления:</p>
-                        <a href="" class="btn btn-primary">Редактировать</a>
+                        <a href="{{route('editArticle',['id' => $text->id])}}" class="btn btn-primary">Редактировать</a>
                         <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
 
                         @endif

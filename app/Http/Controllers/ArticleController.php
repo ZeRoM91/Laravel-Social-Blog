@@ -21,12 +21,14 @@ class ArticleController extends Controller
         // поиск статьи по id
         $article = Article::find($id);
 
-        // если это авторская статья то дополниткльно выводим его другие статьи
-       // $articles = $article->author()->articles()->whereNot('id', $article->id)->take(3)->get();
+        // если это авторская статья то дополнительно выводим его другие статьи
+       // $articles = $article->author()->articles()->where('id', '<>', $article->id)->take(3)->get();
+        $articles = $article -> get(); 
         $comments = Article::find($id)->comment()->paginate(5);
 
 
-        return view('article', compact('article','comments','relations'));
+
+        return view('article', compact('article','articles','comments'));
     }
 
     # Вывод формы
@@ -100,7 +102,7 @@ class ArticleController extends Controller
 
         $article = Article::find($id);
 
-        $comment = Comment::create(['article_id' => Input::get('article_id'), 'comment' => Input::get('comment'),'author' => Input::get('author')]);
+        $comment = Comment::create(['article_id' => Input::get('article_id'), 'comment' => Input::get('comment'),'user_id' => Input::get('user_id')]);
 
         return redirect()->route('article', ['id' => $article->id]);
 

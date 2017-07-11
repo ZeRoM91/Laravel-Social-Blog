@@ -17,7 +17,7 @@
                         @foreach($articles as $article)
 
                             <span><b>#{{$article['id']}}.</b></span>
-                            <span>{{$article['time']}}</span>
+                            <span>{{$article['created_at']}}</span>
                             <a href="{{ route('article', ['id' => $article['id']]) }}"><p><b>{{$article['title']}}</b></p></a>
 
                             <hr>

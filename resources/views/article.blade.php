@@ -5,42 +5,51 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Номер статьи: <b>{{$article['id']}}</b> </div>
+                    <div class="panel-heading">
+                         # {{$article['id']}} {{$article['title']}}
+                    </div>
 
                     <div class="panel-body">
-                        <p>Название статьи: {{$article['title']}}</p>
-<p>Дата публикации: {{$article['created_at']}}</p>
-                        <p>Содержание: <br> {{$article['text']}}</p><br>
-                        <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
-                        <input type="submit" name="increase" class="btn btn-success" value="+">
-                        <input type="submit" name="degrease" class="btn btn-danger" value="-"><br>
-                        @if(Auth::user()->name != $article['author'])
-                        <i>Автор статьи: {{$article['author']}}</i>
-                        <br>
-                         @else
-                            <i>Вы автор данной статьи</i>
 
-                            <hr>
+                        <p>{{$article['text']}}</p>
 
-                            <p><b>Другие ваши статьи</b></p>
 
-                        <i>Пока в разработке....</i>
-                        {{--@foreach($articles as $item)--}}
 
-                            {{--<a href="{{route('article',['id' => $item->id])}}"><p>{{$item['title']}}</p></a>--}}
+                        <div class="well"><p>Дата публикации: {{$article['created_at']}}</p>
+                            @if($article['created_at'] != $article['updated_at'])
 
-                        {{--@endforeach--}}
 
-                        @endif
+                                <i>Обновлена: {{$article['updated_at']}}</i>
 
-                        @if(Auth::user()->name == $article['author'])
+                            @endif
+                            <br> @if(Auth::user()->name != $article['user_id'])
+                                <i>Автор статьи: {{$article['user_id']}}</i>
+                                <br>
+                            @else
+                                <i>Вы автор данной статьи</i>
 
-                            <hr>
-                        <p>Панель управления:</p>
-                        <a href="{{route('editArticle',['id' => $article->id])}}" class="btn btn-primary">Редактировать</a>
-                        <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
+                                <hr>
 
-                        @endif
+                                <p><b>Другие ваши статьи</b></p>
+
+                                <i>Пока в разработке....</i><br>
+                                @foreach($articles as $item)
+
+                                <a href="{{route('article',['id' => $item->id])}}"><p>{{$item['title']}}</p></a>
+
+                                @endforeach
+
+                            @endif
+                            <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
+                            @if(Auth::user()->name != $article['user_id'])
+                            <input type="submit" name="increase" class="btn btn-success" value="+">
+                            <input type="submit" name="degrease" class="btn btn-danger" value="-"><br>
+                                <p>Панель управления:</p>
+                                <a href="{{route('editArticle',['id' => $article->id])}}" class="btn btn-primary">Редактировать</a>
+                                <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
+
+                            @endif</div>
+
                         <p>Оставить комментарий:</p>
                         <form action="{{route('addComment',['id' => $article->id])}}" method="post">
                             {{ csrf_field() }}
@@ -52,14 +61,14 @@
 
                         </form>
 
-                        <p><b>Комментарии ({{$comments->count()}})</b></p>
+                        <p ><b>Комментарии ({{$comments->count()}})</b></p>
 
 
                         <hr>
 
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
-                            <span class="badge badge-primary"><b>{{$comment->author}}:</b></span><span>"{{$comment->comment}}"</span>
+                            <span class="label label-info"><b>{{$comment->author}}:</b></span><span>"{{$comment->comment}}"</span>
                             <hr>
                         @endforeach
                         <?php echo $comments->render(); ?>

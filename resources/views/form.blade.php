@@ -24,7 +24,7 @@
                                 <textarea class="form__input form-control" placeholder="Введите текст статьи" name="text" rows="10" style="resize: none;">{{ isset($article) ? $article->text : '' }}</textarea>
 
 
-                                <input type="text"  name="author" value="{{ Auth::user()->name }}" hidden>
+                                <input type="text"  name="user_id" value="{{ Auth::user()->id }}" hidden>
                             </div>
                             <input type="submit" class="btn btn-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
 

@@ -9,7 +9,7 @@
 
                     <div class="panel-body">
                         <p>Название статьи: {{$article['title']}}</p>
-<p>Дата публикации: {{$article['time']}}</p>
+<p>Дата публикации: {{$article['created_at']}}</p>
                         <p>Содержание: <br> {{$article['text']}}</p><br>
                         <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
                         <input type="submit" name="increase" class="btn btn-success" value="+">
@@ -23,11 +23,13 @@
                             <hr>
 
                             <p><b>Другие ваши статьи</b></p>
-                        @foreach($articles as $item)
 
-                            <a href="{{route('article',['id' => $item->id])}}"><p>{{$item['title']}}</p></a>
+                        <i>Пока в разработке....</i>
+                        {{--@foreach($articles as $item)--}}
 
-                        @endforeach
+                            {{--<a href="{{route('article',['id' => $item->id])}}"><p>{{$item['title']}}</p></a>--}}
+
+                        {{--@endforeach--}}
 
                         @endif
 
@@ -43,7 +45,7 @@
                         <form action="{{route('addComment',['id' => $article->id])}}" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="article" value="{{$article->id}}" >
+                            <input type="hidden" name="article_id" value="{{$article->id}}" >
                             <input type="hidden" name="author" value="{{Auth::user()->name}}" >
                             <textarea class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
                             <input type="submit" class="btn btn-default" value="Отправить">
@@ -56,10 +58,11 @@
                         <hr>
 
                         @foreach($comments as $comment)
+                            <i>{{$comment->created_at}}</i><br>
                             <span class="badge badge-primary"><b>{{$comment->author}}:</b></span><span>"{{$comment->comment}}"</span>
                             <hr>
                         @endforeach
-
+                        <?php echo $comments->render(); ?>
 
                         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
                             <div class="modal-dialog modal-lg" role="document">

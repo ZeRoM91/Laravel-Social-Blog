@@ -24,7 +24,7 @@ class ArticleFormRequest extends FormRequest
     {
         return [
             'title' => 'min:5',
-            'text' => 'min:15',
+            'text' => 'min:10',
         ];
     }
 }

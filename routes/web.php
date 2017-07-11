@@ -42,7 +42,5 @@ Route::post('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleCont
 
 
 # Добавление комментария
-Route::post('/article/{id}', ['as' => 'addComment', 'uses' => 'CommentController@add']);
+Route::post('/article/{id}', ['as' => 'addComment', 'uses' => 'ArticleController@add_comment']);
 
-# Вывод комментариев к статье
-//Route::get('/article/{id}', ['as' => 'showComment', 'uses' => 'CommentController@show']);

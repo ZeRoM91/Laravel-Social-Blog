@@ -6,16 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    // Модель для статей
     // имя таблицы
     // protected $table = 'articles';
-    public $timestamps = false;
+
     protected $guarded = ['id'];
 
 
-    public function scopeAuthor ($query) {
+    public function scopeAuthor($query) {
 
         $author = \Auth::user()->name;
         return $query -> where('author', $author);
+    }
+
+    public function comment() {
+        return $this->hasMany(Comment::class);
     }
 
 }

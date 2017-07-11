@@ -22,10 +22,11 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         // если это авторская статья то дополниткльно выводим его другие статьи
-        $articles = Article::author()->take(3)->get();
-        $comments = Comment::where('article', $id)->get();
+       // $articles = $article->author()->articles()->whereNot('id', $article->id)->take(3)->get();
+        $comments = Article::find($id)->comment()->paginate(5);
 
-        return view('article', compact('article','articles','comments'));
+
+        return view('article', compact('article','comments','relations'));
     }
 
     # Вывод формы
@@ -90,6 +91,18 @@ class ArticleController extends Controller
 
 
 
+
+    }
+
+    public function add_comment($id) {
+
+
+
+        $article = Article::find($id);
+
+        $comment = Comment::create(['article_id' => Input::get('article_id'), 'comment' => Input::get('comment'),'author' => Input::get('author')]);
+
+        return redirect()->route('article', ['id' => $article->id]);
 
     }
 }

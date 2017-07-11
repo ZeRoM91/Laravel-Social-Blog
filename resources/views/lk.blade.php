@@ -12,6 +12,7 @@
                         <p>Ваш логин: {{Auth::user()->name}}</p>
 
                         <p>Ваш email: {{Auth::user()->email}}</p>
+                        <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
                 <p><b>Список ваших статей</b></p>
                         @foreach($articles as $article)
 

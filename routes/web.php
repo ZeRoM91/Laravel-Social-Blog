@@ -39,3 +39,10 @@ Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleC
 Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@edit']);
 
 Route::post('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@update']);
+
+
+# Добавление комментария
+Route::post('/article/{id}', ['as' => 'addComment', 'uses' => 'CommentController@add']);
+
+# Вывод комментариев к статье
+//Route::get('/article/{id}', ['as' => 'showComment', 'uses' => 'CommentController@show']);

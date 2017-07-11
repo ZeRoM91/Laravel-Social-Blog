@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -19,10 +20,10 @@ class ArticleController extends Controller
 
         $articles = Article::author()->take(3)->get();
 
+        $comments = Comment::where('article', $id)->get();
 
 
-
-        return view('article', compact('article', 'articles'));
+        return view('article', compact('article','articles','comments'));
     }
 
 

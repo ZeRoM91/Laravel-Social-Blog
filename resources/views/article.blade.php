@@ -38,15 +38,27 @@
 
                         @endif
                         <p>Оставить комментарий:</p>
+                        <form action="{{route('addComment',['id' => $article->id])}}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="article" value="{{$article->id}}" >
+                            <input type="hidden" name="author" value="{{Auth::user()->name}}" >
+                            <textarea class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
+                            <input type="submit" class="btn btn-default" value="Отправить">
 
-                        <textarea class="form-control" name="comment" cols="90" rows="4"></textarea><br>
-                        <button class="btn btn-default">Отправить</button>
-                        <p><b>Комментарии (2)</b></p>
+                        </form>
 
-                        <span>admin: Текстовый комментарий</span>
+                        <p><b>Комментарии ({{$comments->count()}})</b></p>
+
+
                         <hr>
-                        <span>dmitriy: Текстовый комментарий</span>
-                        <hr>
+
+                        @foreach($comments as $comment)
+                            <span class="badge badge-primary"><b>{{$comment->author}}:</b></span><span>"{{$comment->comment}}"</span>
+                            <hr>
+                        @endforeach
+
+
                         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content" style="padding: 20px;">

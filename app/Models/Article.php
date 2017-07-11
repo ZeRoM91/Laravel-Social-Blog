@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Article extends Model
 {
@@ -15,8 +16,8 @@ class Article extends Model
 
     public function scopeAuthor($query) {
 
-        $author = \Auth::user()->name;
-        return $query -> where('author', $author);
+        $user_id = \Auth::user()->id;
+        return $query -> where('user_id', $user_id);
     }
 
     public function comment() {

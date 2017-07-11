@@ -22,13 +22,13 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         // если это авторская статья то дополнительно выводим его другие статьи
-       // $articles = $article->author()->articles()->where('id', '<>', $article->id)->take(3)->get();
-        $articles = $article -> get(); 
+       $articles = $article->author()->where('id', '<>', $article->id)->take(3)->get();
+        //$articles = $article -> get();
         $comments = Article::find($id)->comment()->paginate(5);
 
 
 
-        return view('article', compact('article','articles','comments'));
+        return view('article', compact('articles','comments','article'));
     }
 
     # Вывод формы
@@ -49,7 +49,7 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
-        if (auth()->user()->name == $article->author) {
+        if (auth()->user()->id == $article->user_id) {
 
             $delete__article = Article::find($id);
             $delete__article ->delete();
@@ -64,7 +64,7 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
-        if (auth()->user()->name == $article->author) {
+        if (auth()->user()->id == $article->user_id) {
             return view('form',compact('article'));
         } else {
             return "У вас нет прав на редактирование статьи";

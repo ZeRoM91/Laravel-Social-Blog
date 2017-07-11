@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('article_id');
             $table->string('comment','160');
-            $table->string('author','64');
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

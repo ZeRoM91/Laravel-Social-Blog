@@ -18,7 +18,7 @@
                         <i>Автор: </i><span class="badge badge-primary">{{$article['author']}}</span>
                         <hr>
                     @endforeach
-
+                        <?php echo $articles->render(); ?>
                 </div>
             </div>
         </div>

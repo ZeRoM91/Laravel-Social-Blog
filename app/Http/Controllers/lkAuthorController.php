@@ -11,7 +11,7 @@ class LkAuthorController extends Controller
     public function show()
     {
        $author = \Auth::user()->name;
-      $articles = Article::where('author', $author)->get();
+       $articles = Article::where('author', $author)->paginate(3);
 
 
         return view('lk', compact('articles'));

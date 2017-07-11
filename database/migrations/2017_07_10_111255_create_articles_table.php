@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('text');
             $table->string('time');
             $table->string('author');
+            $table->integer('rating');
         });
     }
 

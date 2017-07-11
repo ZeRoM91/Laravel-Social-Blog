@@ -16,6 +16,8 @@ class CommentController extends Controller
 
     public function add($id) {
 
+
+
         $article = Article::find($id);
 
         $comment = Comment::create(['article' => Input::get('article'), 'comment' => Input::get('comment'),'author' => Input::get('author')]);

@@ -21,7 +21,7 @@
 
                             <hr>
                         @endforeach
-
+                        <?php echo $articles->render(); ?>
 
                     </div>
                 </div>

@@ -11,7 +11,9 @@
                         <p>Название статьи: {{$article['title']}}</p>
 <p>Дата публикации: {{$article['time']}}</p>
                         <p>Содержание: <br> {{$article['text']}}</p><br>
-                        <span><b>Рейтинг статьи: 0 </b></span><button class="btn btn-success">+</button><button class="btn btn-danger">-</button><br>
+                        <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
+                        <input type="submit" name="increase" class="btn btn-success" value="+">
+                        <input type="submit" name="degrease" class="btn btn-danger" value="-"><br>
                         @if(Auth::user()->name != $article['author'])
                         <i>Автор статьи: {{$article['author']}}</i>
                         <br>

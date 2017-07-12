@@ -29,6 +29,11 @@ class Article extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+//    public function rating() {
+//        return $this->hasOne(Rating::class);
+//    }
+
+
 
 
 

@@ -41,10 +41,37 @@
                                 @endforeach
 
                             @endif
+<p>Текущий голос:   {{$vote['vote']}}</p>
                             <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
+
+                            @if(Auth::user()->id != $article['user_id'])
+
+                                @if($vote['vote'] === NULL)
+                                    <a href="{{route('upRating',['id' => $article->id])}}" class="btn btn-success">+</a>
+                                    <a href="{{route('downRating',['id' => $article->id])}}" class="btn btn-danger">-</a>
+
+                                @endif
+
+                                @if($vote['vote'] === 1)
+                                        <a class="btn btn-success" disabled title="Вы уже проголосовали за">+</a>
+                                    <a href="{{route('downRating',['id' => $article->id])}}" class="btn btn-danger">-</a>
+
+                                    @endif
+
+                                    @if($vote['vote'] === 0)
+                                        <a href="{{route('upRating',['id' => $article->id])}}" class="btn btn-success">+</a>
+                                        <a class="btn btn-danger" disabled title="Вы уже проголосовали против">-</a>
+
+                                    @endif
+                                    @else
+                              <p> Вы не можете голосовать за свои статьи</p>
+                                @endif
+
+
+
+
                             @if(Auth::user()->id == $article['user_id'])
-                                <a href="{{route('upRating',['id' => $article->id])}}">+</a>
-                                <a href="{{route('downRating',['id' => $article->id])}}">-</a>
+
                                 <p>Панель управления:</p>
                                 <a href="{{route('editArticle',['id' => $article->id])}}" class="btn btn-primary">Редактировать</a>
                                 <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>

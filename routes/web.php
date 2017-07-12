@@ -45,6 +45,6 @@ Route::post('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleCont
 Route::post('/article/{id}', ['as' => 'addComment', 'uses' => 'ArticleController@add_comment']);
 
 
-Route::get('/article/{id}/uprating', ['as' => 'upRating', 'uses' => 'ArticleController@upRating']);
+Route::any('/article/{id}/uprating', ['as' => 'upRating', 'uses' => 'ArticleController@upRating']);
 
 Route::get('/article/{id}/downrating', ['as' => 'downRating', 'uses' => 'ArticleController@downRating']);

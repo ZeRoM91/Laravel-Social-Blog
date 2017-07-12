@@ -4,6 +4,7 @@ namespace App;
 
 
 use App\Models\Article;
+use App\Models\Rating;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -35,5 +36,8 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
+    public function votes() {
+        return $this->hasMany(Rating::class);
+    }
 
 }

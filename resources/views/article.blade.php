@@ -22,10 +22,10 @@
                                 <i>Обновлена: {{$article['updated_at']}}</i>
 
                             @endif
-                            <br> @if(Auth::user()->name != $article['user_id'])
+                            <br> @if(Auth::user()->id == $article['user_id'])
                                 <i>Автор статьи: {{$article['user_id']}}</i>
                                 <br>
-                            @else
+
                                 <i>Вы автор данной статьи</i>
 
                                 <hr>
@@ -41,7 +41,7 @@
 
                             @endif
                             <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
-                            @if(Auth::user()->name != $article['user_id'])
+                            @if(Auth::user()->id == $article['user_id'])
                             <input type="submit" name="increase" class="btn btn-success" value="+">
                             <input type="submit" name="degrease" class="btn btn-danger" value="-"><br>
                                 <p>Панель управления:</p>

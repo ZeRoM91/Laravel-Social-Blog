@@ -27,19 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function author() {
 
-        return $this->hasOne(Models\Article::class,'user_id');
-
-
+    public function author()
+    {
+        return $this->hasOne(Models\Article::class, 'user_id');
     }
 
-    public function articles() {
-
-        return $this->hasMany(Models\Article::class);
-
-
-    }
 
 
 }

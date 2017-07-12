@@ -30,7 +30,7 @@ Route::get('/article', ['as' => 'formArticle', 'uses' => 'ArticleController@form
 # Если метод post то создаем статью
 Route::post('/article', ['as' => 'create', 'uses' => 'ArticleController@create']);
 
-Route::get('/lk', ['as' => 'Author', 'uses' => 'LkAuthorController@show']);
+Route::get('/lk', ['as' => 'Author', 'uses' => 'lkAuthorController@show']);
 
 Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@show']);
 

@@ -17,4 +17,6 @@ class Comment extends Model
     public function scopeArticle($query, $id) {
         return $query->where('article_id', $id);
     }
+
+
 }

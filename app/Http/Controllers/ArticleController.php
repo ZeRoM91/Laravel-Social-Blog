@@ -23,7 +23,7 @@ class ArticleController extends Controller
 
         // если это авторская статья то дополнительно выводим его другие статьи
        // $articles = $article->author()->articles()->where('id', '<>', $article->id)->take(3)->get();
-        $articles = $article -> get(); 
+        $articles = $article -> get();
         $comments = Article::find($id)->comment()->paginate(5);
 
 

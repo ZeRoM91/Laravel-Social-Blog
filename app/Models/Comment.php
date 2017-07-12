@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -11,12 +11,10 @@ class Comment extends Model
     # protected $table = 'comments';
     protected $guarded = ['id'];
 
-
-    # Фильтр по статье
-
-    public function scopeArticle($query, $id) {
-        return $query->where('article_id', $id);
+    public function userName() {
+        return $this->belongsTo(User::class, 'user_id');
     }
+
 
 
 }

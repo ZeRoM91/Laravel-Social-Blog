@@ -22,8 +22,9 @@
                                 <i>Обновлена: {{$article['updated_at']}}</i>
 
                             @endif
+                            <i>Автор статьи: {{$author->name}}</i>
                             <br> @if(Auth::user()->id == $article['user_id'])
-                                <i>Автор статьи: {{$article['user_id']}}</i>
+
                                 <br>
 
                                 <i>Вы автор данной статьи</i>
@@ -32,18 +33,18 @@
 
                                 <p><b>Другие ваши статьи</b></p>
 
-                                <i>Пока в разработке....</i><br>
+
                                 @foreach($articles as $item)
 
-                                <a href="{{route('article',['id' => $item->id])}}"><p>{{$item['title']}}</p></a>
+                                <a href="{{route('article',['id' => $item->id])}}"><p><b>{{$item['id']}}. {{$item['title']}}</b></p></a>
 
                                 @endforeach
 
                             @endif
                             <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
                             @if(Auth::user()->id == $article['user_id'])
-                            <input type="submit" name="increase" class="btn btn-success" value="+">
-                            <input type="submit" name="degrease" class="btn btn-danger" value="-"><br>
+                                <a href="{{route('upRating',['id' => $article->id])}}">+</a>
+                                <a href="{{route('downRating',['id' => $article->id])}}">-</a>
                                 <p>Панель управления:</p>
                                 <a href="{{route('editArticle',['id' => $article->id])}}" class="btn btn-primary">Редактировать</a>
                                 <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
@@ -55,7 +56,7 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="article_id" value="{{$article->id}}" >
-                            <input type="hidden" name="author" value="{{Auth::user()->name}}" >
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
                             <textarea class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
                             <input type="submit" class="btn btn-default" value="Отправить">
 
@@ -68,7 +69,7 @@
 
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
-                            <span class="label label-info"><b>{{$comment->author}}:</b></span><span>"{{$comment->comment}}"</span>
+                            <span class="label label-info"><b>{{$comment->user_id}}:</b></span><span>"{{$comment->comment}}"</span>
                             <hr>
                         @endforeach
                         <?php echo $comments->render(); ?>

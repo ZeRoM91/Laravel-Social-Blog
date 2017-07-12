@@ -13,6 +13,7 @@
                         <span>{{$article['created_at']}}</span>
                         <a href="{{ route('article', ['id' => $article['id']]) }}"><p><b>{{$article['title']}}</b></p></a>
                         <i>Автор: </i><span class="label label-primary">{{$article['user_id']}}</span>
+
                         <hr>
                     @endforeach
                         <?php echo $articles->render(); ?>

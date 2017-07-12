@@ -2,6 +2,8 @@
 
 namespace App;
 
+
+use App\Models\Article;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -28,11 +30,10 @@ class User extends Authenticatable
     ];
 
 
-    public function author()
-    {
-        return $this->hasOne(Models\Article::class, 'user_id');
-    }
 
+    public function articles() {
+        return $this->hasMany(Article::class);
+    }
 
 
 }

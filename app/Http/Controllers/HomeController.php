@@ -24,16 +24,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /*
+     * Вывод приложения с пагинацией
+     *
+     */
     public function index()
     {
-
-
-
-        $articles = Article::paginate(5);
-
-
-
-
+        $articles = Article::paginate(10);
         return view('home', compact('articles'));
     }
 }

@@ -9,29 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     // Модель для статей
-    // имя таблицы
+    // имя таблицы (необязательно, т.к. наследуеться из названия класса)
     // protected $table = 'articles';
 
     protected $guarded = ['id'];
 
-
-//    public function scopeAuthor($query) {
-//
-//        $user_id = \Auth::user()->id;
-//        return $query -> where('user_id', $user_id);
-//    }
-
+    // Связь с моделью Комментарий, т.к. пользователь оставляет комментарии
     public function comment() {
         return $this->hasMany(Comment::class);
     }
 
+    // Обратная связь для модели Статья, т.к. пользователя может являеться автором статей
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-//    public function rating() {
-//        return $this->hasOne(Rating::class);
-//    }
 
 
 

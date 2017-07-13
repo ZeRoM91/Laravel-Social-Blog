@@ -20,10 +20,9 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{route('homeCategory', ['category' => 'PHP'])}}">PHP</a></li>
-                                        <li><a href="{{route('homeCategory', ['category' => 'HTML'])}}">HTML</a></li>
-                                        <li><a href="{{route('homeCategory', ['category' => 'CSS'])}}">CSS</a></li>
-                                        <li><a href="{{route('homeCategory', ['category' => 'JS'])}}">Javascript</a></li>
+                                        @foreach($articles as $article)
+                                            <li><a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">{{$article->category['name']}}</a></li>
+                                        @endforeach
                                         <li><a href="{{route('home')}}">Все категории</a></li>
                                     </ul>
                                     <button type="submit" class="btn btn-primary">Поиск</button>
@@ -38,7 +37,6 @@
 
                             </div>
                         </form>
-
                         <br>
                         @foreach($articles as $article)
 

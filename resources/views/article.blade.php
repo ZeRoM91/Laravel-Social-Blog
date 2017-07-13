@@ -8,9 +8,8 @@
                     <div class="panel-heading">
                         <ol class="breadcrumb">
                             <li><a href="{{route('home')}}">Home</a></li>
-                            <li><a href="{{route('formArticle')}}">Article</a></li>
-
-                            <li class="active">{{$article['id']}} </li>
+                            <li><a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">{{$article->category['name']}}</a></li>
+                               <li class="active">{{$article['id']}} </li>
                         </ol>
                     </div>
 

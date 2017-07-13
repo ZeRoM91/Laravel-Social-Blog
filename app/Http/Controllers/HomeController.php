@@ -45,10 +45,10 @@ class HomeController extends Controller
         return view('home', compact('articles','authors','category'));
     }
 
-    public function category(Category $category) {
-        $articles = Article::where('category_id', $category->id)->get();
-
-        return view('category', compact('articles','category'));
+    public function category($category_id) {
+        $articles = Article::all()->where('category_id', $category_id);
+        // $articles = Article::where('category_id', $category_id -> id);
+        return view('category', compact('articles'));
     }
 
     public function search() {

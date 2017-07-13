@@ -30,51 +30,11 @@
 
 
 
-                                <select class="form-control" name="category">
-                                    @if(isset($article->category) == 'PHP')
-                                        <option value="PHP" selected>PHP</option>
-                                        <option value="HTML">HTML</option>
-                                        <option value="CSS">CSS</option>
-                                        <option value="JS">Javascript</option>
-                                    @else
-                                        <option value="PHP">PHP</option>
-                                        <option value="HTML">HTML</option>
-                                        <option value="CSS">CSS</option>
-                                        <option value="JS">Javascript</option>
-                                    @endif
-                                        @if(isset($article->category) == 'HTML')
-                                            <option value="PHP">PHP</option>
-                                            <option value="HTML" selected>HTML</option>
-                                            <option value="CSS">CSS</option>
-                                            <option value="JS">Javascript</option>
-                                        @else
-                                            <option value="PHP">PHP</option>
-                                            <option value="HTML">HTML</option>
-                                            <option value="CSS">CSS</option>
-                                            <option value="JS">Javascript</option>
-                                        @endif
-                                        @if(isset($article->category) == 'CSS')
-                                            <option value="PHP">PHP</option>
-                                            <option value="HTML">HTML</option>
-                                            <option value="CSS" selected>CSS</option>
-                                            <option value="JS">Javascript</option>
-                                        @else
-                                            <option value="PHP">PHP</option>
-                                            <option value="HTML">HTML</option>
-                                            <option value="CSS">CSS</option>
-                                            <option value="JS">Javascript</option>
-                                        @endif
-                                        @if(isset($article->category) == 'JS')
-                                            <option value="PHP">PHP</option>
-                                            <option value="HTML">HTML</option>
-                                            <option value="CSS">CSS</option>
-                                            <option value="JS" selected>Javascript</option>
-                                        @else
-                                            <option value="PHP">PHP</option>
-                                            <option value="HTML">HTML</option>
-                                            <option value="CSS">CSS</option>
-                                            <option value="JS">Javascript</option>
-                                        @endif
+                                <select class="form-control" name="category_id">
+                                    <option value="2">HTML</option>
+                                    <option value="3">CSS</option>
+                                    <option value="4">Javascript</option>
+                                    <option value="5">PHP</option>
                                 </select>
 
 

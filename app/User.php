@@ -4,6 +4,7 @@ namespace App;
 
 
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\Rating;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

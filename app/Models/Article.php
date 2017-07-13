@@ -23,6 +23,11 @@ class Article extends Model
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // Связь для модели Категория
+    public function category() {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 }
 
 

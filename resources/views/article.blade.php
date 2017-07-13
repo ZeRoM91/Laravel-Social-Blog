@@ -9,6 +9,7 @@
                         <ol class="breadcrumb">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li><a href="{{route('formArticle')}}">Article</a></li>
+
                             <li class="active">{{$article['id']}} </li>
                         </ol>
                     </div>

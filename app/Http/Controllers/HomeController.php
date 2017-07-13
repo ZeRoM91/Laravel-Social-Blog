@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use App\User;
 use App\Models\Comment;
 use App\Models\Rating;
@@ -38,12 +39,15 @@ class HomeController extends Controller
        // $article = Article::all()->select('user_id');
         //$authors = $article->author;
         $articles = Article::paginate(10);      //  dd($article);
-        return view('home', compact('articles','authors'));
+
+
+
+        return view('home', compact('articles','authors','category'));
     }
 
-    public function category($category) {
-        $articles = Article::where('category', $category)->get();
-        $category = Article::where('category',$category)->first();
+    public function category(Category $category) {
+        $articles = Article::where('category_id', $category->id)->get();
+
         return view('category', compact('articles','category'));
     }
 

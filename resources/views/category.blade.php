@@ -6,35 +6,36 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
 
-                    <div class="panel-heading">Список статей {{$category['category']}}</div>
+                    <div class="panel-heading">Список статей по {{$category}}</div>
                     <div class="panel-body">
-                        <!-- Split button -->
+                        <form action="" method="post">
+                            <div class="input-group">
+                                <div class="input-group-btn">
 
-                        <div class="btn-group">
+                                    <button type="button" class="btn btn-danger">Категории</button>
+                                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                            <button type="button" class="btn btn-danger">Категории</button>
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{route('homeCategory', ['category' => 'PHP'])}}">PHP</a></li>
-                                <li><a href="{{route('homeCategory', ['category' => 'HTML'])}}">HTML</a></li>
-                                <li><a href="{{route('homeCategory', ['category' => 'CSS'])}}">CSS</a></li>
-                                <li><a href="{{route('homeCategory', ['category' => 'JS'])}}">Javascript</a></li>
-                                <li><a href="{{route('home')}}">Все категории</a></li>
-                            </ul>
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{route('homeCategory', ['category' => 'PHP'])}}">PHP</a></li>
+                                        <li><a href="{{route('homeCategory', ['category' => 'HTML'])}}">HTML</a></li>
+                                        <li><a href="{{route('homeCategory', ['category' => 'CSS'])}}">CSS</a></li>
+                                        <li><a href="{{route('homeCategory', ['category' => 'JS'])}}">Javascript</a></li>
+                                        <li><a href="{{route('home')}}">Все категории</a></li>
+                                    </ul>
+                                    <button type="submit" class="btn btn-primary">Поиск</button>
+                                </div>
 
-                        </div>
-                        <br><br>
-                        <form action="" method="get">
-                            <div class="input-group input-group col-md-8">
-                                <a href="{{route('home__search')}}" class="input-group-addon btn btn-primary" id="sizing-addon">Поиск</a>
+                                {{ csrf_field() }}
 
-                                <input type="text" name="search" class="form-control" placeholder="Поиск статьи по названию" aria-describedby="sizing-addon">
+
+
+
+                                <input type="text"  name="search" class="form-control" placeholder="Поиск статьи по названию"  aria-label="...">
 
                             </div>
-
                         </form>
 
                         <br>

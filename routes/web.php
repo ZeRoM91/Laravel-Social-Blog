@@ -20,7 +20,7 @@ Route::get('/', 'IndexController@index');
 Route::auth();
 
 # В список статей для авторизованых пользователей
-Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/home/{id?}', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 
 # Форма создания
@@ -45,6 +45,8 @@ Route::post('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleCont
 Route::post('/article/{id}', ['as' => 'addComment', 'uses' => 'ArticleController@add_comment']);
 
 
-Route::any('/article/{id}/uprating', ['as' => 'upRating', 'uses' => 'ArticleController@upRating']);
+Route::get('/article/{id}/uprating', ['as' => 'upRating', 'uses' => 'ArticleController@upRating']);
 
 Route::get('/article/{id}/downrating', ['as' => 'downRating', 'uses' => 'ArticleController@downRating']);
+
+Route::get('/article/{id}/resetrating', ['as' => 'resetRating', 'uses' => 'ArticleController@resetRating']);

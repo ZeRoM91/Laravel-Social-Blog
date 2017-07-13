@@ -12,7 +12,7 @@ class Article extends Model
     // имя таблицы (необязательно, т.к. наследуеться из названия класса)
     // protected $table = 'articles';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','rating'];
 
     // Связь с моделью Комментарий, т.к. пользователь оставляет комментарии
     public function comment() {
@@ -23,11 +23,6 @@ class Article extends Model
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-
-
-
-
 }
 
 

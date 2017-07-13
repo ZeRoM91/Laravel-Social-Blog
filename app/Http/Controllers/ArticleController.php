@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
 use App\Models\Article;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller
@@ -150,6 +151,26 @@ class ArticleController extends Controller
         // Если проголосовал против: false
         $vote->vote = false;
         $vote->save();
+
+        // Редирект на текущюю статью
+        return redirect()->route('article', ['id' => $article->id]);
+    }
+
+    public function resetRating($id)
+    {
+        $article = Article::find($id);
+
+        # Уменьшение рейтинга статьи на единицу
+
+        // Создание статуса голоса пользователя для текущей статьи
+        $user = auth('web')->user();
+
+        $vote = $user->votes()->where('article_id', $id)->first();
+
+        $article->rating += $vote->vote ? -1 : 1;
+        $article->save();
+
+        $vote->delete();
 
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);

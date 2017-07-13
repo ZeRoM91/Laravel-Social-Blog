@@ -9,11 +9,12 @@
                 <div class="panel-body">
                     @foreach($articles as $article)
 
-                        <span><b>#{{$article['id']}}.</b></span>
-                        <span>{{$article['created_at']}}</span>
-                        <a href="{{ route('article', ['id' => $article['id']]) }}"><p><b>{{$article['title']}}</b></p></a>
-                        <i>Автор: </i><span class="label label-primary">{{$article['user_id']}}</span>
 
+                        <span class="label label-success">{{$article['created_at']}}</span>
+                        <a href="{{ route('article', ['id' => $article['id']]) }}"><h3><b>"{{$article['title']}}"</b></h3></a>
+                        <i>Автор: </i><span class="label label-default">{{$article ->author['name']}}</span>
+                        <i>Рейтинг: </i><span class="label label-info">{{$article ->rating}}</span>
+                        <i>Комментариев: </i><span class="label label-warning">{{$article ->comment->count()}}</span>
                         <hr>
                     @endforeach
                         <?php echo $articles->render(); ?>

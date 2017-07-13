@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\User;
+use App\Models\Comment;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 
@@ -31,7 +34,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+       // $article = Article::all()->select('user_id');
+
+        //$authors = $article->author;
         $articles = Article::paginate(10);
-        return view('home', compact('articles'));
+
+
+
+
+      //  dd($article);
+        return view('home', compact('articles','authors'));
     }
 }

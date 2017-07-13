@@ -30,14 +30,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-
+    // Связь с моделью Статья, т.к. пользователь может быть автором 1..n статей
     public function articles() {
         return $this->hasMany(Article::class);
     }
 
+    // Связь с моделью Рейтинг, т.к. пользователь может оставлять рейтинг к статьям
     public function votes() {
         return $this->hasMany(Rating::class);
     }
-
 }

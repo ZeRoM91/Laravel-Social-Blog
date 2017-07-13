@@ -14,15 +14,44 @@
                         <p>Ваш email: {{Auth::user()->email}}</p>
                         <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
                 <p><b>Список ваших статей</b></p>
-                        @foreach($articles as $article)
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table class="table table-condensed">
+                                    <tr class="info">
+                                        <td>ID статьи</td>
+                                        <td>Название статьи</td>
+                                        <td>Дата создания</td>
 
-                            <span><b>#{{$article['id']}}.</b></span>
-                            <span>{{$article['created_at']}}</span>
-                            <a href="{{ route('article', ['id' => $article['id']]) }}"><p><b>{{$article['title']}}</b></p></a>
+                                    </tr>
+                                    @foreach($articles as $article)
 
-                            <hr>
-                        @endforeach
-                        <?php echo $articles->render(); ?>
+                                        <tr>
+                                            <td class="active" ><span><b>{{$article['id']}}.</b></span></td>
+
+                                            <td class="active" >
+                                                <a href="{{ route('article', ['id' => $article['id']]) }}">
+                                                    <span><b>{{$article['title']}}.</b></span>
+                                                </a>
+                                            </td>
+
+                                            <td class="active" ><span><b>{{$article['created_at']}}.</b></span></td>
+                                        </tr>
+
+
+
+
+
+
+
+                                    @endforeach
+                                </table>
+                            </div>
+                            <div class="panel-footer"><?php echo $articles->render(); ?></div>
+                        </div>
+
+
+
+
 
                     </div>
                 </div>

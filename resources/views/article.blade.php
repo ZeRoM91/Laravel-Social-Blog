@@ -1,16 +1,21 @@
 @extends('layouts.app')
-
+@section('header')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                         # {{$article['id']}} {{$article['title']}}
+                        <ol class="breadcrumb">
+                            <li><a href="{{route('home')}}">Home</a></li>
+                            <li><a href="{{route('formArticle')}}">Article</a></li>
+                            <li class="active">{{$article['id']}} </li>
+                        </ol>
                     </div>
 
                     <div class="panel-body">
-
+                      <h3 style="text-align: center;">{{$article['id']}} {{$article['title']}}</h3>
+                        <hr>
                         <p>{{$article['text']}}</p>
 
 
@@ -42,30 +47,50 @@
 
                             @endif
 <p>Текущий голос:   {{$vote['vote']}}</p>
-                            <span><b>Рейтинг статьи: {{$article['rating']}} </b></span>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                            @if(Auth::user()->id != $article['user_id'])
 
-                                @if($vote['vote'] === NULL)
-                                    <a href="{{route('upRating',['id' => $article->id])}}" class="btn btn-success">+</a>
-                                    <a href="{{route('downRating',['id' => $article->id])}}" class="btn btn-danger">-</a>
+                            @if($article['rating']  > 0)
+                            <span><b>Рейтинг статьи: <span class="label label-success">+{{$article['rating']}}</span> </b></span>
+                            @endif
+                            @if($article['rating'] < 0)
+                                <span><b>Рейтинг статьи: <span class="label label-danger">{{$article['rating']}}</span> </b></span>
+                            @endif
+                            @if($article['rating'] == 0)
+                                <span><b>Рейтинг статьи: <span class="label label-default">{{$article['rating']}}</span> </b></span>
+                            @endif
+                                @if(Auth::user()->id != $article['user_id'])
 
-                                @endif
+                                    @if($vote['vote'] === NULL)
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <a href="{{route('upRating',['id' => $article->id])}}" class="btn btn-success">+</a>
+                                            <a href="{{route('downRating',['id' => $article->id])}}" class="btn btn-danger">-</a>
+                                        </div>
+                                    @endif
 
-                                @if($vote['vote'] === 1)
-                                        <a class="btn btn-success" disabled title="Вы уже проголосовали за">+</a>
-                                    <a href="{{route('downRating',['id' => $article->id])}}" class="btn btn-danger">-</a>
+                                    @if($vote['vote'] === 1)
+                                            <div class="btn-group" role="group" aria-label="...">
+                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="btn btn-primary" title="Отменить голос">Отменить</a>
+                                        <a class="btn btn-danger" disabled>-</a>
+                                            </div>
 
                                     @endif
 
                                     @if($vote['vote'] === 0)
-                                        <a href="{{route('upRating',['id' => $article->id])}}" class="btn btn-success">+</a>
-                                        <a class="btn btn-danger" disabled title="Вы уже проголосовали против">-</a>
+                                            <div class="btn-group" role="group" aria-label="...">
+                                        <a class="btn btn-success" disabled>+</a>
+                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="btn btn-primary" title="Отменить голос">Отменить</a>
+                                            </div>
 
                                     @endif
-                                    @else
-                              <p> Вы не можете голосовать за свои статьи</p>
+                                @else
+
+                                    <p> Вы не можете голосовать за свои статьи</p>
                                 @endif
+                                </div>
+                            </div>
+
 
 
 
@@ -96,7 +121,7 @@
 
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
-                            <span class="label label-info"><b>{{$comment->user_id}}:</b></span><span>"{{$comment->comment}}"</span>
+                            <span class="label label-info"><b>{{$comment->userName['name']}}:</b></span><span>"{{$comment->comment}}"</span>
                             <hr>
                         @endforeach
                         <?php echo $comments->render(); ?>

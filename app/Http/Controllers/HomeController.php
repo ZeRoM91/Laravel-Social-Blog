@@ -7,7 +7,7 @@ use App\User;
 use App\Models\Comment;
 use App\Models\Rating;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 
 
 class HomeController extends Controller
@@ -36,22 +36,22 @@ class HomeController extends Controller
     {
 
        // $article = Article::all()->select('user_id');
-
         //$authors = $article->author;
-        $articles = Article::paginate(10);
-
-
-
-
-      //  dd($article);
+        $articles = Article::paginate(10);      //  dd($article);
         return view('home', compact('articles','authors'));
     }
 
     public function category($category) {
+        $articles = Article::where('category', $category)->get();
+        $category = Article::where('category',$category)->first();
+        return view('category', compact('articles','category'));
+    }
 
-        $articles = Article::all()->where('category',$category);
+    public function search() {
+        $query = Input::get('search');
 
-        return view('category', compact('articles'));
+        $articles = Article::where("title", "LIKE","%$query%")->get();
 
+        return view('search',compact('articles'));
     }
 }

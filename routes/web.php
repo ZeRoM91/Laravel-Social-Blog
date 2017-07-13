@@ -22,6 +22,10 @@ Route::auth();
 # В список статей для авторизованых пользователей
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+
+
+Route::post('/home', ['as' => 'home__search', 'uses' => 'HomeController@search']);
+
 Route::get('/home/{category}', ['as' => 'homeCategory', 'uses' => 'HomeController@category']);
 # Форма создания
 

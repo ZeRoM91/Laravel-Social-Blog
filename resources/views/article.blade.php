@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="panel-body">
-                      <h3 style="text-align: center;">{{$article['id']}} {{$article['title']}}</h3>
+                      <h3 style="text-align: center;">{{$article['title']}}</h3>
                         <hr>
                         <p>{{$article['text']}}</p>
 

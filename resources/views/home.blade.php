@@ -7,6 +7,37 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Список статей <span><b> ({{$articles->count()}}).</b></div>
                 <div class="panel-body">
+                    <!-- Split button -->
+
+                    <div class="btn-group">
+
+                        <button type="button" class="btn btn-danger">Категории</button>
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{route('homeCategory', ['category' => 'PHP'])}}">PHP</a></li>
+                            <li><a href="{{route('homeCategory', ['category' => 'HTML'])}}">HTML</a></li>
+                            <li><a href="{{route('homeCategory', ['category' => 'CSS'])}}">CSS</a></li>
+                            <li><a href="{{route('homeCategory', ['category' => 'JS'])}}">Javascript</a></li>
+                            <li><a href="{{route('home')}}">Все категории</a></li>
+                        </ul>
+                    </div>
+                        <form action="" method="post"><div class="btn-group" role="group">
+                                {{ csrf_field() }}
+
+                                <button type="button" class="btn btn-default"><input type="submit" class="btn btn-success"></button>
+                                <button type="button" class="btn btn-default">
+                                    <input type="text" name="search" class="form-control" placeholder="Поиск статьи по названию" aria-describedby="sizing-addon">
+                                </button>
+                            </div>
+                        </form>
+
+                    <br><br>
+
+
+                    <br>
                     @foreach($articles as $article)
 
 

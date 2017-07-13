@@ -5,6 +5,7 @@ use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
 use App\Models\Article;
 use App\Models\Rating;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller
@@ -87,6 +88,7 @@ class ArticleController extends Controller
         // Забираем значения с Input form'ы
         $article->title = Input::get('title');
         $article->text = Input::get('text');
+        $article->category = \Request::get('category');
 
         // Записываем изменения
         $article->save();

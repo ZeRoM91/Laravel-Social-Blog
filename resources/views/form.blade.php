@@ -27,12 +27,57 @@
                                 <input type="text"  name="user_id" value="{{ Auth::user()->id }}" hidden>
                             </div>
                             <label for="category">Категория статьи</label>
-                            <select class="form-control" name="category">
-                                <option value="PHP">PHP</option>
-                                <option value="HTML">HTML</option>
-                                <option value="CSS">CSS</option>
-                                <option value="JS">Javascript</option>
-                            </select>
+
+
+
+                                <select class="form-control" name="category">
+                                    @if(isset($article->category) == 'PHP')
+                                        <option value="PHP" selected>PHP</option>
+                                        <option value="HTML">HTML</option>
+                                        <option value="CSS">CSS</option>
+                                        <option value="JS">Javascript</option>
+                                    @else
+                                        <option value="PHP">PHP</option>
+                                        <option value="HTML">HTML</option>
+                                        <option value="CSS">CSS</option>
+                                        <option value="JS">Javascript</option>
+                                    @endif
+                                        @if(isset($article->category) == 'HTML')
+                                            <option value="PHP">PHP</option>
+                                            <option value="HTML" selected>HTML</option>
+                                            <option value="CSS">CSS</option>
+                                            <option value="JS">Javascript</option>
+                                        @else
+                                            <option value="PHP">PHP</option>
+                                            <option value="HTML">HTML</option>
+                                            <option value="CSS">CSS</option>
+                                            <option value="JS">Javascript</option>
+                                        @endif
+                                        @if(isset($article->category) == 'CSS')
+                                            <option value="PHP">PHP</option>
+                                            <option value="HTML">HTML</option>
+                                            <option value="CSS" selected>CSS</option>
+                                            <option value="JS">Javascript</option>
+                                        @else
+                                            <option value="PHP">PHP</option>
+                                            <option value="HTML">HTML</option>
+                                            <option value="CSS">CSS</option>
+                                            <option value="JS">Javascript</option>
+                                        @endif
+                                        @if(isset($article->category) == 'JS')
+                                            <option value="PHP">PHP</option>
+                                            <option value="HTML">HTML</option>
+                                            <option value="CSS">CSS</option>
+                                            <option value="JS" selected>Javascript</option>
+                                        @else
+                                            <option value="PHP">PHP</option>
+                                            <option value="HTML">HTML</option>
+                                            <option value="CSS">CSS</option>
+                                            <option value="JS">Javascript</option>
+                                        @endif
+                                </select>
+
+
                             <br>
                             <input type="submit" class="btn btn-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
 

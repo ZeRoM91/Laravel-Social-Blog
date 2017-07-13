@@ -20,9 +20,9 @@ Route::get('/', 'IndexController@index');
 Route::auth();
 
 # В список статей для авторизованых пользователей
-Route::get('/home/{id?}', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-
+Route::get('/home/{category}', ['as' => 'homeCategory', 'uses' => 'HomeController@category']);
 # Форма создания
 
 Route::get('/article', ['as' => 'formArticle', 'uses' => 'ArticleController@form']);

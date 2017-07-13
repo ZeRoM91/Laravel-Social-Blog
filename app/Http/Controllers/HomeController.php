@@ -46,4 +46,12 @@ class HomeController extends Controller
       //  dd($article);
         return view('home', compact('articles','authors'));
     }
+
+    public function category($category) {
+
+        $articles = Article::all()->where('category',$category);
+
+        return view('category', compact('articles'));
+
+    }
 }

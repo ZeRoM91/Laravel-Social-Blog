@@ -26,6 +26,14 @@
 
                                 <input type="text"  name="user_id" value="{{ Auth::user()->id }}" hidden>
                             </div>
+                            <label for="category">Категория статьи</label>
+                            <select class="form-control" name="category">
+                                <option value="PHP">PHP</option>
+                                <option value="HTML">HTML</option>
+                                <option value="CSS">CSS</option>
+                                <option value="JS">Javascript</option>
+                            </select>
+                            <br>
                             <input type="submit" class="btn btn-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
 
 

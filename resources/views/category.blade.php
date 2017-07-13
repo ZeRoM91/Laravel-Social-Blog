@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Список статей <span><b> ({{$articles->count()}}).</b></div>
-                <div class="panel-body">
-                    @foreach($articles as $article)
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">Список статей</div>
+                    <div class="panel-body">
+                        @foreach($articles as $article)
 
 
                         <span class="label label-success">{{$article['created_at']}}</span>
@@ -15,16 +16,15 @@
                         <i>Автор: </i><span class="label label-default">{{$article ->author['name']}}</span>
                         <i>Рейтинг: </i><span class="label label-info">{{$article ->rating}}</span>
                         <i>Комментариев: </i><span class="label label-warning">{{$article ->comment->count()}}</span>
-                        <i>Категория: </i>
-                        <a href="{{route('homeCategory', ['category' => $article['category']])}}">
-                          <span class="label label-danger">{{$article ->category}}</span>
-                        </a>
+
                         <hr>
-                    @endforeach
-                        <?php echo $articles->render(); ?>
+
+
+
+                            @endforeach
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

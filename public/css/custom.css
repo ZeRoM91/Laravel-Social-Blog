@@ -1,11 +1,70 @@
 html {
     margin: 0 auto;
+    max-width: 1280px;
+
+
+
+
+
 }
 h1,h2,h3,p,span {
     font-family: 'Raleway', sans-serif;
 }
-.form {
-    background-color: #f3f2f9;
-    margin: 30px;
-    padding: 30px;
+body {
+
+    min-height: 500px;
+
+
 }
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    border: 1px solid #282d34;
+    border-radius: 8px;
+    box-shadow:  0 0 25px rgba(25,25,25,.5);
+    background: linear-gradient(to bottom, #fff , #aaa);
+}
+
+.menu__list {
+    display: inline-block;
+    list-style-type: none;
+    color: #444;
+    padding: 25px;
+    border-right: 1px solid rgba(155,155,155,.5);
+    background: linear-gradient(to bottom, #fff , #aaa);
+
+}
+
+.menu__list:hover {
+    background: linear-gradient(to bottom, #808080 , #424242);
+
+    color: #eee;
+}
+.left-bar {
+    background-color: #1c1e21;
+    margin: 5px;
+    float: right;
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #393f47;
+    border-radius: 4px;
+    height: auto;
+}
+
+ .left-bar__list {
+    display: block;
+     background: linear-gradient(to bottom, #393a3c , #141414);
+     color: #fff;
+     list-style-type: none;
+
+     padding: 25px;
+     border-right: 1px solid rgba(155,155,155,.5);
+
+}
+
+ .container {
+     padding: 20px;
+ }

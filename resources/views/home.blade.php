@@ -1,18 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Список статей <span><b> ({{$articles->count()}}).</b></div>
-                <div class="panel-body">
-                    <!-- Split button -->
+@section('content1')
+
                     <form action="" method="post">
                     <div class="input-group">
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-danger">Категории</button>
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-default">Категории</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
@@ -22,7 +16,7 @@
                                 @endforeach
                                 <li><a href="{{route('home')}}">Все категории</a></li>
                             </ul>
-                            <button type="submit" class="btn btn-primary">Поиск</button>
+                            <button type="submit" class="btn btn-default">Поиск</button>
                         </div>
                                 {{ csrf_field() }}
                         <input type="text"  name="search" class="form-control" placeholder="Поиск статьи по названию"  aria-label="...">
@@ -46,9 +40,5 @@
                         <hr>
                     @endforeach
                         <?php echo $articles->render(); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection

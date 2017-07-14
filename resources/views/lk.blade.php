@@ -1,13 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Личный кабинет</b> </div>
+@section('content1')
 
-                    <div class="panel-body">
+    <img src="http://findicons.com/files/icons/61/dragon_soft/256/user.png" alt="..." class="img-thumbnail">
                         <p><b>Данные пользователя</b>
                         <p>Ваш логин: {{Auth::user()->name}}</p>
 
@@ -49,13 +44,4 @@
                             <div class="panel-footer"><?php echo $articles->render(); ?></div>
                         </div>
 
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

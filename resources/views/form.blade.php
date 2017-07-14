@@ -31,10 +31,9 @@
 
 
                                 <select class="form-control" name="category_id">
-                                    <option value="2">HTML</option>
-                                    <option value="3">CSS</option>
-                                    <option value="4">Javascript</option>
-                                    <option value="5">PHP</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                        @endforeach
                                 </select>
 
 

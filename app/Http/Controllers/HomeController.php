@@ -58,4 +58,16 @@ class HomeController extends Controller
 
         return view('search',compact('articles'));
     }
+
+    public function admin() {
+        $user_id = \Auth::user()->id;
+
+        if($user_id == 1) {
+            return view('admin');
+        }
+
+        else {
+            return "У вас нет прав на просмотр этой страницы";
+        }
+    }
 }

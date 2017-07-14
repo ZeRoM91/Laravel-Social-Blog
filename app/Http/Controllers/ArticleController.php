@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
 use App\Models\Article;
-use App\Models\Rating;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -31,7 +31,9 @@ class ArticleController extends Controller
     # Вывод формы
     public function form()
     {
-        return view('form');
+        $categories = Category::all();
+
+        return view('form',compact('categories'));
     }
 
     # Создание новой статьи
@@ -66,12 +68,13 @@ class ArticleController extends Controller
     {
         // Фильтр поиска статьи по id
         $article = Article::find($id);
+        $categories = Category::all();
 
         // Если авторизованный пользователь и есть автор
         if (auth()->user()->id == $article->user_id) {
 
             // Выводим форму для редактирования
-            return view('form', compact('article'));
+            return view('form', compact('article','categories'));
         }
         // Иначе возвращаем исключение
         else {
@@ -88,7 +91,7 @@ class ArticleController extends Controller
         // Забираем значения с Input form'ы
         $article->title = Input::get('title');
         $article->text = Input::get('text');
-        $article->category = \Request::get('category');
+        $article->category_id = \Request::get('category_id');
 
         // Записываем изменения
         $article->save();

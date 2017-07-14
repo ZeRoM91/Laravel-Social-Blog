@@ -11,10 +11,8 @@
                     <form action="" method="post">
                     <div class="input-group">
                         <div class="input-group-btn">
-
                             <button type="button" class="btn btn-danger">Категории</button>
                             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
@@ -26,28 +24,13 @@
                             </ul>
                             <button type="submit" class="btn btn-primary">Поиск</button>
                         </div>
-
                                 {{ csrf_field() }}
-
-
-
-
                         <input type="text"  name="search" class="form-control" placeholder="Поиск статьи по названию"  aria-label="...">
 
                     </div>
                     </form>
-
-
-
-
-
-
-
-
-                    <br><br>
-
-
-                    <br>
+                    <hr>
+             <br>
                     @foreach($articles as $article)
 
 

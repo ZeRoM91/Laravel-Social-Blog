@@ -12,11 +12,20 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-//        $this->call(CategoriesTableSeeder::class);
-//
-//        DB::table('categories')->insert([
-//            'name' => str_random(10),
-//        ]);
+
+
+
+        //DB::table('categories')->truncate();
+
+        DB::table('categories')->insert(
+        [
+            ['name' => 'Без категории'],
+            ['name' => 'HTML'],
+            ['name' => 'CSS'],
+            ['name' => 'JS'],
+            ['name' => 'PHP'],
+            ['name' => 'SQL'],
+        ]
+        );
     }
 }

@@ -54,3 +54,10 @@ Route::get('/article/{id}/uprating', ['as' => 'upRating', 'uses' => 'ArticleCont
 Route::get('/article/{id}/downrating', ['as' => 'downRating', 'uses' => 'ArticleController@downRating']);
 
 Route::get('/article/{id}/resetrating', ['as' => 'resetRating', 'uses' => 'ArticleController@resetRating']);
+
+
+/*
+ * АДМИНКА
+ */
+
+Route::get('/admin', ['as' => 'admin', 'uses' => 'HomeController@admin']);

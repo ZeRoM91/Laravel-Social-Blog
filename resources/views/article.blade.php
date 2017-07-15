@@ -1,26 +1,22 @@
 @extends('layouts.app')
-@section('header')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+
+
                         <ol class="breadcrumb">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li><a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">{{$article->category['name']}}</a></li>
                                <li class="active">{{$article['id']}} </li>
                         </ol>
-                    </div>
 
-                    <div class="panel-body">
+                        <div class="well">
+
                       <h3 style="text-align: center;">{{$article['title']}}</h3>
                         <hr>
                         <p>{{$article['text']}}</p>
 
 
 
-                        <div class="well"><p>Дата публикации: {{$article['created_at']}}</p>
+                        <p>Дата публикации: {{$article['created_at']}}</p>
                             @if($article['created_at'] != $article['updated_at'])
 
 
@@ -64,8 +60,8 @@
 
                                     @if($vote['vote'] === NULL)
                                         <div class="btn-group" role="group" aria-label="...">
-                                            <a href="{{route('upRating',['id' => $article->id])}}" class="btn btn-success">+</a>
-                                            <a href="{{route('downRating',['id' => $article->id])}}" class="btn btn-danger">-</a>
+                                            <a href="{{route('upRating',['id' => $article->id])}}" ><span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
+                                            <a href="{{route('downRating',['id' => $article->id])}}" ><span class="glyphicon glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></a>
                                         </div>
                                     @endif
 
@@ -142,9 +138,5 @@
                                 $('#myInput').focus()
                             })
                         </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 @endsection

@@ -20,14 +20,15 @@
 
 <header class="menu">
 
-    <ul>
+
         <a href="/"><li class="menu__list">Главная</li></a>
         <a href="{{route('home')}}"><li class="menu__list">Статьи</li></a>
         <a href="{{route('Author')}}"><li class="menu__list">Личный кабинет</li></a>
         <li class="menu__list">Новости</li>
         <li class="menu__list">FAQ</li>
-
+    @if(1 == 1)
         <li class="menu__list">Админка</li>
+    @endif
         <a href="{{ route('logout') }}"
            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"> <li class="menu__list">
@@ -40,6 +41,7 @@
             </form>
         </li> </a>
 
+        <input type="text" name="search" class="menu__search" placeholder="Поиск статей">
     </ul>
 
 </header>

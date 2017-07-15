@@ -15,7 +15,7 @@ class CategoriesTableSeeder extends Seeder
 
 
 
-        //DB::table('categories')->truncate();
+        DB::table('users')->truncate();
 
         DB::table('categories')->insert(
         [

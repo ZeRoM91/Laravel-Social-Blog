@@ -11,88 +11,69 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+<body style="background-color: #e6e5e5;">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+<header class="menu">
+<ul>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
-                        На главную
-                    </a>
-                </div>
+    <span class="glyphicon glyphicon-console" style="color: #fff; margin-left: 25px;"></span>
+    <span style="color: #fff;"> IT-Blog</span>
+    <a href="/"><li class="menu__list">Главная</li></a>
+    <a href="{{route('home')}}"><li class="menu__list">Статьи</li></a>
+    <a href="{{route('Author')}}"><li class="menu__list">Личный кабинет</li></a>
+    <li class="menu__list">Новости</li>
+    <li class="menu__list">FAQ</li>
+@if(!Auth::guest())
+@if(Auth::user()->id == 1)
+    <a href="{{route('admin')}}"><li class="menu__list">Админка</li></a>
+@endif
+@endif
+@if(!Auth::guest())
+<a href="{{ route('logout') }}"
+   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();"> <li class="menu__list">
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+        Выход
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Войти</a></li>
-                            <li><a href="{{ route('register') }}">Регистрация</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Пользователь: {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Выход
-                                        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+    </li> </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
+    @else
+    <a href="{{route('login')}}"><li class="menu__list">Войти</li></a>
+@endif
 
-                                    <li>
-                                        @if(Auth::user()->id === 1)
-                                        <a href="{{ route('admin') }}">
-                                            Админ панель
-                                        </a>
-                                        @endif
-                                        <a href="{{ route('Author') }}">
-                                            Личный кабинет
-                                        </a>
-                                        <a href="{{ route('formArticle') }}">
-                                           Создать статью
-                                        </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<input type="text" name="search" class="menu__search" placeholder="Поиск статей">
+</ul>
 
-        @yield('content')
-    </div>
+</header>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+{{--<aside class="left-bar">--}}
+{{--<ul>--}}
+{{--<li class="left-bar__list" >Мои настройки</li>--}}
+{{--<li class="left-bar__list">Мои статьи</li>--}}
+{{--<li class="left-bar__list">Друзья</li>--}}
+{{--<li class="left-bar__list">Сообщения</li>--}}
+
+{{--</ul>--}}
+
+{{--</aside>--}}
+<div class="container">
+@yield('content')
+</div>
 </body>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 </html>

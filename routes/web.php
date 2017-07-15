@@ -13,20 +13,24 @@
 
 
 
-# Главная
+# Главная страница
 Route::get('/', 'IndexController@index');
 
 # Роут для авторизации
 Route::auth();
 
-# В список статей для авторизованых пользователей
+# Вывод списка статей для авторизованых пользователей
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-
-
+# Поиск статей по названию
 Route::post('/home', ['as' => 'home__search', 'uses' => 'HomeController@search']);
+Route::post('/home/{category_id}', ['as' => 'home__search', 'uses' => 'HomeController@search']);
 
+# Вывод списка статей по категории
 Route::get('/home/{category_id}', ['as' => 'homeCategory', 'uses' => 'HomeController@category']);
+
+# Поиск статей по названию в категории
+
 # Форма создания
 
 Route::get('/article', ['as' => 'formArticle', 'uses' => 'ArticleController@form']);
@@ -61,3 +65,11 @@ Route::get('/article/{id}/resetrating', ['as' => 'resetRating', 'uses' => 'Artic
  */
 
 Route::get('/admin', ['as' => 'admin', 'uses' => 'HomeController@admin']);
+
+
+/*
+ * Пользователи
+ */
+Route::get('/user', ['as' => 'user', 'uses' => 'lkAuthorController@user']);
+
+Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@profile']);

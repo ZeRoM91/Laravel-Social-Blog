@@ -1,8 +1,8 @@
-@extends('layouts.header')
+@extends('layouts.app')
 
-@section('content1')
+@section('content')
 
-<h1>s</h1>
+<h1>Добро пожаловать</h1>
 
 
 @endsection

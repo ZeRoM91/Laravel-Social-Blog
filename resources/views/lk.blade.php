@@ -1,6 +1,6 @@
-@extends('layouts.header')
+@extends('layouts.app')
 
-@section('content1')
+@section('content')
 
     <img src="http://findicons.com/files/icons/61/dragon_soft/256/user.png" alt="..." class="img-thumbnail">
                         <p><b>Данные пользователя</b>

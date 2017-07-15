@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
 html {
     margin: 0 auto;
-    max-width: 1280px;
+
 
 
 
 
 
 }
-h1,h2,h3,p,span {
+h1,h2,h3 {
     font-family: 'Raleway', sans-serif;
 }
 body {
@@ -22,27 +25,55 @@ body {
 }
 
 .menu {
-    border: 1px solid #282d34;
-    border-radius: 8px;
-    box-shadow:  0 0 25px rgba(25,25,25,.5);
-    background: linear-gradient(to bottom, #fff , #aaa);
+
+
+
+    background-color: #577594;
 }
 
 .menu__list {
     display: inline-block;
     list-style-type: none;
-    color: #444;
-    padding: 25px;
-    border-right: 1px solid rgba(155,155,155,.5);
-    background: linear-gradient(to bottom, #fff , #aaa);
+    color: #fff;
+    padding: 15px;
+    font-family: 'Ubuntu', sans-serif;
+
+
 
 }
 
 .menu__list:hover {
-    background: linear-gradient(to bottom, #808080 , #424242);
+    background: #495e74;
 
     color: #eee;
+    transition: .5s;
 }
+.menu__search {
+    border: 0;
+    background: #305076
+    url(https://vk.com/images/svg_icons/ic_head_loupe.svg) no-repeat;
+    border-radius: 14px;
+    padding: 6px 6px 6px 19px;
+    margin: 7px 0;
+    width: 230px;
+    height: 28px;
+    line-height: 16px;
+    transition: background-color 0.05s, color 0.05s;
+
+    border-left: 8px solid transparent;
+    background-position: left 8px;
+    color: #d9e2ec;
+}
+
+.menu__search:focus {
+    outline: none;
+    background: #fff;
+    color: #0f0f0f;
+}
+input[name="search"].menu__search::-webkit-input-placeholder {
+    color: #6785a4;
+}
+
 .left-bar {
     background-color: #1c1e21;
     margin: 5px;
@@ -67,4 +98,19 @@ body {
 
  .container {
      padding: 20px;
+
  }
+.article__date {
+    color: #333;
+    font-style: italic;
+    font-family: 'Georgia', sans-serif;
+}
+.article {
+     padding: 20px;
+     background-color: #fff;
+     border-radius: 4px;
+     border: 1px solid rgba(155,155,155,.5);
+ }
+.article__title {
+    font-family: 'Playfair Display', sans-serif;
+}

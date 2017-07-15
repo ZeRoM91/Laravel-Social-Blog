@@ -1,6 +1,6 @@
-@extends('layouts.header')
+@extends('layouts.app')
 
-@section('content1')
+@section('content')
 
                     <form action="" method="post">
                     <div class="input-group">
@@ -16,7 +16,7 @@
                                 @endforeach
                                 <li><a href="{{route('home')}}">Все категории</a></li>
                             </ul>
-                            <button type="submit" class="btn btn-default">Поиск</button>
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </div>
                                 {{ csrf_field() }}
                         <input type="text"  name="search" class="form-control" placeholder="Поиск статьи по названию"  aria-label="...">
@@ -24,21 +24,26 @@
                     </div>
                     </form>
                     <hr>
-             <br>
-                    @foreach($articles as $article)
+                    <h2>Все подряд</h2>
+                     @foreach($articles as $article)
 
+<div class="article">
+    <span class="glyphicon glyphicon-time"></span>
+    <span class="article__date">{{$article['created_at']}}</span>
+    <a href="{{ route('article', ['id' => $article['id']]) }}"><p class="article__title"><b>{{$article['title']}}</b></p></a>
 
-                        <span class="label label-success">{{$article['created_at']}}</span>
-                        <a href="{{ route('article', ['id' => $article['id']]) }}"><h3><b>"{{$article['title']}}"</b></h3></a>
-                        <i>Автор: </i><span class="label label-default">{{$article ->author['name']}}</span>
+    <span class="glyphicon glyphicon-comment">{{$article ->comment->count()}}</span>
+                        <span class="glyphicon glyphicon-user"></span><a href="{{route('user__profile', ['id' => $article->author])}}"><span>{{$article ->author['name']}}</span></a>
                         <i>Рейтинг: </i><span class="label label-info">{{$article ->rating}}</span>
-                        <i>Комментариев: </i><span class="label label-warning">{{$article ->comment->count()}}</span>
+
                         <i>Категория: </i>
                         <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
                           <span class="label label-danger">{{$article->category['name']}}</span>
                         </a>
+</div>
                         <hr>
                     @endforeach
+
                         <?php echo $articles->render(); ?>
 
 @endsection

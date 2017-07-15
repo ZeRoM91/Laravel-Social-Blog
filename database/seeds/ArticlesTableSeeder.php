@@ -12,7 +12,7 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
 
-
+        DB::table('users')->truncate();
         DB::table('articles')->insert(
 
             [

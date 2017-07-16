@@ -28,14 +28,6 @@ class LkAuthorController extends Controller
         $user = User::find($id);
 
 
-        // Добавляем список всех его статей с пагинацией
-
-
-
-
-
-
-
         return view('profile', compact('user'));
     }
 }

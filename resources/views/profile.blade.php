@@ -7,6 +7,6 @@
 
     <p>Зарегестрирован: {{Auth::user()->created_at}}</p>
 
-    <a href="" class="btn btn-primary">Добавить в друзья</a>
-    <a href="" class="btn btn-warning">Написать сообщение</a>
+    <a href="" class="bn bn-primary">Добавить в друзья</a>
+    <a href="" class="bn bn-warning">Написать сообщение</a>
 @endsection

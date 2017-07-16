@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-
+<div class="article__full">
                         <ol class="breadcrumb">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li><a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">{{$article->category['name']}}</a></li>
@@ -9,21 +9,24 @@
                         </ol>
 
                         <div class="well">
-
+                            <span class="glyphicon glyphicon-time"></span><span class="article__date"> {{$article['created_at']}}</span><br>
                       <h3 style="text-align: center;">{{$article['title']}}</h3>
                         <hr>
+
                         <p>{{$article['text']}}</p>
 
+                            <span class="glyphicon glyphicon-user"></span><a href="{{route('user__profile', ['id' => $article->author])}}"><span>{{$article ->author['name']}}</span></a>
 
 
-                        <p>Дата публикации: {{$article['created_at']}}</p>
+
                             @if($article['created_at'] != $article['updated_at'])
 
 
                                 <i>Обновлена: {{$article['updated_at']}}</i>
 
                             @endif
-                            <i>Автор статьи: {{$author->name}}</i>
+                            <br>
+
                             <br> @if(Auth::user()->id == $article['user_id'])
 
                                 <br>
@@ -60,23 +63,23 @@
 
                                     @if($vote['vote'] === NULL)
                                         <div class="btn-group" role="group" aria-label="...">
-                                            <a href="{{route('upRating',['id' => $article->id])}}" ><span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
-                                            <a href="{{route('downRating',['id' => $article->id])}}" ><span class="glyphicon glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></a>
+                                            <a href="{{route('upRating',['id' => $article->id])}}" ><button class="button button-success">+</button></a>
+                                            <a href="{{route('downRating',['id' => $article->id])}}" ><button class="button button-danger">-</button></a></a>
                                         </div>
                                     @endif
 
                                     @if($vote['vote'] === 1)
                                             <div class="btn-group" role="group" aria-label="...">
-                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="btn btn-primary" title="Отменить голос">Отменить</a>
-                                        <a class="btn btn-danger" disabled>-</a>
+                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="button button-primary" title="Отменить голос">Отменить</a>
+                                        <a class="button button-danger" disabled>-</a>
                                             </div>
 
                                     @endif
 
                                     @if($vote['vote'] === 0)
                                             <div class="btn-group" role="group" aria-label="...">
-                                        <a class="btn btn-success" disabled>+</a>
-                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="btn btn-primary" title="Отменить голос">Отменить</a>
+                                        <a class="button button-success" disabled>+</a>
+                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="button button-primary" title="Отменить голос">Отменить</a>
                                             </div>
 
                                     @endif
@@ -138,5 +141,15 @@
                                 $('#myInput').focus()
                             })
                         </script>
+</div>
+<aside class="left-bar">
+<ul>
+<li class="left-bar__list" >Мои настройки</li>
+<li class="left-bar__list">Мои статьи</li>
+<li class="left-bar__list">Друзья</li>
+<li class="left-bar__list">Сообщения</li>
 
+</ul>
+
+</aside>
 @endsection

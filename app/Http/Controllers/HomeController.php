@@ -38,7 +38,7 @@ class HomeController extends Controller
 
        // $article = Article::all()->select('user_id');
         //$authors = $article->author;
-        $articles = Article::paginate(10);      //  dd($article);
+        $articles = Article::paginate(5);      //  dd($article);
 
 
 

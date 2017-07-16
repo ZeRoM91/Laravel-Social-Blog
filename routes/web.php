@@ -73,3 +73,5 @@ Route::get('/admin', ['as' => 'admin', 'uses' => 'HomeController@admin']);
 Route::get('/user', ['as' => 'user', 'uses' => 'lkAuthorController@user']);
 
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@profile']);
+
+

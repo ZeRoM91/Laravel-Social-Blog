@@ -16,4 +16,22 @@ class IndexController extends Controller
         return view('index', compact('articles','authors','category'));
 
     }
+
+    public function admin() {
+        $user_id = \Auth::user()->id;
+
+        if($user_id == 1) {
+            return view('admin.index');
+        }
+
+        else {
+            return "У вас нет прав на просмотр этой страницы";
+        }
+    }
+
+    public function faq() {
+
+
+        return view('faq');
+    }
 }

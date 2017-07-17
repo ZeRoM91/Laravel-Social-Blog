@@ -64,8 +64,8 @@ Route::get('/article/{id}/resetrating', ['as' => 'resetRating', 'uses' => 'Artic
  * АДМИНКА
  */
 
-Route::get('/admin', ['as' => 'admin', 'uses' => 'HomeController@admin']);
-
+Route::get('/admin', ['as' => 'admin', 'uses' => 'IndexController@admin']);
+Route::get('/admin/categories', ['as' => 'admin__categories', 'uses' => 'IndexController@a']);
 
 /*
  * Пользователи
@@ -74,4 +74,6 @@ Route::get('/user', ['as' => 'user', 'uses' => 'lkAuthorController@user']);
 
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@profile']);
 
-
+Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lkAuthorController@friend']);
+#FAQ
+Route::get('/faq', ['as' => 'faq', 'uses' => 'IndexController@faq']);

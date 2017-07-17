@@ -3,6 +3,8 @@
 @section('content')
 
     <img src="http://findicons.com/files/icons/61/dragon_soft/256/user.png" alt="..." class="img-thumbnail">
+<p>Заменить аватар</p>
+    <input type="file">
                         <p><b>Данные пользователя</b>
                         <p>Ваш логин: {{Auth::user()->name}}</p>
 
@@ -18,6 +20,7 @@
                                         <td>Дата создания</td>
 
                                     </tr>
+
                                     @foreach($articles as $article)
 
                                         <tr>

@@ -27,7 +27,22 @@ class LkAuthorController extends Controller
 
         $user = User::find($id);
 
+        $auth = \Auth::user($id);
 
-        return view('profile', compact('user'));
+
+        return view('profile', compact('user','auth'));
+
+
+
+    }
+
+
+    public function friend() {
+
+        $user = User::find($id);
+
+        $auth = \Auth::user($id);
+
+        return view('user', compact('user','auth'));
     }
 }

@@ -9,22 +9,7 @@
 
                     <div class="panel-body">
 
-                        <a style="text-decoration: none;">
-                            <button class="btn btn-success">Редактировать</button>
-                        </a>
-                        <a style="text-decoration: none;">
-                            <button class="btn btn-primary">Редактировать</button>
-                        </a>
-                        <a style="text-decoration: none;">
-                            <button class="btn btn-info">Редактировать</button>
-                        </a>
-                        <a style="text-decoration: none;">
-                            <button class="btn btn-warning">Редактировать</button>
-                        </a>
-                        <a style="text-decoration: none;">
-                            <button class="btn btn-danger">Редактировать</button>
-                        </a>
-                        <hr>
+
 
 
                         <table class="table table-bordered">
@@ -43,7 +28,7 @@
                                             <button class="btn btn-danger">Удалить</button>
                                             <button class="btn btn-success">Обновить</button>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="...">
+                                        <input type="text" class="form-control" value="">
 
                                     </div>
 

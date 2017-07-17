@@ -11,8 +11,8 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu">
-                                @foreach($articles as $article)
-                                <li><a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">{{$article->category->name}}</a></li>
+                                @foreach($categories as $category)
+                                <li><a href="{{route('homeCategory', ['category_id' => $category->id])}}">{{$category->name}}</a></li>
                                 @endforeach
                                 <li><a href="{{route('home')}}">Все категории</a></li>
                             </ul>

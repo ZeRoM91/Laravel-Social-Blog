@@ -36,6 +36,7 @@ A:hover {
 
 
     background-color: #577594;
+
 }
 
 .menu__list {
@@ -43,6 +44,7 @@ A:hover {
     list-style-type: none;
     color: #fff;
     padding: 15px;
+
     font-family: 'Ubuntu', sans-serif;
 
 
@@ -80,13 +82,18 @@ A:hover {
 input[name="search"].menu__search::-webkit-input-placeholder {
     color: #6785a4;
 }
-
+.side-bar {
+    background-color: #d4d4d4;
+    width: 250px;
+    margin: 0;
+    height: auto;
+    padding: 5px;
+    float: right;
+}
 .left-bar {
     background-color: #FFFFFF;
     margin: 5px;
-    float: right;
-    width: 320px;
-
+    width: auto;
     padding: 5px;
     font-family: 'Ubuntu', sans-serif;
     border-radius: 4px;
@@ -99,6 +106,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
      color: #0f0f0f;
      list-style-type: none;
      padding: 25px;
+     margin: 5px;
 
 
 }

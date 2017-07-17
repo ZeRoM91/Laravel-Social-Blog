@@ -30,9 +30,9 @@
     <span style="color: #fff;"> IT-Blog</span>
     <a href="/"><li class="menu__list">Главная</li></a>
     <a href="{{route('home')}}"><li class="menu__list">Статьи</li></a>
-    <a href="{{route('Author')}}"><li class="menu__list">Личный кабинет</li></a>
+
     <li class="menu__list">Новости</li>
-    <li class="menu__list">FAQ</li>
+    <a href="{{route('faq')}}"><li class="menu__list">FAQ</li></a>
 @if(!Auth::guest())
 @if(Auth::user()->id == 1)
     <a href="{{route('admin')}}"><li class="menu__list">Админка</li></a>
@@ -52,25 +52,30 @@
     </li> </a>
 
     @else
-    <a href="{{route('login')}}"><li class="menu__list">Войти</li></a>
+    <a href="{{route('login')}}"><li class="menu__list" >Войти</li></a>
 @endif
+    @if(!Auth::guest())
 
+        <a href="{{route('Author')}}"><li class="menu__list" style="float: right; margin-right: 75px;"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</li></a>
 
-<input type="text" name="search" class="menu__search" placeholder="Поиск статей">
+@endif
+<input type="text" name="search" class="menu__search" placeholder="Поиск пользователей">
 </ul>
 
 </header>
+<aside class="side-bar">
+    <div class="left-bar">
+        <ul>
+            <li class="left-bar__list button button-primary"><span class="glyphicon glyphicon-user"></span> Друзья</li>
+            <li class="left-bar__list button button-success"><span class="glyphicon glyphicon-envelope"></span>  Сообщения</li>
+            <li class="left-bar__list button button-info"><span class="glyphicon glyphicon-list-alt"></span> Мои статьи</li>
+            <li class="left-bar__list button button-dark"><span class="glyphicon glyphicon-cog"></span> Мои настройки</li>
 
-{{--<aside class="left-bar">--}}
-{{--<ul>--}}
-{{--<li class="left-bar__list" >Мои настройки</li>--}}
-{{--<li class="left-bar__list">Мои статьи</li>--}}
-{{--<li class="left-bar__list">Друзья</li>--}}
-{{--<li class="left-bar__list">Сообщения</li>--}}
+        </ul>
+    </div>
 
-{{--</ul>--}}
 
-{{--</aside>--}}
+</aside>
 <div class="container">
 @yield('content')
 </div>

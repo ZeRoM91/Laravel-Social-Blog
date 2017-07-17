@@ -30,7 +30,7 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
+                    <td><a href="{{route('user__profile',['id' => $user->id])}}">{{$user->name}}</a></td>
                     <td>{{$user->created_at}}</td>
                     @if($user->remember_token != NULL)
                     <td class="text-success">Онлайн</td>

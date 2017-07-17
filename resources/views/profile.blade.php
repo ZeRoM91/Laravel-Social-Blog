@@ -3,10 +3,13 @@
 @section('content')
 
 
-    <p><b>Данные пользователя {{Auth::user()->name}}</b>
-
+    <p><b>Пользователь, {{Auth::user()->name}}</b><br>
+        <img src="http://findicons.com/files/icons/61/dragon_soft/256/user.png" alt="..." class="img-thumbnail">
     <p>Зарегестрирован: {{Auth::user()->created_at}}</p>
 
-    <a href="" class="bn bn-primary">Добавить в друзья</a>
-    <a href="" class="bn bn-warning">Написать сообщение</a>
+    <a href=""><button class="button button-primary">Добавить в друзья</button></a>
+    <a href=""><button class="button button-accent">Написать сообщение</button></a>
+
+
+
 @endsection

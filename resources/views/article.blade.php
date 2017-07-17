@@ -51,13 +51,13 @@
 
 
                             @if($article['rating']  > 0)
-                            <span><b>Рейтинг статьи: <span class="label label-success">+{{$article['rating']}}</span> </b></span>
+                            <span><b>Рейтинг статьи: <span class="button button-success">+{{$article['rating']}}</span> </b></span>
                             @endif
                             @if($article['rating'] < 0)
-                                <span><b>Рейтинг статьи: <span class="label label-danger">{{$article['rating']}}</span> </b></span>
+                                <span><b>Рейтинг статьи: <span class="button button-danger">{{$article['rating']}}</span> </b></span>
                             @endif
                             @if($article['rating'] == 0)
-                                <span><b>Рейтинг статьи: <span class="label label-default">{{$article['rating']}}</span> </b></span>
+                                <span><b>Рейтинг статьи: <span class="button button-default">{{$article['rating']}}</span> </b></span>
                             @endif
                                 @if(Auth::user()->id != $article['user_id'])
 
@@ -97,8 +97,8 @@
                             @if(Auth::user()->id == $article['user_id'])
 
                                 <p>Панель управления:</p>
-                                <a href="{{route('editArticle',['id' => $article->id])}}" class="btn btn-primary">Редактировать</a>
-                                <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
+                                <a href="{{route('editArticle',['id' => $article->id])}}"><button class="button button-primary">Редактировать</button></a>
+                                <button class="button button-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
 
                             @endif</div>
 
@@ -109,7 +109,7 @@
                             <input type="hidden" name="article_id" value="{{$article->id}}" >
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
                             <textarea class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
-                            <input type="submit" class="btn btn-default" value="Отправить">
+                            <input type="submit" class="button button-accent" value="Отправить">
 
                         </form>
 
@@ -142,14 +142,5 @@
                             })
                         </script>
 </div>
-<aside class="left-bar">
-<ul>
-<li class="left-bar__list" >Мои настройки</li>
-<li class="left-bar__list">Мои статьи</li>
-<li class="left-bar__list">Друзья</li>
-<li class="left-bar__list">Сообщения</li>
 
-</ul>
-
-</aside>
 @endsection

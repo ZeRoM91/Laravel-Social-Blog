@@ -38,7 +38,7 @@
 
 
                             <br>
-                            <input type="submit" class="btn btn-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
+                            <input type="submit" class="button button-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
 
 
                         </form>

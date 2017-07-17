@@ -36,38 +36,33 @@ class HomeController extends Controller
     public function index()
     {
 
-       // $article = Article::all()->select('user_id');
-        //$authors = $article->author;
+       $categories = Category::all();
+
         $articles = Article::paginate(5);      //  dd($article);
 
 
 
-        return view('home', compact('articles','authors','category'));
+        return view('home', compact('articles','categories'));
     }
 
     public function category($category_id) {
         $articles = Article::all()->where('category_id', $category_id);
         // $articles = Article::where('category_id', $category_id -> id);
-        return view('category', compact('articles'));
+        $categories = Category::all();
+        return view('category', compact('articles','categories'));
     }
 
     public function search() {
         $query = Input::get('search');
 
+        $categories = Category::all();
+
         $articles = Article::where("title", "LIKE","%$query%")->get();
 
-        return view('search',compact('articles'));
+
+
+        return view('search',compact('articles','categories'));
     }
 
-    public function admin() {
-        $user_id = \Auth::user()->id;
 
-        if($user_id == 1) {
-            return view('admin');
-        }
-
-        else {
-            return "У вас нет прав на просмотр этой страницы";
-        }
-    }
 }

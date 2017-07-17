@@ -51,13 +51,13 @@
 
 
                             @if($article['rating']  > 0)
-                            <span><b>Рейтинг статьи: <span class="button button-success">+{{$article['rating']}}</span> </b></span>
+                            <span><b>Рейтинг статьи: <span class="badge badge-success">+{{$article['rating']}}</span> </b></span>
                             @endif
                             @if($article['rating'] < 0)
-                                <span><b>Рейтинг статьи: <span class="button button-danger">{{$article['rating']}}</span> </b></span>
+                                <span><b>Рейтинг статьи: <span class="badge badge-danger">{{$article['rating']}}</span> </b></span>
                             @endif
                             @if($article['rating'] == 0)
-                                <span><b>Рейтинг статьи: <span class="button button-default">{{$article['rating']}}</span> </b></span>
+                                <span><b>Рейтинг статьи: <span class="badge badge-static">{{$article['rating']}}</span> </b></span>
                             @endif
                                 @if(Auth::user()->id != $article['user_id'])
 

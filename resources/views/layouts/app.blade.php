@@ -11,11 +11,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-
-
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/button.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/morphine.min.css') }}" rel="stylesheet">
+
+
+
 
 
     <!-- Fonts -->
@@ -70,7 +72,7 @@
             <li class="left-bar__list button button-success"><span class="glyphicon glyphicon-envelope"></span>  Сообщения</li>
             <li class="left-bar__list button button-info"><span class="glyphicon glyphicon-list-alt"></span> Мои статьи</li>
             <li class="left-bar__list button button-dark"><span class="glyphicon glyphicon-cog"></span> Мои настройки</li>
-
+            <li class="left-bar__list button button-static"><span class="glyphicon glyphicon-star"></span> Избранное</li>
         </ul>
     </div>
 

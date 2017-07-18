@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Friend;
 use Illuminate\Http\Request;
 use App\User;
 class LkAuthorController extends Controller
@@ -14,6 +15,10 @@ class LkAuthorController extends Controller
        $user_id = \Auth::user()->id;
        // Добавляем список всех его статей с пагинацией
        $articles = Article::where('user_id', $user_id)->paginate(2);
+
+
+
+
         return view('lk', compact('articles'));
     }
 
@@ -29,20 +34,33 @@ class LkAuthorController extends Controller
 
         $auth = \Auth::user($id);
 
+        $friends = $user ->friends()->with('users');
 
-        return view('profile', compact('user','auth'));
+
+       // $friends->user;
+       dd($friends);
+
+
+        return view('profile', compact('user','auth','friends'));
 
 
 
     }
 
 
-    public function friend() {
+    public function friend($id) {
 
         $user = User::find($id);
 
-        $auth = \Auth::user($id);
+        $auth = \Auth::user();
 
-        return view('user', compact('user','auth'));
+        $friend = Friend::firstOrCreate([
+            'from_user_id' => $auth->id,
+            'to_user_id' => $id
+        ]);
+        $friend -> status = true;
+        $friend->save();
+
+        return redirect()->route('Author');
     }
 }

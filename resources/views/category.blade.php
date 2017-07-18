@@ -23,9 +23,10 @@
         </div>
     </form>
     <hr>
-    <h2>Статьи по {{$articles->first()->category->name}}</h2>
-    @foreach($articles as $article)
 
+
+    @foreach($articles as $article)
+        <h2>Статьи по {{$article->name}}</h2>
         <div class="article">
             <span class="glyphicon glyphicon-time"></span><span class="article__date">{{$article['created_at']}}</span><br>
             <span class="glyphicon glyphicon-tag"></span>

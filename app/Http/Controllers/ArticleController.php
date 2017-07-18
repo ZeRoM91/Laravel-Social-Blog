@@ -26,7 +26,15 @@ class ArticleController extends Controller
 
         // Выводим все комментарии по id статьи
         $comments = $article->comment()->paginate(5);
+
+
+        $article -> views++;
+
+        $article->save();
         return view('article', compact('articles', 'comments', 'article', 'author', 'vote'));
+
+
+
     }
     # Вывод формы
     public function form()
@@ -179,5 +187,73 @@ class ArticleController extends Controller
 
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);
+    }
+
+    public function upComment($id)
+    {
+        // Фильтр поиска статьи по id
+        $comment = Comment::find($id);
+
+        # Увеличение рейтинга статьи на единицу
+        $comment->rating++;
+        $comment->save();
+
+        // Создание статуса голоса пользователя для текущей статьи
+        $user = auth('web')->user();
+        $vote = $user->votes()->firstOrCreate([
+            'comment_id' => $id
+        ]);
+
+        // Если проголосовал за: true
+        $vote->vote = true;
+        $vote->save();
+
+        // Редирект на текущюю статью
+        return redirect()->route('article', ['id' => $comment->article_id]);
+    }
+    # Изменение рейтинга статьи: -
+    public function downComment($id)
+    {
+
+
+        // Фильтр поиска статьи по id
+        $comment = Comment::find($id);
+
+        # Увеличение рейтинга статьи на единицу
+        $comment->rating--;
+        $comment->save();
+
+        // Создание статуса голоса пользователя для текущей статьи
+        $user = auth('web')->user();
+        $vote = $user->votes()->firstOrCreate([
+            'comment_id' => $id
+        ]);
+
+        // Если проголосовал за: true
+        $vote->vote = false;
+        $vote->save();
+
+        // Редирект на текущюю статью
+        return redirect()->route('article', ['id' => $comment->article_id]);
+    }
+
+    public function resetComment($id)
+    {
+        $comment = Comment::find($id);
+
+        # Уменьшение рейтинга статьи на единицу
+
+        // Создание статуса голоса пользователя для текущей статьи
+        $user = auth('web')->user();
+
+        $vote = $user->votes()->where('comment_id', $id)->first();
+
+        $comment->rating += $vote->vote ? -1 : 1;
+        $comment->save();
+
+        $vote->delete();
+
+        // Редирект на текущюю статью
+        return redirect()->route('home');
     }
 }

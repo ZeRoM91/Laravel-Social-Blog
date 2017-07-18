@@ -10,6 +10,10 @@
 
                         <p>Ваш email: {{Auth::user()->email}}</p>
                         <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
+
+    <h2>Список друзей</h2>
+
+
                 <p><b>Список ваших статей</b></p>
                         <div class="panel panel-default">
                             <div class="panel-body">

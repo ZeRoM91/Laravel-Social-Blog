@@ -35,6 +35,7 @@
     </a><br>
 
     <a href="{{ route('article', ['id' => $article['id']]) }}"><p class="article__title"><b>{{$article['title']}}</b></p></a>
+    <span class="glyphicon glyphicon-eye-open"></span><span>{{$article ->views}}</span>
     <span class="glyphicon glyphicon-heart"></span><span>{{$article ->rating}}</span>
     <span class="glyphicon glyphicon-comment">{{$article ->comment->count()}}</span><br>
 

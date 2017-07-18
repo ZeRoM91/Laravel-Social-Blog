@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('title','128');
             $table->string('text','4096');
             $table->integer('user_id')->nullable();
+            $table->integer('views')->default('0');
             $table->integer('rating')->default('0');
             $table->timestamps();
         });

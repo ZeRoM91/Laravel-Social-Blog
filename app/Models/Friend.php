@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Friend extends Model
@@ -13,9 +13,7 @@ class Friend extends Model
     protected $guarded = ['id'];
 
 
-    public function friend() {
-        $this ->belongsTo(User::class,'from_user_id');
+    public function users() {
+        $this ->belongsToMany(User::class,'from_user_id');
     }
-
-
 }

@@ -4,7 +4,7 @@ namespace App;
 
 
 use App\Models\Article;
-use App\Models\Category;
+use App\Models\Friend;
 use App\Models\Rating;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -39,5 +39,9 @@ class User extends Authenticatable
     // Связь с моделью Рейтинг, т.к. пользователь может оставлять рейтинг к статьям
     public function votes() {
         return $this->hasMany(Rating::class);
+    }
+    // Связь с моделью Друзья, т.к. у пользователей могут быть друзья
+    public function friends() {
+        return $this->hasMany(Friend::class,'from_user_id');
     }
 }

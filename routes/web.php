@@ -60,6 +60,12 @@ Route::get('/article/{id}/downrating', ['as' => 'downRating', 'uses' => 'Article
 Route::get('/article/{id}/resetrating', ['as' => 'resetRating', 'uses' => 'ArticleController@resetRating']);
 
 
+Route::get('/comment/{id}/upcomment', ['as' => 'upComment', 'uses' => 'ArticleController@upComment']);
+
+Route::get('/comment/{id}/downcomment', ['as' => 'downComment', 'uses' => 'ArticleController@downComment']);
+
+Route::get('/comment/{id}/resetcomment', ['as' => 'resetComment', 'uses' => 'ArticleController@resetComment']);
+
 /*
  * АДМИНКА
  */

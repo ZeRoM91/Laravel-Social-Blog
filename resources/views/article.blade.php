@@ -64,7 +64,7 @@
                                     @if($vote['vote'] === NULL)
                                         <div class="btn-group" role="group" aria-label="...">
                                             <a href="{{route('upRating',['id' => $article->id])}}" ><button class="button button-success">+</button></a>
-                                            <a href="{{route('downRating',['id' => $article->id])}}" ><button class="button button-danger">-</button></a></a>
+                                            <a href="{{route('downRating',['id' => $article->id])}}" ><button class="button button-danger">-</button></a>
                                         </div>
                                     @endif
 
@@ -120,7 +120,39 @@
 
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
-                            <span class="label label-info"><b>{{$comment->userName['name']}}:</b></span><span>"{{$comment->comment}}"</span>
+                            <span class="badge badge-private"><b>{{$comment->userName['name']}}</b></span><span>"{{$comment->comment}}"</span>
+        @if($comment['rating']  > 0)
+           <span class="badge badge-success">+{{$comment['rating']}}</span>
+        @endif
+        @if($comment['rating'] < 0)
+           <span class="badge badge-danger">{{$comment['rating']}}</span>
+        @endif
+        @if($comment['rating'] == 0)
+            <span class="badge badge-static">{{$comment['rating']}}</span>
+        @endif
+
+        @if($vote['vote'] === NULL)
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="{{route('upComment',['id' => $comment->id])}}" ><button class="badge badge-success">+</button></a>
+                <a href="{{route('downComment',['id' => $comment->id])}}" ><button class="badge badge-danger">-</button></a>
+            </div>
+        @endif
+
+        @if($vote['vote'] === 1)
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="badge badge-primary" title="Отменить голос">Отменить</a>
+                <a class="badge badge-danger" disabled>-</a>
+            </div>
+
+        @endif
+
+        @if($vote['vote'] === 0)
+            <div class="btn-group" role="group" aria-label="...">
+                <a class="badge badge-success" disabled>+</a>
+                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="badge badge-primary" title="Отменить голос">Отменить</a>
+            </div>
+
+        @endif
                             <hr>
                         @endforeach
                         <?php echo $comments->render(); ?>

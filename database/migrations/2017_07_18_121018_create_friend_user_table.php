@@ -32,5 +32,6 @@ class CreateFriendUserTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('friend_user');
     }
 }

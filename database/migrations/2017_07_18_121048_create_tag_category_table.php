@@ -18,7 +18,6 @@ class CreateTagCategoryTable extends Migration
             $table->increments('id');
             $table->integer('category_id');
             $table->integer('tag_id');
-
             $table->timestamps();
         });
     }
@@ -31,5 +30,6 @@ class CreateTagCategoryTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('tag_category');
     }
 }

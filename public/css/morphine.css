@@ -1,0 +1,1480 @@
+@charset "UTF-8";
+/* массив $social со значениями: название и цвет */
+/* массив $social со значениями: название и цвет  */
+/* параметры */
+.button {
+  color: #fff;
+  border: 0;
+  font-family: 'Georgia', sans-serif;
+  padding: 7px 14px 7px 14px;
+  border-radius: 2px;
+  outline: none; }
+
+.button-xs {
+  color: #fff;
+  border: 0;
+  font-family: Georgia;
+  padding: 4px 8px 4px 8px;
+  border-radius: 2px;
+  outline: none; }
+
+.button-lg {
+  color: #fff;
+  border: 0;
+  font-family: Georgia;
+  padding: 11px 22px 11px 22px;
+  border-radius: 2px;
+  outline: none; }
+
+/* перебираем */
+.button-default {
+  color: #444;
+  background: linear-gradient(180deg, #f5f5f5 0, #bfbfbf); }
+  .button-default:focus, .button-default:hover {
+    background: linear-gradient(180deg, #f5f5f5 0, #9e9e9e);
+    cursor: pointer; }
+  .button-default, .button-default-shadow {
+    color: #444;
+    background: linear-gradient(180deg, #f5f5f5 0, #bfbfbf);
+    transition: .25s; }
+    .button-default :focus, .button-default :hover, .button-default-shadow:focus, .button-default-shadow:hover {
+      background: linear-gradient(180deg, #f5f5f5 0, #9e9e9e);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(245, 245, 245, 0.75);
+      transition: .25s; }
+  .button-default, .button-default-disabled {
+    color: #444;
+    opacity: 0.64;
+    background: linear-gradient(180deg, #f5f5f5 0, #bfbfbf);
+    transition: .25s; }
+    .button-default :focus, .button-default :hover, .button-default-disabled:focus, .button-default-disabled:hover {
+      cursor: not-allowed; }
+  .button-default, .button-default-zoom {
+    color: #444;
+    background: linear-gradient(180deg, #f5f5f5 0, #bfbfbf);
+    transition: .25s; }
+    .button-default :focus, .button-default :hover, .button-default-zoom:focus, .button-default-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-default, .button-default-outline {
+    background: none;
+    color: #f5f5f5;
+    outline: 1px solid #f5f5f5;
+    transition: .25s; }
+    .button-default :focus, .button-default :hover, .button-default-outline:focus, .button-default-outline:hover {
+      outline: 1px solid #bfbfbf;
+      color: #bfbfbf;
+      transition: .25s; }
+
+.button-primary {
+  background: linear-gradient(180deg, #5d8ab6 0, #275480); }
+  .button-primary:focus, .button-primary:hover {
+    background: linear-gradient(180deg, #5d8ab6 0, #06335f);
+    cursor: pointer; }
+  .button-primary, .button-primary-shadow {
+    background: linear-gradient(180deg, #5d8ab6 0, #275480);
+    transition: .25s; }
+    .button-primary :focus, .button-primary :hover, .button-primary-shadow:focus, .button-primary-shadow:hover {
+      background: linear-gradient(180deg, #5d8ab6 0, #06335f);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(93, 138, 182, 0.75);
+      transition: .25s; }
+  .button-primary, .button-primary-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #5d8ab6 0, #275480);
+    transition: .25s; }
+    .button-primary :focus, .button-primary :hover, .button-primary-disabled:focus, .button-primary-disabled:hover {
+      cursor: not-allowed; }
+  .button-primary, .button-primary-zoom {
+    background: linear-gradient(180deg, #5d8ab6 0, #275480);
+    transition: .25s; }
+    .button-primary :focus, .button-primary :hover, .button-primary-zoom:focus, .button-primary-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-primary, .button-primary-outline {
+    background: none;
+    color: #5d8ab6;
+    outline: 1px solid #5d8ab6;
+    transition: .25s; }
+    .button-primary :focus, .button-primary :hover, .button-primary-outline:focus, .button-primary-outline:hover {
+      outline: 1px solid #275480;
+      color: #275480;
+      transition: .25s; }
+
+.button-success {
+  background: linear-gradient(180deg, #579b74 0, #21653e); }
+  .button-success:focus, .button-success:hover {
+    background: linear-gradient(180deg, #579b74 0, #00441d);
+    cursor: pointer; }
+  .button-success, .button-success-shadow {
+    background: linear-gradient(180deg, #579b74 0, #21653e);
+    transition: .25s; }
+    .button-success :focus, .button-success :hover, .button-success-shadow:focus, .button-success-shadow:hover {
+      background: linear-gradient(180deg, #579b74 0, #00441d);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(87, 155, 116, 0.75);
+      transition: .25s; }
+  .button-success, .button-success-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #579b74 0, #21653e);
+    transition: .25s; }
+    .button-success :focus, .button-success :hover, .button-success-disabled:focus, .button-success-disabled:hover {
+      cursor: not-allowed; }
+  .button-success, .button-success-zoom {
+    background: linear-gradient(180deg, #579b74 0, #21653e);
+    transition: .25s; }
+    .button-success :focus, .button-success :hover, .button-success-zoom:focus, .button-success-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-success, .button-success-outline {
+    background: none;
+    color: #579b74;
+    outline: 1px solid #579b74;
+    transition: .25s; }
+    .button-success :focus, .button-success :hover, .button-success-outline:focus, .button-success-outline:hover {
+      outline: 1px solid #21653e;
+      color: #21653e;
+      transition: .25s; }
+
+.button-danger {
+  background: linear-gradient(180deg, #cb6b6d 0, #953537); }
+  .button-danger:focus, .button-danger:hover {
+    background: linear-gradient(180deg, #cb6b6d 0, #741416);
+    cursor: pointer; }
+  .button-danger, .button-danger-shadow {
+    background: linear-gradient(180deg, #cb6b6d 0, #953537);
+    transition: .25s; }
+    .button-danger :focus, .button-danger :hover, .button-danger-shadow:focus, .button-danger-shadow:hover {
+      background: linear-gradient(180deg, #cb6b6d 0, #741416);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(203, 107, 109, 0.75);
+      transition: .25s; }
+  .button-danger, .button-danger-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #cb6b6d 0, #953537);
+    transition: .25s; }
+    .button-danger :focus, .button-danger :hover, .button-danger-disabled:focus, .button-danger-disabled:hover {
+      cursor: not-allowed; }
+  .button-danger, .button-danger-zoom {
+    background: linear-gradient(180deg, #cb6b6d 0, #953537);
+    transition: .25s; }
+    .button-danger :focus, .button-danger :hover, .button-danger-zoom:focus, .button-danger-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-danger, .button-danger-outline {
+    background: none;
+    color: #cb6b6d;
+    outline: 1px solid #cb6b6d;
+    transition: .25s; }
+    .button-danger :focus, .button-danger :hover, .button-danger-outline:focus, .button-danger-outline:hover {
+      outline: 1px solid #953537;
+      color: #953537;
+      transition: .25s; }
+
+.button-warning {
+  background: linear-gradient(180deg, #da9072 0, #a45a3c); }
+  .button-warning:focus, .button-warning:hover {
+    background: linear-gradient(180deg, #da9072 0, #83391b);
+    cursor: pointer; }
+  .button-warning, .button-warning-shadow {
+    background: linear-gradient(180deg, #da9072 0, #a45a3c);
+    transition: .25s; }
+    .button-warning :focus, .button-warning :hover, .button-warning-shadow:focus, .button-warning-shadow:hover {
+      background: linear-gradient(180deg, #da9072 0, #83391b);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(218, 144, 114, 0.75);
+      transition: .25s; }
+  .button-warning, .button-warning-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #da9072 0, #a45a3c);
+    transition: .25s; }
+    .button-warning :focus, .button-warning :hover, .button-warning-disabled:focus, .button-warning-disabled:hover {
+      cursor: not-allowed; }
+  .button-warning, .button-warning-zoom {
+    background: linear-gradient(180deg, #da9072 0, #a45a3c);
+    transition: .25s; }
+    .button-warning :focus, .button-warning :hover, .button-warning-zoom:focus, .button-warning-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-warning, .button-warning-outline {
+    background: none;
+    color: #da9072;
+    outline: 1px solid #da9072;
+    transition: .25s; }
+    .button-warning :focus, .button-warning :hover, .button-warning-outline:focus, .button-warning-outline:hover {
+      outline: 1px solid #a45a3c;
+      color: #a45a3c;
+      transition: .25s; }
+
+.button-private {
+  background: linear-gradient(180deg, #8e5d92 0, #58275c); }
+  .button-private:focus, .button-private:hover {
+    background: linear-gradient(180deg, #8e5d92 0, #37063b);
+    cursor: pointer; }
+  .button-private, .button-private-shadow {
+    background: linear-gradient(180deg, #8e5d92 0, #58275c);
+    transition: .25s; }
+    .button-private :focus, .button-private :hover, .button-private-shadow:focus, .button-private-shadow:hover {
+      background: linear-gradient(180deg, #8e5d92 0, #37063b);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(142, 93, 146, 0.75);
+      transition: .25s; }
+  .button-private, .button-private-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #8e5d92 0, #58275c);
+    transition: .25s; }
+    .button-private :focus, .button-private :hover, .button-private-disabled:focus, .button-private-disabled:hover {
+      cursor: not-allowed; }
+  .button-private, .button-private-zoom {
+    background: linear-gradient(180deg, #8e5d92 0, #58275c);
+    transition: .25s; }
+    .button-private :focus, .button-private :hover, .button-private-zoom:focus, .button-private-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-private, .button-private-outline {
+    background: none;
+    color: #8e5d92;
+    outline: 1px solid #8e5d92;
+    transition: .25s; }
+    .button-private :focus, .button-private :hover, .button-private-outline:focus, .button-private-outline:hover {
+      outline: 1px solid #58275c;
+      color: #58275c;
+      transition: .25s; }
+
+.button-info {
+  background: linear-gradient(180deg, #79b4be 0, #437e88); }
+  .button-info:focus, .button-info:hover {
+    background: linear-gradient(180deg, #79b4be 0, #225d67);
+    cursor: pointer; }
+  .button-info, .button-info-shadow {
+    background: linear-gradient(180deg, #79b4be 0, #437e88);
+    transition: .25s; }
+    .button-info :focus, .button-info :hover, .button-info-shadow:focus, .button-info-shadow:hover {
+      background: linear-gradient(180deg, #79b4be 0, #225d67);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(121, 180, 190, 0.75);
+      transition: .25s; }
+  .button-info, .button-info-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #79b4be 0, #437e88);
+    transition: .25s; }
+    .button-info :focus, .button-info :hover, .button-info-disabled:focus, .button-info-disabled:hover {
+      cursor: not-allowed; }
+  .button-info, .button-info-zoom {
+    background: linear-gradient(180deg, #79b4be 0, #437e88);
+    transition: .25s; }
+    .button-info :focus, .button-info :hover, .button-info-zoom:focus, .button-info-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-info, .button-info-outline {
+    background: none;
+    color: #79b4be;
+    outline: 1px solid #79b4be;
+    transition: .25s; }
+    .button-info :focus, .button-info :hover, .button-info-outline:focus, .button-info-outline:hover {
+      outline: 1px solid #437e88;
+      color: #437e88;
+      transition: .25s; }
+
+.button-dark {
+  background: linear-gradient(180deg, #545f5c 0, #1e2926); }
+  .button-dark:focus, .button-dark:hover {
+    background: linear-gradient(180deg, #545f5c 0, #000805);
+    cursor: pointer; }
+  .button-dark, .button-dark-shadow {
+    background: linear-gradient(180deg, #545f5c 0, #1e2926);
+    transition: .25s; }
+    .button-dark :focus, .button-dark :hover, .button-dark-shadow:focus, .button-dark-shadow:hover {
+      background: linear-gradient(180deg, #545f5c 0, #000805);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(84, 95, 92, 0.75);
+      transition: .25s; }
+  .button-dark, .button-dark-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #545f5c 0, #1e2926);
+    transition: .25s; }
+    .button-dark :focus, .button-dark :hover, .button-dark-disabled:focus, .button-dark-disabled:hover {
+      cursor: not-allowed; }
+  .button-dark, .button-dark-zoom {
+    background: linear-gradient(180deg, #545f5c 0, #1e2926);
+    transition: .25s; }
+    .button-dark :focus, .button-dark :hover, .button-dark-zoom:focus, .button-dark-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-dark, .button-dark-outline {
+    background: none;
+    color: #545f5c;
+    outline: 1px solid #545f5c;
+    transition: .25s; }
+    .button-dark :focus, .button-dark :hover, .button-dark-outline:focus, .button-dark-outline:hover {
+      outline: 1px solid #1e2926;
+      color: #1e2926;
+      transition: .25s; }
+
+.button-accent {
+  background: linear-gradient(180deg, #645185 0, #2e1b4f); }
+  .button-accent:focus, .button-accent:hover {
+    background: linear-gradient(180deg, #645185 0, #0d002e);
+    cursor: pointer; }
+  .button-accent, .button-accent-shadow {
+    background: linear-gradient(180deg, #645185 0, #2e1b4f);
+    transition: .25s; }
+    .button-accent :focus, .button-accent :hover, .button-accent-shadow:focus, .button-accent-shadow:hover {
+      background: linear-gradient(180deg, #645185 0, #0d002e);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(100, 81, 133, 0.75);
+      transition: .25s; }
+  .button-accent, .button-accent-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #645185 0, #2e1b4f);
+    transition: .25s; }
+    .button-accent :focus, .button-accent :hover, .button-accent-disabled:focus, .button-accent-disabled:hover {
+      cursor: not-allowed; }
+  .button-accent, .button-accent-zoom {
+    background: linear-gradient(180deg, #645185 0, #2e1b4f);
+    transition: .25s; }
+    .button-accent :focus, .button-accent :hover, .button-accent-zoom:focus, .button-accent-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-accent, .button-accent-outline {
+    background: none;
+    color: #645185;
+    outline: 1px solid #645185;
+    transition: .25s; }
+    .button-accent :focus, .button-accent :hover, .button-accent-outline:focus, .button-accent-outline:hover {
+      outline: 1px solid #2e1b4f;
+      color: #2e1b4f;
+      transition: .25s; }
+
+.button-attention {
+  background: linear-gradient(180deg, #cdc87e 0, #979248); }
+  .button-attention:focus, .button-attention:hover {
+    background: linear-gradient(180deg, #cdc87e 0, #767127);
+    cursor: pointer; }
+  .button-attention, .button-attention-shadow {
+    background: linear-gradient(180deg, #cdc87e 0, #979248);
+    transition: .25s; }
+    .button-attention :focus, .button-attention :hover, .button-attention-shadow:focus, .button-attention-shadow:hover {
+      background: linear-gradient(180deg, #cdc87e 0, #767127);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(205, 200, 126, 0.75);
+      transition: .25s; }
+  .button-attention, .button-attention-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #cdc87e 0, #979248);
+    transition: .25s; }
+    .button-attention :focus, .button-attention :hover, .button-attention-disabled:focus, .button-attention-disabled:hover {
+      cursor: not-allowed; }
+  .button-attention, .button-attention-zoom {
+    background: linear-gradient(180deg, #cdc87e 0, #979248);
+    transition: .25s; }
+    .button-attention :focus, .button-attention :hover, .button-attention-zoom:focus, .button-attention-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-attention, .button-attention-outline {
+    background: none;
+    color: #cdc87e;
+    outline: 1px solid #cdc87e;
+    transition: .25s; }
+    .button-attention :focus, .button-attention :hover, .button-attention-outline:focus, .button-attention-outline:hover {
+      outline: 1px solid #979248;
+      color: #979248;
+      transition: .25s; }
+
+.button-static {
+  background: linear-gradient(180deg, #3e5f6a 0, #082934); }
+  .button-static:focus, .button-static:hover {
+    background: linear-gradient(180deg, #3e5f6a 0, #000813);
+    cursor: pointer; }
+  .button-static, .button-static-shadow {
+    background: linear-gradient(180deg, #3e5f6a 0, #082934);
+    transition: .25s; }
+    .button-static :focus, .button-static :hover, .button-static-shadow:focus, .button-static-shadow:hover {
+      background: linear-gradient(180deg, #3e5f6a 0, #000813);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(62, 95, 106, 0.75);
+      transition: .25s; }
+  .button-static, .button-static-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #3e5f6a 0, #082934);
+    transition: .25s; }
+    .button-static :focus, .button-static :hover, .button-static-disabled:focus, .button-static-disabled:hover {
+      cursor: not-allowed; }
+  .button-static, .button-static-zoom {
+    background: linear-gradient(180deg, #3e5f6a 0, #082934);
+    transition: .25s; }
+    .button-static :focus, .button-static :hover, .button-static-zoom:focus, .button-static-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-static, .button-static-outline {
+    background: none;
+    color: #3e5f6a;
+    outline: 1px solid #3e5f6a;
+    transition: .25s; }
+    .button-static :focus, .button-static :hover, .button-static-outline:focus, .button-static-outline:hover {
+      outline: 1px solid #082934;
+      color: #082934;
+      transition: .25s; }
+
+.button-dynamic {
+  background: linear-gradient(180deg, #965a6c 0, #602436); }
+  .button-dynamic:focus, .button-dynamic:hover {
+    background: linear-gradient(180deg, #965a6c 0, #3f0315);
+    cursor: pointer; }
+  .button-dynamic, .button-dynamic-shadow {
+    background: linear-gradient(180deg, #965a6c 0, #602436);
+    transition: .25s; }
+    .button-dynamic :focus, .button-dynamic :hover, .button-dynamic-shadow:focus, .button-dynamic-shadow:hover {
+      background: linear-gradient(180deg, #965a6c 0, #3f0315);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(150, 90, 108, 0.75);
+      transition: .25s; }
+  .button-dynamic, .button-dynamic-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #965a6c 0, #602436);
+    transition: .25s; }
+    .button-dynamic :focus, .button-dynamic :hover, .button-dynamic-disabled:focus, .button-dynamic-disabled:hover {
+      cursor: not-allowed; }
+  .button-dynamic, .button-dynamic-zoom {
+    background: linear-gradient(180deg, #965a6c 0, #602436);
+    transition: .25s; }
+    .button-dynamic :focus, .button-dynamic :hover, .button-dynamic-zoom:focus, .button-dynamic-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-dynamic, .button-dynamic-outline {
+    background: none;
+    color: #965a6c;
+    outline: 1px solid #965a6c;
+    transition: .25s; }
+    .button-dynamic :focus, .button-dynamic :hover, .button-dynamic-outline:focus, .button-dynamic-outline:hover {
+      outline: 1px solid #602436;
+      color: #602436;
+      transition: .25s; }
+
+.button-allowed {
+  background: linear-gradient(180deg, #72a791 0, #3c715b); }
+  .button-allowed:focus, .button-allowed:hover {
+    background: linear-gradient(180deg, #72a791 0, #1b503a);
+    cursor: pointer; }
+  .button-allowed, .button-allowed-shadow {
+    background: linear-gradient(180deg, #72a791 0, #3c715b);
+    transition: .25s; }
+    .button-allowed :focus, .button-allowed :hover, .button-allowed-shadow:focus, .button-allowed-shadow:hover {
+      background: linear-gradient(180deg, #72a791 0, #1b503a);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(114, 167, 145, 0.75);
+      transition: .25s; }
+  .button-allowed, .button-allowed-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #72a791 0, #3c715b);
+    transition: .25s; }
+    .button-allowed :focus, .button-allowed :hover, .button-allowed-disabled:focus, .button-allowed-disabled:hover {
+      cursor: not-allowed; }
+  .button-allowed, .button-allowed-zoom {
+    background: linear-gradient(180deg, #72a791 0, #3c715b);
+    transition: .25s; }
+    .button-allowed :focus, .button-allowed :hover, .button-allowed-zoom:focus, .button-allowed-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-allowed, .button-allowed-outline {
+    background: none;
+    color: #72a791;
+    outline: 1px solid #72a791;
+    transition: .25s; }
+    .button-allowed :focus, .button-allowed :hover, .button-allowed-outline:focus, .button-allowed-outline:hover {
+      outline: 1px solid #3c715b;
+      color: #3c715b;
+      transition: .25s; }
+
+.button-future {
+  background: linear-gradient(180deg, #4f5587 0, #191f51); }
+  .button-future:focus, .button-future:hover {
+    background: linear-gradient(180deg, #4f5587 0, #000030);
+    cursor: pointer; }
+  .button-future, .button-future-shadow {
+    background: linear-gradient(180deg, #4f5587 0, #191f51);
+    transition: .25s; }
+    .button-future :focus, .button-future :hover, .button-future-shadow:focus, .button-future-shadow:hover {
+      background: linear-gradient(180deg, #4f5587 0, #000030);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(79, 85, 135, 0.75);
+      transition: .25s; }
+  .button-future, .button-future-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #4f5587 0, #191f51);
+    transition: .25s; }
+    .button-future :focus, .button-future :hover, .button-future-disabled:focus, .button-future-disabled:hover {
+      cursor: not-allowed; }
+  .button-future, .button-future-zoom {
+    background: linear-gradient(180deg, #4f5587 0, #191f51);
+    transition: .25s; }
+    .button-future :focus, .button-future :hover, .button-future-zoom:focus, .button-future-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-future, .button-future-outline {
+    background: none;
+    color: #4f5587;
+    outline: 1px solid #4f5587;
+    transition: .25s; }
+    .button-future :focus, .button-future :hover, .button-future-outline:focus, .button-future-outline:hover {
+      outline: 1px solid #191f51;
+      color: #191f51;
+      transition: .25s; }
+
+.button-positive {
+  background: linear-gradient(180deg, #ff7373 0, #c93d3d); }
+  .button-positive:focus, .button-positive:hover {
+    background: linear-gradient(180deg, #ff7373 0, #a81c1c);
+    cursor: pointer; }
+  .button-positive, .button-positive-shadow {
+    background: linear-gradient(180deg, #ff7373 0, #c93d3d);
+    transition: .25s; }
+    .button-positive :focus, .button-positive :hover, .button-positive-shadow:focus, .button-positive-shadow:hover {
+      background: linear-gradient(180deg, #ff7373 0, #a81c1c);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 115, 115, 0.75);
+      transition: .25s; }
+  .button-positive, .button-positive-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #ff7373 0, #c93d3d);
+    transition: .25s; }
+    .button-positive :focus, .button-positive :hover, .button-positive-disabled:focus, .button-positive-disabled:hover {
+      cursor: not-allowed; }
+  .button-positive, .button-positive-zoom {
+    background: linear-gradient(180deg, #ff7373 0, #c93d3d);
+    transition: .25s; }
+    .button-positive :focus, .button-positive :hover, .button-positive-zoom:focus, .button-positive-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-positive, .button-positive-outline {
+    background: none;
+    color: #ff7373;
+    outline: 1px solid #ff7373;
+    transition: .25s; }
+    .button-positive :focus, .button-positive :hover, .button-positive-outline:focus, .button-positive-outline:hover {
+      outline: 1px solid #c93d3d;
+      color: #c93d3d;
+      transition: .25s; }
+
+.button-pivot {
+  background: linear-gradient(180deg, #cbbeb5 0, #95887f); }
+  .button-pivot:focus, .button-pivot:hover {
+    background: linear-gradient(180deg, #cbbeb5 0, #74675e);
+    cursor: pointer; }
+  .button-pivot, .button-pivot-shadow {
+    background: linear-gradient(180deg, #cbbeb5 0, #95887f);
+    transition: .25s; }
+    .button-pivot :focus, .button-pivot :hover, .button-pivot-shadow:focus, .button-pivot-shadow:hover {
+      background: linear-gradient(180deg, #cbbeb5 0, #74675e);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(203, 190, 181, 0.75);
+      transition: .25s; }
+  .button-pivot, .button-pivot-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #cbbeb5 0, #95887f);
+    transition: .25s; }
+    .button-pivot :focus, .button-pivot :hover, .button-pivot-disabled:focus, .button-pivot-disabled:hover {
+      cursor: not-allowed; }
+  .button-pivot, .button-pivot-zoom {
+    background: linear-gradient(180deg, #cbbeb5 0, #95887f);
+    transition: .25s; }
+    .button-pivot :focus, .button-pivot :hover, .button-pivot-zoom:focus, .button-pivot-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-pivot, .button-pivot-outline {
+    background: none;
+    color: #cbbeb5;
+    outline: 1px solid #cbbeb5;
+    transition: .25s; }
+    .button-pivot :focus, .button-pivot :hover, .button-pivot-outline:focus, .button-pivot-outline:hover {
+      outline: 1px solid #95887f;
+      color: #95887f;
+      transition: .25s; }
+
+.button-active {
+  background: linear-gradient(180deg, #088da5 0, #00576f); }
+  .button-active:focus, .button-active:hover {
+    background: linear-gradient(180deg, #088da5 0, #00364e);
+    cursor: pointer; }
+  .button-active, .button-active-shadow {
+    background: linear-gradient(180deg, #088da5 0, #00576f);
+    transition: .25s; }
+    .button-active :focus, .button-active :hover, .button-active-shadow:focus, .button-active-shadow:hover {
+      background: linear-gradient(180deg, #088da5 0, #00364e);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(8, 141, 165, 0.75);
+      transition: .25s; }
+  .button-active, .button-active-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #088da5 0, #00576f);
+    transition: .25s; }
+    .button-active :focus, .button-active :hover, .button-active-disabled:focus, .button-active-disabled:hover {
+      cursor: not-allowed; }
+  .button-active, .button-active-zoom {
+    background: linear-gradient(180deg, #088da5 0, #00576f);
+    transition: .25s; }
+    .button-active :focus, .button-active :hover, .button-active-zoom:focus, .button-active-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-active, .button-active-outline {
+    background: none;
+    color: #088da5;
+    outline: 1px solid #088da5;
+    transition: .25s; }
+    .button-active :focus, .button-active :hover, .button-active-outline:focus, .button-active-outline:hover {
+      outline: 1px solid #00576f;
+      color: #00576f;
+      transition: .25s; }
+
+.button-acid {
+  background: linear-gradient(180deg, #00ff7f 0, #00c949); }
+  .button-acid:focus, .button-acid:hover {
+    background: linear-gradient(180deg, #00ff7f 0, #00a828);
+    cursor: pointer; }
+  .button-acid, .button-acid-shadow {
+    background: linear-gradient(180deg, #00ff7f 0, #00c949);
+    transition: .25s; }
+    .button-acid :focus, .button-acid :hover, .button-acid-shadow:focus, .button-acid-shadow:hover {
+      background: linear-gradient(180deg, #00ff7f 0, #00a828);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(0, 255, 127, 0.75);
+      transition: .25s; }
+  .button-acid, .button-acid-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #00ff7f 0, #00c949);
+    transition: .25s; }
+    .button-acid :focus, .button-acid :hover, .button-acid-disabled:focus, .button-acid-disabled:hover {
+      cursor: not-allowed; }
+  .button-acid, .button-acid-zoom {
+    background: linear-gradient(180deg, #00ff7f 0, #00c949);
+    transition: .25s; }
+    .button-acid :focus, .button-acid :hover, .button-acid-zoom:focus, .button-acid-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-acid, .button-acid-outline {
+    background: none;
+    color: #00ff7f;
+    outline: 1px solid #00ff7f;
+    transition: .25s; }
+    .button-acid :focus, .button-acid :hover, .button-acid-outline:focus, .button-acid-outline:hover {
+      outline: 1px solid #00c949;
+      color: #00c949;
+      transition: .25s; }
+
+.button-picknic {
+  background: linear-gradient(180deg, #ffc0cb 0, #c98a95); }
+  .button-picknic:focus, .button-picknic:hover {
+    background: linear-gradient(180deg, #ffc0cb 0, #a86974);
+    cursor: pointer; }
+  .button-picknic, .button-picknic-shadow {
+    background: linear-gradient(180deg, #ffc0cb 0, #c98a95);
+    transition: .25s; }
+    .button-picknic :focus, .button-picknic :hover, .button-picknic-shadow:focus, .button-picknic-shadow:hover {
+      background: linear-gradient(180deg, #ffc0cb 0, #a86974);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 192, 203, 0.75);
+      transition: .25s; }
+  .button-picknic, .button-picknic-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #ffc0cb 0, #c98a95);
+    transition: .25s; }
+    .button-picknic :focus, .button-picknic :hover, .button-picknic-disabled:focus, .button-picknic-disabled:hover {
+      cursor: not-allowed; }
+  .button-picknic, .button-picknic-zoom {
+    background: linear-gradient(180deg, #ffc0cb 0, #c98a95);
+    transition: .25s; }
+    .button-picknic :focus, .button-picknic :hover, .button-picknic-zoom:focus, .button-picknic-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .button-picknic, .button-picknic-outline {
+    background: none;
+    color: #ffc0cb;
+    outline: 1px solid #ffc0cb;
+    transition: .25s; }
+    .button-picknic :focus, .button-picknic :hover, .button-picknic-outline:focus, .button-picknic-outline:hover {
+      outline: 1px solid #c98a95;
+      color: #c98a95;
+      transition: .25s; }
+
+@charset "UTF-8";
+/* массив $social со значениями: название и цвет */
+/* параметры  */
+.helper {
+  padding: 14px 7px 14px 7px;
+  border-radius: 3px;
+  outline: none; }
+
+/* перебираем */
+.helper-default {
+  background-color: #f5f5f5;
+  color: #a0a0a0;
+  border: 1px solid #a0a0a0; }
+
+.helper-primary {
+  background-color: #5d8ab6;
+  color: #083561;
+  border: 1px solid #083561; }
+
+.helper-success {
+  background-color: #579b74;
+  color: #02461f;
+  border: 1px solid #02461f; }
+
+.helper-danger {
+  background-color: #cb6b6d;
+  color: #761618;
+  border: 1px solid #761618; }
+
+.helper-warning {
+  background-color: #da9072;
+  color: #853b1d;
+  border: 1px solid #853b1d; }
+
+.helper-private {
+  background-color: #8e5d92;
+  color: #39083d;
+  border: 1px solid #39083d; }
+
+.helper-info {
+  background-color: #79b4be;
+  color: #245f69;
+  border: 1px solid #245f69; }
+
+.helper-dark {
+  background-color: #545f5c;
+  color: #000a07;
+  border: 1px solid #000a07; }
+
+.helper-accent {
+  background-color: #645185;
+  color: #0f0030;
+  border: 1px solid #0f0030; }
+
+.helper-attention {
+  background-color: #cdc87e;
+  color: #787329;
+  border: 1px solid #787329; }
+
+.helper-static {
+  background-color: #3e5f6a;
+  color: #000a15;
+  border: 1px solid #000a15; }
+
+.helper-dynamic {
+  background-color: #965a6c;
+  color: #410517;
+  border: 1px solid #410517; }
+
+.helper-allowed {
+  background-color: #72a791;
+  color: #1d523c;
+  border: 1px solid #1d523c; }
+
+.helper-future {
+  background-color: #4f5587;
+  color: #000032;
+  border: 1px solid #000032; }
+
+.helper-positive {
+  background-color: #ff7373;
+  color: #aa1e1e;
+  border: 1px solid #aa1e1e; }
+
+.helper-pivot {
+  background-color: #cbbeb5;
+  color: #766960;
+  border: 1px solid #766960; }
+
+.helper-active {
+  background-color: #088da5;
+  color: #003850;
+  border: 1px solid #003850; }
+
+.helper-acid {
+  background-color: #00ff7f;
+  color: #00aa2a;
+  border: 1px solid #00aa2a; }
+
+.helper-picknic {
+  background-color: #ffc0cb;
+  color: #aa6b76;
+  border: 1px solid #aa6b76; }
+
+@charset "UTF-8";
+/* массив $social со значениями: название и цвет */
+/* параметры  */
+.pin {
+  color: #fff;
+  padding: 2px 4px 2px 4px;
+  border-radius: 3px;
+  outline: none; }
+
+/* перебираем */
+.pin-default {
+  color: #444;
+  background: linear-gradient(180deg, #f5f5f5 0, whitesmoke); }
+  .pin-default:focus, .pin-default:hover {
+    background: linear-gradient(180deg, #f5f5f5 0, whitesmoke);
+    cursor: pointer; }
+  .pin-default-shadow {
+    color: #444;
+    background: linear-gradient(180deg, #f5f5f5 0, whitesmoke);
+    transition: .25s; }
+    .pin-default-shadow:focus, .pin-default-shadow:hover {
+      background: linear-gradient(180deg, #f5f5f5 0, whitesmoke);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(245, 245, 245, 0.75);
+      transition: .25s; }
+  .pin-default-disabled {
+    color: #444;
+    opacity: 0.64;
+    background: linear-gradient(180deg, #f5f5f5 0, whitesmoke);
+    transition: .25s; }
+    .pin-default-disabled:focus, .pin-default-disabled:hover {
+      cursor: not-allowed; }
+  .pin-default-zoom {
+    color: #444;
+    background: linear-gradient(180deg, #f5f5f5 0, whitesmoke);
+    transition: .25s; }
+    .pin-default-zoom:focus, .pin-default-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-default-outline {
+    background: none;
+    color: #f5f5f5;
+    outline: 1px solid #f5f5f5;
+    transition: .25s; }
+    .pin-default-outline:focus, .pin-default-outline:hover {
+      outline: 1px solid whitesmoke;
+      color: whitesmoke;
+      transition: .25s; }
+
+.pin-primary {
+  background: linear-gradient(180deg, #5d8ab6 0, #5d8ab6); }
+  .pin-primary:focus, .pin-primary:hover {
+    background: linear-gradient(180deg, #5d8ab6 0, #5d8ab6);
+    cursor: pointer; }
+  .pin-primary-shadow {
+    background: linear-gradient(180deg, #5d8ab6 0, #5d8ab6);
+    transition: .25s; }
+    .pin-primary-shadow:focus, .pin-primary-shadow:hover {
+      background: linear-gradient(180deg, #5d8ab6 0, #5d8ab6);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(93, 138, 182, 0.75);
+      transition: .25s; }
+  .pin-primary-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #5d8ab6 0, #5d8ab6);
+    transition: .25s; }
+    .pin-primary-disabled:focus, .pin-primary-disabled:hover {
+      cursor: not-allowed; }
+  .pin-primary-zoom {
+    background: linear-gradient(180deg, #5d8ab6 0, #5d8ab6);
+    transition: .25s; }
+    .pin-primary-zoom:focus, .pin-primary-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-primary-outline {
+    background: none;
+    color: #5d8ab6;
+    outline: 1px solid #5d8ab6;
+    transition: .25s; }
+    .pin-primary-outline:focus, .pin-primary-outline:hover {
+      outline: 1px solid #5d8ab6;
+      color: #5d8ab6;
+      transition: .25s; }
+
+.pin-success {
+  background: linear-gradient(180deg, #579b74 0, #579b74); }
+  .pin-success:focus, .pin-success:hover {
+    background: linear-gradient(180deg, #579b74 0, #579b74);
+    cursor: pointer; }
+  .pin-success-shadow {
+    background: linear-gradient(180deg, #579b74 0, #579b74);
+    transition: .25s; }
+    .pin-success-shadow:focus, .pin-success-shadow:hover {
+      background: linear-gradient(180deg, #579b74 0, #579b74);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(87, 155, 116, 0.75);
+      transition: .25s; }
+  .pin-success-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #579b74 0, #579b74);
+    transition: .25s; }
+    .pin-success-disabled:focus, .pin-success-disabled:hover {
+      cursor: not-allowed; }
+  .pin-success-zoom {
+    background: linear-gradient(180deg, #579b74 0, #579b74);
+    transition: .25s; }
+    .pin-success-zoom:focus, .pin-success-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-success-outline {
+    background: none;
+    color: #579b74;
+    outline: 1px solid #579b74;
+    transition: .25s; }
+    .pin-success-outline:focus, .pin-success-outline:hover {
+      outline: 1px solid #579b74;
+      color: #579b74;
+      transition: .25s; }
+
+.pin-danger {
+  background: linear-gradient(180deg, #cb6b6d 0, #cb6b6d); }
+  .pin-danger:focus, .pin-danger:hover {
+    background: linear-gradient(180deg, #cb6b6d 0, #cb6b6d);
+    cursor: pointer; }
+  .pin-danger-shadow {
+    background: linear-gradient(180deg, #cb6b6d 0, #cb6b6d);
+    transition: .25s; }
+    .pin-danger-shadow:focus, .pin-danger-shadow:hover {
+      background: linear-gradient(180deg, #cb6b6d 0, #cb6b6d);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(203, 107, 109, 0.75);
+      transition: .25s; }
+  .pin-danger-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #cb6b6d 0, #cb6b6d);
+    transition: .25s; }
+    .pin-danger-disabled:focus, .pin-danger-disabled:hover {
+      cursor: not-allowed; }
+  .pin-danger-zoom {
+    background: linear-gradient(180deg, #cb6b6d 0, #cb6b6d);
+    transition: .25s; }
+    .pin-danger-zoom:focus, .pin-danger-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-danger-outline {
+    background: none;
+    color: #cb6b6d;
+    outline: 1px solid #cb6b6d;
+    transition: .25s; }
+    .pin-danger-outline:focus, .pin-danger-outline:hover {
+      outline: 1px solid #cb6b6d;
+      color: #cb6b6d;
+      transition: .25s; }
+
+.pin-warning {
+  background: linear-gradient(180deg, #da9072 0, #da9072); }
+  .pin-warning:focus, .pin-warning:hover {
+    background: linear-gradient(180deg, #da9072 0, #da9072);
+    cursor: pointer; }
+  .pin-warning-shadow {
+    background: linear-gradient(180deg, #da9072 0, #da9072);
+    transition: .25s; }
+    .pin-warning-shadow:focus, .pin-warning-shadow:hover {
+      background: linear-gradient(180deg, #da9072 0, #da9072);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(218, 144, 114, 0.75);
+      transition: .25s; }
+  .pin-warning-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #da9072 0, #da9072);
+    transition: .25s; }
+    .pin-warning-disabled:focus, .pin-warning-disabled:hover {
+      cursor: not-allowed; }
+  .pin-warning-zoom {
+    background: linear-gradient(180deg, #da9072 0, #da9072);
+    transition: .25s; }
+    .pin-warning-zoom:focus, .pin-warning-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-warning-outline {
+    background: none;
+    color: #da9072;
+    outline: 1px solid #da9072;
+    transition: .25s; }
+    .pin-warning-outline:focus, .pin-warning-outline:hover {
+      outline: 1px solid #da9072;
+      color: #da9072;
+      transition: .25s; }
+
+.pin-private {
+  background: linear-gradient(180deg, #8e5d92 0, #8e5d92); }
+  .pin-private:focus, .pin-private:hover {
+    background: linear-gradient(180deg, #8e5d92 0, #8e5d92);
+    cursor: pointer; }
+  .pin-private-shadow {
+    background: linear-gradient(180deg, #8e5d92 0, #8e5d92);
+    transition: .25s; }
+    .pin-private-shadow:focus, .pin-private-shadow:hover {
+      background: linear-gradient(180deg, #8e5d92 0, #8e5d92);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(142, 93, 146, 0.75);
+      transition: .25s; }
+  .pin-private-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #8e5d92 0, #8e5d92);
+    transition: .25s; }
+    .pin-private-disabled:focus, .pin-private-disabled:hover {
+      cursor: not-allowed; }
+  .pin-private-zoom {
+    background: linear-gradient(180deg, #8e5d92 0, #8e5d92);
+    transition: .25s; }
+    .pin-private-zoom:focus, .pin-private-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-private-outline {
+    background: none;
+    color: #8e5d92;
+    outline: 1px solid #8e5d92;
+    transition: .25s; }
+    .pin-private-outline:focus, .pin-private-outline:hover {
+      outline: 1px solid #8e5d92;
+      color: #8e5d92;
+      transition: .25s; }
+
+.pin-info {
+  background: linear-gradient(180deg, #79b4be 0, #79b4be); }
+  .pin-info:focus, .pin-info:hover {
+    background: linear-gradient(180deg, #79b4be 0, #79b4be);
+    cursor: pointer; }
+  .pin-info-shadow {
+    background: linear-gradient(180deg, #79b4be 0, #79b4be);
+    transition: .25s; }
+    .pin-info-shadow:focus, .pin-info-shadow:hover {
+      background: linear-gradient(180deg, #79b4be 0, #79b4be);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(121, 180, 190, 0.75);
+      transition: .25s; }
+  .pin-info-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #79b4be 0, #79b4be);
+    transition: .25s; }
+    .pin-info-disabled:focus, .pin-info-disabled:hover {
+      cursor: not-allowed; }
+  .pin-info-zoom {
+    background: linear-gradient(180deg, #79b4be 0, #79b4be);
+    transition: .25s; }
+    .pin-info-zoom:focus, .pin-info-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-info-outline {
+    background: none;
+    color: #79b4be;
+    outline: 1px solid #79b4be;
+    transition: .25s; }
+    .pin-info-outline:focus, .pin-info-outline:hover {
+      outline: 1px solid #79b4be;
+      color: #79b4be;
+      transition: .25s; }
+
+.pin-dark {
+  background: linear-gradient(180deg, #545f5c 0, #545f5c); }
+  .pin-dark:focus, .pin-dark:hover {
+    background: linear-gradient(180deg, #545f5c 0, #545f5c);
+    cursor: pointer; }
+  .pin-dark-shadow {
+    background: linear-gradient(180deg, #545f5c 0, #545f5c);
+    transition: .25s; }
+    .pin-dark-shadow:focus, .pin-dark-shadow:hover {
+      background: linear-gradient(180deg, #545f5c 0, #545f5c);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(84, 95, 92, 0.75);
+      transition: .25s; }
+  .pin-dark-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #545f5c 0, #545f5c);
+    transition: .25s; }
+    .pin-dark-disabled:focus, .pin-dark-disabled:hover {
+      cursor: not-allowed; }
+  .pin-dark-zoom {
+    background: linear-gradient(180deg, #545f5c 0, #545f5c);
+    transition: .25s; }
+    .pin-dark-zoom:focus, .pin-dark-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-dark-outline {
+    background: none;
+    color: #545f5c;
+    outline: 1px solid #545f5c;
+    transition: .25s; }
+    .pin-dark-outline:focus, .pin-dark-outline:hover {
+      outline: 1px solid #545f5c;
+      color: #545f5c;
+      transition: .25s; }
+
+.pin-accent {
+  background: linear-gradient(180deg, #645185 0, #645185); }
+  .pin-accent:focus, .pin-accent:hover {
+    background: linear-gradient(180deg, #645185 0, #645185);
+    cursor: pointer; }
+  .pin-accent-shadow {
+    background: linear-gradient(180deg, #645185 0, #645185);
+    transition: .25s; }
+    .pin-accent-shadow:focus, .pin-accent-shadow:hover {
+      background: linear-gradient(180deg, #645185 0, #645185);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(100, 81, 133, 0.75);
+      transition: .25s; }
+  .pin-accent-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #645185 0, #645185);
+    transition: .25s; }
+    .pin-accent-disabled:focus, .pin-accent-disabled:hover {
+      cursor: not-allowed; }
+  .pin-accent-zoom {
+    background: linear-gradient(180deg, #645185 0, #645185);
+    transition: .25s; }
+    .pin-accent-zoom:focus, .pin-accent-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-accent-outline {
+    background: none;
+    color: #645185;
+    outline: 1px solid #645185;
+    transition: .25s; }
+    .pin-accent-outline:focus, .pin-accent-outline:hover {
+      outline: 1px solid #645185;
+      color: #645185;
+      transition: .25s; }
+
+.pin-attention {
+  background: linear-gradient(180deg, #cdc87e 0, #cdc87e); }
+  .pin-attention:focus, .pin-attention:hover {
+    background: linear-gradient(180deg, #cdc87e 0, #cdc87e);
+    cursor: pointer; }
+  .pin-attention-shadow {
+    background: linear-gradient(180deg, #cdc87e 0, #cdc87e);
+    transition: .25s; }
+    .pin-attention-shadow:focus, .pin-attention-shadow:hover {
+      background: linear-gradient(180deg, #cdc87e 0, #cdc87e);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(205, 200, 126, 0.75);
+      transition: .25s; }
+  .pin-attention-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #cdc87e 0, #cdc87e);
+    transition: .25s; }
+    .pin-attention-disabled:focus, .pin-attention-disabled:hover {
+      cursor: not-allowed; }
+  .pin-attention-zoom {
+    background: linear-gradient(180deg, #cdc87e 0, #cdc87e);
+    transition: .25s; }
+    .pin-attention-zoom:focus, .pin-attention-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-attention-outline {
+    background: none;
+    color: #cdc87e;
+    outline: 1px solid #cdc87e;
+    transition: .25s; }
+    .pin-attention-outline:focus, .pin-attention-outline:hover {
+      outline: 1px solid #cdc87e;
+      color: #cdc87e;
+      transition: .25s; }
+
+.pin-static {
+  background: linear-gradient(180deg, #3e5f6a 0, #3e5f6a); }
+  .pin-static:focus, .pin-static:hover {
+    background: linear-gradient(180deg, #3e5f6a 0, #3e5f6a);
+    cursor: pointer; }
+  .pin-static-shadow {
+    background: linear-gradient(180deg, #3e5f6a 0, #3e5f6a);
+    transition: .25s; }
+    .pin-static-shadow:focus, .pin-static-shadow:hover {
+      background: linear-gradient(180deg, #3e5f6a 0, #3e5f6a);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(62, 95, 106, 0.75);
+      transition: .25s; }
+  .pin-static-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #3e5f6a 0, #3e5f6a);
+    transition: .25s; }
+    .pin-static-disabled:focus, .pin-static-disabled:hover {
+      cursor: not-allowed; }
+  .pin-static-zoom {
+    background: linear-gradient(180deg, #3e5f6a 0, #3e5f6a);
+    transition: .25s; }
+    .pin-static-zoom:focus, .pin-static-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-static-outline {
+    background: none;
+    color: #3e5f6a;
+    outline: 1px solid #3e5f6a;
+    transition: .25s; }
+    .pin-static-outline:focus, .pin-static-outline:hover {
+      outline: 1px solid #3e5f6a;
+      color: #3e5f6a;
+      transition: .25s; }
+
+.pin-dynamic {
+  background: linear-gradient(180deg, #965a6c 0, #965a6c); }
+  .pin-dynamic:focus, .pin-dynamic:hover {
+    background: linear-gradient(180deg, #965a6c 0, #965a6c);
+    cursor: pointer; }
+  .pin-dynamic-shadow {
+    background: linear-gradient(180deg, #965a6c 0, #965a6c);
+    transition: .25s; }
+    .pin-dynamic-shadow:focus, .pin-dynamic-shadow:hover {
+      background: linear-gradient(180deg, #965a6c 0, #965a6c);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(150, 90, 108, 0.75);
+      transition: .25s; }
+  .pin-dynamic-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #965a6c 0, #965a6c);
+    transition: .25s; }
+    .pin-dynamic-disabled:focus, .pin-dynamic-disabled:hover {
+      cursor: not-allowed; }
+  .pin-dynamic-zoom {
+    background: linear-gradient(180deg, #965a6c 0, #965a6c);
+    transition: .25s; }
+    .pin-dynamic-zoom:focus, .pin-dynamic-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-dynamic-outline {
+    background: none;
+    color: #965a6c;
+    outline: 1px solid #965a6c;
+    transition: .25s; }
+    .pin-dynamic-outline:focus, .pin-dynamic-outline:hover {
+      outline: 1px solid #965a6c;
+      color: #965a6c;
+      transition: .25s; }
+
+.pin-allowed {
+  background: linear-gradient(180deg, #72a791 0, #72a791); }
+  .pin-allowed:focus, .pin-allowed:hover {
+    background: linear-gradient(180deg, #72a791 0, #72a791);
+    cursor: pointer; }
+  .pin-allowed-shadow {
+    background: linear-gradient(180deg, #72a791 0, #72a791);
+    transition: .25s; }
+    .pin-allowed-shadow:focus, .pin-allowed-shadow:hover {
+      background: linear-gradient(180deg, #72a791 0, #72a791);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(114, 167, 145, 0.75);
+      transition: .25s; }
+  .pin-allowed-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #72a791 0, #72a791);
+    transition: .25s; }
+    .pin-allowed-disabled:focus, .pin-allowed-disabled:hover {
+      cursor: not-allowed; }
+  .pin-allowed-zoom {
+    background: linear-gradient(180deg, #72a791 0, #72a791);
+    transition: .25s; }
+    .pin-allowed-zoom:focus, .pin-allowed-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-allowed-outline {
+    background: none;
+    color: #72a791;
+    outline: 1px solid #72a791;
+    transition: .25s; }
+    .pin-allowed-outline:focus, .pin-allowed-outline:hover {
+      outline: 1px solid #72a791;
+      color: #72a791;
+      transition: .25s; }
+
+.pin-future {
+  background: linear-gradient(180deg, #4f5587 0, #4f5587); }
+  .pin-future:focus, .pin-future:hover {
+    background: linear-gradient(180deg, #4f5587 0, #4f5587);
+    cursor: pointer; }
+  .pin-future-shadow {
+    background: linear-gradient(180deg, #4f5587 0, #4f5587);
+    transition: .25s; }
+    .pin-future-shadow:focus, .pin-future-shadow:hover {
+      background: linear-gradient(180deg, #4f5587 0, #4f5587);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(79, 85, 135, 0.75);
+      transition: .25s; }
+  .pin-future-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #4f5587 0, #4f5587);
+    transition: .25s; }
+    .pin-future-disabled:focus, .pin-future-disabled:hover {
+      cursor: not-allowed; }
+  .pin-future-zoom {
+    background: linear-gradient(180deg, #4f5587 0, #4f5587);
+    transition: .25s; }
+    .pin-future-zoom:focus, .pin-future-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-future-outline {
+    background: none;
+    color: #4f5587;
+    outline: 1px solid #4f5587;
+    transition: .25s; }
+    .pin-future-outline:focus, .pin-future-outline:hover {
+      outline: 1px solid #4f5587;
+      color: #4f5587;
+      transition: .25s; }
+
+.pin-positive {
+  background: linear-gradient(180deg, #ff7373 0, #ff7373); }
+  .pin-positive:focus, .pin-positive:hover {
+    background: linear-gradient(180deg, #ff7373 0, #ff7373);
+    cursor: pointer; }
+  .pin-positive-shadow {
+    background: linear-gradient(180deg, #ff7373 0, #ff7373);
+    transition: .25s; }
+    .pin-positive-shadow:focus, .pin-positive-shadow:hover {
+      background: linear-gradient(180deg, #ff7373 0, #ff7373);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 115, 115, 0.75);
+      transition: .25s; }
+  .pin-positive-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #ff7373 0, #ff7373);
+    transition: .25s; }
+    .pin-positive-disabled:focus, .pin-positive-disabled:hover {
+      cursor: not-allowed; }
+  .pin-positive-zoom {
+    background: linear-gradient(180deg, #ff7373 0, #ff7373);
+    transition: .25s; }
+    .pin-positive-zoom:focus, .pin-positive-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-positive-outline {
+    background: none;
+    color: #ff7373;
+    outline: 1px solid #ff7373;
+    transition: .25s; }
+    .pin-positive-outline:focus, .pin-positive-outline:hover {
+      outline: 1px solid #ff7373;
+      color: #ff7373;
+      transition: .25s; }
+
+.pin-pivot {
+  background: linear-gradient(180deg, #cbbeb5 0, #cbbeb5); }
+  .pin-pivot:focus, .pin-pivot:hover {
+    background: linear-gradient(180deg, #cbbeb5 0, #cbbeb5);
+    cursor: pointer; }
+  .pin-pivot-shadow {
+    background: linear-gradient(180deg, #cbbeb5 0, #cbbeb5);
+    transition: .25s; }
+    .pin-pivot-shadow:focus, .pin-pivot-shadow:hover {
+      background: linear-gradient(180deg, #cbbeb5 0, #cbbeb5);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(203, 190, 181, 0.75);
+      transition: .25s; }
+  .pin-pivot-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #cbbeb5 0, #cbbeb5);
+    transition: .25s; }
+    .pin-pivot-disabled:focus, .pin-pivot-disabled:hover {
+      cursor: not-allowed; }
+  .pin-pivot-zoom {
+    background: linear-gradient(180deg, #cbbeb5 0, #cbbeb5);
+    transition: .25s; }
+    .pin-pivot-zoom:focus, .pin-pivot-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-pivot-outline {
+    background: none;
+    color: #cbbeb5;
+    outline: 1px solid #cbbeb5;
+    transition: .25s; }
+    .pin-pivot-outline:focus, .pin-pivot-outline:hover {
+      outline: 1px solid #cbbeb5;
+      color: #cbbeb5;
+      transition: .25s; }
+
+.pin-active {
+  background: linear-gradient(180deg, #088da5 0, #088da5); }
+  .pin-active:focus, .pin-active:hover {
+    background: linear-gradient(180deg, #088da5 0, #088da5);
+    cursor: pointer; }
+  .pin-active-shadow {
+    background: linear-gradient(180deg, #088da5 0, #088da5);
+    transition: .25s; }
+    .pin-active-shadow:focus, .pin-active-shadow:hover {
+      background: linear-gradient(180deg, #088da5 0, #088da5);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(8, 141, 165, 0.75);
+      transition: .25s; }
+  .pin-active-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #088da5 0, #088da5);
+    transition: .25s; }
+    .pin-active-disabled:focus, .pin-active-disabled:hover {
+      cursor: not-allowed; }
+  .pin-active-zoom {
+    background: linear-gradient(180deg, #088da5 0, #088da5);
+    transition: .25s; }
+    .pin-active-zoom:focus, .pin-active-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-active-outline {
+    background: none;
+    color: #088da5;
+    outline: 1px solid #088da5;
+    transition: .25s; }
+    .pin-active-outline:focus, .pin-active-outline:hover {
+      outline: 1px solid #088da5;
+      color: #088da5;
+      transition: .25s; }
+
+.pin-acid {
+  background: linear-gradient(180deg, #00ff7f 0, springgreen); }
+  .pin-acid:focus, .pin-acid:hover {
+    background: linear-gradient(180deg, #00ff7f 0, springgreen);
+    cursor: pointer; }
+  .pin-acid-shadow {
+    background: linear-gradient(180deg, #00ff7f 0, springgreen);
+    transition: .25s; }
+    .pin-acid-shadow:focus, .pin-acid-shadow:hover {
+      background: linear-gradient(180deg, #00ff7f 0, springgreen);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(0, 255, 127, 0.75);
+      transition: .25s; }
+  .pin-acid-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #00ff7f 0, springgreen);
+    transition: .25s; }
+    .pin-acid-disabled:focus, .pin-acid-disabled:hover {
+      cursor: not-allowed; }
+  .pin-acid-zoom {
+    background: linear-gradient(180deg, #00ff7f 0, springgreen);
+    transition: .25s; }
+    .pin-acid-zoom:focus, .pin-acid-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-acid-outline {
+    background: none;
+    color: #00ff7f;
+    outline: 1px solid #00ff7f;
+    transition: .25s; }
+    .pin-acid-outline:focus, .pin-acid-outline:hover {
+      outline: 1px solid springgreen;
+      color: springgreen;
+      transition: .25s; }
+
+.pin-picknic {
+  background: linear-gradient(180deg, #ffc0cb 0, pink); }
+  .pin-picknic:focus, .pin-picknic:hover {
+    background: linear-gradient(180deg, #ffc0cb 0, pink);
+    cursor: pointer; }
+  .pin-picknic-shadow {
+    background: linear-gradient(180deg, #ffc0cb 0, pink);
+    transition: .25s; }
+    .pin-picknic-shadow:focus, .pin-picknic-shadow:hover {
+      background: linear-gradient(180deg, #ffc0cb 0, pink);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 192, 203, 0.75);
+      transition: .25s; }
+  .pin-picknic-disabled {
+    opacity: 0.64;
+    background: linear-gradient(180deg, #ffc0cb 0, pink);
+    transition: .25s; }
+    .pin-picknic-disabled:focus, .pin-picknic-disabled:hover {
+      cursor: not-allowed; }
+  .pin-picknic-zoom {
+    background: linear-gradient(180deg, #ffc0cb 0, pink);
+    transition: .25s; }
+    .pin-picknic-zoom:focus, .pin-picknic-zoom:hover {
+      transition: .25s;
+      transform: scale(1.12, 1.12); }
+  .pin-picknic-outline {
+    background: none;
+    color: #ffc0cb;
+    outline: 1px solid #ffc0cb;
+    transition: .25s; }
+    .pin-picknic-outline:focus, .pin-picknic-outline:hover {
+      outline: 1px solid pink;
+      color: pink;
+      transition: .25s; }

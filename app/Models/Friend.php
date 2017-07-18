@@ -12,9 +12,8 @@ class Friend extends Model
     # protected $table = 'friends';
     protected $guarded = ['id'];
 
-
-
-
     // Доделаьб связь!
 
+
+    //public function
 }

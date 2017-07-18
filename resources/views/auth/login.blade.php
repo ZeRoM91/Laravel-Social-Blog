@@ -59,7 +59,7 @@
                                 </a>
                                 <hr>
 
-                                <a href="{{ route('register') }}" class="btn btn-success"><li>Регистрация</li></a>
+                                <a href="{{ route('register') }}" class="btn btn-success" ><li>Регистрация</li></a>
 
                             </div>
                         </div>

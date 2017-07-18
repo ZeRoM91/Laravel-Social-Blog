@@ -34,11 +34,7 @@ class LkAuthorController extends Controller
 
         $auth = \Auth::user($id);
 
-        $friends = $user ->friends()->with('users');
 
-
-       // $friends->user;
-       dd($friends);
 
 
         return view('profile', compact('user','auth','friends'));

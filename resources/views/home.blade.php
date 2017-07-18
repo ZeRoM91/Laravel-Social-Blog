@@ -28,16 +28,16 @@
                      @foreach($articles as $article)
 
 <div class="article">
-    <span class="glyphicon glyphicon-time"></span><span class="article__date">{{$article['created_at']}}</span><br>
-    <span class="glyphicon glyphicon-tag"></span>
+    <span class="glyphicon glyphicon-time" style="color:#dd873c;"></span><span class="article__date">{{$article['created_at']}}</span><br>
+    <span class="glyphicon glyphicon-tag" style="color:#c9ad69;"></span>
     <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
         <span class="label label-default">{{$article->category['name']}}</span>
     </a><br>
 
     <a href="{{ route('article', ['id' => $article['id']]) }}"><p class="article__title"><b>{{$article['title']}}</b></p></a>
-    <span class="glyphicon glyphicon-eye-open"></span><span>{{$article ->views}}</span>
-    <span class="glyphicon glyphicon-heart"></span><span>{{$article ->rating}}</span>
-    <span class="glyphicon glyphicon-comment">{{$article ->comment->count()}}</span><br>
+    <span class="glyphicon glyphicon-eye-open" style="color: #79568f;"></span><span> {{$article ->views}}</span>
+    <span class="glyphicon glyphicon-heart" style="color: #d76250;"></span><span> {{$article ->rating}}</span>
+    <span class="glyphicon glyphicon-comment" style="color: #4e5a6a;"></span><span> {{$article ->comment->count()}}</span><br>
 
                         <span class="glyphicon glyphicon-user"></span><a href="{{route('user__profile', ['id' => $article->author])}}"><span>{{$article ->author['name']}}</span></a>
 

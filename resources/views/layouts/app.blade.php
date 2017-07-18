@@ -61,14 +61,14 @@
         <a href="{{route('Author')}}"><li class="menu__list" style="float: right; margin-right: 75px;"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</li></a>
 
 @endif
-<input type="text" name="search" class="menu__search" placeholder="Поиск пользователей">
+{{--<input type="text" name="search" class="menu__search" placeholder="Поиск пользователей">--}}
 </ul>
 
 </header>
 <aside class="side-bar">
     <div class="left-bar">
         <ul>
-            <li class="left-bar__list button button-primary"><span class="glyphicon glyphicon-user"></span> Друзья</li>
+            <li class="left-bar__list button button-primary"><span class="glyphicon glyphicon-user"></span> Друзья <span class="badge badge-default">0</span></li>
             <li class="left-bar__list button button-success"><span class="glyphicon glyphicon-envelope"></span>  Сообщения</li>
             <li class="left-bar__list button button-info"><span class="glyphicon glyphicon-list-alt"></span> Мои статьи</li>
             <li class="left-bar__list button button-dark"><span class="glyphicon glyphicon-cog"></span> Мои настройки</li>

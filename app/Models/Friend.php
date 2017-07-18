@@ -13,7 +13,8 @@ class Friend extends Model
     protected $guarded = ['id'];
 
 
-    public function users() {
-        $this ->belongsToMany(User::class,'from_user_id');
-    }
+
+
+    // Доделаьб связь!
+
 }

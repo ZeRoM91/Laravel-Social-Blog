@@ -28,4 +28,15 @@ class Rating extends Model
     public function comment() {
         return $this->belongsTo(Comment::class, 'comment_id');
     }
+
+
+
+
+    /* Полиморфическая модель */
+
+    public function rating() {
+        return $this->morphTo();
+    }
+
+
 }

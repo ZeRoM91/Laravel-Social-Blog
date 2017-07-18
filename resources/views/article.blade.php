@@ -128,9 +128,9 @@
            <span class="badge badge-danger">{{$comment['rating']}}</span>
         @endif
         @if($comment['rating'] == 0)
-            <span class="badge badge-static">{{$comment['rating']}}</span>
+            <span class="badge badge-default">{{$comment['rating']}}</span>
         @endif
-
+        @if(Auth::user()->id != $comment['user_id'])
         @if($vote['vote'] === NULL)
             <div class="btn-group" role="group" aria-label="...">
                 <a href="{{route('upComment',['id' => $comment->id])}}" ><button class="badge badge-success">+</button></a>
@@ -153,9 +153,11 @@
             </div>
 
         @endif
+
+        @endif
                             <hr>
                         @endforeach
-                        <?php echo $comments->render(); ?>
+<!--                     <?php //echo $comments->render(); ?>   -->
 
                         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
                             <div class="modal-dialog modal-lg" role="document">

@@ -83,7 +83,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     color: #6785a4;
 }
 .side-bar {
-    background-color: #d4d4d4;
+
     width: 250px;
     margin: 0;
     height: auto;
@@ -116,9 +116,9 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 
  }
 .article__date {
-    color: #333;
-    font-style: italic;
-    font-family: 'Georgia', sans-serif;
+    color: #444;
+    font-weight: bolder;
+    font-family: 'Garamond', sans-serif;
 }
 .article {
      display: block;

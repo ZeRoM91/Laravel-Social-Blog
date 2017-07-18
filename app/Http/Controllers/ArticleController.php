@@ -17,21 +17,22 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         // если это авторская статья то дополнительно выводим его другие статьи
-        $author = $article->author;
-        $articles = $author->articles()->where('id', '<>', $article->id)->take(3)->get();
+        // Выводим так: Ищем автора статьи -> у автора находим другие статьи -> выводим
+        // все кроме этой -> но не более 3.
+        $articles = $article->author->articles->where('id', '<>', $article->id)->take(3);
 
         // Выгрузка статуса голоса пользователя для текущей статьи
         $user = auth('web')->user();
         $vote = $user->votes()->where('article_id', $id)->first();
 
         // Выводим все комментарии по id статьи
-        $comments = $article->comment()->paginate(5);
+        $comments = $article->comment;
 
 
         $article -> views++;
 
         $article->save();
-        return view('article', compact('articles', 'comments', 'article', 'author', 'vote'));
+        return view('article', compact('articles', 'comments', 'article', 'vote'));
 
 
 
@@ -201,7 +202,9 @@ class ArticleController extends Controller
         // Создание статуса голоса пользователя для текущей статьи
         $user = auth('web')->user();
         $vote = $user->votes()->firstOrCreate([
+            'article_id' => $comment->article_id,
             'comment_id' => $id
+
         ]);
 
         // Если проголосовал за: true
@@ -226,6 +229,7 @@ class ArticleController extends Controller
         // Создание статуса голоса пользователя для текущей статьи
         $user = auth('web')->user();
         $vote = $user->votes()->firstOrCreate([
+            'article_id' => $comment->article_id,
             'comment_id' => $id
         ]);
 
@@ -254,6 +258,6 @@ class ArticleController extends Controller
         $vote->delete();
 
         // Редирект на текущюю статью
-        return redirect()->route('home');
+        return redirect()->route('article', ['id' => $comment->article_id]);
     }
 }

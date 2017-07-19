@@ -18,24 +18,15 @@ body {
     min-height: 500px;
 
 
+    margin:  0 auto;
 }
 
-A {
-    color: #FFFFFF;
-}
-A:hover {
-    color: #FFFFFF;
-}
-* {
-    margin: 0;
-    padding: 0;
-}
+
 
 .menu {
 
-
-
     background-color: #577594;
+    margin: 0 auto;
 
 }
 
@@ -44,7 +35,6 @@ A:hover {
     list-style-type: none;
     color: #fff;
     padding: 15px;
-
     font-family: 'Ubuntu', sans-serif;
 
 
@@ -62,13 +52,18 @@ A:hover {
     color: #eee;
     transition: .5s;
 }
+
+#menu__list-login {
+
+    border-left: 1px solid rgba(255,255,255,.15);
+}
 .menu__search {
     border: 0;
     background: #305076
     url(https://vk.com/images/svg_icons/ic_head_loupe.svg) no-repeat;
     border-radius: 14px;
     padding: 6px 6px 6px 19px;
-    margin: 7px 0;
+   // margin: 7px 0;
     width: 230px;
     height: 28px;
     line-height: 16px;
@@ -87,55 +82,87 @@ A:hover {
 input[name="search"].menu__search::-webkit-input-placeholder {
     color: #6785a4;
 }
-.side-bar {
 
-    width: 250px;
-    margin: 0;
-    height: auto;
-    padding: 5px;
-    float: right;
-}
 .left-bar {
-    background-color: #FFFFFF;
-    margin: 5px;
-    width: auto;
-    padding: 5px;
+
+
+
+
+}
+.left-bar__menu {
+    color: #61788f;
+    text-align: left;
     font-family: 'Ubuntu', sans-serif;
-    border-radius: 4px;
-    height: auto;
-    border: 1px solid rgba(155,155,155,.5);
+
+
 }
 
  .left-bar__list {
-     display: block;
-     color: #0f0f0f;
+
      list-style-type: none;
-     padding: 25px;
-     margin: 5px;
+     text-align: left;
+
+     padding: 5px 12px 5px 12px;
+     margin-bottom: 5px;
+    transition: .25s;
+     width: auto;
+
+}
+.left-bar__list:hover,.right-bar__list:hover {
+    background-color: #d5d7d8;
+    transition: .25s;
+}
+.left-bar__menu a,.right-bar__menu a  {
+    color: #61788f;
+}
+.grid {
+    display: grid;
+    margin:  0 auto;
+    width: 1200px;
+    /*свойство для колонок*/
+    grid-template-columns: 2fr 7fr 250px;
+}
+.right-bar {
+    padding: 12px;
+    margin-left: 10px;
+    background-color: #FFFFFF;
+    text-align: left;
+}
+.right-bar__menu {
+    color: #61788f;
+
+    font-family: 'Ubuntu', sans-serif;
 
 
 }
 
- .container {
-     padding: 20px;
+.right-bar__list {
+    display: block;
+    list-style-type: none;
+    text-align: left;
 
- }
+    padding: 5px 12px 5px 12px;
+    margin-bottom: 5px;
+
+    width: auto;
+
+}
+.center {
+
+
+}
 .article__date {
     color: #444;
     font-weight: bolder;
     font-family: 'Garamond', sans-serif;
 }
 .article {
-     display: block;
-     width: 320px;
-    margin: 5px;
-     max-width: 320px;
-     padding: 16px;
-    color: #0f0f0f;
-    /*color: rgba(255, 255,255, 0.75);*/
+
+
+     width: auto;
+     padding: 25px;
+     color: #0f0f0f;
      background-color: #fff;
-    /*background-image:  url("http://i1-news.softpedia-static.com/images/news2/Ubuntu-9-04-Has-a-Brand-New-Wallpaper-4.png");*/
-    background-size: cover;
      border-radius: 4px;
      border: 1px solid rgba(155,155,155,.5);
  }

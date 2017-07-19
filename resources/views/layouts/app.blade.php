@@ -58,28 +58,55 @@
 @endif
     @if(!Auth::guest())
 
-        <a href="{{route('Author')}}"><li class="menu__list" style="float: right; margin-right: 75px;"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</li></a>
+        <a href="{{route('Author')}}"><li class="menu__list" id="menu__list-login"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</li></a>
 
 @endif
 {{--<input type="text" name="search" class="menu__search" placeholder="Поиск пользователей">--}}
 </ul>
 
 </header>
-<aside class="side-bar">
+
+<div class="grid">
     <div class="left-bar">
-        <ul>
-            <li class="left-bar__list button button-primary"><span class="glyphicon glyphicon-user"></span> Друзья <span class="badge badge-default">1</span></li>
-            <li class="left-bar__list button button-success"><span class="glyphicon glyphicon-envelope"></span>  Сообщения <span class="badge badge-default">1</span></li>
-            <li class="left-bar__list button button-info"><span class="glyphicon glyphicon-list-alt"></span> Мои статьи <span class="badge badge-default">1</span></li>
-            <li class="left-bar__list button button-dark"><span class="glyphicon glyphicon-cog"></span> Мои настройки</li>
-            <li class="left-bar__list button button-static"><span class="glyphicon glyphicon-star"></span> Избранное</li>
-        </ul>
+        <div class="left-bar__menu">
+            <ul>
+                <li class="left-bar__list"><span class="glyphicon glyphicon-home"></span> Моя страница</li>
+                <li class="left-bar__list"><span class="glyphicon glyphicon-user"></span> Список друзей</li>
+                <li class="left-bar__list"><span class="glyphicon glyphicon-envelope"></span>  Сообщения</li>
+                <a href="{{route('home')}}"><li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li></a>
+                <li class="left-bar__list"><span class="glyphicon glyphicon-bullhorn"></span>  Новости</li>
+                <li class="left-bar__list"><span class="glyphicon glyphicon-star"></span>  Избранное</li>
+            </ul>
+
+
+
+        </div>
+
+        <hr style="margin-left: 25px; margin-right: 25px;">
+
+    </div>
+<div class="center">
+
+    @yield('content')
+
+</div>
+    <div class="right-bar">
+        <aside class="right-bar__menu">
+            <ul>
+                <a href="{{route('user')}}">
+                    <li class="right-bar__list"><span class="glyphicon glyphicon-list-alt"> Пользователи</span></li>
+                </a>
+
+            </ul>
+
+
+
+        </aside>
+
+        <hr style="margin-left: 25px; margin-right: 25px;">
+
     </div>
 
-
-</aside>
-<div class="container">
-@yield('content')
 </div>
 </body>
 <!-- Scripts -->

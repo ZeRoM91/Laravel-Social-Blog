@@ -45,41 +45,41 @@
                                 @endforeach
 
                             @endif
-<p>Текущий голос:   {{$vote['vote']}}</p>
+
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
 
                             @if($article['rating']  > 0)
-                            <span><b>Рейтинг статьи: <span class="badge badge-success">+{{$article['rating']}}</span> </b></span>
+                            <span><b>Рейтинг статьи: <span class="label label-success">+{{$article['rating']}}</span> </b></span>
                             @endif
                             @if($article['rating'] < 0)
-                                <span><b>Рейтинг статьи: <span class="badge badge-danger">{{$article['rating']}}</span> </b></span>
+                                <span><b>Рейтинг статьи: <span class="label label-danger">{{$article['rating']}}</span> </b></span>
                             @endif
                             @if($article['rating'] == 0)
-                                <span><b>Рейтинг статьи: <span class="badge badge-static">{{$article['rating']}}</span> </b></span>
+                                <span><b>Рейтинг статьи: <span class="label label-default">{{$article['rating']}}</span> </b></span>
                             @endif
                                 @if(Auth::user()->id != $article['user_id'])
 
                                     @if($vote['vote'] === NULL)
                                         <div class="btn-group" role="group" aria-label="...">
-                                            <a href="{{route('upRating',['id' => $article->id])}}" ><button class="button button-success">+</button></a>
-                                            <a href="{{route('downRating',['id' => $article->id])}}" ><button class="button button-danger">-</button></a>
+                                            <a href="{{route('upRating',['id' => $article->id])}}" ><button class="btn btn-success">+</button></a>
+                                            <a href="{{route('downRating',['id' => $article->id])}}" ><button class="btn btn-danger">-</button></a>
                                         </div>
                                     @endif
 
                                     @if($vote['vote'] === 1)
                                             <div class="btn-group" role="group" aria-label="...">
-                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="button button-primary" title="Отменить голос">Отменить</a>
-                                        <a class="button button-danger" disabled>-</a>
+                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="btn btn-primary" title="Отменить голос">Отменить</a>
+                                        <a class="btn btn-danger" disabled>-</a>
                                             </div>
 
                                     @endif
 
                                     @if($vote['vote'] === 0)
                                             <div class="btn-group" role="group" aria-label="...">
-                                        <a class="button button-success" disabled>+</a>
-                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="button button-primary" title="Отменить голос">Отменить</a>
+                                        <a class="btn btn-success" disabled>+</a>
+                                        <a href="{{route('resetRating',['id' => $article->id])}}"  class="btn btn-primary" title="Отменить голос">Отменить</a>
                                             </div>
 
                                     @endif
@@ -97,8 +97,8 @@
                             @if(Auth::user()->id == $article['user_id'])
 
                                 <p>Панель управления:</p>
-                                <a href="{{route('editArticle',['id' => $article->id])}}"><button class="button button-primary">Редактировать</button></a>
-                                <button class="button button-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
+                                <a href="{{route('editArticle',['id' => $article->id])}}"><button class="btn btn-primary">Редактировать</button></a>
+                                <button class="btn btn-danger" id="article__delete" data-toggle="modal" data-target="#myModal">Удалить</button>
 
                             @endif</div>
 
@@ -109,7 +109,7 @@
                             <input type="hidden" name="article_id" value="{{$article->id}}" >
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
                             <textarea class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
-                            <input type="submit" class="button button-accent" value="Отправить">
+                            <input type="submit" class="btn btn-success" value="Отправить">
 
                         </form>
 
@@ -133,23 +133,23 @@
         @if(Auth::user()->id != $comment['user_id'])
         @if($vote['vote'] === NULL)
             <div class="btn-group" role="group" aria-label="...">
-                <a href="{{route('upComment',['id' => $comment->id])}}" ><button class="badge badge-success">+</button></a>
-                <a href="{{route('downComment',['id' => $comment->id])}}" ><button class="badge badge-danger">-</button></a>
+                <a href="{{route('upComment',['id' => $comment->id])}}" ><button class="label label-success">+</button></a>
+                <a href="{{route('downComment',['id' => $comment->id])}}" ><button class="label label-danger">-</button></a>
             </div>
         @endif
 
         @if($vote['vote'] === 1)
             <div class="btn-group" role="group" aria-label="...">
-                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="badge badge-primary" title="Отменить голос">Отменить</a>
-                <a class="badge badge-danger" disabled>-</a>
+                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="label label-primary" title="Отменить голос">Отменить</a>
+                <a class="label label-danger" disabled>-</a>
             </div>
 
         @endif
 
         @if($vote['vote'] === 0)
             <div class="btn-group" role="group" aria-label="...">
-                <a class="badge badge-success" disabled>+</a>
-                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="badge badge-primary" title="Отменить голос">Отменить</a>
+                <a class="label label-success" disabled>+</a>
+                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="label label-primary" title="Отменить голос">Отменить</a>
             </div>
 
         @endif

@@ -31,12 +31,12 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
 @foreach($outcomings as $outcoming)
-          <button class="button button-accent"> <span class="glyphicon glyphicon-user"> {{$outcoming -> name}}</span></button> <span class="label label-default">Ожидание</span>
+          <button class="btn btn-info"> <span class="glyphicon glyphicon-user"> {{$outcoming -> name}}</span></button> <span class="label label-default">Ожидание</span>
     @endforeach
         </div>
         <div role="tabpanel" class="tab-pane" id="profile">
             @foreach($incomings as $incoming)
-                <button class="button button-accent"> <span class="glyphicon glyphicon-user"> {{$incoming ->name}}</span></button>
+                <button class="btn btn-warning"> <span class="glyphicon glyphicon-user"> {{$incoming ->name}}</span></button>
 
                 <a href="{{route('user__friend-accept', ['id' => $incoming -> id])}}"><button class="button button-success">Принять</button></a>
                 <button class="button button-danger">Отклонить</button>
@@ -45,7 +45,7 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="messages">
             @foreach($friends as $friend)
-                <button class="button button-accent"> <span class="glyphicon glyphicon-success"> {{$friend -> name}}</span></button>
+                <button class="btn btn-primary"> <span class="glyphicon glyphicon-success"> {{$friend -> name}}</span></button>
 
                 <a href="{{route('user__friend-decline', ['id' => $friend -> id])}}"><button class="button button-danger">Удалить из друзей</button></a>
             @endforeach

@@ -60,7 +60,9 @@ class LkAuthorController extends Controller
 
 
 
-        return view('profile', compact('user', 'auth', 'friends','outcomings','incomings'));
+
+dd($messages);
+        return view('profile', compact('user', 'auth', 'friends','outcomings','incomings','messages'));
 
 
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Friend;
-
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -96,4 +96,31 @@ class LkAuthorController extends Controller
     }
 
 
+    public function friend_decline(Request $request, $id)
+    {
+        $this->validate($request, [
+            'id' => 'exists:users'
+        ]);
+
+        auth('web')->user()->sendFriend()->detach($id);
+
+
+        \DB::table('friends')->where('from_user_id', $id)->delete();
+
+
+        return redirect()->route('Author');
+    }
+
+    public function message__send(Request $request, $id)
+    {
+        $this->validate($request, [
+            'id' => 'exists:users'
+        ]);
+
+        auth('web')->user()-> sendMessage()->where('to_user_id', $id)->attach($id, ['message' => Input::get('message3')]);
+
+
+
+        return redirect()->route('Author');
+    }
 }

@@ -46,6 +46,8 @@
         <div role="tabpanel" class="tab-pane" id="messages">
             @foreach($friends as $friend)
                 <button class="button button-accent"> <span class="glyphicon glyphicon-success"> {{$friend -> name}}</span></button>
+
+                <a href="{{route('user__friend-decline', ['id' => $friend -> id])}}"><button class="button button-danger">Удалить из друзей</button></a>
             @endforeach
         </div>
 
@@ -90,6 +92,10 @@
                                 </table>
                             </div>
                             <div class="panel-footer"><?php echo $articles->render(); ?></div>
+
+
+
+
                         </div>
 
 @endsection

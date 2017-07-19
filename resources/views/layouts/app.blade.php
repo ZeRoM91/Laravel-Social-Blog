@@ -68,9 +68,9 @@
 <aside class="side-bar">
     <div class="left-bar">
         <ul>
-            <li class="left-bar__list button button-primary"><span class="glyphicon glyphicon-user"></span> Друзья <span class="badge badge-default">0</span></li>
-            <li class="left-bar__list button button-success"><span class="glyphicon glyphicon-envelope"></span>  Сообщения</li>
-            <li class="left-bar__list button button-info"><span class="glyphicon glyphicon-list-alt"></span> Мои статьи</li>
+            <li class="left-bar__list button button-primary"><span class="glyphicon glyphicon-user"></span> Друзья <span class="badge badge-default">1</span></li>
+            <li class="left-bar__list button button-success"><span class="glyphicon glyphicon-envelope"></span>  Сообщения <span class="badge badge-default">1</span></li>
+            <li class="left-bar__list button button-info"><span class="glyphicon glyphicon-list-alt"></span> Мои статьи <span class="badge badge-default">1</span></li>
             <li class="left-bar__list button button-dark"><span class="glyphicon glyphicon-cog"></span> Мои настройки</li>
             <li class="left-bar__list button button-static"><span class="glyphicon glyphicon-star"></span> Избранное</li>
         </ul>

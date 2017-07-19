@@ -84,6 +84,9 @@ Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lk
 
 Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'lkAuthorController@friend_accept']);
 
+Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'lkAuthorController@friend_decline']);
+
+Route::post('/user/{id}', ['as' => 'user__message-send', 'uses' => 'lkAuthorController@message__send']);
 
 #FAQ
 Route::get('/faq', ['as' => 'faq', 'uses' => 'IndexController@faq']);

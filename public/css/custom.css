@@ -51,6 +51,11 @@ A:hover {
 
 }
 
+.message-box {
+
+
+}
+
 .menu__list:hover {
     background: #495e74;
 
@@ -148,3 +153,6 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 .article__title {
     font-family: 'Playfair Display', sans-serif;
 }
+
+
+

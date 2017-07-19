@@ -41,16 +41,28 @@ class User extends Authenticatable
     public function votes() {
         return $this->hasMany(Rating::class);
     }
-    // Связь с моделью Друзья, т.к. у пользователей могут быть друзья
-    public function friends() {
-        return $this->hasMany(Friend::class,'from_user_id');
+
+
+
+
+
+    public function sendFriend()
+    {
+        return $this->belongsToMany(User::class, 'friends', 'from_user_id', 'to_user_id');
+
     }
-    // Связь с моделью Сообщения, т.к. у пользователей могут быть друзья
-    public function messages() {
-        return $this->hasMany(Message::class,'from_user_id');
+    public function friends() {
+        return $this->belongsToMany(User::class,'friends', 'from_user_id', 'to_user_id')
+                    ->wherePivot('status', true);
     }
 
-//    public function roles() {
-//        return $this->belongsToMany(Role::class);
-//    }
+    public function incomingRequests() {
+        return $this->belongsToMany(User::class,'friends', 'to_user_id', 'from_user_id')
+                    ->wherePivot('status', false);
+    }
+
+    public function outcomingRequests() {
+        return $this->belongsToMany(User::class,'friends', 'from_user_id', 'to_user_id')
+                    ->wherePivot('status', false);
+    }
 }

@@ -14,7 +14,7 @@
 
 
 # Главная страница
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->middleware('auth');
 
 # Роут для авторизации
 Route::auth();
@@ -80,6 +80,10 @@ Route::get('/user', ['as' => 'user', 'uses' => 'lkAuthorController@user']);
 
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@profile']);
 
-Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lkAuthorController@friend']);
+Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lkAuthorController@friend__send']);
+
+Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'lkAuthorController@friend_accept']);
+
+
 #FAQ
 Route::get('/faq', ['as' => 'faq', 'uses' => 'IndexController@faq']);

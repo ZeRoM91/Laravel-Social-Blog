@@ -14,13 +14,12 @@ class CreateFriendUserTable extends Migration
     public function up()
     {
 
-        Schema::create('friend_user', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('friend_id');
-            $table->boolean('status');
-            $table->timestamps();
-        });
+//        Schema::create('friend_user', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->integer('user_id');
+//            $table->integer('friend_id');
+//            $table->timestamps();
+//        });
 
     }
 

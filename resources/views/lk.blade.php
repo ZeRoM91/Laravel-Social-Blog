@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <script>
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
     <img src="http://findicons.com/files/icons/61/dragon_soft/256/user.png" alt="..." class="img-thumbnail">
 <p>Заменить аватар</p>
     <input type="file">
@@ -10,8 +15,44 @@
 
                         <p>Ваш email: {{Auth::user()->email}}</p>
                         <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
+Тест: <br>
 
-    <h2>Список друзей</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Заявки в друзья</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Запросы в друзья</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Мои друзья</a></li>
+
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+@foreach($outcomings as $outcoming)
+          <button class="button button-accent"> <span class="glyphicon glyphicon-user"> {{$outcoming -> name}}</span></button> <span class="label label-default">Ожидание</span>
+    @endforeach
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+            @foreach($incomings as $incoming)
+                <button class="button button-accent"> <span class="glyphicon glyphicon-user"> {{$incoming ->name}}</span></button>
+
+                <a href="{{route('user__friend-accept', ['id' => $incoming -> id])}}"><button class="button button-success">Принять</button></a>
+                <button class="button button-danger">Отклонить</button>
+
+            @endforeach
+        </div>
+        <div role="tabpanel" class="tab-pane" id="messages">
+            @foreach($friends as $friend)
+                <button class="button button-accent"> <span class="glyphicon glyphicon-success"> {{$friend -> name}}</span></button>
+            @endforeach
+        </div>
+
+    </div>
+
+    </div>
+    </div>
 
 
                 <p><b>Список ваших статей</b></p>

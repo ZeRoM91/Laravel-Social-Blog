@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
@@ -13,5 +14,15 @@ class Message extends Model
     // Обратная связь с моделяю Юзер, т.к. комментарий оставляется пользователем
     public function userName() {
         return $this->belongsTo(User::class, 'from_user_id');
+    }
+
+    public function userFrom()
+    {
+        return $this->belongsTo(User::class, 'from_user_id');
+    }
+
+    public function userTo()
+    {
+        return $this->belongsTo(User::class, 'to_user_id');
     }
 }

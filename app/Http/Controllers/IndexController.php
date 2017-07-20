@@ -46,4 +46,9 @@ class IndexController extends Controller
         return view('left-bar.friends',compact('friends'));
     }
 
+
+    public function news() {
+        return view('header.news');
+    }
+
 }

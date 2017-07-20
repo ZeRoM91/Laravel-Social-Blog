@@ -22,9 +22,23 @@
         <div class="panel-body">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Заявки в друзья</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Запросы в друзья</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Мои друзья</a></li>
+        <li role="presentation" class="active">
+            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Заявки в друзья
+                <span class="badge">{{$outcomings -> count()}} </span>
+            </a>
+
+        </li>
+        <li role="presentation">
+            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Запросы в друзья
+                <span class="badge">{{$incomings -> count()}} </span>
+            </a>
+
+        </li>
+        <li role="presentation">
+            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Мои друзья
+                <span class="badge"> {{$friends -> count()}}</span>
+               </a>
+        </li>
 
     </ul>
 

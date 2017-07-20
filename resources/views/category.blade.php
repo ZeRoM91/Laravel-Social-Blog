@@ -26,29 +26,33 @@
 
 
     @foreach($articles as $article)
-
         <div class="panel panel-default">
             <div class="panel-body">
 
 
-                <a href="{{route('user__profile', ['id' => $article->author])}}"><span class="glyphicon glyphicon-user">{{$article ->author['name']}}</span></a>
+                <a href="{{route('user__profile', ['id' => $article->author])}}"><span class="glyphicon glyphicon-user"> {{$article ->author['name']}}</span></a>
                 <span class="glyphicon glyphicon-time" style="color:#dd873c;"></span><span class="article__date">{{$article['created_at']}}</span>
-                <span class="glyphicon glyphicon-tag" style="color:#c9ad69;"></span>
-                <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
-                    <span class="label label-default">{{$article->category['name']}}</span>
-                </a>
+
+
 
                 <a href="{{ route('article', ['id' => $article['id']]) }}"><p class="article__title"><b>{{$article['title']}}</b></p></a>
-
+                <br>
+                <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
+                    <span class="label label-danger"><span class="glyphicon glyphicon-tag"></span>{{$article->category['name']}}</span>
+                </a>
 
             </div>
             <div class="panel-footer">
 
-                <span class="glyphicon glyphicon-eye-open" style="color: #61788f;"></span><span> {{$article ->views}}</span>
-                <span class="glyphicon glyphicon-heart" style="color: #61788f;"></span><span> {{$article ->rating}}</span>
-                <span class="glyphicon glyphicon-comment" style="color: #61788f;"></span><span> {{$article ->comment->count()}}</span>
+                <span class="glyphicon glyphicon-eye-open" style="color: #61788f;">{{$article ->views}}</span>
+                <span class="glyphicon glyphicon-heart" style="color: #61788f;">{{$article ->rating}}</span>
+                <span class="glyphicon glyphicon-comment" style="color: #61788f;">{{$article ->comment->count()}}</span>
             </div>
         </div>
+
+
+
+
 
     @endforeach
 

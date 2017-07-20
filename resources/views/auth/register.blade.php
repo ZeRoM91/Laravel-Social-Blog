@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -37,7 +37,33 @@
                                 @endif
                             </div>
                         </div>
+                        {{--<div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">--}}
+                            {{--<label for="firstname" class="col-md-4 control-label">Имя</label>--}}
 
+                            {{--<div class="col-md-6">--}}
+                                {{--<input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}" required autofocus>--}}
+
+                                {{--@if ($errors->has('firstname'))--}}
+                                    {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('firstname') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+
+                        {{--<div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">--}}
+                            {{--<label for="lastname" class="col-md-4 control-label">Фамилия</label>--}}
+
+                            {{--<div class="col-md-6">--}}
+                                {{--<input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required autofocus>--}}
+
+                                {{--@if ($errors->has('lastname'))--}}
+                                    {{--<span class="help-block">--}}
+                                        {{--<strong>{{ $errors->first('lastname') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Пароль</label>
 
@@ -72,5 +98,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection

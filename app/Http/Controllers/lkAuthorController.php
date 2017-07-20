@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Friend;
+use App\Models\Message;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\User;
@@ -59,10 +60,15 @@ class LkAuthorController extends Controller
         $incomings = $auth ->incomingRequests;
 
 
+       // $messages = $auth ->incomingMessages;
+
+        $messages = $auth->messages->where('to_user_id',$id);
+
+        $messages_in = $user->messages->where('to_user_id',$auth -> id);
 
 
-dd($messages);
-        return view('profile', compact('user', 'auth', 'friends','outcomings','incomings','messages'));
+
+        return view('profile', compact('user', 'auth', 'friends','outcomings','incomings','messages','messages_in','sorted'));
 
 
     }
@@ -115,14 +121,23 @@ dd($messages);
 
     public function message__send(Request $request, $id)
     {
-        $this->validate($request, [
-            'id' => 'exists:users'
+        $auth = auth('web')->user();
+
+        $user = User::find($id);
+
+
+        // Создание комментария для статьи
+        $message = Message::create([
+            'from_user_id' => $auth -> id,
+            'to_user_id'    => $user -> id,
+            'message'    => Input::get('message3')
         ]);
 
-        auth('web')->user()-> sendMessage()->where('to_user_id', $id)->attach($id, ['message' => Input::get('message3')]);
+
+       // auth('web')->user()-> messages()->where('to_user_id', $id)->attach($id, ['message' => Input::get('message3')]);
 
 
 
-        return redirect()->route('Author');
+        return redirect()->route('user__profile', ['id' => $user->id]);
     }
 }

@@ -34,4 +34,16 @@ class IndexController extends Controller
 
         return view('faq');
     }
+
+    public function friends() {
+        $auth = auth('web')->user();
+
+
+
+
+        $friends = $auth->friends;
+
+        return view('left-bar.friends',compact('friends'));
+    }
+
 }

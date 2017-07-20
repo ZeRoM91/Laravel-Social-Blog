@@ -1,22 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="box">
     <script>
         $('#myTabs a').click(function (e) {
             e.preventDefault()
             $(this).tab('show')
         })
     </script>
-    <img src="http://findicons.com/files/icons/61/dragon_soft/256/user.png" alt="..." class="img-thumbnail">
+
 <p>Заменить аватар</p>
     <input type="file">
                         <p><b>Данные пользователя</b>
                         <p>Ваш логин: {{Auth::user()->name}}</p>
-
+                       <p>Имя: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
                         <p>Ваш email: {{Auth::user()->email}}</p>
                         <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
 Тест: <br>
-
+<div class="wall">
     <div class="panel panel-default">
         <div class="panel-body">
     <!-- Nav tabs -->
@@ -47,7 +48,7 @@
             @foreach($friends as $friend)
                 <button class="btn btn-primary"> <span class="glyphicon glyphicon-success"> {{$friend -> name}}</span></button>
 
-                <a href="{{route('user__friend-decline', ['id' => $friend -> id])}}"><button class="button button-danger">Удалить из друзей</button></a>
+                <a href="{{route('user__friend-decline', ['id' => $friend -> id])}}"><button class="btn btn-danger">Удалить из друзей</button></a>
             @endforeach
         </div>
 
@@ -55,7 +56,7 @@
 
     </div>
     </div>
-
+</div>
 
                 <p><b>Список ваших статей</b></p>
                         <div class="panel panel-default">
@@ -97,5 +98,5 @@
 
 
                         </div>
-
+    </div>
 @endsection

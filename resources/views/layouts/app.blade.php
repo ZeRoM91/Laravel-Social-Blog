@@ -17,7 +17,7 @@
     <link href="{{ asset('css/morphine.min.css') }}" rel="stylesheet">
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" defer></script>
 
 
     <!-- Fonts -->
@@ -71,7 +71,7 @@
         <div class="left-bar__menu">
             <ul>
                 <li class="left-bar__list"><span class="glyphicon glyphicon-home"></span> Моя страница</li>
-                <li class="left-bar__list"><span class="glyphicon glyphicon-user"></span> Список друзей</li>
+                <a href="{{route('friends')}}"><li class="left-bar__list"><span class="glyphicon glyphicon-user"></span> Список друзей</li></a>
                 <li class="left-bar__list"><span class="glyphicon glyphicon-envelope"></span>  Сообщения</li>
                 <a href="{{route('home')}}"><li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li></a>
                 <li class="left-bar__list"><span class="glyphicon glyphicon-bullhorn"></span>  Новости</li>

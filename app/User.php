@@ -33,17 +33,16 @@ class User extends Authenticatable
     ];
 
     // Связь с моделью Статья, т.к. пользователь может быть автором 1..n статей
-    public function articles() {
+    public function articles()
+    {
         return $this->hasMany(Article::class);
     }
 
     // Связь с моделью Рейтинг, т.к. пользователь может оставлять рейтинг к статьям
-    public function votes() {
+    public function votes()
+    {
         return $this->hasMany(Rating::class);
     }
-
-
-
 
 
     public function sendFriend()
@@ -51,25 +50,29 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'friends', 'from_user_id', 'to_user_id');
 
     }
-    public function friends() {
-        return $this->belongsToMany(User::class,'friends', 'from_user_id', 'to_user_id')
-                    ->wherePivot('status', true);
-    }
 
-    public function incomingRequests() {
-        return $this->belongsToMany(User::class,'friends', 'to_user_id', 'from_user_id')
-                    ->wherePivot('status', false);
-    }
-
-    public function outcomingRequests() {
-        return $this->belongsToMany(User::class,'friends', 'from_user_id', 'to_user_id')
-                    ->wherePivot('status', false);
-    }
-
-
-    public function sendMessage()
+    public function friends()
     {
-        return $this->belongsToMany(User::class, 'messages', 'from_user_id', 'to_user_id');
-
+        return $this->belongsToMany(User::class, 'friends', 'from_user_id', 'to_user_id')
+            ->wherePivot('status', true);
     }
+
+    public function incomingRequests()
+    {
+        return $this->belongsToMany(User::class, 'friends', 'to_user_id', 'from_user_id')
+            ->wherePivot('status', false);
+    }
+
+    public function outcomingRequests()
+    {
+        return $this->belongsToMany(User::class, 'friends', 'from_user_id', 'to_user_id')
+            ->wherePivot('status', false);
+    }
+
+// Связь с моделью Сообщение, т.к. пользователь может отправлять много сообщений
+    public function messages()
+    {
+        return $this->hasMany(Message::class,'from_user_id');
+    }
+
 }

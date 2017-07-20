@@ -90,3 +90,9 @@ Route::post('/user/{id}', ['as' => 'user__message-send', 'uses' => 'lkAuthorCont
 
 #FAQ
 Route::get('/faq', ['as' => 'faq', 'uses' => 'IndexController@faq']);
+
+# Вывод списка друзей
+
+Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);
+
+

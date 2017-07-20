@@ -120,17 +120,14 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     margin:  0 auto;
     width: 1200px;
     /*свойство для колонок*/
-    grid-template-columns: 2fr 7fr 250px;
+    grid-template-columns: 1fr 4fr 1fr;
 }
 .right-bar {
-    padding: 12px;
-    margin-left: 10px;
-    background-color: #FFFFFF;
-    text-align: left;
+
 }
 .right-bar__menu {
     color: #61788f;
-
+    text-align: left;
     font-family: 'Ubuntu', sans-serif;
 
 
@@ -140,10 +137,8 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     display: block;
     list-style-type: none;
     text-align: left;
-
     padding: 5px 12px 5px 12px;
     margin-bottom: 5px;
-
     width: auto;
 
 }
@@ -182,4 +177,48 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 }
 
 
+.box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(155,155,155,.5);
+}
 
+.message-box {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: scroll;
+
+
+}
+.message-time {
+    color: #666;
+    font-size: 10px;
+}
+.message__to {
+    display: block;
+    width: 200px;
+    margin: 5px;
+    margin-left: 65%;
+    word-wrap: break-word;
+
+    background-color: #d9dcdd;
+    padding: 5px;
+    border-radius: 4px;
+    color: #333;
+    border: 1px solid rgba(155,155,195,.5);
+
+}
+
+.message__from {
+    display: block;
+    margin: 5px;
+    width: 200px;
+    word-wrap: break-word;
+
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    color: #444;
+    border: 1px solid rgba(155,155,155,.5);
+}

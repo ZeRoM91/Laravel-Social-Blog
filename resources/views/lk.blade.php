@@ -1,23 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="box">
-    <script>
-        $('#myTabs a').click(function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-        })
-    </script>
+    <div class="lk">
 
+
+        <div class="grid__block">
+            <img src="http://www.atiras.co/file/2014/07/user_user_icon_user_png_flat_icon_web_icon_png_circle_icon-440x440.png" alt="" height="150">
 <p>Заменить аватар</p>
     <input type="file">
-                        <p><b>Данные пользователя</b>
-                        <p>Ваш логин: {{Auth::user()->name}}</p>
-                       <p>Имя: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
-                        <p>Ваш email: {{Auth::user()->email}}</p>
-                        <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
-Тест: <br>
-<div class="wall">
+
+
+        </div>
+
+        <div class="grid__block">
+
+            <p><b>Данные пользователя</b>
+            <p>Ваш логин: {{Auth::user()->name}}</p>
+            <p>Имя: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+            <p>Ваш email: {{Auth::user()->email}}</p>
+            <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
+            Тест: <br>
+        </div>
+<div class="grid__block lk__block-tab">
     <div class="panel panel-default">
         <div class="panel-body">
     <!-- Nav tabs -->
@@ -71,12 +75,13 @@
     </div>
     </div>
 </div>
-
+        <div class="grid__block"></div>
+<div class="grid__block">
                 <p><b>Список ваших статей</b></p>
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <table class="table table-condensed">
-                                    <tr class="info">
+                                    <tr class="danger">
                                         <td>ID статьи</td>
                                         <td>Название статьи</td>
                                         <td>Дата создания</td>
@@ -97,20 +102,24 @@
                                             <td class="active" ><span><b>{{$article['created_at']}}.</b></span></td>
                                         </tr>
 
-
-
-
-
-
-
                                     @endforeach
                                 </table>
                             </div>
-                            <div class="panel-footer"><?php echo $articles->render(); ?></div>
+                            <div class="panel-footer">
 
+                                <?php echo $articles->render(); ?></div>
 
+                        </div>
 
 
                         </div>
     </div>
+
+
+    <script>
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
 @endsection

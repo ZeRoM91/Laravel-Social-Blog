@@ -1,46 +1,37 @@
 @extends('layouts.app')
-
 @section('content')
 
+<div class="user">
 
 
 
+   <div class="grid__block">
+
+       <img src="http://www.atiras.co/file/2014/07/user_user_icon_user_png_flat_icon_web_icon_png_circle_icon-440x440.png" alt="" height="150">
 
 
-        <table class="table table-bordered">
-
-        </table>
-
+   </div>
+    <div class="grid__block">
 
 
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><h2>Список пользователей</h2></div>
+        <p><b>Данные пользователя</b>
+        <p> логин:</p>
+        <p>Имя:</p>
+        <p> email: </p>
+        <p>Аккаунт создан: </p>
+        Тест: <br>
 
-
-
-        <table class="table table-hover">
-            <thead class="active">
-                <th>ID</th>
-                <th>Пользователь</th>
-                <th>Участник с:</th>
-                <th>Статус</th>
-
-            </thead>
-            @foreach($users as $user)
-                <tr>
-                    <td>{{$user->id}}</td>
-                    <td><a href="{{route('user__profile',['id' => $user->id])}}">{{$user->name}}</a></td>
-                    <td>{{$user->created_at}}</td>
-                    @if($user->remember_token != NULL)
-                    <td class="text-success">Онлайн</td>
-                    @else
-                    <td class="text-danger">Оффлайн</td>
-                        @endif
-
-                </tr>
-            @endforeach
-        </table>
     </div>
+    <div class="grid__block lk__block-tab">
+        Список друзей
+
+    </div>
+
+    <div class="grid__block"></div>
+
+    <div class="grid__block"></div>
+
+</div>
+
 
 @endsection

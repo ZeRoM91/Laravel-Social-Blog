@@ -33,14 +33,14 @@ class LkAuthorController extends Controller
         return view('lk', compact('articles', 'friends','outcomings','incomings'));
     }
 
-    public function user()
+    public function users()
     {
 
         $users = User::all();
-        return view('user', compact('users'));
+        return view('users', compact('users'));
     }
 
-    public function profile($id)
+    public function user($id)
     {
 
         $user = User::find($id);
@@ -48,7 +48,7 @@ class LkAuthorController extends Controller
 
 
         $auth = auth('web')->user();
-
+      //  $messages_unread = $auth->messages->where('status', false);
 
 
 
@@ -68,7 +68,7 @@ class LkAuthorController extends Controller
 
 
 
-        return view('profile', compact('user', 'auth', 'friends','outcomings','incomings','messages','messages_in','sorted'));
+        return view('user', compact('user', 'auth', 'friends','outcomings','incomings','messages','messages_in'));
 
 
     }
@@ -130,8 +130,10 @@ class LkAuthorController extends Controller
         $message = Message::create([
             'from_user_id' => $auth -> id,
             'to_user_id'    => $user -> id,
-            'message'    => Input::get('message3')
+            'message'    => Input::get('message3'),
+            'status' => false
         ]);
+
 
 
        // auth('web')->user()-> messages()->where('to_user_id', $id)->attach($id, ['message' => Input::get('message3')]);

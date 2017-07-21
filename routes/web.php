@@ -26,7 +26,15 @@ Route::get('/news', ['as' => 'news', 'uses' => 'IndexController@news']);
 Route::get('/faq', ['as' => 'faq', 'uses' => 'IndexController@faq']);
 
 
+/*
+ * Left-bar
+ */
 
+# Непрочитанные сообщения
+Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages']);
+
+# Переписка с пользователем по id
+Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'IndexController@messages__user']);
 
 # Роут для авторизации
 Route::auth();
@@ -90,10 +98,10 @@ Route::get('/admin/categories', ['as' => 'admin__categories', 'uses' => 'IndexCo
  */
 
 # Вывод всех пользователей
-Route::get('/user', ['as' => 'user', 'uses' => 'lkAuthorController@user']);
+Route::get('/users', ['as' => 'user', 'uses' => 'lkAuthorController@users']);
 
 # Вывод пользователя по id
-Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@profile']);
+Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@user']);
 
 # Запрос на добавление/принятия/удаления в друзья
 Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lkAuthorController@friend__send']);
@@ -101,7 +109,7 @@ Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' =>
 Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'lkAuthorController@friend_decline']);
 
 # Отправка сообщения
-Route::post('/user/{id}', ['as' => 'user__message-send', 'uses' => 'lkAuthorController@message__send']);
+//Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'lkAuthorController@message__send']);
 
 
 

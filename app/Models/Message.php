@@ -9,12 +9,10 @@ class Message extends Model
 {
     //
     protected $guarded = ['id'];
-    protected $fillable = ['from_user_id', 'to_user_id', 'message'];
+    protected $fillable = ['from_user_id', 'to_user_id', 'message','status'];
 
     // Обратная связь с моделяю Юзер, т.к. комментарий оставляется пользователем
-    public function userName() {
-        return $this->belongsTo(User::class, 'from_user_id');
-    }
+
 
     public function userFrom()
     {
@@ -25,4 +23,12 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'to_user_id');
     }
+
+    public function scopeUnread($query)
+    {
+        return $query->where('status', false);
+    }
+
+
+
 }

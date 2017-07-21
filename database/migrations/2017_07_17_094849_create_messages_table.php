@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->integer('from_user_id');
             $table->integer('to_user_id');
             $table->string('message');
-            $table->boolean('status')->nullable(); //заглушка
+            $table->boolean('status');
             $table->timestamps();
         });
     }

@@ -41,11 +41,6 @@ body {
 
 }
 
-.message-box {
-
-
-}
-
 .menu__list:hover {
     background: #495e74;
 
@@ -86,8 +81,6 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 .left-bar {
 
 
-
-
 }
 .left-bar__menu {
     color: #61788f;
@@ -120,32 +113,34 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     margin:  0 auto;
     width: 1200px;
     /*свойство для колонок*/
-    grid-template-columns: 1fr 4fr 1fr;
-}
-.right-bar {
-
-}
-.right-bar__menu {
-    color: #61788f;
-    text-align: left;
-    font-family: 'Ubuntu', sans-serif;
-
-
+    grid-template-columns: 1fr 4fr;
 }
 
-.right-bar__list {
-    display: block;
-    list-style-type: none;
-    text-align: left;
-    padding: 5px 12px 5px 12px;
-    margin-bottom: 5px;
-    width: auto;
+.lk,.user {
+    display: grid;
+    margin:  0 auto;
+    grid-gap: 10px;
+    /*свойство для колонок*/
+    grid-template-columns: 2fr 3fr;
+}
+
+
+
+.messages__friends {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px;
 
 }
-.center {
 
-
+.messages__user {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(325px 1fr) 150px;
 }
+
 .article__date {
     color: #666;
 
@@ -188,14 +183,19 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     grid-template: 150px 250px 150px / 1fr 1fr 1fr;
     grid-gap: 10px;
 }
+.home {
+    display: grid;
+    grid-template: 150px 150px 150px / 4fr 3fr 3fr;
+    grid-gap: 10px;
+}
 
-.main__block {
+
+.grid__block {
     display: inline-block;
     background-color: #f7f7f7;
     border: 1px solid rgba(155,155,155,.5);
-
     padding: 25px;
-
+    width: auto;
 }
 
 .main__block-header {
@@ -209,12 +209,27 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     grid-row: 3;
     grid-column: 1 / 4;
 }
+
+
+.lk__block-tab {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+}
+.main__block-left-bar {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+}
+.main__block-footer {
+    grid-row: 3;
+    grid-column: 1 / 4;
+}
+
 .message-box {
     padding: 20px;
-    max-height: 400px;
+    background-color: #d9edf7;
     overflow-y: scroll;
-
-
+    min-height: 300px;
+    max-height: 300px;
 }
 .message-time {
     color: #666;

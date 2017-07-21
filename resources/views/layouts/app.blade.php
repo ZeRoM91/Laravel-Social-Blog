@@ -81,12 +81,23 @@
                     <li class="left-bar__list"><span class="glyphicon glyphicon-home"></span> Моя страница</li>
                 </a>
                 <a href="{{route('friends')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-user"></span> Список друзей
-                        <span class="label label-default">0</span></li>
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-user"></span> Мои друзья
+                        @if($friend)
+                            <span class="label label-default">{{$friend}}</span></li>
+                    @else
+
+                    @endif
                 </a>
+                <a href="{{route('messages')}}">
                 <li class="left-bar__list">
                     <span class="glyphicon glyphicon-envelope"></span>  Сообщения
-                    <span class="label label-default">0</span></li>
+
+                    @if($message)
+                    <span class="label label-default">{{$message}}</span></li>
+                    @else
+
+                    @endif
+                </a>
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
@@ -102,29 +113,12 @@
         @endif
     </div>
 
-<div class="center">
+<div class="root">
 
     @yield('content')
 
 </div>
 
-    <div class="right-bar">
-        @if(!Auth::guest())
-        <aside class="right-bar__menu">
-            <ul>
-                <a href="{{route('user')}}">
-                    <li class="right-bar__list"><span class="glyphicon glyphicon-list-alt"> Пользователи</span></li>
-                </a>
-
-            </ul>
-
-
-
-        </aside>
-
-        <hr style="margin-left: 25px; margin-right: 25px;">
-        @endif
-    </div>
 
 </div>
 </body>

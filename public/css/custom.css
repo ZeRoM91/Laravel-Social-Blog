@@ -75,7 +75,7 @@ body {
     color: #0f0f0f;
 }
 input[name="search"].menu__search::-webkit-input-placeholder {
-    color: #6785a4;
+    color: #f5e79e;
 }
 
 .left-bar {
@@ -255,10 +255,19 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     margin: 5px;
     width: 200px;
     word-wrap: break-word;
-
     background-color: #fff;
     padding: 5px;
     border-radius: 4px;
     color: #444;
     border: 1px solid rgba(155,155,155,.5);
+}
+
+#user__img {
+    background-color: #fff;
+    margin: 15px;
+    border: 1px solid rgba(155,155,155,.5);
+    padding: 15px;
+    border-radius: 4px;
+
+
 }

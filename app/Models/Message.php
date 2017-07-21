@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    //
     protected $guarded = ['id'];
-    protected $fillable = ['from_user_id', 'to_user_id', 'message','status'];
 
     // Обратная связь с моделяю Юзер, т.к. комментарий оставляется пользователем
 

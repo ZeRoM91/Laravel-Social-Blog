@@ -79,4 +79,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class,'to_user_id');
     }
+
+    public function scopeHasMessages($query)
+    {
+        return $query->whereHas('messages');
+    }
 }

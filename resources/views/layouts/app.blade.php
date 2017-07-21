@@ -15,7 +15,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/morphine.min.css') }}" rel="stylesheet">
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" defer></script>
@@ -65,7 +65,11 @@
         <a href="{{route('Author')}}"><li class="menu__list" id="menu__list-login"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</li></a>
 
 @endif
-{{--<input type="text" name="search" class="menu__search" placeholder="Поиск пользователей">--}}
+        <form action="{{route('searchUsers')}}" method="post" style="padding: 0; margin: 0; display: inline-block;">
+
+           {{csrf_field()}}
+<input type="text" name="searchUser" class="menu__search" placeholder="Поиск пользователей">
+        </form>
     @endif
 </ul>
 

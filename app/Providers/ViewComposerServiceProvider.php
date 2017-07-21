@@ -21,6 +21,7 @@ class ViewComposerServiceProvider extends ServiceProvider
             if(!is_null($user)) {
                 $view->with('message', $user->messagesTo()->unread()->count());
                 $view->with('friend', $user->incomingRequests()->count());
+                $view->with('auth', $user);
             }
         });
     }

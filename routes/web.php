@@ -16,6 +16,9 @@
 # Главная страница
 Route::get('/', 'IndexController@index')->middleware('auth');
 
+
+Route::post('/', ['as' => 'searchUsers', 'uses' => 'IndexController@searchUsers']);
+
 # Вывод списка статей
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
@@ -35,7 +38,8 @@ Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages
 
 # Переписка с пользователем по id
 Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'IndexController@messages__user']);
-
+# Отправка сообщения
+Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'lkAuthorController@message__send']);
 # Роут для авторизации
 Route::auth();
 
@@ -97,8 +101,7 @@ Route::get('/admin/categories', ['as' => 'admin__categories', 'uses' => 'IndexCo
  * Пользователи
  */
 
-# Вывод всех пользователей
-Route::get('/users', ['as' => 'user', 'uses' => 'lkAuthorController@users']);
+
 
 # Вывод пользователя по id
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@user']);
@@ -108,8 +111,7 @@ Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lk
 Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'lkAuthorController@friend_accept']);
 Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'lkAuthorController@friend_decline']);
 
-# Отправка сообщения
-//Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'lkAuthorController@message__send']);
+
 
 
 

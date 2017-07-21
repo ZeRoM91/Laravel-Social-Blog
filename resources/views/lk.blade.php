@@ -5,9 +5,9 @@
 
 
         <div class="grid__block">
-            <img src="http://www.atiras.co/file/2014/07/user_user_icon_user_png_flat_icon_web_icon_png_circle_icon-440x440.png" alt="" height="150">
-<p>Заменить аватар</p>
-    <input type="file">
+            <img id="user__img" src="http://www.atiras.co/file/2014/07/user_user_icon_user_png_flat_icon_web_icon_png_circle_icon-440x440.png" alt="" height="150">
+<button class="btn btn-default">Редактировать фото</button>
+
 
 
         </div>

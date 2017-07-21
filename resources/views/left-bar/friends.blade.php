@@ -6,7 +6,7 @@
             <div class="panel-body">
 
                 <p>Пользователь <b>{{$friend -> name}}</b> хочет добавить вас в друзья</p>
-                <a href="{{route('user__send-friend', ['id' => $friend->id])}}">
+                <a href="{{route('user__friend-accept', ['id' => $friend->id])}}">
                     <button class="btn btn-success">Добавить в друзья</button>
                 </a>
                 <a href="{{route('user__friend-decline', ['id' => $friend->id])}}">

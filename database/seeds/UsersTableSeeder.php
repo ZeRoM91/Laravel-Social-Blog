@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('123123'),
                 'firstname' => 'Админ',
                 'lastname' => 'Админыч',
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => '2017-07-12 10:00:00',
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             [
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
                 'firstname' => 'Дмитрий',
                 'lastname' => 'Доронин',
                 'password' => bcrypt('123123'),
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => '2017-07-13 10:00:00',
                 'updated_at' => date("Y-m-d H:i:s")
             ],
                 ]

@@ -17,9 +17,9 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->default('1');
             $table->integer('tag_id')->nullable();
-            $table->string('title','128');
-            $table->string('text','4096');
-            $table->integer('user_id')->nullable();
+            $table->string('title','256');
+            $table->string('text','9000');
+            $table->integer('user_id');
             $table->integer('views')->default('0');
             $table->integer('rating')->default('0');
             $table->timestamps();

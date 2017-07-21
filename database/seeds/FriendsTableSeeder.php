@@ -20,14 +20,14 @@ class FriendsTableSeeder extends Seeder
                 'from_user_id' => 1,
                 'to_user_id' => 2,
                 'status' => true,
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => '2017-07-17 10:00:00',
 
             ],
             [
                 'from_user_id' => 2,
                 'to_user_id' => 1,
                 'status' => true,
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => '2017-07-17 10:00:00',
 
             ],
             ]

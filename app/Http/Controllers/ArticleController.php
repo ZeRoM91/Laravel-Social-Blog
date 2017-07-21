@@ -5,7 +5,6 @@ use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller
@@ -15,22 +14,17 @@ class ArticleController extends Controller
     {
         // Фильтр поиска статьи по id
         $article = Article::find($id);
-
         // если это авторская статья то дополнительно выводим его другие статьи
         // Выводим так: Ищем автора статьи -> у автора находим другие статьи -> выводим
         // все кроме этой -> но не более 3.
         $articles = $article->author->articles->where('id', '<>', $article->id)->take(3);
-
         // Выгрузка статуса голоса пользователя для текущей статьи
         $user = auth('web')->user();
         $vote = $user->votes()->where('article_id', $id)->first();
-
         // Выводим все комментарии по id статьи
         $comments = $article->comment;
-
-
+        // Увеличиваем просмотры статьи на единицу
         $article -> views++;
-
         $article->save();
         return view('article', compact('articles', 'comments', 'article', 'vote'));
 
@@ -41,10 +35,8 @@ class ArticleController extends Controller
     public function form()
     {
         $categories = Category::all();
-
         return view('form',compact('categories'));
     }
-
     # Создание новой статьи
     public function create(ArticleFormRequest $request)
     {
@@ -52,36 +44,30 @@ class ArticleController extends Controller
         $article = Article::create($request->except('_token'));
         return redirect()->route('article', ['id' => $article->id]);
     }
-
     # Удаление статьи по id
     public function delete($id)
     {
         // Фильтр поиска статьи по id
         $article = Article::find($id);
-
         // Если авторизованный пользователь и есть автор
         if (auth()->user()->id == $article->user_id) {
             $delete__article = Article::find($id);
             $delete__article->delete();
             return redirect()->route('home');
         }
-
         // Иначе возвращаем исключение
         else {
             return "У вас нет прав на удаление статьи";
         }
     }
-
     # Редактирование текущей статьи
     public function edit($id)
     {
         // Фильтр поиска статьи по id
         $article = Article::find($id);
         $categories = Category::all();
-
         // Если авторизованный пользователь и есть автор
         if (auth()->user()->id == $article->user_id) {
-
             // Выводим форму для редактирования
             return view('form', compact('article','categories'));
         }
@@ -90,7 +76,6 @@ class ArticleController extends Controller
             return "У вас нет прав на редактирование статьи";
         }
     }
-
     # Форма редактирования статьи по id
     public function update(ArticleFormRequest $request, $id)
     {
@@ -107,7 +92,6 @@ class ArticleController extends Controller
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);
     }
-
     # Вывод комментариев к статье
     public function add_comment($id)
     {
@@ -169,7 +153,6 @@ class ArticleController extends Controller
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);
     }
-
     public function resetRating($id)
     {
         $article = Article::find($id);
@@ -189,7 +172,6 @@ class ArticleController extends Controller
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);
     }
-
     public function upComment($id)
     {
         // Фильтр поиска статьи по id
@@ -240,7 +222,6 @@ class ArticleController extends Controller
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $comment->article_id]);
     }
-
     public function resetComment($id)
     {
         $comment = Comment::find($id);

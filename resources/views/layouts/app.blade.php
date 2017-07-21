@@ -86,21 +86,29 @@
                 </a>
                 <a href="{{route('friends')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-user"></span> Мои друзья
-                        @if($friend)
-                            <span class="label label-default">{{$friend}}</span></li>
+                        @if($friendCount)
+                            <span class="label label-default">{{$friendCount}}</span>
+
+
+
                     @else
 
                     @endif
+                    </li>
                 </a>
                 <a href="{{route('messages')}}">
                 <li class="left-bar__list">
                     <span class="glyphicon glyphicon-envelope"></span>  Сообщения
+                    @if($messageCount)
+                    <span class="label label-default">
 
-                    @if($message)
-                    <span class="label label-default">{{$message}}</span></li>
+                        {{$messageCount}}
+
+                    </span>
                     @else
 
                     @endif
+                </li>
                 </a>
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>

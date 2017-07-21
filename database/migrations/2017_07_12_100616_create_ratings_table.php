@@ -18,7 +18,7 @@ class CreateRatingsTable extends Migration
             $table->increments('id');
             $table->integer('article_id')->nullable();
             $table->integer('comment_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id');
             $table->boolean('vote')->nullable();
             $table->timestamps();
         });

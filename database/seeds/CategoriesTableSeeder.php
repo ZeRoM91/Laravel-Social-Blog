@@ -25,6 +25,7 @@ class CategoriesTableSeeder extends Seeder
             ['name' => 'JS'],
             ['name' => 'PHP'],
             ['name' => 'SQL'],
+            ['name' => 'Laravel'],
         ]
         );
     }

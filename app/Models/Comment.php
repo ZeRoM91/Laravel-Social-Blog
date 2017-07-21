@@ -20,7 +20,6 @@ class Comment extends Model
     public function articleName() {
         return $this->belongsTo(Article::class, 'article_id');
     }
-
     public function ratings() {
         return $this->morphMany(Rating::class,'rating');
     }

@@ -87,7 +87,6 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     text-align: left;
     font-family: 'Ubuntu', sans-serif;
 
-
 }
 
  .left-bar__list {
@@ -121,10 +120,8 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     margin:  0 auto;
     grid-gap: 10px;
     /*свойство для колонок*/
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 3fr;
 }
-
-
 
 .messages__friends {
     display: grid;
@@ -268,6 +265,4 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     border: 1px solid rgba(155,155,155,.5);
     padding: 15px;
     border-radius: 4px;
-
-
 }

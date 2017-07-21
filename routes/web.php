@@ -101,8 +101,6 @@ Route::get('/admin/categories', ['as' => 'admin__categories', 'uses' => 'IndexCo
  * Пользователи
  */
 
-
-
 # Вывод пользователя по id
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@user']);
 
@@ -110,10 +108,6 @@ Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController
 Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lkAuthorController@friend__send']);
 Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'lkAuthorController@friend_accept']);
 Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'lkAuthorController@friend_decline']);
-
-
-
-
 
 # Вывод списка друзей
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);

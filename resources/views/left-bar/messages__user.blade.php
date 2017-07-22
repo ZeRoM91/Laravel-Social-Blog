@@ -27,10 +27,20 @@
     </div>
                                     <hr>
     @else
+
+    @if($message-> status == true)
                                         <div class="message__to">
                                             <p class="message__time">{{$message->created_at}}</p>
                                             <p class="message__time">{{$message->message}}</p>
                                         </div>
+                                        @else
+                                        <div class="message__to">
+
+                                            <p class="message__time">{{$message->created_at}}</p>
+                                            <p class="message__time">{{$message->message}}</p>
+                                               <span><i>(Не прочитано)</i></span>
+                                        </div>
+                                            @endif
                                     @endif
 
 

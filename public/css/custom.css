@@ -248,7 +248,6 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     margin: 5px;
     margin-left: 65%;
     word-wrap: break-word;
-
     background-color: #d7ebf6;
     padding: 5px;
     border-radius: 4px;

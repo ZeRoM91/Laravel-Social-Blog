@@ -7,14 +7,15 @@
             <div class="grid__block">
 
                <p>{{$friend->name}}</p>
+                <hr>
                 <a href="{{ route('messages__user' ,['id' => $friend->id])}}">
                 @if($friend->messages()->orderBy('created_at', 'desc')->first()->status == false)
 
-                <p class="alert alert-success"><strong>{{ $friend->messages()->orderBy('created_at', 'desc')->first()->message }}</strong></p>
+                <p class="alert alert-success"><strong>{{ str_limit($friend->messages()->orderBy('created_at', 'desc')->first()->message, $limit = 32, $end = '...') }}</strong></p>
 
                     @else
 
-                    <p class="alert alert-info">{{ $friend->messages()->orderBy('created_at', 'desc')->first()->message }}</p>
+                    <p style="color:#666;"><i>{{ str_limit($friend->messages()->orderBy('created_at', 'desc')->first()->message, $limit = 32, $end = '...') }}</i></p>
 
 
 @endif

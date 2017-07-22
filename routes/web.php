@@ -39,7 +39,7 @@ Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages
 # Переписка с пользователем по id
 Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'IndexController@messages__user']);
 # Отправка сообщения
-Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'lkAuthorController@message__send']);
+Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserController@message__send']);
 # Роут для авторизации
 Route::auth();
 
@@ -63,7 +63,7 @@ Route::get('/article', ['as' => 'formArticle', 'uses' => 'ArticleController@form
 Route::post('/article', ['as' => 'create', 'uses' => 'ArticleController@create']);
 
 # Личный кабинет
-Route::get('/lk', ['as' => 'Author', 'uses' => 'lkAuthorController@show']);
+Route::get('/lk', ['as' => 'Author', 'uses' => 'UserController@show']);
 
 # Путь для статьи по id
 Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@show']);
@@ -102,12 +102,12 @@ Route::get('/admin/categories', ['as' => 'admin__categories', 'uses' => 'IndexCo
  */
 
 # Вывод пользователя по id
-Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'lkAuthorController@user']);
+Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'UserController@user']);
 
 # Запрос на добавление/принятия/удаления в друзья
-Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'lkAuthorController@friend__send']);
-Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'lkAuthorController@friend_accept']);
-Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'lkAuthorController@friend_decline']);
+Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'UserController@friend__send']);
+Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'UserController@friend_accept']);
+Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'UserController@friend_decline']);
 
 # Вывод списка друзей
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);

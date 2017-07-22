@@ -7,6 +7,12 @@ use App\Models\Message;
 use Illuminate\Support\Facades\Input;
 class IndexController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
         return view('index', compact('articles','authors','category'));
     }

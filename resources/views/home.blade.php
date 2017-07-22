@@ -33,12 +33,13 @@
 
 
 
-    <a href="{{route('user__profile', ['id' => $article->author])}}"><span class="glyphicon glyphicon-user"> {{$article ->author['name']}}</span></a>
-    <span class="glyphicon glyphicon-time" style="color:#dd873c;"></span><span class="article__date">{{$article['created_at']}}</span>
+
+    <span class="article__date">{{$article['created_at']}}</span>
 
 
 
     <a href="{{ route('article', ['id' => $article['id']]) }}"><p class="article__title"><b>{{$article['title']}}</b></p></a>
+            <p>{{str_limit($article['text'],$limit = 32, $end = '...')}}</p>
                                  <br>
                                  <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
                                      <span class="label label-danger"><span class="glyphicon glyphicon-tag"></span>{{$article->category['name']}}</span>
@@ -49,7 +50,8 @@
 
                                  <span class="glyphicon glyphicon-eye-open" style="color: #61788f;">{{$article ->views}}</span>
                                  <span class="glyphicon glyphicon-heart" style="color: #61788f;">{{$article ->rating}}</span>
-                                 <span class="glyphicon glyphicon-comment" style="color: #61788f;">{{$article ->comment->count()}}</span>
+                                 <span class="glyphicon glyphicon-comment" style="color: #61788f;">{{$article ->comment->count()}}</span><br>
+            <a href="{{route('user__profile', ['id' => $article->author])}}"><span class="glyphicon glyphicon-user">{{$article ->author['name']}}</span></a>
         </div>
 
 

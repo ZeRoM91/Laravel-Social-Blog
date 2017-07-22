@@ -8,8 +8,14 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\User;
 
-class LkAuthorController extends Controller
+class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     # Вывод личного кабинета
     public function show() {
         // Поиск пользователя по id

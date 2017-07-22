@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     # Вывод статьи по id
     public function show($id)
     {
@@ -57,7 +63,7 @@ class ArticleController extends Controller
         }
         // Иначе возвращаем исключение
         else {
-            return "У вас нет прав на удаление статьи";
+            return view('errors.access');
         }
     }
     # Редактирование текущей статьи
@@ -92,6 +98,8 @@ class ArticleController extends Controller
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);
     }
+
+
     # Вывод комментариев к статье
     public function add_comment($id)
     {

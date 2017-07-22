@@ -54,8 +54,7 @@ body {
 }
 .menu__search {
     border: 0;
-    background: #305076
-    url(https://vk.com/images/svg_icons/ic_head_loupe.svg) no-repeat;
+    background: #d5d7d8 url(https://vk.com/images/svg_icons/ic_head_loupe.svg) no-repeat;
     border-radius: 14px;
     padding: 6px 6px 6px 19px;
    // margin: 7px 0;
@@ -66,16 +65,17 @@ body {
 
     border-left: 8px solid transparent;
     background-position: left 8px;
-    color: #d9e2ec;
+    color: #666;
 }
 
 .menu__search:focus {
     outline: none;
-    background: #fff;
-    color: #0f0f0f;
+    background: #fff  url(https://vk.com/images/svg_icons/ic_head_loupe.svg) no-repeat;
+    color: #444;
+    background-position: left 8px;
 }
 input[name="search"].menu__search::-webkit-input-placeholder {
-    color: #f5e79e;
+    color: #666;
 }
 
 .left-bar {
@@ -141,6 +141,8 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 
 .article__date {
     color: #666;
+    font-size: 12px;
+    font-family: 'Ubuntu', sans-serif;
 
 
 }
@@ -183,10 +185,9 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 }
 .home {
     display: grid;
-    grid-template: 150px 150px 150px / 4fr 3fr 3fr;
+    grid-template: auto/ 1fr;
     grid-gap: 10px;
 }
-
 
 .grid__block {
     display: inline-block;

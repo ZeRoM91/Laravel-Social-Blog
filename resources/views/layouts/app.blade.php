@@ -29,15 +29,14 @@
 
 <header class="menu">
 <ul>
-
+    <a href="/">
+        <LI class="menu__list">
     <span class="glyphicon glyphicon-console" style="color: #fff; margin-left: 25px;"></span>
     <span style="color: #fff;"> IT-Blog</span>
+        </LI>
+    </a>
 
-    <a href="/"><li class="menu__list">Главная</li></a>
     @if(!Auth::guest())
-    <a href="{{route('home')}}"><li class="menu__list">Статьи</li></a>
-
-    <a href="{{route('news')}}"><li class="menu__list">Новости</li></a>
     <a href="{{route('faq')}}"><li class="menu__list">FAQ</li></a>
 @if(!Auth::guest())
 @if(Auth::user()->id == 1)
@@ -109,6 +108,10 @@
 
                     @endif
                 </li>
+                </a>
+
+                <a href="{{route('home')}}">
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-th-list"></span> Группы</li>
                 </a>
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>

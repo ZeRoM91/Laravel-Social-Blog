@@ -4,9 +4,11 @@
 
     <main class="main">
 
-<div class="grid__block main__block-header">Header
+<div class="grid__block main__block-header">
 
+    <h2>Привет, {{Auth::user()->name}}!</h2>
 
+    <hr>
 </div>
         <div class="grid__block main__block-left-bar">Left bar</div>
 

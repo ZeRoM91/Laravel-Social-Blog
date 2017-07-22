@@ -121,13 +121,14 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     grid-gap: 10px;
     /*свойство для колонок*/
     grid-template-columns: 1fr 3fr;
+    grid-template-rows: 250px;
 }
 
 .messages__friends {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100px;
+    grid-template-rows: auto;
 
 }
 
@@ -189,9 +190,9 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 
 .grid__block {
     display: inline-block;
-    background-color: #f7f7f7;
+    background-color: #fff;
     border: 1px solid rgba(155,155,155,.5);
-    padding: 25px;
+    padding: 12px 19px 12px 19px;
     width: auto;
 }
 
@@ -207,10 +208,18 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     grid-column: 1 / 4;
 }
 
-
+.lk__block-info {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+}
 .lk__block-tab {
     grid-column: 1 / 3;
-    grid-row: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+.lk__block-footer {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
 }
 .main__block-left-bar {
     grid-column: 3 / 4;
@@ -223,7 +232,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 
 .message-box {
     padding: 20px;
-    background-color: #d9edf7;
+    background-color: #f5f8fa;
     overflow-y: scroll;
     min-height: 300px;
     max-height: 300px;
@@ -234,12 +243,12 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 }
 .message__to {
     display: block;
-    width: 200px;
+    width: 250px;
     margin: 5px;
     margin-left: 65%;
     word-wrap: break-word;
 
-    background-color: #d9dcdd;
+    background-color: #d7ebf6;
     padding: 5px;
     border-radius: 4px;
     color: #333;
@@ -250,10 +259,10 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 .message__from {
     display: block;
     margin: 5px;
-    width: 200px;
+    width: 250px;
     word-wrap: break-word;
     background-color: #fff;
-    padding: 5px;
+    padding: 8px;
     border-radius: 4px;
     color: #444;
     border: 1px solid rgba(155,155,155,.5);
@@ -265,4 +274,41 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     border: 1px solid rgba(155,155,155,.5);
     padding: 15px;
     border-radius: 4px;
+}
+
+.lk__avatar {
+    background-image: url("http://xprezia.com/xprezia/images/user_female.png");
+    padding: 12px;
+    transition: .5s;
+    filter: grayscale(100%);
+
+}
+
+#photo {
+    opacity: .5;
+    color: #fff;
+    transition: .25s;
+}
+
+.lk__avatar:hover #photo {
+    opacity: 1;
+    transition: .25s;
+}
+#lk__avatar_hidden-text {
+    display: none;
+    transition: .5s;
+}
+#lk__avatar-icon {
+    transform: scale(1.53,1.53);
+    margin-right: 12px;
+    transition: .5s;
+}
+
+.lk__avatar:hover #lk__avatar-icon {
+    transform: scale(1.13,1.13);
+    transition: .5s;
+}
+.lk__avatar:hover #lk__avatar_hidden-text {
+    display: inline-block;
+    transition: .5s;
 }

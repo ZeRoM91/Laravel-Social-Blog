@@ -2,26 +2,43 @@
 @section('content')
 
 <div class="user">
-   <div class="grid__block">
-
-       <img id="user__img" src="http://www.atiras.co/file/2014/07/user_user_icon_user_png_flat_icon_web_icon_png_circle_icon-440x440.png" alt="" height="150">
-       <a href="{{route('user__send-friend', ['id' => $user->id])}}">
-<button class="btn btn-default">Добавить в друзья</button>
-       </a>
-   </div>
-    <div class="grid__block">
+    <div class="grid__block lk__avatar">
 
 
-        <p><b>Данные пользователя</b>
-        <p> логин:</p>
-        <p>Имя:</p>
-        <p> email: </p>
-        <p>Аккаунт создан: </p>
-        Тест: <br>
+            <span id="photo"> <span class="glyphicon glyphicon-camera" id="lk__avatar-icon"></span><span id="lk__avatar_hidden-text"> Редактировать фото</span>
+
+
 
     </div>
-    <div class="grid__block lk__block-tab">
-        Список друзей
+    <div class="grid__block lk__block-info">
+        <h3>{{Auth::user()->name}}</h3>
+        <span>Статус</span>
+        <hr>
+        <p>Имя: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+        <p>email: {{Auth::user()->email}}</p>
+
+
+    </div>
+    <div class="grid__block ">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-primary">Сообщение</button>
+            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-gift"></span></button>
+        </div>
+        <hr>
+
+        <!-- Single button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                У вас в друзьях <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
 
     </div>
 

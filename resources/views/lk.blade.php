@@ -4,22 +4,23 @@
     <div class="lk">
 
 
-        <div class="grid__block">
-            <img id="user__img" src="http://www.atiras.co/file/2014/07/user_user_icon_user_png_flat_icon_web_icon_png_circle_icon-440x440.png" alt="" height="150">
-<button class="btn btn-default">Редактировать фото</button>
+        <div class="grid__block lk__avatar">
+
+
+            <span id="photo"> <span class="glyphicon glyphicon-camera" id="lk__avatar-icon"></span><span id="lk__avatar_hidden-text"> Редактировать фото</span>
 
 
 
         </div>
 
-        <div class="grid__block">
-
-            <p><b>Данные пользователя</b>
-            <p>Ваш логин: {{Auth::user()->name}}</p>
+        <div class="grid__block lk__block-info">
+<h3>{{Auth::user()->name}}</h3>
+            <span>Статус</span>
+            <hr>
             <p>Имя: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
-            <p>Ваш email: {{Auth::user()->email}}</p>
-            <p>Аккаунт создан: {{Auth::user()->created_at}}</p>
-            Тест: <br>
+            <p>email: {{Auth::user()->email}}</p>
+
+
         </div>
 <div class="grid__block lk__block-tab">
     <div class="panel panel-default">
@@ -75,8 +76,12 @@
     </div>
     </div>
 </div>
-        <div class="grid__block"></div>
-<div class="grid__block">
+        <div class="grid__block ">
+
+            <button class="btn btn-default">Редактировать</button>
+
+        </div>
+<div class="grid__block lk__block-footer">
                 <p><b>Список ваших статей</b></p>
                         <div class="panel panel-default">
                             <div class="panel-body">

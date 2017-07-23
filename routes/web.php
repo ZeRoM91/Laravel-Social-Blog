@@ -114,6 +114,5 @@ Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends'])
 
 
 
-Route::get('/chat', function () {
-    return view('chat');
-});
+Route::get('/chat', ['as' => 'chat', 'uses' => 'ChatController@getIndex']);
+Route::post('/chat', ['as' => 'chat', 'uses' => 'ChatController@postMessage']);

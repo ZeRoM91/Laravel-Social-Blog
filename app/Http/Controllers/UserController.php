@@ -7,7 +7,7 @@ use App\Models\Message;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Events\ChatMessage;
 class UserController extends Controller
 {
 
@@ -74,7 +74,7 @@ class UserController extends Controller
             'message'    => Input::get('message3'),
             'status' => false
         ]);
-
+    event(new ChatMessage($message, $user));
         return redirect()->route('messages__user', ['id' => $user->id]);
     }
 }

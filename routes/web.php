@@ -113,3 +113,7 @@ Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' 
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);
 
 
+
+Route::get('/chat', function () {
+    return view('chat');
+});

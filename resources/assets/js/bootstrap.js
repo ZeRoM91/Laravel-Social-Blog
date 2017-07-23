@@ -50,5 +50,3 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });/**
- * Created by ЮКейСофт on 20.07.2017.
- */

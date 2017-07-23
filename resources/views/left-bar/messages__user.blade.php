@@ -3,7 +3,6 @@
 @section('content')
 
 
-
     <div class="messages__user">
 
 
@@ -77,7 +76,7 @@
 
     </div>
     </div>
-
+<script src="js/app.js"></script>
 
 
 @endsection

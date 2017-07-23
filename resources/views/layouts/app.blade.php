@@ -17,13 +17,9 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" defer></script>
-
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+ 
 </head>
 <body style="background-color: #e6e5e5;">
 
@@ -128,7 +124,7 @@
         @endif
     </div>
 
-<div class="root">
+<div class="root" id="root">
 
     @yield('content')
 
@@ -138,5 +134,4 @@
 </div>
 </body>
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
 </html>

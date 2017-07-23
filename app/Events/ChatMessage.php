@@ -18,11 +18,11 @@ class ChatMessage extends Event implements ShouldBroadcast
     /**
      * @var Message
      */
-    public $chatMessage;
+    public $message;
 
-    public function __construct(Message $chatMessage)
+    public function __construct(Message $message)
     {
-        $this->chatMessage = $chatMessage;
+        $this->message = $message;
     }
 
     /**
@@ -32,6 +32,6 @@ class ChatMessage extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel($this->chatMessage->userTo->id);
+        return new PrivateChannel('message_to', $this->message->userTo->id);
     }
 }

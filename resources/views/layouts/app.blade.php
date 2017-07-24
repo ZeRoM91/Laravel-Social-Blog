@@ -33,7 +33,7 @@
     </a>
 
     @if(!Auth::guest())
-    <a href="{{route('faq')}}"><li class="menu__list">FAQ</li></a>
+    <a href="{{route('faq')}}"><li class="menu__list">Помощь</li></a>
 @if(!Auth::guest())
 @if(Auth::user()->id == 1)
     <a href="{{route('admin')}}"><li class="menu__list">Админка</li></a>

@@ -89,13 +89,13 @@
 
             Echo.channel('user.private.{{ $user->id }}')
                 .listen('.user.message', function(e) {
-                   console.log(e);
+                    console.log(e);
                 });
 
             $('#send').click(function(e) {
                 var data = {
-                    "message": $('#message3').val(),
-                    "to_user_id": {{ $message->to_user_id }}
+                    "message": $('#message3').val()
+
                 };
 
                 $.post('', data, function(response) {

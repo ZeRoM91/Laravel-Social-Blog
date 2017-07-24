@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h2>FAQ</h2>
+    <h2>Помощь</h2>
     <hr>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
@@ -10,7 +10,7 @@
                 <h4 class="panel-title">
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
 
-                        Как создать статьи
+                        Общие вопросы
                     </a>
                 </h4>
             </div>
@@ -24,7 +24,7 @@
             <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Collapsible Group Item #2
+                        Личный кабинет
                     </a>
                 </h4>
             </div>
@@ -38,7 +38,7 @@
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Collapsible Group Item #3
+                        Задать вопрос
                     </a>
                 </h4>
             </div>

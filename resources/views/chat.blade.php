@@ -16,12 +16,12 @@
     </div>
     <hr>
     <form action="/chat" method="POST">
-        <input type="text" name="author">
-        <br>
-        <br>
-        {{ csrf_field() }}
 
+
+        {{ csrf_field() }}
+        <input type="hidden" name="author" value="{{Auth::user()->name}}">
         <textarea name="content" class="form-control" placeholder="Введите ваше сообщение" rows="4" style="resize: none"></textarea><br>
+
         <input type="submit" class="btn btn-success" value="Отправить">
     </form>
     <br>

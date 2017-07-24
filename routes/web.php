@@ -95,7 +95,7 @@ Route::get('/comment/{id}/resetcomment', ['as' => 'resetComment', 'uses' => 'Art
  */
 # Главная страница
 Route::get('/admin', ['as' => 'admin', 'uses' => 'IndexController@admin']);
-Route::get('/admin/categories', ['as' => 'admin__categories', 'uses' => 'IndexController@a']);
+//Route::get('/admin/categories', ['as' => 'admin__categories', 'uses' => 'IndexController@a']);
 
 /*
  * Пользователи
@@ -113,6 +113,5 @@ Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' 
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);
 
 
-
-Route::get('/chat', ['as' => 'chat', 'uses' => 'ChatController@getIndex']);
-Route::post('/chat', ['as' => 'chat', 'uses' => 'ChatController@postMessage']);
+Route::get('/chat', ['as' => 'chat', 'uses' => 'ChatController@getIndex'])->middleware('auth');
+Route::post('/chat', ['as' => 'chat', 'uses' => 'ChatController@postMessage'])->middleware('auth');

@@ -112,7 +112,9 @@
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
-                <li class="left-bar__list"><span class="glyphicon glyphicon-bullhorn"></span>  Новости</li>
+                <a href="{{route('chat')}}">
+                <li class="left-bar__list"><span class="glyphicon glyphicon-bullhorn"></span>  Чат</li>
+                </a>
                 <li class="left-bar__list"><span class="glyphicon glyphicon-star"></span>  Избранное</li>
             </ul>
 

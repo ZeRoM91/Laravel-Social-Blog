@@ -59,14 +59,14 @@
                     </div>
 
                     <div class="messages__write-block">
-                        <form   method="post">
+                        <form action="{{route('user__message-send',['id' => $user->id])}}"   method="post">
 
                             {{ csrf_field() }}
 
 
-                            <textarea type="text" name="message3" class="form-control" placeholder="Введите ваше сообщение" rows="4" style="resize: none"></textarea>                    </textarea>
+                            <textarea type="text" name="message" id="message3" class="form-control" placeholder="Введите ваше сообщение" rows="4" style="resize: none"></textarea>                    </textarea>
                             <br>
-                            <input type="submit" class="btn btn-success" value="Отправить">
+                            <input type="submit" class="btn btn-success" value="Отправить" id="send">
 
                         </form>
                     </div>
@@ -75,8 +75,36 @@
         </div>
 
     </div>
-    </div>
-<script src="js/app.js"></script>
 
 
+    <script
+            src="http://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+
+    @push('scripts')
+        <script>
+
+
+            Echo.channel('user.private.{{ $user->id }}')
+                .listen('.user.message', function(e) {
+                   console.log(e);
+                });
+
+            $('#send').click(function(e) {
+                var data = {
+                    "message": $('#message3').val(),
+                    "to_user_id": {{ $message->to_user_id }}
+                };
+
+                $.post('', data, function(response) {
+                    $('.message-box').append("<div class='message__to'>" + data.message + "</div>");
+                });
+
+                e.preventDefault()
+            });
+
+</script>
+    @endpush
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Chat;
+use App\Models\Message;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -18,11 +19,11 @@ class ChatMessage extends Event implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var Chat
+     * @var Message
      */
     public $message;
 
-    public function __construct(Chat $message)
+    public function __construct(Message $message)
     {
         $this->message = $message;
     }
@@ -34,13 +35,11 @@ class ChatMessage extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        //return new PrivateChannel('message_to', $this->message->userTo->id);
-        return ['chat'];
+        return new PrivateChannel('user.private.' . $this->message->userTo->id);
     }
 
     public function broadcastAs()
     {
-
-        return 'message';
+        return 'user.message';
     }
 }

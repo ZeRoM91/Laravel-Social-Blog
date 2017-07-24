@@ -71,10 +71,12 @@ class UserController extends Controller
         $message = Message::create([
             'from_user_id' => $auth -> id,
             'to_user_id'    => $user -> id,
-            'message'    => Input::get('message3'),
+           'message'    => $request->message,
             'status' => false
         ]);
-    event(new ChatMessage($message, $user));
-        return redirect()->route('messages__user', ['id' => $user->id]);
+
+
+        event(new ChatMessage($message));
+        //event(new ChatMessage($message));
     }
 }

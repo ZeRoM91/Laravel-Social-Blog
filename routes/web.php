@@ -112,6 +112,3 @@ Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' 
 # Вывод списка друзей
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);
 
-
-Route::get('/chat', ['as' => 'chat', 'uses' => 'ChatController@getIndex'])->middleware('auth');
-Route::post('/chat', ['as' => 'chat', 'uses' => 'ChatController@postMessage'])->middleware('auth');

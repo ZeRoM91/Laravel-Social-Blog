@@ -22,6 +22,7 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -29,6 +30,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 let token = document.head.querySelector('meta[name="csrf-token"]');
+
+window.$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': token.content
+    }
+});
 
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
@@ -42,11 +49,9 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo'
+import Echo from "laravel-echo";
 
-// window.Pusher = require('pusher-js');
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });/**
+window.Echo = new Echo({
+    broadcaster: 'socket.io',
+    host: window.location.hostname + ':6001'
+});

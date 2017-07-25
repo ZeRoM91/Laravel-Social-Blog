@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="messages__write-block">
-                        <form action="{{route('user__message-send',['id' => $user->id])}}"   method="post">
+                        <form   method="post">
 
                             {{ csrf_field() }}
 
@@ -76,11 +76,11 @@
 
     </div>
 
-
     <script
             src="http://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+
     <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
 
     @push('scripts')

@@ -46,6 +46,7 @@ class IndexController extends Controller
         $friends = auth('web')->user()->friends()->hasMessages()->get();
 
 
+
         return view('left-bar.messages', compact('friends'));
     }
     public function messages__user($id) {

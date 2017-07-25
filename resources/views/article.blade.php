@@ -103,13 +103,14 @@
                             @endif</div>
 
                         <p>Оставить комментарий:</p>
-                        <form action="{{route('addComment',['id' => $article->id])}}" method="post">
+                        {{--<form action="{{route('addComment',['id' => $article->id])}}" method="post">--}}
+                        <form method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="article_id" value="{{$article->id}}" >
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
-                            <textarea class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
-                            <input type="submit" class="btn btn-success" value="Отправить">
+                            <textarea id="comment" class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
+                            <input type="submit" class="btn btn-success" value="Отправить" id="send" >
 
                         </form>
 
@@ -117,10 +118,10 @@
 
 
                         <hr>
-
+<div id="comment-box">
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
-                            <span class="badge badge-private"><b>{{$comment->userName['name']}}</b></span><span>"{{$comment->comment}}"</span>
+                            <span class="badge badge-default"><b>{{$comment->userName['name']}}</b></span><span>"{{$comment->comment}}"</span>
         @if($comment['rating']  > 0)
            <span class="badge badge-success">+{{$comment['rating']}}</span>
         @endif
@@ -157,7 +158,35 @@
         @endif
                             <hr>
                         @endforeach
+                            <script src="http://code.jquery.com/jquery-3.2.1.min.js"
+                                    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                                    crossorigin="anonymous"></script>
+                            @push('scripts')
+                            <script>
+                                $('#myModal').on('shown.bs.modal', function () {
+                                    $('#myInput').focus()
+                                });
+
+
+                                $('#send').click(function(e) {
+                                    var data = {
+                                        "comment": $('#comment').val()
+
+                                    };
+
+                                    $.post('', data, function(response) {
+                                        $('#comment-box').append("<span>" + data.comment + "</span>");
+                                    });
+
+                                    e.preventDefault()
+                                });
+
+                            </script>
+
+                            @endpush
+                        @endsection
 <!--                     <?php //echo $comments->render(); ?>   -->
+</div>
 
                         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
                             <div class="modal-dialog modal-lg" role="document">
@@ -170,11 +199,6 @@
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            $('#myModal').on('shown.bs.modal', function () {
-                                $('#myInput').focus()
-                            })
-                        </script>
+
 </div>
 
-@endsection

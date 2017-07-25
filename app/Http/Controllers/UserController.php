@@ -17,7 +17,7 @@ class UserController extends Controller
     }
 
     # Вывод личного кабинета
-    public function show() {
+    public function personal() {
         // Поиск пользователя по id
         $user = auth('web')->user();
         // Добавляем список всех его статей с пагинацией
@@ -28,16 +28,14 @@ class UserController extends Controller
          return view('lk', compact('articles', 'friends','outcomings','incomings'));
     }
     public function user($id) {
+
         $user = User::find($id);
+
         $auth = auth('web')->user();
-      //  $messages_unread = $auth->messages->where('status', false);
-        $friends = $auth->friends;
-        $outcomings = $auth ->outcomingRequests;
-        $incomings = $auth ->incomingRequests;
-       // $messages = $auth ->incomingMessages;
-        $messages = $auth->messages->where('to_user_id',$id);
-        $messages_in = $user->messages->where('to_user_id',$auth -> id);
-        return view('user', compact('user', 'auth', 'friends','outcomings','incomings','messages','messages_in'));
+
+        $friend = $auth ->sendFriend()->where('to_user_id',$id)->with('pivot')->get();
+
+        return view('user', compact( 'user','friend'));
     }
     public function friend__send(Request $request, $id) {
         $this->validate($request, [

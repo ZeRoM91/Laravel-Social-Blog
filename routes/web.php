@@ -63,7 +63,7 @@ Route::get('/article', ['as' => 'formArticle', 'uses' => 'ArticleController@form
 Route::post('/article', ['as' => 'create', 'uses' => 'ArticleController@create']);
 
 # Личный кабинет
-Route::get('/lk', ['as' => 'Author', 'uses' => 'UserController@show']);
+Route::get('/lk', ['as' => 'Author', 'uses' => 'UserController@personal']);
 
 # Путь для статьи по id
 Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@show']);

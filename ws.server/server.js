@@ -10,12 +10,17 @@ var io = require('socket.io')(6001);
 var i = 1;
 io.on('connection', function(socket){
 
- console.log(i + ': Connection is established!');
-    i++;
-    socket.emit('.user.message', function (data) {
-        console.log('Push message: ' + data );
+ console.log('A user connected!');
+
+    // socket.emit('.user.message', function (data) {
+    //     console.log('Push message: ' + data );
+    // });
+    // socket.on('.user.message', function (data) {
+    //     console.log('Receive message: ' + data);
+    // });
+
+    socket.on('disconnect', function () {
+        console.log('A user disconnected');
     });
-    socket.on('.user.message', function (data) {
-        console.log('Receive message: ' + data);
-    });
+
 });

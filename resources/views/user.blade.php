@@ -26,6 +26,7 @@
         </div>
         <hr>
 
+        @if(isset($friend))
         <!-- Single button -->
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +40,7 @@
                 <li><a href="#">Separated link</a></li>
             </ul>
         </div>
-
+@endif
     </div>
 
     <div class="grid__block"></div>
@@ -47,6 +48,6 @@
     <div class="grid__block"></div>
 
 </div>
-
+<span>{{$friend -> pivot}}</span>
 
 @endsection

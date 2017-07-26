@@ -51,11 +51,11 @@
                     </a>
 
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer" style="color: #666; opacity: .75;">
 
-                    <span class="glyphicon glyphicon-eye-open" style="color: #61788f;">{{$article ->views}}</span>
-                    <span class="glyphicon glyphicon-heart" style="color: #61788f;">{{$article ->rating}}</span>
-                    <span class="glyphicon glyphicon-comment" style="color: #61788f;">{{$article ->comment->count()}}</span>
+                    <span class="glyphicon glyphicon-eye-open" ></span><span> {{$article ->views}}</span>
+                    <span class="glyphicon glyphicon-heart" ></span><span> {{$article ->rating}}</span>
+                    <span class="glyphicon glyphicon-comment" ></span><span> {{$article ->comment->count()}}</span>
                 </div>
             </div>
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\User;
 use App\Events\ChatMessage;
+use App\Events\EventName;
 class UserController extends Controller
 {
 
@@ -63,6 +64,8 @@ class UserController extends Controller
 
     public function message__send(Request $request, $id)
     {
+
+
         $auth = auth('web')->user();
         $user = User::find($id);
 
@@ -74,8 +77,9 @@ class UserController extends Controller
             'status' => false
         ]);
 
-      //event(new ChatMessage($message)); // Also tried this
-        return redirect()->back();
+      event(new ChatMessage($message)); // Also tried this
+        event(new EventName());
+
     }
 
 

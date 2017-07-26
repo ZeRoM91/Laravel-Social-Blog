@@ -15,6 +15,10 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/animation.css') }}" rel="stylesheet">
+
+
     <style src="{{ asset('js/jquery-3.2.1.js') }}" defer></style>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- Fonts -->
@@ -107,7 +111,7 @@
                 </a>
 
                 <a href="{{route('home')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-th-list"></span> Группы</li>
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-th-list"></span> Чат</li>
                 </a>
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
@@ -131,8 +135,36 @@
 
 
 </div>
+
+<p class="notification">
+
+
+</p>
 </body>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script>
+    var socket = io('http://localhost:3000');
+
+    socket.on("test-channel:App\\Events\\EventName", function(message){
+        // increase the power everytime we load test route
+
+        //$('.notification').text('Польователь' + message.data.user + 'Прислал вам сообщение')
+
+        var firstname = message.data.firstname;
+
+        var lastname = message.data.firstname;
+
+        var data = 'Пользователь ' + firstname + ' ' + lastname + ' прислал вам сообщение';
+
+        $('.notification').append(data).attr('class','alert').fadeOut(5000, function(){
+            $(this).remove()
+        });
+
+    });
+</script>
 </html>

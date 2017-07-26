@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Models\Message;
+
 use Illuminate\Support\Facades\Input;
 class IndexController extends Controller
 {
@@ -14,6 +15,7 @@ class IndexController extends Controller
     }
 
     public function index() {
+
         return view('index', compact('articles','authors','category'));
     }
     public function searchUsers() {
@@ -68,6 +70,11 @@ class IndexController extends Controller
         $messages = $messages->get();
 
          Message::where('to_user_id', $auth -> id) -> update(['status' => true]);
+
+
+
         return view('left-bar.messages__user', compact('user', 'friend','friends','messages'));
     }
+
+
 }

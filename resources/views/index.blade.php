@@ -11,9 +11,16 @@
     <hr>
 </div>
         <div class="grid__block main__block-left-bar">Left bar</div>
+        <div class="grid__block">
+            <h6>Пользователи на данной странице</h6>
 
-        <div class="grid__block"> Section</div>
+
+        </div>
         <div class="grid__block"> Section</div>
         <div class="grid__block main__block-footer">Footer</div>
     </main>
+
+
+
+
 @endsection

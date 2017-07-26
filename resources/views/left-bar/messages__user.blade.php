@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="messages__write-block">
-                        {{--<form action="{{route('user__message-send',['id' => $user->id ])}}" method="post">--}}
+                     {{--   <form action="{{route('user__message-send',['id' => $user->id ])}}" method="post">--}}
                         <form method="post">
 
                             {{ csrf_field() }}
@@ -103,33 +103,35 @@
     </div>
 
 
-    {{--<script type="text/javascript" src="http://localhost:6001/socket.io/socket.io.js"></script>--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script>
 
-@push('scripts')
-        <script>
 
-            {{--$('#send').on('click', function () {--}}
-                {{--let message = $('#message3').val();--}}
+function addMessage(data) {
+    $("#send").click(function () {
+        $.ajax({
+            type: 'POST',
 
-                    {{--$.ajax({--}}
-                        {{--headers: {--}}
-                            {{--'X-CSRFToken': $('meta[name="token"]').attr('content')--}}
-                        {{--},--}}
-                        {{--url: '',--}}
-                        {{--type: 'POST',--}}
-                        {{--dataType: 'json',--}}
-                        {{--data: {message: message},--}}
+            data: {data: $('#message3').val()},
+            success: function(data){
+                $('.message-box').append('<div class="message__to"> data </div>');
+            }
+        });
 
-                    {{--});--}}
 
-            {{--});--}}
 
-            {{--Echo.channel('user.private.{{ $user->id }}')--}}
-                {{--.listen('.user.message', function(e) {--}}
-                    {{--console.log(e);--}}
-                   {{--$('.message-box').append(`<div class="message__to">test</div>`);--}}
-                {{--});--}}
+    });
+}
 
-</script>
-@endpush
+
+
+                var socket = io('http://localhost:6001');
+
+                socket.on('chat:message', function(data){
+
+                    addMessage(data);
+
+                });
+
+    </script>
 @endsection

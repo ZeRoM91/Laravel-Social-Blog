@@ -1,13 +1,22 @@
-var app = require('http').createServer();
-var io = require('socket.io')(6001);
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var Redis = require('ioredis');
+var redis = new Redis();
 
 
-io.on('connection', function(socket){
+// redis.subscribe('test-channel', function(err, count) {
+// });
 
- console.log('A user connected!');
+redis.psubscribe('*', function(err, count) {
+});
 
-    socket.on('disconnect', function () {
-        console.log('A user disconnected');
-    });
+redis.on('pmessage', function(pattern, channel, message) {
+    console.log('Message Recieved: ' + message);
+    message = JSON.parse(message);
+    io.emit(channel + ':' + message.event, message.data.message);
 
+});
+http.listen(6001, function(){
+    console.log('Listening on Port 6001');
 });

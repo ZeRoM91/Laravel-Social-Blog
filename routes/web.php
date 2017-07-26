@@ -112,3 +112,21 @@ Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' 
 # Вывод списка друзей
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);
 
+Route::get('/chat', ['as' => 'friends', 'uses' => 'IndexController@chat']);
+
+
+
+/*
+ *
+ */
+
+Route::get('fire', function () {
+    // this fires the event
+
+    return "event fired";
+});
+
+Route::get('test', function () {
+    // this checks for the event
+    return view('test');
+});

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Friend;
+
 use App\Models\Message;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class UserController extends Controller
 
         $auth = auth('web')->user();
 
-        $friend = $auth ->sendFriend()->where('to_user_id',$id)->with('pivot')->get();
+        $friend = $auth ->sendFriend()->where('to_user_id',$id);
 
         return view('user', compact( 'user','friend'));
     }
@@ -65,7 +65,8 @@ class UserController extends Controller
     {
         $auth = auth('web')->user();
         $user = User::find($id);
-        // Создание комментария для статьи
+
+
         $message = Message::create([
             'from_user_id' => $auth -> id,
             'to_user_id'    => $user -> id,
@@ -73,8 +74,9 @@ class UserController extends Controller
             'status' => false
         ]);
 
-
-        event(new ChatMessage($message));
-        //event(new ChatMessage($message));
+      //event(new ChatMessage($message)); // Also tried this
+        return redirect()->back();
     }
+
+
 }

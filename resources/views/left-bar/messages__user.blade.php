@@ -1,9 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     <div class="messages__user">
+    <div class="messages__friends">
+        @foreach($friends as $friend)
+            <div class="grid__block">
+                <a href="{{route('user__profile',['id' => $friend -> pivot -> to_user_id])}}">
+                    <p><b>{{$friend -> firstname}} {{$friend -> lastname}}</b></p>
+                </a>
+                <hr>
+                <a href="{{ route('messages__user' ,['id' => $friend->id])}}">
+                    @if($friend->messages()->orderBy('created_at', 'desc')->first()->status == false)
+                        <p class="alert alert-success"><strong>
+                                {{ str_limit($friend->messages()->orderBy('created_at', 'desc')->first()->message, $limit = 32, $end = '...') }}
+                            </strong></p>
+
+                    @else
+
+                        <p style="color:#666;"><i>{{ str_limit($friend->messages()->orderBy('created_at', 'desc')->first()->message, $limit = 32, $end = '...') }}</i></p>
+
+
+                    @endif
+                </a>
+            </div>
+
+        @endforeach
+    </div>
+
+
 
 
 
@@ -13,8 +37,7 @@
 
                     <div class="messages__write-block">
                         <div class="panel panel-default">
-
-                            <p>Чат с пользователем </p>
+                            <p><b>Чат с {{$friend -> firstname}} {{$friend -> lastname}}</b></p>
                             <div class="message-box">
 
 @foreach($messages as $message)
@@ -59,7 +82,8 @@
                     </div>
 
                     <div class="messages__write-block">
-                        <form   method="post">
+                        {{--<form action="{{route('user__message-send',['id' => $user->id ])}}" method="post">--}}
+                        <form method="post">
 
                             {{ csrf_field() }}
 
@@ -69,6 +93,8 @@
                             <input type="submit" class="btn btn-success" value="Отправить" id="send">
 
                         </form>
+
+
                     </div>
 
             </div>
@@ -76,35 +102,34 @@
 
     </div>
 
-    <script
-            src="http://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
 
-    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+    {{--<script type="text/javascript" src="http://localhost:6001/socket.io/socket.io.js"></script>--}}
 
-    @push('scripts')
+@push('scripts')
         <script>
 
+            {{--$('#send').on('click', function () {--}}
+                {{--let message = $('#message3').val();--}}
 
-            Echo.channel('user.private.{{ $user->id }}')
-                .listen('.user.message', function(e) {
-                    console.log(e);
-                });
+                    {{--$.ajax({--}}
+                        {{--headers: {--}}
+                            {{--'X-CSRFToken': $('meta[name="token"]').attr('content')--}}
+                        {{--},--}}
+                        {{--url: '',--}}
+                        {{--type: 'POST',--}}
+                        {{--dataType: 'json',--}}
+                        {{--data: {message: message},--}}
 
-            $('#send').click(function(e) {
-                var data = {
-                    "message": $('#message3').val()
+                    {{--});--}}
 
-                };
+            {{--});--}}
 
-                $.post('', data, function(response) {
-                    $('.message-box').append("<div class='message__to'>" + data.message + "</div>");
-                });
-
-                e.preventDefault()
-            });
+            {{--Echo.channel('user.private.{{ $user->id }}')--}}
+                {{--.listen('.user.message', function(e) {--}}
+                    {{--console.log(e);--}}
+                   {{--$('.message-box').append(`<div class="message__to">test</div>`);--}}
+                {{--});--}}
 
 </script>
-    @endpush
+@endpush
 @endsection

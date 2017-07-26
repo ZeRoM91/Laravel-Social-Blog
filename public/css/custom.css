@@ -125,18 +125,20 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 }
 
 .messages__friends {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid rgba(155,155,155,.5);
 
+    width: auto;
+    overflow-y: scroll;
 }
 
 .messages__user {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(325px 1fr) 150px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 500px;
+
 }
 
 .article__date {

@@ -49,11 +49,6 @@
                 <span class="glyphicon glyphicon-comment" style="color: #61788f;">{{$article ->comment->count()}}</span>
             </div>
         </div>
-
-
-
-
-
     @endforeach
 
 

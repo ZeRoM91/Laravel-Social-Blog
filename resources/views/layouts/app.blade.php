@@ -15,8 +15,8 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
-
+    <style src="{{ asset('js/jquery-3.2.1.js') }}" defer></style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
  

@@ -14,11 +14,10 @@
         </div>
 
         <div class="grid__block lk__block-info">
-<h3>{{Auth::user()->name}}</h3>
+<h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
             <span>Статус</span>
             <hr>
-            <p>Имя: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
-            <p>email: {{Auth::user()->email}}</p>
+
 
 
         </div>

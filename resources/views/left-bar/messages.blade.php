@@ -1,9 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <div class="messages__friends">
+    <div class="messages__user">
+        <div class="messages__friends">
         @foreach($friends as $friend)
             <div class="grid__block">
-               <p>{{$friend->name}}</p>
+                <a href="{{route('messages__user',['id' => $friend -> pivot -> to_user_id])}}">
+                    <p><b>{{$friend -> firstname}} {{$friend -> lastname}}</b></p>
+                </a>
                 <hr>
                 <a href="{{ route('messages__user' ,['id' => $friend->id])}}">
                 @if($friend->messages()->orderBy('created_at', 'desc')->first()->status == false)
@@ -21,5 +24,9 @@
             </div>
 
         @endforeach
+    </div>
+
+        <div class="grid__block"> Выберите чат
+        </div>
     </div>
 @stop

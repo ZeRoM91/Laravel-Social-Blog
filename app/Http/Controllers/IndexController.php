@@ -53,7 +53,8 @@ class IndexController extends Controller
         $user = User::find($id);
         $auth = auth('web')->user();
         //  $messages_unread = $auth->messages->where('status', false);
-        $friend = $auth->friends;
+        $friend = $auth->friends->where('to_user_id', $id);
+        $friends = $auth->friends;
         // $messages = $auth ->incomingMessages;
         $messages = Message::where([
             'to_user_id' => $auth->id,
@@ -67,6 +68,6 @@ class IndexController extends Controller
         $messages = $messages->get();
 
          Message::where('to_user_id', $auth -> id) -> update(['status' => true]);
-        return view('left-bar.messages__user', compact('user', 'friend','messages'));
+        return view('left-bar.messages__user', compact('user', 'friend','friends','messages'));
     }
 }

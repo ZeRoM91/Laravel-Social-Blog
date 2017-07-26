@@ -6,7 +6,7 @@
 
 <div class="grid__block main__block-header">
 
-    <h2>Привет, {{Auth::user()->name}}!</h2>
+    <h2>Привет, {{Auth::user()->firstname}}!</h2>
 
     <hr>
 </div>

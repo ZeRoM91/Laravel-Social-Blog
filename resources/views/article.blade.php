@@ -158,32 +158,7 @@
         @endif
                             <hr>
                         @endforeach
-                            <script src="http://code.jquery.com/jquery-3.2.1.min.js"
-                                    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-                                    crossorigin="anonymous"></script>
-                            @push('scripts')
-                            <script>
-                                $('#myModal').on('shown.bs.modal', function () {
-                                    $('#myInput').focus()
-                                });
 
-
-                                $('#send').click(function(e) {
-                                    var data = {
-                                        "comment": $('#comment').val()
-
-                                    };
-
-                                    $.post('', data, function(response) {
-                                        $('#comment-box').append("<span>" + data.comment + "</span>");
-                                    });
-
-                                    e.preventDefault()
-                                });
-
-                            </script>
-
-                            @endpush
                         @endsection
 <!--                     <?php //echo $comments->render(); ?>   -->
 </div>

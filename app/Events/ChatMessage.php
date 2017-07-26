@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Chat;
+
 use App\Models\Message;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -35,7 +35,7 @@ class ChatMessage extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('user.private.', $this->message->userTo->id);
+        return new Channel('user.private.' . $this->message->userTo->id);
     }
 
     public function broadcastAs()

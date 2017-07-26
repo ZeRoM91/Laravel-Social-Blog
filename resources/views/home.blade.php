@@ -29,33 +29,35 @@
 
 
                      @foreach($articles as $article)
-        <div class="grid__block">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
 
 
 
-
-    <span class="article__date">{{$article['created_at']}}</span>
-
-
-
-    <a href="{{ route('article', ['id' => $article['id']]) }}"><p class="article__title"><b>{{$article['title']}}</b></p></a>
-            <p>{{str_limit($article['text'],$limit = 32, $end = '...')}}</p>
-                                 <br>
-                                 <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
-                                     <span class="label label-danger"><span class="glyphicon glyphicon-tag"></span>{{$article->category['name']}}</span>
-                                 </a>
+                    <span class="article__date">{{$article['created_at']}}</span><br>
 
 
 
+                    <a href="{{ route('article', ['id' => $article['id']]) }}"><h4 class="article__title"><b>{{$article['title']}}</b></h4></a>
+                    <br>
 
-                                 <span class="glyphicon glyphicon-eye-open" style="color: #61788f;">{{$article ->views}}</span>
-                                 <span class="glyphicon glyphicon-heart" style="color: #61788f;">{{$article ->rating}}</span>
-                                 <span class="glyphicon glyphicon-comment" style="color: #61788f;">{{$article ->comment->count()}}</span><br>
-            <a href="{{route('user__profile', ['id' => $article->author])}}"><span class="glyphicon glyphicon-user">{{$article ->author['name']}}</span></a>
-        </div>
+                    <a href="{{route('user__profile', ['id' => $article->author])}}">
+                        <span class="glyphicon glyphicon-user"></span><span> <b>{{$article->author -> firstname}} {{$article->author -> lastname}}</b></span>
+                    </a>
+                    <hr>
+                    <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
+                        <span class="label label-danger"><span class="glyphicon glyphicon-tag"></span>{{$article->category['name']}}</span>
+                    </a>
 
+                </div>
+                <div class="panel-footer">
 
-
+                    <span class="glyphicon glyphicon-eye-open" style="color: #61788f;">{{$article ->views}}</span>
+                    <span class="glyphicon glyphicon-heart" style="color: #61788f;">{{$article ->rating}}</span>
+                    <span class="glyphicon glyphicon-comment" style="color: #61788f;">{{$article ->comment->count()}}</span>
+                </div>
+            </div>
 
                     @endforeach
 

@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function sendFriend()
     {
-        return $this->belongsToMany(User::class, 'friends', 'from_user_id', 'to_user_id');
+        return $this->belongsToMany(User::class, 'friends', 'from_user_id', 'to_user_id')->withPivot('status');
 
     }
 

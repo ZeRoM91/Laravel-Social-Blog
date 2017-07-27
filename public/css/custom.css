@@ -314,3 +314,37 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     display: inline-block;
     transition: .5s;
 }
+
+
+.notification {
+    width: 250px;
+    height: 350px;
+    padding: 25px;
+    position: absolute;
+
+    bottom: 15px;
+    left: 15px;
+}
+
+.alert-message {
+    background-color: #f5f5f5;
+    width: auto;
+    padding: 20px;
+
+    font-size: 13px;
+    border: 1px solid rgba(155,155,155,.5);
+    box-shadow: 0 0 12px #000;
+    position: relative;
+    margin: 5px;
+
+}
+.newMessage {
+
+}
+
+.newFriend {
+    background-color: #3e8f3e;
+    color: #eee;
+    border: 1px solid rgba(155,155,155,.5);
+    box-shadow: 0 0 12px #fff;
+}

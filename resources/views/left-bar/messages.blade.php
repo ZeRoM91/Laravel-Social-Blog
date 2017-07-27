@@ -26,7 +26,7 @@
         @endforeach
     </div>
 
-        <div class="grid__block"> Выберите чат
+        <div class="grid__block"> <p class="text-center">Выберите чат</p>
         </div>
     </div>
 @stop

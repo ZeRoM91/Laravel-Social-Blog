@@ -37,9 +37,11 @@ Route::get('/faq', ['as' => 'faq', 'uses' => 'IndexController@faq']);
 Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages']);
 
 # Переписка с пользователем по id
-Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'IndexController@messages__user']);
+Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'UserController@messages__user']);
 # Отправка сообщения
 Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserController@message__send']);
+
+
 # Роут для авторизации
 Route::auth();
 
@@ -105,14 +107,14 @@ Route::get('/admin', ['as' => 'admin', 'uses' => 'IndexController@admin']);
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'UserController@user']);
 
 # Запрос на добавление/принятия/удаления в друзья
-Route::get('/user/{id}/send-friend', ['as' => 'user__send-friend', 'uses' => 'UserController@friend__send']);
+Route::get('/user/{id}/friend-send', ['as' => 'user__friend-send', 'uses' => 'UserController@friend__send']);
 Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'UserController@friend_accept']);
 Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'UserController@friend_decline']);
 
 # Вывод списка друзей
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);
 
-Route::get('/chat', ['as' => 'friends', 'uses' => 'IndexController@chat']);
+
 
 
 

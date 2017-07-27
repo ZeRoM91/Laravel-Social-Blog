@@ -45,35 +45,11 @@ class IndexController extends Controller
         return view('header.news');
     }
     public function messages() {
+
         $friends = auth('web')->user()->friends()->hasMessages()->get();
 
-
-
         return view('left-bar.messages', compact('friends'));
-    }
-    public function messages__user($id) {
-        $user = User::find($id);
-        $auth = auth('web')->user();
-        //  $messages_unread = $auth->messages->where('status', false);
-        $friend = $auth->friends->where('to_user_id', $id);
-        $friends = $auth->friends;
-        // $messages = $auth ->incomingMessages;
-        $messages = Message::where([
-            'to_user_id' => $auth->id,
-            'from_user_id' => $id
-        ])->orWhere([
-            'to_user_id' => $id,
-            'from_user_id' => $auth->id
-        ]);
 
-
-        $messages = $messages->get();
-
-         Message::where('to_user_id', $auth -> id) -> update(['status' => true]);
-
-
-
-        return view('left-bar.messages__user', compact('user', 'friend','friends','messages'));
     }
 
 

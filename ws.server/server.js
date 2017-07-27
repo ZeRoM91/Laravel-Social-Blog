@@ -5,18 +5,20 @@ var Redis = require('ioredis');
 var redis = new Redis();
 
 
-// redis.subscribe('test-channel', function(err, count) {
+// redis.subscribe('message', function(err, count) {
 // });
 
 redis.psubscribe('*', function(err, count) {
 });
 
-redis.on('pmessage', function(pattern, channel, message) {
-    console.log('Message Recieved: ' + message);
-    message = JSON.parse(message);
-    io.emit(channel + ':' + message.event, message.data.message);
+redis.on("pmessage", function(pattern, channel, data) {
+    console.log('Message Recieved: ' + data);
+    data = JSON.parse(data);
+    io.emit(channel + ':' + data.message);
 
 });
+
+
 http.listen(6001, function(){
     console.log('Listening on Port 6001');
 });

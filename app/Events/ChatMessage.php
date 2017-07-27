@@ -35,13 +35,15 @@ class ChatMessage extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-     // return ['user.private.' . $this->message->userTo->id];
+     return ['user.private.' . $this->message->userTo->id];
 
-     return new Channel('user.private.' . $this->message->userTo->id);
+    // return new Channel('user.private.' . $this->message->userTo->id);
+
+
     }
 
     public function broadcastAs()
     {
-        return 'message';
+      //  return 'message';
     }
 }

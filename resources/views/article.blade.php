@@ -122,16 +122,16 @@
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
                             <span class="badge badge-default"><b>{{$comment->userName['name']}}</b></span><span>"{{$comment->comment}}"</span>
-        @if($comment['rating']  > 0)
-           <span class="badge badge-success">+{{$comment['rating']}}</span>
+        @if($comment -> rating   > 0)
+           <span class="label label-success">+{{$comment -> rating }}</span>
         @endif
-        @if($comment['rating'] < 0)
-           <span class="badge badge-danger">{{$comment['rating']}}</span>
+        @if($comment -> rating  < 0)
+           <span class="label label-danger">{{$comment -> rating }}</span>
         @endif
-        @if($comment['rating'] == 0)
-            <span class="badge badge-default">{{$comment['rating']}}</span>
+        @if($comment -> rating == 0)
+            <span class="label label-default">{{$comment -> rating }}</span>
         @endif
-        @if(Auth::user()->id != $comment['user_id'])
+        @if(Auth::user()->id != $comment -> user_id)
         @if($vote['vote'] === NULL)
             <div class="btn-group" role="group" aria-label="...">
                 <a href="{{route('upComment',['id' => $comment->id])}}" ><button class="label label-success">+</button></a>

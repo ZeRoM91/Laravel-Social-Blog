@@ -5,7 +5,7 @@ use App\User;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
 
-class EventName extends Event implements ShouldBroadcast
+class NewFriend extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
@@ -21,6 +21,6 @@ class EventName extends Event implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return ['test-channel'];
+        return ['new-friend'];
     }
 }

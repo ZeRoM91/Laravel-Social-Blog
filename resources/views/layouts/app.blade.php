@@ -110,9 +110,7 @@
                 </li>
                 </a>
 
-                <a href="{{route('home')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-th-list"></span> Чат</li>
-                </a>
+
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
@@ -150,7 +148,7 @@
 <script>
     var socket = io('http://localhost:3000');
 
-    socket.on("test-channel:App\\Events\\EventName", function(message){
+    socket.on("new-message:App\\Events\\NewMessage", function(message){
         // increase the power everytime we load test route
 
         //$('.notification').text('Польователь' + message.data.user + 'Прислал вам сообщение')
@@ -159,12 +157,43 @@
 
         var lastname = message.data.firstname;
 
-        var data = 'Пользователь ' + firstname + ' ' + lastname + ' прислал вам сообщение';
+        var data = 'Пользователь ' + "<b>" + firstname + ' ' + lastname + "</b>" + ' прислал вам сообщение';
 
-        $('.notification').append(data).attr('class','alert').fadeOut(5000, function(){
-            $(this).remove()
-        });
+        var div = document.createElement("div");  // Create with DOM
 
+        div.innerHTML = data;
+
+        div.className = 'alert-message newMessage';
+
+
+        $('.notification').append(div);
+
+        $('.newMessage').fadeOut(7000);
+
+    });
+
+
+    socket.on("new-friend:App\\Events\\NewFriend", function(message){
+        // increase the power everytime we load test route
+
+        //$('.notification').text('Польователь' + message.data.user + 'Прислал вам сообщение')
+
+        var firstname = message.data.firstname;
+
+        var lastname = message.data.firstname;
+
+        var data = 'Пользователь ' + "<b>" + firstname + ' ' + lastname + "</b>" + ' хочет добавить вас в друзья';
+
+        var div = document.createElement("div");  // Create with DOM
+
+        div.innerHTML = data;
+
+        div.className = 'alert-message newFriend';
+
+
+        $('.notification').append(div);
+
+        $('.newFriend').fadeOut(7000);
     });
 </script>
 </html>

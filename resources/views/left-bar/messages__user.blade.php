@@ -37,7 +37,7 @@
 
                     <div class="messages__write-block">
                         <div class="panel panel-default">
-                            <p><b>Чат с {{$friend -> firstname}} {{$friend -> lastname}}</b></p>
+                            <p><b>Чат с </b></p>
                             <div class="message-box">
 
 @foreach($messages as $message)

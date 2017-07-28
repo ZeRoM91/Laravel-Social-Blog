@@ -61,7 +61,7 @@
 @endif
     @if(!Auth::guest())
 
-        <a href="{{route('Author')}}"><li class="menu__list" id="menu__list-login"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</li></a>
+        <a href="{{route('Author')}}"><li class="menu__list" id="menu__list-login">  <img class="img-circle" src="{{asset('avatars/' . Auth::user()->avatar)}}"> {{Auth::user()->name}}</li></a>
 
 @endif
         <form action="{{route('searchUsers')}}" method="post" style="padding: 0; margin: 0; display: inline-block;">

@@ -4,8 +4,9 @@ namespace App;
 
 
 use App\Models\Article;
-use App\Models\Friend;
+use App\Models\Comment;
 use App\Models\Rating;
+use App\Models\Status;
 use App\Models\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,6 +39,11 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
+// Связь с моделью Сообщение, т.к. пользователь может отправлять много сообщений
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'user_id');
+    }
     // Связь с моделью Рейтинг, т.к. пользователь может оставлять рейтинг к статьям
     public function votes()
     {
@@ -75,6 +81,11 @@ class User extends Authenticatable
         return $this->hasMany(Message::class,'from_user_id');
     }
 
+
+    public function status()
+    {
+        return $this->hasOne(Status::class,'user_id');
+    }
     public function messagesTo()
     {
         return $this->hasMany(Message::class,'to_user_id');

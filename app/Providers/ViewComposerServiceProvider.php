@@ -13,6 +13,7 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        view()->share('user', auth('web')->user());
 
         //
         view()->composer('layouts.app', function ($view) {
@@ -22,8 +23,22 @@ class ViewComposerServiceProvider extends ServiceProvider
                 $view->with('messageCount', $user->messagesTo()->unread()->count());
                 $view->with('friendCount', $user->incomingRequests()->count());
                 $view->with('auth', $user);
+
             }
         });
+
+
+        view()->composer('lk', function ($view) {
+            $user = auth('web')->user();
+
+            if(!is_null($user)) {
+                $view->with('status', $user->status()->value('status'));
+                $view->with('friendsCount', $user->friends()->count());
+                $view->with('articlesCount', $user->articles()->count());
+                $view->with('commentsCount', $user->comments()->count());
+            }
+        });
+
     }
 
     /**

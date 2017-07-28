@@ -43,7 +43,8 @@
                     <br>
 
                     <a href="{{route('user__profile', ['id' => $article->author])}}">
-                        <span class="glyphicon glyphicon-user"></span><span> <b>{{$article->author -> firstname}} {{$article->author -> lastname}}</b></span>
+                        <img src="{{asset('avatars/' . $article->author->avatar)}}" alt="" class="img-circle ">
+                       <span> <b>{{$article->author -> firstname}} {{$article->author -> lastname}}</b></span>
                     </a>
                     <hr>
                     <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">

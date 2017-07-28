@@ -128,7 +128,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     display: inline-block;
     background-color: #fff;
     border: 1px solid rgba(155,155,155,.5);
-
+    padding: 5px;
     width: auto;
     overflow-y: scroll;
 }
@@ -279,19 +279,27 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 }
 
 .lk__avatar {
-    background-image: url("http://xprezia.com/xprezia/images/user_female.png");
+    background-color: #ccc;
     padding: 12px;
     transition: .5s;
-    filter: grayscale(100%);
+
 
 }
+#avatar-photo {
 
+    background-size: contain;
+
+}
 #photo {
     opacity: .5;
     color: #fff;
     transition: .25s;
 }
-
+.img-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
 .lk__avatar:hover #photo {
     opacity: 1;
     transition: .25s;
@@ -313,6 +321,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 .lk__avatar:hover #lk__avatar_hidden-text {
     display: inline-block;
     transition: .5s;
+    cursor: pointer;
 }
 
 

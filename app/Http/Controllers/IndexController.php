@@ -38,8 +38,14 @@ class IndexController extends Controller
     public function friends() {
         $auth = auth('web')->user();
         $incomings = $auth ->incomingRequests;
+        $outcomings = $auth->outcomingRequests;
         $friends = $auth->friends;
-        return view('left-bar.friends',compact('friends','incomings'));
+
+
+
+
+
+        return view('left-bar.friends',compact('friends', 'outcomings', 'incomings'));
     }
     public function news() {
         return view('header.news');
@@ -49,6 +55,13 @@ class IndexController extends Controller
         $friends = auth('web')->user()->friends()->hasMessages()->get();
 
         return view('left-bar.messages', compact('friends'));
+
+    }
+
+    public function photos() {
+
+
+        return view('photo');
 
     }
 

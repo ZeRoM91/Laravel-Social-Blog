@@ -21,6 +21,9 @@ Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages
 Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'UserController@messages__user']);
 # Отправка сообщения пользователю
 Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserController@message__send']);
+# К списку сообщений
+Route::get('/photos', ['as' => 'photos', 'uses' => 'IndexController@photos']);
+Route::put('/photos', ['as' => 'sendPhoto', 'uses' => 'FileController@sendPhoto']);
 # Поиск статей по названию
 Route::post('/home', ['as' => 'home__search', 'uses' => 'HomeController@search']);
 # Фильтр статей по категории
@@ -42,7 +45,7 @@ Route::get('/lk', ['as' => 'Author', 'uses' => 'UserController@personal']);
 # Обновление или создание статуса
 Route::post('/lk', ['as' => 'status', 'uses' => 'UserController@status']);
 # Загрузка аватара
-Route::post('/lk', ['as' => 'avatar', 'uses' => 'FileController@avatar']);
+Route::put('/lk', ['as' => 'avatar', 'uses' => 'FileController@avatar']);
 # Редактирование статуса (если уже имеется)
 Route::post('/lk/editStatus', ['as' => 'editStatus', 'uses' => 'UserController@editStatus']);
 # Post запрос на отправку отредактированной статьи

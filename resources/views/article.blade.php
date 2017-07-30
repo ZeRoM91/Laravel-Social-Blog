@@ -5,11 +5,12 @@
                         <ol class="breadcrumb">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li><a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">{{$article->category['name']}}</a></li>
-                               <li class="active">{{$article['id']}} </li>
+                               <li class="active"><b>{{$article -> title}} </b></li>
                         </ol>
 
                         <div class="well">
-                            <span class="glyphicon glyphicon-time"></span><span class="article__date"> {{$article['created_at']}}</span><br>
+                            <span class="article__date"> {{$article['created_at']}}</span>
+                            <hr>
                       <h3 style="text-align: center;">{{$article['title']}}</h3>
                         <hr>
 
@@ -121,7 +122,9 @@
 <div id="comment-box">
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
-                            <span class="badge badge-default"><b>{{$comment->userName['name']}}</b></span><span>"{{$comment->comment}}"</span>
+
+                           <b>{{$comment->userName->firstname}} {{$comment->userName->lastname}}</b><br> <img class="img-circle" src="{{asset('avatars/' . $comment->userName->avatar)}}">
+        <span>"{{$comment->comment}}"</span>
         @if($comment -> rating   > 0)
            <span class="label label-success">+{{$comment -> rating }}</span>
         @endif

@@ -114,7 +114,9 @@
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
-                <li class="left-bar__list"><span class="glyphicon glyphicon-star"></span>  Избранное</li>
+                <a href="{{route('photos')}}">
+                <li class="left-bar__list"><span class="glyphicon glyphicon-camera"></span>  Фотографии</li>
+                </a>
             </ul>
 
 

@@ -38,7 +38,7 @@
                 <a href="{{ route('article', ['id' => $article['id']]) }}"><p class="article__title"><b>{{$article['title']}}</b></p></a>
                 <br>
                 <a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">
-                    <span class="label label-danger"><span class="glyphicon glyphicon-tag"></span>{{$article->category['name']}}</span>
+                    <span class="label label-success">{{$article->category['name']}}</span>
                 </a>
 
             </div>

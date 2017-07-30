@@ -6,6 +6,7 @@ namespace App;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Rating;
+use App\Models\Photo;
 use App\Models\Status;
 use App\Models\Message;
 use Illuminate\Notifications\Notifiable;
@@ -94,5 +95,11 @@ class User extends Authenticatable
     public function scopeHasMessages($query)
     {
         return $query->whereHas('messages');
+    }
+
+    // Связь с моделью Photo, т.к. пользователь может создавать и хранить фото
+    public function photos()
+    {
+        return $this->hasMany(Photo::class,'user_id');
     }
 }

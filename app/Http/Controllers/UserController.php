@@ -29,11 +29,10 @@ class UserController extends Controller
         // Добавляем список всех его статей с пагинацией
         $articles = $user->articles()->paginate(2);
         $friends = $user->friends;
-        $outcomings = $user->outcomingRequests;
-        $incomings = $user->incomingRequests;
 
 
-        return view('lk', compact('articles', 'friends', 'outcomings', 'incomings'));
+
+        return view('lk', compact('articles', 'friends'));
     }
 
     public function status(Request $request)

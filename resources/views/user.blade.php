@@ -3,9 +3,12 @@
 
 <div class="user">
 
-    <div class="grid__block lk__avatar">
+    <div class="grid__block lk__avatar"
 
-        <img id="avatar-photo" src="{{asset('avatars/' . $user->avatar)}}" >
+
+         style="background-image: url({{isset($user->avatar) ? asset('avatars/' . $user->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}); background-size: cover;">
+
+
     </div>
     <div class="grid__block lk__block-info">
         <h3>{{$user->firstname}} {{$user->lastname}}</h3>

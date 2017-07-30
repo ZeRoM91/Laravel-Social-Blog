@@ -4,11 +4,10 @@
     <div class="lk">
 
 
-        <div class="grid__block lk__avatar">
+        <div class="grid__block lk__avatar"
+             style="background-image: url({{asset('avatars/' . Auth::user()->avatar)}}); background-size: cover;">
 
 
-
-            <img id="avatar-photo" src="{{asset('avatars/' . Auth::user()->avatar)}}" >
 
             <span id="photo"> <span class="glyphicon glyphicon-camera" id="lk__avatar-icon"></span><span id="lk__avatar_hidden-text" type="button" data-toggle="modal" data-target=".bs-example-modal-sm" data-target="#avatar"> Редактировать фото</span>
             </span>
@@ -28,6 +27,7 @@
         <button class="btn btn-success glyphicon glyphicon-ok" type="submit"></button>
       </span>
                 <input name="status" type="text" class="form-control" placeholder="{{ isset($status) ? 'Заменить статус' : 'О чем вы думаете...' }}">
+
             </div><!-- /input-group -->
             </form>
 
@@ -44,60 +44,23 @@
 
 
         </div>
-<div class="grid__block lk__block-tab">
-    <div class="panel panel-default">
-        <div class="panel-body">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
-            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Заявки в друзья
-                <span class="badge">{{$outcomings -> count()}} </span>
-            </a>
 
-        </li>
-        <li role="presentation">
-            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Запросы в друзья
-                <span class="badge">{{$incomings -> count()}} </span>
-            </a>
+        <div class="grid__block ">
 
-        </li>
-        <li role="presentation">
-            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Мои друзья
-                <span class="badge"> {{$friends -> count()}}</span>
-               </a>
-        </li>
+            <button class="btn btn-default">Редактировать профиль</button>
 
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">
-@foreach($outcomings as $outcoming)
-          <button class="btn btn-info"> <span class="glyphicon glyphicon-user"> {{$outcoming -> name}}</span></button> <span class="label label-default">Ожидание</span>
-    @endforeach
         </div>
-        <div role="tabpanel" class="tab-pane" id="profile">
-            @foreach($incomings as $incoming)
-                <button class="btn btn-warning"> <span class="glyphicon glyphicon-user"> {{$incoming ->name}}</span></button>
+        <div class="grid__block ">
 
-                <a href="{{route('user__friend-accept', ['id' => $incoming -> id])}}"><button class="button button-success">Принять</button></a>
-                <button class="button button-danger">Отклонить</button>
+<h3>Записи на стене</h3>
+            <hr>
 
-            @endforeach
         </div>
-        <div role="tabpanel" class="tab-pane" id="messages">
-            @foreach($friends as $friend)
-                <button class="btn btn-primary"> <span class="glyphicon glyphicon-success"> {{$friend -> name}}</span></button>
+        <div class="grid__block ">
 
-                <a href="{{route('user__friend-decline', ['id' => $friend -> id])}}"><button class="btn btn-danger">Удалить из друзей</button></a>
-            @endforeach
+
+
         </div>
-
-    </div>
-
-    </div>
-    </div>
-</div>
         <div class="grid__block ">
 
             <button class="btn btn-default">Редактировать</button>
@@ -152,7 +115,7 @@
                     <h3>Загрузить аватар</h3>
                     <?php
 
-                    echo Form::open(array('url' => '/lk','files'=>'true'));
+                    echo Form::open(array('url' => '/lk','method' => 'PUT','files'=>'true'));
                     echo 'Выберите файл для загрузки';
                     echo Form::file('avatar');
                     echo Form::submit('Загрузить файл');

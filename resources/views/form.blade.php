@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -38,7 +38,7 @@
 
 
                             <br>
-                            <input type="submit" class="button button-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
+                            <input type="submit" class="btn btn-success" value=" {{ isset($article) ? "Обновить" : "Добавить"}}">
 
 
                         </form>
@@ -47,7 +47,11 @@
                 </div>
             </div>
         </div>
-    </div>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+
+
+
+        <script>tinymce.init({ selector:'textarea' });</script>
 @endsection
 
 

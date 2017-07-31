@@ -7,6 +7,14 @@
 # Роут для авторизации
 Route::auth();
 
+# Роут для авторизации через VKcom
+
+
+Route::get('/social_login/{provider}', ['as' => 'VKlogin', 'uses' => 'SocialController@login']);
+Route::get('/social_login/callback/{provider}', 'SocialController@callback');
+
+
+
 # Главная страница
 Route::get('/', 'IndexController@index')->middleware('auth');
 # Поиск юзеров
@@ -21,9 +29,14 @@ Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages
 Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'UserController@messages__user']);
 # Отправка сообщения пользователю
 Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserController@message__send']);
-# К списку сообщений
+# Фотографии
 Route::get('/photos', ['as' => 'photos', 'uses' => 'IndexController@photos']);
+# Загрузка фото
 Route::put('/photos', ['as' => 'sendPhoto', 'uses' => 'FileController@sendPhoto']);
+Route::get('/music', ['as' => 'music', 'uses' => 'IndexController@music']);
+Route::get('/video', ['as' => 'video', 'uses' => 'IndexController@video']);
+# Кошелекы
+Route::get('/cash', ['as' => 'cash', 'uses' => 'IndexController@cash']);
 # Поиск статей по названию
 Route::post('/home', ['as' => 'home__search', 'uses' => 'HomeController@search']);
 # Фильтр статей по категории
@@ -75,4 +88,6 @@ Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' 
 
 # Вывод списка друзей
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);
+
+
 

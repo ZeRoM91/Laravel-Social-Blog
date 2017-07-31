@@ -19,7 +19,12 @@
     <link href="{{ asset('css/animation.css') }}" rel="stylesheet">
 
 
-    <style src="{{ asset('js/jquery-3.2.1.js') }}" defer></style>
+
+
+
+
+
+    <script src="{{ asset('js/jquery-3.2.1.js') }}" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -114,8 +119,26 @@
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
+
+
+
+                <a href="{{route('music')}}">
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-music"></span>  Музыка</li>
+                </a>
+
                 <a href="{{route('photos')}}">
                 <li class="left-bar__list"><span class="glyphicon glyphicon-camera"></span>  Фотографии</li>
+                </a>
+
+                <a href="{{route('video')}}">
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-facetime-video"></span>  Видео</li>
+                </a>
+
+                <a href="{{route('cash')}}">
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-piggy-bank"></span> Кошелек
+                        <span class="label label-success">0 <span class="glyphicon glyphicon-ruble"></span></span>
+                    </li>
+
                 </a>
             </ul>
 
@@ -128,7 +151,10 @@
     </div>
 
 <div class="root" id="root">
+    <p class="notification">
 
+
+    </p>
     @yield('content')
 
 </div>
@@ -136,10 +162,7 @@
 
 </div>
 
-<p class="notification">
 
-
-</p>
 </body>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

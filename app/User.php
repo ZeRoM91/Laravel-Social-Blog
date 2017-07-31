@@ -5,6 +5,7 @@ namespace App;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\UserSocialAccount;
 use App\Models\Rating;
 use App\Models\Photo;
 use App\Models\Status;
@@ -101,5 +102,14 @@ class User extends Authenticatable
     public function photos()
     {
         return $this->hasMany(Photo::class,'user_id');
+    }
+
+    public static function createBySocialProvider($providerUser)
+    {
+        return self::create([
+            'email' => $providerUser->getEmail(),
+            'username' => $providerUser->getNickname(),
+            'name' => $providerUser->getName(),
+        ]);
     }
 }

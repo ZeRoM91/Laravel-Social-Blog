@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Photo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class FileController extends Controller
@@ -32,13 +33,21 @@ class FileController extends Controller
         $user = auth('web')->user();
         $photo =  $request->file('photo');
 
-        $imageName = $user->id.'.'.$request->file('photo')->getClientOriginalExtension();
+        $imageName = $user->id.'.'. rand() . '.'. $request->file('photo')->getClientOriginalExtension();
+
+
 
         $photo->move('storage/photos.' . $user->id, $imageName);
 
-        $user-> photos -> user_id = $user ->id;
-        $user-> photos -> link = $imageName;
+
+
+        $user = Photo::create([
+            'user_id' => $user -> id,
+            'link' => $imageName,
+        ]);
+
         $user ->save();
+
         return redirect('photos');
     }
 }

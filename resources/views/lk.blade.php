@@ -5,7 +5,7 @@
 
 
         <div class="grid__block lk__avatar"
-             style="background-image: url({{asset('avatars/' . Auth::user()->avatar)}}); background-size: cover;">
+             style="background-image: url({{isset(Auth::user()->avatar) ? asset('avatars/' . Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}); background-size: cover;">
 
 
 

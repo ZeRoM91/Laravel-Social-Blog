@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -45,5 +47,19 @@ class LoginController extends Controller
     function showName() {
         $name = "This";
         return view('index', compact('name'));
+    }
+
+
+    public function VkProvider()
+    {
+
+
+       // return Socialite::with('vkontakte')->redirect();
+
+        return Socialite::with('vkontakte')->stateless(false)->redirect();
+        $user = Socialite::driver('vkontakte')->user();
+        $accessTokenResponseBody = $user->accessTokenResponseBody;
+
+
     }
 }

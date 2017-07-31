@@ -110,12 +110,19 @@ class UserController extends Controller
 
     public function messages__user($id)
     {
+
+
+
         $user = User::find($id);
         $auth = auth('web')->user();
         //  $messages_unread = $auth->messages->where('status', false);
         $friend = $auth->friends->where('to_user_id', $id);
         $friends = $auth->friends;
         // $messages = $auth ->incomingMessages;
+
+        if ($friend) {
+
+
         $messages = Message::where([
             'to_user_id' => $auth->id,
             'from_user_id' => $id
@@ -131,6 +138,11 @@ class UserController extends Controller
 
 
         return view('left-bar.messages__user', compact('user', 'friend', 'friends', 'messages'));
+
+        }
+        else {
+            return "У вас нет прав";
+    }
     }
 
     public function message__send(Request $request, $id)

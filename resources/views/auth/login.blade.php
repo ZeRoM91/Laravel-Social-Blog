@@ -58,8 +58,13 @@
                                     Забыли пароль?
                                 </a>
                                 <hr>
+                                <a href="{{ route('VKlogin', ['provider' => 'vkontakte'])}}" class="btn btn-default" >
 
-                                <a href="{{ route('register') }}" class="btn btn-success" ><li>Регистрация</li></a>
+                                        <img src="http://d178h43i90tztq.cloudfront.net/users/28261/images/companies/1/Vk3.png" alt="" width="32" height="32">Войти
+                                </a>
+                                <hr>
+
+                                <a href="{{ route('register') }}" class="btn btn-success" >Регистрация</a>
 
                             </div>
                         </div>
@@ -70,3 +75,5 @@
     </div>
 
 @endsection
+
+

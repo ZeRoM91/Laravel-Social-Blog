@@ -8,14 +8,14 @@
                                <li class="active"><b>{{$article -> title}} </b></li>
                         </ol>
 
-                        <div class="well">
+
                             <span class="article__date"> {{$article['created_at']}}</span>
                             <hr>
                       <h3 style="text-align: center;">{{$article['title']}}</h3>
                         <hr>
 
-                        <p>{{$article['text']}}</p>
-
+                        <div style="word-wrap: break-word">{!! $article->text !!}</div>
+    <div class="well">
                             <span class="glyphicon glyphicon-user"></span><a href="{{route('user__profile', ['id' => $article->author])}}"><span>{{$article ->author['name']}}</span></a>
 
 
@@ -110,6 +110,7 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="article_id" value="{{$article->id}}" >
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
+
                             <textarea id="comment" class="form-control" name="comment" cols="90" rows="4" style="resize: none;"></textarea><br>
                             <input type="submit" class="btn btn-success" value="Отправить" id="send" >
 
@@ -179,4 +180,3 @@
                         </div>
 
 </div>
-

@@ -61,9 +61,34 @@ class IndexController extends Controller
     public function photos() {
 
 
-        return view('photo');
+        $user = auth('web')->user();
+
+
+        $photos = $user -> photos() ->paginate(12);
+
+
+        return view('photo',compact('photos'));
+
+    }
+    public function music() {
+
+
+        return view('left-bar.music');
 
     }
 
+    public function video() {
+
+
+        return view('left-bar.video');
+
+    }
+
+    public function cash() {
+
+
+        return view('left-bar.cash');
+
+    }
 
 }

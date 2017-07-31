@@ -24,7 +24,7 @@
 
         </div>
     </form>
-
+    <a href="{{route('formArticle')}}"><button class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить новую статью</button></a>
     <div class="home">
 
 

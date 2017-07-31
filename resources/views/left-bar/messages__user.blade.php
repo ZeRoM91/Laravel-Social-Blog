@@ -89,7 +89,9 @@
 
                             <textarea type="text" name="message" id="message3" class="form-control" placeholder="Введите ваше сообщение" rows="4" style="resize: none"></textarea>                    </textarea>
                             <br>
-                            <input type="submit" class="btn btn-success" value="Отправить" id="send">
+
+                            <button type="submit" class="btn btn-info" value="Отправить" id="send"> <span class="glyphicon glyphicon-send"></span> Отправить</button>
+
 
                         </form>
 

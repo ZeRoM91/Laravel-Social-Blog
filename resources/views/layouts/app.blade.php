@@ -66,7 +66,11 @@
 @endif
     @if(!Auth::guest())
 
-        <a href="{{route('Author')}}"><li class="menu__list" id="menu__list-login">  <img class="img-circle" src="{{asset('avatars/' . Auth::user()->avatar)}}"> {{Auth::user()->name}}</li></a>
+        <a href="{{route('Author')}}"><li class="menu__list" id="menu__list-login">
+                <img class="img-circle" src="{{isset(Auth::user()->avatar) ? asset('avatars/' . Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+
+
+                {{Auth::user()->name}}</li></a>
 
 @endif
         <form action="{{route('searchUsers')}}" method="post" style="padding: 0; margin: 0; display: inline-block;">

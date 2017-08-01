@@ -15,7 +15,12 @@ class IndexController extends Controller
     }
 
     public function index() {
-        event(new IndexHere());
+
+
+            event(new IndexHere());
+
+
+
         return view('index', compact('articles','authors','category'));
     }
     public function searchUsers() {

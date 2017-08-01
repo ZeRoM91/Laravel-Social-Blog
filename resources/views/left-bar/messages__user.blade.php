@@ -4,7 +4,6 @@
     <div class="messages__user">
         <div class="messages__friends">
             @foreach($friends as $friend)
-
                 <a href="{{route('messages__user',['id' => $friend -> pivot -> to_user_id])}}">
                     <p><b>{{$friend -> firstname}} {{$friend -> lastname}}</b></p>
                 </a>
@@ -12,6 +11,7 @@
                 <a href="{{ route('messages__user' ,['id' => $friend->id])}}">
                     @if($friend->messages()->orderBy('created_at', 'desc')->first()->status == false)
                         <p class="label label-success"><strong>
+
                                 {{ str_limit($friend->messages()->orderBy('created_at', 'desc')->first()->message, $limit = 32, $end = '...') }}
                             </strong></p>
 
@@ -26,17 +26,6 @@
             @endforeach
         </div>
 
-
-
-
-
-        <div class="grid__block" style="padding: 5px;">
-
-            <div class="messages__write">
-
-                    <div class="messages__write-block">
-                        <div class="panel panel-default">
-                            <p><b>Чат с </b></p>
                             <div class="message-box">
 
 @foreach($messages as $message)
@@ -44,21 +33,28 @@
 @if($message->to_user_id == Auth::user() ->id)
     <div class="message__from">
         <p class="message__time">{{$message->created_at}}</p>
-        <p class="message__time">{{$message->message}}</p>
+        <img class="img-circle" src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+
+        <span class="message__time">{{$message->message}}</span>
     </div>
                                     <hr>
     @else
 
     @if($message-> status == true)
                                         <div class="message__to">
+
                                             <p class="message__time">{{$message->created_at}}</p>
-                                            <p class="message__time">{{$message->message}}</p>
+                                            <img class="img-circle" src="{{isset(\Auth::user()->avatar) ? asset('storage/avatars/' . \Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+
+                                            <span class="message__time">{{$message->message}}</span>
                                         </div>
                                         @else
                                         <div class="message__to">
 
                                             <p class="message__time">{{$message->created_at}}</p>
-                                            <p class="message__time">{{$message->message}}</p>
+                                            <img class="img-circle" src="{{isset(\Auth::user()->avatar) ? asset('storage/avatars/' . \Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+
+                                            <span class="message__time">{{$message->message}}</span>
                                                <span><i>(Не прочитано)</i></span>
                                         </div>
                                             @endif
@@ -67,20 +63,10 @@
 
     @endforeach
 
-
-
-
-
-
-
-
-
                             </div>
+    </div>
 
-                        </div>
-                    </div>
-
-                    <div class="messages__write-block">
+    <br>
                      {{--   <form action="{{route('user__message-send',['id' => $user->id ])}}" method="post">--}}
                         <form method="post">
 
@@ -96,12 +82,8 @@
                         </form>
 
 
-                    </div>
 
-            </div>
-        </div>
 
-    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>

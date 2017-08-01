@@ -1,6 +1,9 @@
+$( document ).ready(function() {
 
-$( function() {
-    $( "#audioplayer" ).draggable({ handle: "div#handle" });
+    $(function () {
+        var wtf = $('.message-box');
+        var height = wtf[0].scrollHeight;
+        wtf.scrollTop(height);
+    });
 
-
-} );
+});

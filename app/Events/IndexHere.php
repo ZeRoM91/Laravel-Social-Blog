@@ -13,11 +13,14 @@ class IndexHere extends Event implements ShouldBroadcast
 
     public function __construct()
     {
-        $this->data = array(
-            'firstname'=> \Auth::user()-> firstname,
-            'lastname'=> \Auth::user()-> lastname,
-        );
-    }
+
+
+            $this->data = array(
+                'firstname' => \Auth::user()->firstname,
+                'lastname' => \Auth::user()->lastname,
+            );
+        }
+
 
     public function broadcastOn()
     {

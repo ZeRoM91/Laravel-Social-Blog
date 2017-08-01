@@ -142,15 +142,23 @@
                     </li>
 
                 </a>
+                <hr style="margin-left: 25px; margin-right: 25px;">
+
+
+              <div id="event-list">
+
+              </div>
+
+
             </ul>
 
 
 
+
+
+
+
         </div>
-
-        <hr style="margin-left: 25px; margin-right: 25px;">
-           
-
 
                 {{--<div class="panel panel-primary" id="audioplayer">--}}
                     {{--<!-- Default panel contents -->--}}
@@ -191,8 +199,8 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" ></script>
 <script src="{{ asset('js/jquery-3.2.1.js') }}" ></script>
-<script src="{{ asset('js/jquery-ui.min.js') }}" ></script>
-<script src="{{ asset('js/main.js') }}" ></script>
+<script src="{{ asset('js/events.js') }}"></script>
+<script src="{{ asset('js/main.js') }}" defer></script>
 
 
 
@@ -200,7 +208,6 @@
 
 @stack('scripts')
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-<script src="{{ asset('js/events.js') }}"></script>
+
 </html>

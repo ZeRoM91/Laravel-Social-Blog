@@ -14,8 +14,8 @@ class NewFriend extends Event implements ShouldBroadcast
     public function __construct()
     {
         $this->data = array(
-            'firstname'=> \Auth::user()-> firstname,
-            'lastname'=> \Auth::user()-> lastname,
+            'name' => '<a href="friends">' . \Auth::user()-> firstname . ' ' . \Auth::user()-> lastname . '</a>',
+
         );
     }
 

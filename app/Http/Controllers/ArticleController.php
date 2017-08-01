@@ -5,6 +5,7 @@ use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
 use App\Models\Article;
 use App\Models\Category;
+use App\Events\NewArticle;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -51,6 +52,8 @@ class ArticleController extends Controller
         $article = Article::create($request->except('_token'));
          //$article = Request::get('text');
 
+
+        event(new NewArticle($article));
         return redirect()->route('article', ['id' => $article->id]);
     }
     # Удаление статьи по id

@@ -5,7 +5,7 @@
 
 
         <div class="grid__block lk__avatar"
-             style="background-image: url({{isset(Auth::user()->avatar) ? asset('avatars/' . Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}); background-size: cover;">
+             style="background-image: url({{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}); background-size: cover;">
 
 
 
@@ -20,11 +20,14 @@
             <span>{{$status}}</span>
 
             <hr>
-            <form action="{{ isset($status) ? route('editStatus') : ''}}" method="post">
+            <form action="{{ isset($status) ? route('editStatus') : '/lk/status'}}" method="post">
                 {{ csrf_field() }}
             <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-success glyphicon glyphicon-ok" type="submit"></button>
+          @if(isset($status) )
+          <button class="btn btn-danger glyphicon glyphicon-move" type="submit"></button>
+              @endif
       </span>
                 <input name="status" type="text" class="form-control" placeholder="{{ isset($status) ? 'Заменить статус' : 'О чем вы думаете...' }}">
 
@@ -45,17 +48,35 @@
 
         </div>
 
-        <div class="grid__block ">
-
+        <div class="grid__block">
+            <a href="{{route('lk.edit')}}">
             <button class="btn btn-default">Редактировать профиль</button>
-
+            </a>
         </div>
-        <div class="grid__block ">
+        <div class="grid__block">
 
 <h3>Записи на стене</h3>
             <hr>
+            <form action="{{route('lk.blog')}}" method="post">
+    {{csrf_field()}}
+            <textarea class="form__input form-control" placeholder="Добавьте запись..." name="blog" rows="10" style="resize: none;"></textarea>
+                <br>
+                <button type="submut" class="btn btn-primary">Отправить</button>
+            </form>
+            <hr>
 
-        </div>
+            @foreach($blogs as $blog  )
+                <img class="img-circle" src="{{asset('storage/avatars/' . $auth->avatar)}}">
+                <p>
+                    <span>
+                        {{$blog -> created_at}}:
+                    </span>
+                    {{$blog -> text}}
+
+                </p>
+                <hr>
+                @endforeach
+         </div>
         <div class="grid__block ">
 
 
@@ -124,6 +145,7 @@
             </div>
         </div>
     </div>
+
     <script>
         $('#myTabs a').click(function (e) {
             e.preventDefault()

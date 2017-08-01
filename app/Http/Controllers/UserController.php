@@ -21,46 +21,7 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    # Вывод личного кабинета
-    public function personal()
-    {
-        // Поиск пользователя по id
-        $user = auth('web')->user();
-        // Добавляем список всех его статей с пагинацией
-        $articles = $user->articles()->paginate(2);
-        $friends = $user->friends;
 
-
-
-        return view('lk', compact('articles', 'friends'));
-    }
-
-    public function status(Request $request)
-    {
-
-        $user = auth('web')->user();
-
-        if (!isset($user->status)) {
-            $status = Status::create([
-                'user_id' => $user->id,
-                'status' => \Request::get('status')
-            ]);
-        }
-
-        return redirect()->back();
-    }
-
-    public function editStatus(Request $request)
-    {
-        $user = auth('web')->user();
-        $status = $user->status;
-        $status->status = \Request::get('status');
-        $status->save();
-
-        return redirect()->back();
-
-
-    }
 
     public function user($id)
     {
@@ -95,7 +56,7 @@ class UserController extends Controller
         ]);
         auth('web')->user()->sendFriend()->attach($id, ['status' => true]);
         \DB::table('friends')->where('from_user_id', $id)->update(['status' => true]);
-        return redirect()->route('Author');
+        return redirect()->route('lk');
     }
 
     public function friend_decline(Request $request, $id)
@@ -105,7 +66,7 @@ class UserController extends Controller
         ]);
         auth('web')->user()->sendFriend()->detach($id);
         \DB::table('friends')->where('from_user_id', $id)->delete();
-        return redirect()->route('Author');
+        return redirect()->route('lk');
     }
 
     public function messages__user($id)

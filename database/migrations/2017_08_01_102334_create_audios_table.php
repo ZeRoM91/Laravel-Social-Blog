@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserSocialAccountTable extends Migration
+class CreateAudiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,12 @@ class CreateUserSocialAccountTable extends Migration
     public function up()
     {
         //
-        Schema::create('user_social_account', function (Blueprint $table) {
+        Schema::create('audios', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('provider_user_id');
-            $table->string('provider');
+            $table->string('link');
+            $table->string('name');
             $table->timestamps();
-
         });
     }
 
@@ -32,6 +31,6 @@ class CreateUserSocialAccountTable extends Migration
     public function down()
     {
         //
-       Schema::dropIfExists('user_social_account');
+        Schema::dropIfExists('audios');
     }
 }

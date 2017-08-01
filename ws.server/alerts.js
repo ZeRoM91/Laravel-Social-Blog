@@ -8,7 +8,10 @@ redis.subscribe('new-friend', function(err, count) {
 });
 redis.subscribe('new-message', function(err, count) {
 });
-
+redis.subscribe('new-here', function(err, count) {
+});
+redis.subscribe('new-article', function(err, count) {
+});
 
 redis.on('message', function(channel, message) {
     console.log('alert: ' + message);

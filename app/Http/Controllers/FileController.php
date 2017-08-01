@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Photo;
+use App\Models\Audio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class FileController extends Controller
@@ -16,11 +17,8 @@ class FileController extends Controller
     {
         $user = auth('web')->user();
         $avatar =  $request->file('avatar');
-
         $imageName = $user->id.'.'.$request->file('avatar')->getClientOriginalExtension();
-
-        $avatar->move('avatars',$imageName);
-
+        $avatar->move('storage/avatars',$imageName);
         $user -> avatar = $imageName;
         $user->save();
         return redirect('lk');
@@ -37,7 +35,7 @@ class FileController extends Controller
 
 
 
-        $photo->move('storage/photos.' . $user->id, $imageName);
+        $photo->move('storage/' . $user->id . '/photos', $imageName);
 
 
 
@@ -49,5 +47,30 @@ class FileController extends Controller
         $user ->save();
 
         return redirect('photos');
+    }
+
+    public function sendAudio(Request $request)
+
+    {
+        $user = auth('web')->user();
+        $photo =  $request->file('audio');
+
+        $audio = $user->id.'.'. rand() . '.'. $request->file('audio')->getClientOriginalExtension();
+
+        $name = $request->file('audio')->getClientOriginalName();
+
+        $photo->move('storage/' . $user->id . '/audios', $audio);
+
+
+
+        $user = Audio::create([
+            'user_id' => $user -> id,
+            'link' => $audio,
+            'name' => $name,
+        ]);
+
+        $user ->save();
+
+        return redirect()->back();
     }
 }

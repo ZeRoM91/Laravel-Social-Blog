@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Models\Message;
-
+use App\Events\IndexHere;
 use Illuminate\Support\Facades\Input;
 class IndexController extends Controller
 {
@@ -15,7 +15,7 @@ class IndexController extends Controller
     }
 
     public function index() {
-
+        event(new IndexHere());
         return view('index', compact('articles','authors','category'));
     }
     public function searchUsers() {
@@ -70,14 +70,21 @@ class IndexController extends Controller
         return view('photo',compact('photos'));
 
     }
-    public function music() {
+    public function audios() {
 
 
-        return view('left-bar.music');
+
+        $user = auth('web')->user();
+
+
+        $audios = $user -> audios() ->paginate(15);
+
+
+        return view('left-bar.audio',compact('audios'));
 
     }
 
-    public function video() {
+    public function videos() {
 
 
         return view('left-bar.video');

@@ -24,20 +24,21 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active">
-                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Заявки в друзья
-                            <span class="badge">{{$outcomings -> count()}} </span>
+                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                            Заявки в друзья
+                            <span class="label label-info">{{$outcomings -> count()}} </span>
                         </a>
 
                     </li>
                     <li role="presentation">
                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Запросы в друзья
-                            <span class="badge">{{$incomings -> count()}} </span>
+                            <span class="label label-warning">{{$incomings -> count()}} </span>
                         </a>
 
                     </li>
                     <li role="presentation">
                         <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Мои друзья
-                            <span class="badge"> {{$friends -> count()}}</span>
+                            <span class="label label-primary"> {{$friends -> count()}}</span>
                         </a>
                     </li>
 

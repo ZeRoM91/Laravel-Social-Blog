@@ -20,6 +20,7 @@ class ViewComposerServiceProvider extends ServiceProvider
             $user = auth('web')->user();
 
             if(!is_null($user)) {
+                $view->with('audio', $user->audios()->inRandomOrder()->first());
                 $view->with('messageCount', $user->messagesTo()->unread()->count());
                 $view->with('friendCount', $user->incomingRequests()->count());
                 $view->with('auth', $user);
@@ -27,8 +28,17 @@ class ViewComposerServiceProvider extends ServiceProvider
             }
         });
 
+        view()->composer('index', function ($view) {
+            $user = auth('web')->user();
 
-        view()->composer('lk', function ($view) {
+            if(!is_null($user)) {
+                $view->with('photo', $user->photos()->inRandomOrder()->first());
+                $view->with('friendCount', $user->incomingRequests()->count());
+                $view->with('auth', $user);
+
+            }
+        });
+        view()->composer('lk.index', function ($view) {
             $user = auth('web')->user();
 
             if(!is_null($user)) {

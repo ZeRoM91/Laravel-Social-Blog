@@ -33,7 +33,8 @@ Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserCont
 Route::get('/photos', ['as' => 'photos', 'uses' => 'IndexController@photos']);
 # Загрузка фото
 Route::put('/photos', ['as' => 'sendPhoto', 'uses' => 'FileController@sendPhoto']);
-Route::get('/music', ['as' => 'music', 'uses' => 'IndexController@music']);
+Route::get('/audio', ['as' => 'audio', 'uses' => 'IndexController@audios']);
+Route::put('/audio', ['as' => 'sendAudio', 'uses' => 'FileController@sendAudio']);
 Route::get('/video', ['as' => 'video', 'uses' => 'IndexController@video']);
 # Кошелекы
 Route::get('/cash', ['as' => 'cash', 'uses' => 'IndexController@cash']);
@@ -54,13 +55,17 @@ Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleC
 #Запрос на редактирование статьи
 Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@edit']);
 # Личный кабинет
-Route::get('/lk', ['as' => 'Author', 'uses' => 'UserController@personal']);
+Route::get('/lk', ['as' => 'lk', 'uses' => 'LkUserController@index']);
+# Редактирование информации
+Route::get('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@edit']);
 # Обновление или создание статуса
-Route::post('/lk', ['as' => 'status', 'uses' => 'UserController@status']);
+Route::post('/lk/status', ['as' => 'status', 'uses' => 'LkUserController@status']);
+# Добавление блога
+Route::post('/lk/blog', ['as' => 'lk.blog', 'uses' => 'LkUserController@blog']);
 # Загрузка аватара
 Route::put('/lk', ['as' => 'avatar', 'uses' => 'FileController@avatar']);
 # Редактирование статуса (если уже имеется)
-Route::post('/lk/editStatus', ['as' => 'editStatus', 'uses' => 'UserController@editStatus']);
+Route::post('/lk/editStatus', ['as' => 'editStatus', 'uses' => 'LkUserController@editStatus']);
 # Post запрос на отправку отредактированной статьи
 Route::post('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@update']);
 # Добавление комментария в статью

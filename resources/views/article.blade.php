@@ -124,7 +124,8 @@
                         @foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
 
-                           <b>{{$comment->userName->firstname}} {{$comment->userName->lastname}}</b><br> <img class="img-circle" src="{{asset('avatars/' . $comment->userName->avatar)}}">
+                           <b>{{$comment->userName->firstname}} {{$comment->userName->lastname}}</b><br>
+        <img class="img-circle" src="{{asset('avatars/' . $comment->userName->avatar)}}">
         <span>"{{$comment->comment}}"</span>
         @if($comment -> rating   > 0)
            <span class="label label-success">+{{$comment -> rating }}</span>

@@ -43,7 +43,7 @@
                     <br>
 
                     <a href="{{route('user__profile', ['id' => $article->author])}}">
-                        <img src="{{asset('avatars/' . $article->author->avatar)}}" alt="" class="img-circle ">
+                        <img src="{{asset('/storage/avatars/' . $article->author->avatar)}}" alt="" class="img-circle ">
                        <span> <b>{{$article->author -> firstname}} {{$article->author -> lastname}}</b></span>
                     </a>
                     <hr>

@@ -19,7 +19,7 @@
 @foreach($photos as $photo)
 
     <div class="grid__block"
-         style="background-image: url({{asset('storage/photos.' . Auth::user()->id . '/' . $photo -> link)}});
+         style="background-image: url({{asset('storage/' . Auth::user()->id . '/photos/' . $photo -> link)}});
                  background-size: cover;">
 
 

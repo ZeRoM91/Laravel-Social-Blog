@@ -6,7 +6,7 @@
     <div class="grid__block lk__avatar"
 
 
-         style="background-image: url({{isset($user->avatar) ? asset('avatars/' . $user->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}); background-size: cover;">
+         style="background-image: url({{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}); background-size: cover;">
 
 
     </div>

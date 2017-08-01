@@ -113,7 +113,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     margin:  0 auto;
     width: 1200px;
 
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4fr;
 }
 
 .lk,.user {
@@ -365,4 +365,16 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     color: #eee;
     border: 1px solid rgba(155,155,155,.5);
     box-shadow: 0 0 12px #fff;
+}
+
+
+#audioplayer {
+    position: fixed;
+    opacity: .5;
+z-index: 9;
+}
+
+#audioplayer:hover {
+    opacity: 1;
+
 }

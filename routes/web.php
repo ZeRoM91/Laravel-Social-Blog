@@ -3,17 +3,13 @@
  * МАРШРУТИЗАЦИЯ САЙТА
  */
 
-
 # Роут для авторизации
 Route::auth();
 
 # Роут для авторизации через VKcom
 
-
 Route::get('/social_login/{provider}', ['as' => 'VKlogin', 'uses' => 'SocialController@login']);
 Route::get('/social_login/callback/{provider}', 'SocialController@callback');
-
-
 
 # Главная страница
 Route::get('/', 'IndexController@index')->middleware('auth');
@@ -52,7 +48,7 @@ Route::post('/article', ['as' => 'create', 'uses' => 'ArticleController@create']
 # Путь для статьи по id
 Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@show']);
 #Запрос на удаление статьи
-Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleController@delete']);
+Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleController@delete'])->middleware('author');
 #Запрос на редактирование статьи
 Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@edit']);
 # Личный кабинет
@@ -61,6 +57,8 @@ Route::get('/lk', ['as' => 'lk', 'uses' => 'LkUserController@index']);
 Route::get('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@edit']);
 # Обновление или создание статуса
 Route::post('/lk/status', ['as' => 'status', 'uses' => 'LkUserController@status']);
+
+Route::get('/lk/deleteStatus', ['as' => 'status.delete', 'uses' => 'LkUserController@delete']);
 # Добавление блога
 Route::post('/lk/blog', ['as' => 'lk.blog', 'uses' => 'LkUserController@blog']);
 # Загрузка аватара
@@ -88,7 +86,7 @@ Route::get('/admin', ['as' => 'admin', 'uses' => 'IndexController@admin']);
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'UserController@user']);
 
 # Запрос на добавление/принятия/удаления в друзья
-Route::get('/user/{id}/friend-send', ['as' => 'user__friend-send', 'uses' => 'UserController@friend__send']);
+Route::get('/user/{id}/friend-send', ['as' => 'user__friend-send', 'uses' => 'UserController@friend__send'])->middleware('friend');
 Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'UserController@friend_accept']);
 Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'UserController@friend_decline']);
 

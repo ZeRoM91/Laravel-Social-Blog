@@ -17,22 +17,32 @@
 
         <div class="grid__block lk__block-info">
 <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
-            <span>{{$status}}</span>
+            <div class="well">
+            <p>{{$status}}</p>
 
+            @if(isset($status) )
+                    <p>{{$status}}</p>
+                <a href="{{route('status.delete')}}">
+                    <button class="btn btn-danger glyphicon glyphicon-remove" type="submit"></button>
+                </a>
+
+
+            @endif
+            </div>
             <hr>
             <form action="{{ isset($status) ? route('editStatus') : '/lk/status'}}" method="post">
                 {{ csrf_field() }}
+
             <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-success glyphicon glyphicon-ok" type="submit"></button>
-          @if(isset($status) )
-          <button class="btn btn-danger glyphicon glyphicon-move" type="submit"></button>
-              @endif
+
       </span>
                 <input name="status" type="text" class="form-control" placeholder="{{ isset($status) ? 'Заменить статус' : 'О чем вы думаете...' }}">
 
             </div><!-- /input-group -->
             </form>
+            <br>
 
             <hr>
 

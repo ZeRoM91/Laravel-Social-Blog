@@ -61,6 +61,18 @@ class LkUserController extends Controller
 
     }
 
+    public function delete(Request $request)
+    {
+        $user = auth('web')->user();
+        $status = $user->status;
+
+        $status->delete();
+
+        return redirect()->back();
+
+
+    }
+
     public function blog(Request $request)
     {
 

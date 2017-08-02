@@ -20,7 +20,9 @@
             <div class="grid__block">
             <p>{{$video -> name}}</p>
             <video width="320" height="240" controls>
-                <source src="{{asset('storage/' . Auth::user()->id . '/videos/' . $video -> link)}}">
+
+                <source src="{{asset('storage/' . Auth::user()->id . '/videos/' . $video -> link)}}" type="video/mp4">
+
                 Your browser does not support the video tag.
             </video>
 

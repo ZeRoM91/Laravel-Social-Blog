@@ -24,7 +24,9 @@ class HomeController extends Controller
     public function category($category_id) {
         $articles = Article::all()->where('category_id', $category_id);
         // $articles = Article::where('category_id', $category_id -> id);
+
         $categories = Category::all();
+
         return view('category', compact('articles','categories'));
     }
     public function search() {

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Message;
@@ -14,6 +15,8 @@ use App\Events\ChatMessage;
 use App\Events\NewMessage;
 use App\Events\NewFriend;
 use App\Events\IndexHere;
+
+
 class UserController extends Controller
 {
 
@@ -21,7 +24,6 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
 
 
     public function user($id)
@@ -33,14 +35,16 @@ class UserController extends Controller
 
         $status = $user->status;
 
-        $isFriend = $auth->sendFriend()->where('to_user_id', $id)->get()->first();
+        $friend = $auth->friends()->where('to_user_id', $id)->first();
 
-        $inFriend = $auth->incomingRequests;
+        $isFriend = $auth->sendFriend()->where('to_user_id', $id)->first();
 
-        $outFriend = $auth->outcomingRequests;
+        $inFriend = $auth->incomingRequests()->where('from_user_id', $id)->first();
+
+        $outFriend = $auth->outcomingRequests()->where('to_user_id', $id)->first();
 
 
-        return view('user', compact('user', 'isFriend', 'inFriend', 'outFriend','status'));
+        return view('user', compact('user', 'isFriend', 'inFriend', 'outFriend', 'status', 'friend'));
     }
 
     public function friend__send(Request $request, $id)

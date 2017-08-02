@@ -59,10 +59,17 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
                         @foreach($incomings as $incoming)
-                            <button class="btn btn-warning"> <span class="glyphicon glyphicon-user"> {{$incoming ->name}}</span></button>
+                            <div class="grid__block">
+                                <img src="{{isset($incoming->avatar) ? asset('storage/avatars/' . $incoming->avatar) : '/img/avatar.jpg'}}" alt="" class="img-circle ">
 
-                            <a href="{{route('user__friend-accept', ['id' => $incoming -> id])}}"><button class="button button-success">Принять</button></a>
-                            <button class="button button-danger">Отклонить</button>
+                                <span> {{$incoming ->name}}</span>
+
+
+                            </div>
+
+                            <a href="{{route('user__friend-accept', ['id' => $incoming -> id])}}"><button class="btn btn-success">Принять</button></a>
+                            <a href="{{route('user__friend-decline', ['id' => $incoming -> id])}}"><button class="btn btn-danger">Отклонить</button></a>
+                            <hr>
 
                         @endforeach
                     </div>

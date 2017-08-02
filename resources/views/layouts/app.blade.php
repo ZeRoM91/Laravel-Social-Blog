@@ -65,7 +65,7 @@
     @if(!Auth::guest())
 
         <a href="{{route('lk')}}"><li class="menu__list" id="menu__list-login">
-                <img class="img-circle" src="{{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+                <img class="img-circle" src="{{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}">
 
 
                 {{Auth::user()->name}}</li></a>

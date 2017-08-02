@@ -35,7 +35,8 @@ Route::get('/photos', ['as' => 'photos', 'uses' => 'IndexController@photos']);
 Route::put('/photos', ['as' => 'sendPhoto', 'uses' => 'FileController@sendPhoto']);
 Route::get('/audio', ['as' => 'audio', 'uses' => 'IndexController@audios']);
 Route::put('/audio', ['as' => 'sendAudio', 'uses' => 'FileController@sendAudio']);
-Route::get('/video', ['as' => 'video', 'uses' => 'IndexController@video']);
+Route::get('/video', ['as' => 'video', 'uses' => 'IndexController@videos']);
+Route::put('/video', ['as' => 'sendVideo', 'uses' => 'FileController@sendVideo']);
 # Кошелекы
 Route::get('/cash', ['as' => 'cash', 'uses' => 'IndexController@cash']);
 # Поиск статей по названию

@@ -33,7 +33,7 @@
 @if($message->to_user_id == Auth::user() ->id)
     <div class="message__from">
         <p class="message__time">{{$message->created_at}}</p>
-        <img class="img-circle" src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+        <img class="img-circle" src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}">
 
         <span class="message__time">{{$message->message}}</span>
     </div>
@@ -44,7 +44,7 @@
                                         <div class="message__to">
 
                                             <p class="message__time">{{$message->created_at}}</p>
-                                            <img class="img-circle" src="{{isset(\Auth::user()->avatar) ? asset('storage/avatars/' . \Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+                                            <img class="img-circle" src="{{isset(\Auth::user()->avatar) ? asset('storage/avatars/' . \Auth::user()->avatar) : '/img/avatar.jpg'}}">
 
                                             <span class="message__time">{{$message->message}}</span>
                                         </div>
@@ -52,7 +52,7 @@
                                         <div class="message__to">
 
                                             <p class="message__time">{{$message->created_at}}</p>
-                                            <img class="img-circle" src="{{isset(\Auth::user()->avatar) ? asset('storage/avatars/' . \Auth::user()->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+                                            <img class="img-circle" src="{{isset(\Auth::user()->avatar) ? asset('storage/avatars/' . \Auth::user()->avatar) : '/img/avatar.jpg'}}">
 
                                             <span class="message__time">{{$message->message}}</span>
                                                <span><i>(Не прочитано)</i></span>
@@ -68,53 +68,18 @@
 
     <br>
                      {{--   <form action="{{route('user__message-send',['id' => $user->id ])}}" method="post">--}}
-                        <form method="post">
+                        <form method="post" id="message">
 
                             {{ csrf_field() }}
-
-
-                            <textarea type="text" name="message" id="message3" class="form-control" placeholder="Введите ваше сообщение" rows="4" style="resize: none"></textarea>                    </textarea>
+                            
+                            <textarea type="text" name="message" id="message3" class="form-control" placeholder="Введите ваше сообщение. Для отправки сообщения нажмите [Enter]" rows="4" style="resize: none"></textarea>                    </textarea>
                             <br>
 
                             <button type="submit" class="btn btn-info" value="Отправить" id="send"> <span class="glyphicon glyphicon-send"></span> Отправить</button>
 
 
                         </form>
-
-
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script>
-
-
-function addMessage(data) {
-    $("#send").click(function () {
-        $.ajax({
-            type: 'POST',
-
-            data: {data: $('#message3').val()},
-            success: function(data){
-                $('.message-box').append('<div class="message__to"> data </div>');
-            }
-        });
-
-
-
-    });
-}
-
-
-
-                var socket = io('http://localhost:6001');
-
-                socket.on('chat:message', function(data){
-
-                    addMessage(data);
-
-                });
 
     </script>
 @endsection

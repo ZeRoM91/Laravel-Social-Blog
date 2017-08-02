@@ -17,7 +17,7 @@
         @endif
         <hr>
 
-
+{{$isFriend}}
 
 
 
@@ -27,8 +27,8 @@
 
 
 @if($user -> id != Auth::user()->id)
-
-    @if(isset($isFriend -> pivot -> status))
+    {{-- Если пользователь являеться другом --}}
+            @if(isset($isFriend))
 
     @if($isFriend -> pivot -> status === 1)
                 <div class="btn-group" role="group" aria-label="...">
@@ -53,47 +53,73 @@
             </div>
 
         @endif
-          @if($isFriend -> pivot -> status === 0)
 
-                <button type="button" class="btn btn-info" disabled>
-                    Предложение отправлено
-                </button>
+        @if($isFriend -> pivot -> status === 0)
 
+            <button class="btn btn-info" disabled>Запрос отправлен</button>
+@else
 
-
-        @endif
-
-        @endif
+            @endif
 
 
-        @if(!isset($isFriend -> pivot -> status))
+
+            @endif
 
 
-            <a href="{{route('user__friend-send', ['id' => $user->id])}}">
-                <button class="btn btn-success">Добавить в друзья</button>
-            </a>
-
-
-        @endif
 
 
     @else
+
+
             <button class="btn btn-warning" disabled>Это ваш профиль</button>
 
         @endif
+
+
+
+
+
+        {{-- Если пользователь являеться другом --}}
+
+    @foreach ($inFriend as $incoming)
+        @if($incoming->pivot->from_user_id == $user ->id)
+                    <p class="alert alert-success">Этот рользователь <br>
+                    хочет добавить вас в друзья <br>
+                        <a href="{{route('user__friend-accept',['id' => $user -> id])}}">
+                            <button class="btn btn-success">Принять</button>
+                        </a>
+                        <a href="{{route('user__friend-decline',['id' => $user -> id])}}">
+                            <button class="btn btn-danger">Отклонить</button>
+                        </a>
+                    </p>
+
+
+@else
+            <a href="{{route('user__friend-send',['id' => $user -> id])}}">
+                <button class="btn btn-success">Добавить в друзья</button>
+            </a>
+            @endif
+
+
+
+
+    @endforeach
+
+
+
+        </div>
+
+        <div class="grid__block">
+
+
+
+
+        </div>
+
+        <div class="grid__block"></div>
+
     </div>
 
-    <div class="grid__block">
 
 
-
-
-    </div>
-
-    <div class="grid__block"></div>
-
-</div>
-
-
-
-@endsection
+    @endsection

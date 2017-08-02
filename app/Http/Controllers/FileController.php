@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\Photo;
 use App\Models\Audio;
+use App\Models\Video;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class FileController extends Controller
@@ -66,6 +67,31 @@ class FileController extends Controller
         $user = Audio::create([
             'user_id' => $user -> id,
             'link' => $audio,
+            'name' => $name,
+        ]);
+
+        $user ->save();
+
+        return redirect()->back();
+    }
+
+    public function sendVideo(Request $request)
+
+    {
+        $user = auth('web')->user();
+        $file =  $request->file('video');
+
+        $video = $user->id.'.'. rand() . '.'. $request->file('video')->getClientOriginalExtension();
+
+        $name = $request->file('video')->getClientOriginalName();
+
+        $file->move('storage/' . $user->id . '/videos', $video);
+
+
+
+        $user = Video::create([
+            'user_id' => $user -> id,
+            'link' => $video,
             'name' => $name,
         ]);
 

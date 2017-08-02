@@ -13,6 +13,7 @@ use App\User;
 use App\Events\ChatMessage;
 use App\Events\NewMessage;
 use App\Events\NewFriend;
+use App\Events\IndexHere;
 class UserController extends Controller
 {
 
@@ -34,8 +35,12 @@ class UserController extends Controller
 
         $isFriend = $auth->sendFriend()->where('to_user_id', $id)->get()->first();
 
+        $inFriend = $auth->incomingRequests;
 
-        return view('user', compact('user', 'isFriend', 'status'));
+        $outFriend = $auth->outcomingRequests;
+
+
+        return view('user', compact('user', 'isFriend', 'inFriend', 'outFriend','status'));
     }
 
     public function friend__send(Request $request, $id)
@@ -87,7 +92,7 @@ class UserController extends Controller
         $messages = $messages->get();
         Message::where('to_user_id', $auth->id)->update(['status' => true]);
 
-
+        event(new IndexHere());
         return view('left-bar.messages__user', compact('user', 'friend', 'friends', 'messages'));
 
     }

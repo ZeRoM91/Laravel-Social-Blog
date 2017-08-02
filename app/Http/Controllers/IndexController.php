@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Models\Message;
-use App\Events\IndexHere;
+
 use Illuminate\Support\Facades\Input;
 class IndexController extends Controller
 {
@@ -17,7 +17,7 @@ class IndexController extends Controller
     public function index() {
 
 
-            event(new IndexHere());
+
 
 
 
@@ -45,10 +45,6 @@ class IndexController extends Controller
         $incomings = $auth ->incomingRequests;
         $outcomings = $auth->outcomingRequests;
         $friends = $auth->friends;
-
-
-
-
 
         return view('left-bar.friends',compact('friends', 'outcomings', 'incomings'));
     }
@@ -92,7 +88,12 @@ class IndexController extends Controller
     public function videos() {
 
 
-        return view('left-bar.video');
+        $user = auth('web')->user();
+
+
+        $videos = $user -> videos() ->paginate(15);
+
+        return view('left-bar.video',compact('videos'));
 
     }
 

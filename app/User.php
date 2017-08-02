@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Blog;
 use App\Models\Audio;
+use App\Models\Video;
 use App\Models\UserSocialAccount;
 use App\Models\Rating;
 use App\Models\Photo;
@@ -110,6 +111,11 @@ class User extends Authenticatable
     public function audios()
     {
         return $this->hasMany(Audio::class,'user_id');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class,'user_id');
     }
     public static function createBySocialProvider($providerUser)
     {

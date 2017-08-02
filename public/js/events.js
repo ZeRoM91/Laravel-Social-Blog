@@ -27,6 +27,7 @@ socket.on("new-message:App\\Events\\NewMessage", function(message){
     $(".event-close").click(function() {
         $(this).closest('.event-elem').fadeOut('slow');
     });
+    $(p).fadeOut(15000);
 });
 
 //2. Получение заявки в друзья
@@ -46,22 +47,23 @@ socket.on("new-friend:App\\Events\\NewFriend", function(message){
     });
 
 });
-//3. Перезагрузка главной страницы
+//3. Уведомление о входе в чат
 socket.on("new-here:App\\Events\\IndexHere", function(message){
     var firstname = message.data.firstname;
     var lastname = message.data.lastname;
-    var data = "<b>" + firstname + ' ' + lastname + "</b>" + ' не давно был на этой странице ';
+    var data = "<b>" + firstname + ' ' + lastname + "</b>" + ' присоединился к чату ';
     var p = document.createElement("p");  // Create with DOM
     var span = document.createElement("span");  // Create with DOM
     p.innerHTML = data;
     span.innerHTML = 'x';
-    span.className = 'event-close label label-danger';
-    p.className = 'event-elem alert alert-danger';
+    span.className = 'event-close label label-success';
+    p.className = 'event-elem alert alert-success';
     $(p).append(span);
     $('#event-list').append(p);
     $(".event-close").click(function() {
         $(this).closest('.event-elem').fadeOut('slow');
     });
+    $(p).fadeOut(5000);
 });
 
 //4. Уведомление о новой статье

@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{$user->id}}</td>
                     <td>
-                        <img class="img-circle" src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}">
+                        <img class="img-circle" src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}">
                         <a href="{{route('user__profile',['id' => $user->id])}}">
                             {{$user->firstname}}
                             {{$user->lastname}}

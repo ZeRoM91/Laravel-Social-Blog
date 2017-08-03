@@ -48,7 +48,7 @@ Route::post('/article', ['as' => 'create', 'uses' => 'ArticleController@create']
 # Путь для статьи по id
 Route::get('/article/{id}', ['as' => 'article', 'uses' => 'ArticleController@show']);
 #Запрос на удаление статьи
-Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleController@delete'])->middleware('author');
+Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleController@delete']);
 #Запрос на редактирование статьи
 Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@edit']);
 # Личный кабинет
@@ -86,7 +86,7 @@ Route::get('/admin', ['as' => 'admin', 'uses' => 'IndexController@admin']);
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'UserController@user']);
 
 # Запрос на добавление/принятия/удаления в друзья
-Route::get('/user/{id}/friend-send', ['as' => 'user__friend-send', 'uses' => 'UserController@friend__send'])->middleware('friend');
+Route::get('/user/{id}/friend-send', ['as' => 'user__friend-send', 'uses' => 'UserController@friend__send']);
 Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'UserController@friend_accept']);
 Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'UserController@friend_decline']);
 

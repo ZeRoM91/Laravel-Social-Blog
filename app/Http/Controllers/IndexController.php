@@ -25,7 +25,8 @@ class IndexController extends Controller
     }
     public function searchUsers() {
         $query = Input::get('searchUser');
-        $users = User::where("name", "LIKE","%$query%")->get();
+
+        $users = User::where("firstname", "LIKE","%$query%")->get();
         return view('searchUsers', compact('users'));
     }
     public function admin() {

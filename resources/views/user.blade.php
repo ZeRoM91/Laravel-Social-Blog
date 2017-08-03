@@ -26,10 +26,12 @@
     {{-- Если пользователь являеться другом --}}
             @if(isset($isFriend))
     @if($isFriend -> pivot -> status === 1)
-                <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-primary">Сообщение</button>
-                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-gift"></span></button>
-                </div>
+
+                    <a href="{{route('messages__user', ['id' => $isFriend -> pivot -> to_user_id])}}">
+                    <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-send"></span> Сообщение</button>
+                    </a>
+
+
                 <hr>
         <!-- Single button -->
             <div class="btn-group">
@@ -38,7 +40,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li>                <a href="{{route('user__friend-decline', ['id' => $isFriend -> pivot -> to_user_id])}}">
-                            <button class="btn btn-danger">Удалить из друзей</button>
+                            <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Удалить из друзей</button>
                         </a></li>
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
@@ -48,7 +50,7 @@
             </div>
         @endif
         @if($isFriend -> pivot -> status === 0)
-            <button class="btn btn-info" disabled>Запрос отправлен</button>
+            <button class="btn btn-info" disabled><span class="glyphicon glyphicon-ok"></span>Запрос отправлен</button>
             @endif
     @else
 

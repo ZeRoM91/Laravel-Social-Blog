@@ -76,7 +76,7 @@
             <hr>
 
             @foreach($blogs as $blog  )
-                <img class="img-circle" src="{{asset('storage/avatars/' . $auth->avatar)}}">
+                <img class="img-circle" src="{{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}">
                 <p>
                     <span>
                         {{$blog -> created_at}}:

@@ -35,7 +35,7 @@
     <a href="/">
         <LI class="menu__list">
     <span class="glyphicon glyphicon-console" style="color: #fff; margin-left: 25px;"></span>
-    <span style="color: #fff;"> IT-Blog</span>
+    <span style="color: #fff;"> Laravel Blog</span>
         </LI>
     </a>
 
@@ -122,7 +122,9 @@
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
 
-
+                <a href="{{route('tasks')}}">
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-th-list"></span> Задачи</li>
+                </a>
 
                 <a href="{{route('audio')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-music"></span>  Аудиозаписи</li>
@@ -137,7 +139,7 @@
                 </a>
 
                 <a href="{{route('cash')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-piggy-bank"></span> Кошелек
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-credit-card"></span> Кошелек
                         <span class="label label-success">0 <span class="glyphicon glyphicon-ruble"></span></span>
                     </li>
 

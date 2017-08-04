@@ -8,9 +8,11 @@
     </div>
     <div class="grid__block lk__block-info">
         <h3>{{$user->firstname}} {{$user->lastname}}</h3>
+        <div class="well">
         @if(isset($status))
         <span>{{$status  -> status}}</span>
         @endif
+        </div>
         <hr>
 
 

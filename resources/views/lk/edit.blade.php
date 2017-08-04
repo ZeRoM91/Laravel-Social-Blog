@@ -1,34 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-    <div class="grid__block">
-
-        <h3>Редактирование профиля</h3>
-
-
-        <form>
+<div class="grid__block">
+    <h3>Редактирование профиля</h3>
+    <hr>
+    <form method="post">
+        {{ csrf_field() }}
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <label for="exampleInputEmail1">Имя</label>
+                <input type="text" name="firstname" class="form-control" id="exampleInputEmail1" placeholder="Email" value="{{Auth::user()->firstname}}">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+
+                <label for="exampleInputPassword1">Фамилия</label>
+                <input type="text" name="lastname" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{Auth::user()->lastname}}">
             </div>
-            <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Check me out
-                </label>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        <hr>
-    </div>
+
+            <button type="submit" class="btn btn-default">Отправить</button>
+    </form>
+</div>
+<div class="grid__block">
+    <h3>Дополнительная информация</h3>
+    <hr>
+
+    <form method="post">
+        {{ csrf_field() }}
+        <div class="form-group">
+            <label for="exampleInputEmail1">Телефон</label>
+            <input type="text" name="firstname" class="form-control" id="exampleInputEmail1" placeholder="Email" value="{{Auth::user()->firstname}}">
+        </div>
+        <div class="form-group">
+
+            <label for="exampleInputPassword1">Дата рожденияф</label>
+            <input type="text" name="lastname" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{Auth::user()->lastname}}">
+        </div>
+
+        <button type="submit" class="btn btn-default">Отправить</button>
+    </form>
+</div>
     @stop

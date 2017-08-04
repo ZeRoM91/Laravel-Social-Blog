@@ -25,6 +25,8 @@ Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages
 Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'UserController@messages__user']);
 # Отправка сообщения пользователю
 Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserController@message__send']);
+#Список задач
+Route::get('/tasks', ['as' => 'tasks', 'uses' => 'IndexController@task']);
 # Фотографии
 Route::get('/photos', ['as' => 'photos', 'uses' => 'IndexController@photos']);
 # Загрузка фото
@@ -55,6 +57,8 @@ Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleContr
 Route::get('/lk', ['as' => 'lk', 'uses' => 'LkUserController@index']);
 # Редактирование информации
 Route::get('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@edit']);
+# Редактирование информации - отправка данныых
+Route::post('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@editPost']);
 # Обновление или создание статуса
 Route::post('/lk/status', ['as' => 'status', 'uses' => 'LkUserController@status']);
 
@@ -81,7 +85,10 @@ Route::get('/comment/{id}/resetcomment', ['as' => 'resetComment', 'uses' => 'Art
 ## АДМИНКА
 
 # Главная страница
-Route::get('/admin', ['as' => 'admin', 'uses' => 'IndexController@admin']);
+Route::get('/admin', ['as' => 'admin', 'uses' => 'AdminController@index']);
+Route::get('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@category']);
+Route::post('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@categoryPost']);
+Route::delete('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@categoryDelete']);
 # Вывод пользователя по id
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'UserController@user']);
 

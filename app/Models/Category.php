@@ -10,6 +10,7 @@ class Category extends Model
     // имя таблицы (необязательно, т.к. наследуеться из названия класса)
     protected $table = 'categories';
 
+    public $timestamps = false;
     protected $guarded = ['id'];
     
 }

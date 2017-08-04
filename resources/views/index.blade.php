@@ -12,23 +12,12 @@
 </div>
         <div class="grid__block main__block-left-bar">
 
-            <p>Статистика</p>
 
-            <hr>
-<p>Статей на портале: {{$articleCount}}</p>
-<p>Комментариев на портале: {{$commentCount}}</p>
-<p>Пользователей на портале: {{$userCount}}</p>
-<p>Отправленных сообщений: {{$messageCount}}</p>
 
-            <ul id="event-list">
-
-            </ul>
-        </div>
-        <div class="grid__block">
             <p>Самая читаемая статья</p>
             <div class="panel-heading" style="color: #666; opacity: .75;">
                 <a href="{{route('article' ,['id' => $topArticle ->id])}}">
-            <span> {{$topArticle ->title}}</span>
+                    <span> {{$topArticle ->title}}</span>
                 </a>
             </div>
             <div class="panel-footer" style="color: #666; opacity: .75;">
@@ -47,6 +36,19 @@
                 <span class="glyphicon glyphicon-heart" ></span><span> {{$ratingArticle ->rating}}</span>
                 <span class="glyphicon glyphicon-comment" ></span><span> {{$ratingArticle ->comment->count()}}</span>
             </div>
+
+        </div>
+        <div class="grid__block">
+
+
+            <p>Статистика</p>
+
+            <hr>
+            <p>Статей на портале: {{$articleCount}}</p>
+            <p>Комментариев на портале: {{$commentCount}}</p>
+            <p>Пользователей на портале: {{$userCount}}</p>
+            <p>Отправленных сообщений: {{$messageCount}}</p>
+
 
         </div>
         <div class="grid__block"> 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Status;
+
 class LkUserController extends Controller
 {
     //
@@ -21,8 +22,7 @@ class LkUserController extends Controller
         $auth = auth('web')->user();
         // Добавляем список всех его статей с пагинацией
         $articles = $auth->articles()->paginate(5);
-
-        $blogs = $auth -> blog() -> orderBy('created_at','desc') ->get();
+        $blogs = $auth -> blog() -> orderBy('created_at','desc') ->paginate(10);
 
         return view('lk.index', compact('articles','blogs','auth'));
     }
@@ -33,7 +33,14 @@ class LkUserController extends Controller
 
         return view('lk.edit');
     }
+    public function editPost(Request $request) {
+        $user = auth('web')->user();
+        $user->firstname = \Request::input('firstname');
+        $user->lastname = \Request::input('lastname');
+        $user -> save();
 
+        return redirect()->back();
+    }
     public function status(Request $request)
     {
 

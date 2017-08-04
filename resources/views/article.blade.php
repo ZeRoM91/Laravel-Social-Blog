@@ -11,12 +11,14 @@
 
                             <span class="article__date"> {{$article['created_at']}}</span>
                             <hr>
-                      <h3 style="text-align: center;">{{$article['title']}}</h3>
+                      <h3 style="text-align: center;">{{$article -> title}}</h3>
                         <hr>
 
                         <div style="word-wrap: break-word">{!! $article->text !!}</div>
     <div class="well">
-                            <span class="glyphicon glyphicon-user"></span><a href="{{route('user__profile', ['id' => $article->author])}}"><span>{{$article ->author['name']}}</span></a>
+        <img src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}" alt="" class="img-circle ">
+<p>Автор статьи:</p>
+        <a href="{{route('user__profile', ['id' => $article->author])}}"><span>{{$article ->author -> firstname}} {{$article ->author -> lastname}}</span></a>
 
 
 
@@ -103,10 +105,16 @@
 
                             @endif</div>
 
+
                         <p>Оставить комментарий:</p>
                         {{--<form action="{{route('addComment',['id' => $article->id])}}" method="post">--}}
-                        <form method="post">
+                        <form method="post" id="comment-form">
                             {{ csrf_field() }}
+
+                            <input type="hidden" id="time" value="{{date('Y:H:d')}}">
+                            <input type="hidden" id="firstname" value="{{Auth::user()->firstname}}">
+
+
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="article_id" value="{{$article->id}}" >
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}" >
@@ -120,51 +128,66 @@
 
 
                         <hr>
+
+
 <div id="comment-box">
-                        @foreach($comments as $comment)
+
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+        <div class="btn-group" role="group" aria-label="...">
+
+            <button class="btn btn-default">Новые</button>
+            <button class="btn btn-default">Старые</button>
+            <button class="btn btn-default">Популярные</button>
+        </div>
+
+    </div>
+
+@foreach($comments as $comment)
                             <i>{{$comment->created_at}}</i><br>
 
-                           <b>{{$comment->userName->firstname}} {{$comment->userName->lastname}}</b><br> <img class="img-circle" src="{{asset('avatars/' . $comment->userName->avatar)}}">
+                           <b>{{$comment->user->firstname}} {{$comment->user->lastname}}</b><br>
+        <img class="img-circle" src="{{isset($comment->user->avatar) ? asset('storage/avatars/' . $comment->user->avatar) : '/img/avatar.jpg'}}">
         <span>"{{$comment->comment}}"</span>
-        @if($comment -> rating   > 0)
-           <span class="label label-success">+{{$comment -> rating }}</span>
-        @endif
-        @if($comment -> rating  < 0)
-           <span class="label label-danger">{{$comment -> rating }}</span>
-        @endif
-        @if($comment -> rating == 0)
-            <span class="label label-default">{{$comment -> rating }}</span>
-        @endif
+        {{--@if($comment -> rating   > 0)--}}
+           {{--<span class="label label-success">+{{$comment -> rating }}</span>--}}
+        {{--@endif--}}
+        {{--@if($comment -> rating  < 0)--}}
+           {{--<span class="label label-danger">{{$comment -> rating }}</span>--}}
+        {{--@endif--}}
+        {{--@if($comment -> rating == 0)--}}
+            {{--<span class="label label-default">{{$comment -> rating }}</span>--}}
+        {{--@endif--}}
         @if(Auth::user()->id != $comment -> user_id)
-        @if($vote['vote'] === NULL)
-            <div class="btn-group" role="group" aria-label="...">
-                <a href="{{route('upComment',['id' => $comment->id])}}" ><button class="label label-success">+</button></a>
-                <a href="{{route('downComment',['id' => $comment->id])}}" ><button class="label label-danger">-</button></a>
-            </div>
-        @endif
 
-        @if($vote['vote'] === 1)
-            <div class="btn-group" role="group" aria-label="...">
-                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="label label-primary" title="Отменить голос">Отменить</a>
-                <a class="label label-danger" disabled>-</a>
-            </div>
+        {{--@if($vote['vote'] === NULL)--}}
+            {{--<div class="btn-group" role="group" aria-label="...">--}}
+                {{--<a href="{{route('upComment',['id' => $comment->id])}}" ><button class="label label-success">+</button></a>--}}
+                {{--<a href="{{route('downComment',['id' => $comment->id])}}" ><button class="label label-danger">-</button></a>--}}
+            {{--</div>--}}
+        {{--@endif--}}
 
-        @endif
+        {{--@if($vote['vote']  === 1)--}}
+            {{--<div class="btn-group" role="group" aria-label="...">--}}
+                {{--<a href="{{route('resetComment',['id' => $comment->id])}}"  class="label label-primary" title="Отменить голос">Отменить</a>--}}
+                {{--<a class="label label-danger" disabled>-</a>--}}
+            {{--</div>--}}
 
-        @if($vote['vote'] === 0)
-            <div class="btn-group" role="group" aria-label="...">
-                <a class="label label-success" disabled>+</a>
-                <a href="{{route('resetComment',['id' => $comment->id])}}"  class="label label-primary" title="Отменить голос">Отменить</a>
-            </div>
+        {{--@endif--}}
 
-        @endif
+        {{--@if($vote['vote']  === 0)--}}
+            {{--<div class="btn-group" role="group" aria-label="...">--}}
+                {{--<a class="label label-success" disabled>+</a>--}}
+                {{--<a href="{{route('resetComment',['id' => $comment->id])}}"  class="label label-primary" title="Отменить голос">Отменить</a>--}}
+            {{--</div>--}}
+
+        {{--@endif--}}
 
         @endif
                             <hr>
-                        @endforeach
+    @endforeach
 
-                        @endsection
-<!--                     <?php //echo $comments->render(); ?>   -->
+
+
 </div>
 
                         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal">
@@ -180,3 +203,32 @@
                         </div>
 
 </div>
+<script src="{{ asset('js/jquery-3.2.1.js') }}" ></script>
+<script>
+    $(function() {
+        $('#comment-form').submit(function(e) {
+            var time = $('#time').val();
+            var firstname = $('#firstname').val();
+            var text = $('#comment').val();
+            var $form = $(this);
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: $form.serialize()
+            }).done(function() {
+
+                var span = document.createElement("span");  // Create with DOM
+                span.innerHTML = time + '<br>' + '<b>' + firstname + '</b><br>'  + text;
+
+                $('#comment-box').append(span);
+                $('#comment').val('');
+                console.log(text);
+            }).fail(function() {
+                console.log('fail');
+            });
+            //отмена действия по умолчанию для кнопки submit
+            e.preventDefault();
+        });
+    });
+</script>
+@endsection

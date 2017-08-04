@@ -3,17 +3,13 @@
  * МАРШРУТИЗАЦИЯ САЙТА
  */
 
-
 # Роут для авторизации
 Route::auth();
 
 # Роут для авторизации через VKcom
 
-
 Route::get('/social_login/{provider}', ['as' => 'VKlogin', 'uses' => 'SocialController@login']);
 Route::get('/social_login/callback/{provider}', 'SocialController@callback');
-
-
 
 # Главная страница
 Route::get('/', 'IndexController@index')->middleware('auth');
@@ -29,12 +25,16 @@ Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages
 Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'UserController@messages__user']);
 # Отправка сообщения пользователю
 Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserController@message__send']);
+#Список задач
+Route::get('/tasks', ['as' => 'tasks', 'uses' => 'IndexController@task']);
 # Фотографии
 Route::get('/photos', ['as' => 'photos', 'uses' => 'IndexController@photos']);
 # Загрузка фото
 Route::put('/photos', ['as' => 'sendPhoto', 'uses' => 'FileController@sendPhoto']);
-Route::get('/music', ['as' => 'music', 'uses' => 'IndexController@music']);
-Route::get('/video', ['as' => 'video', 'uses' => 'IndexController@video']);
+Route::get('/audio', ['as' => 'audio', 'uses' => 'IndexController@audios']);
+Route::put('/audio', ['as' => 'sendAudio', 'uses' => 'FileController@sendAudio']);
+Route::get('/video', ['as' => 'video', 'uses' => 'IndexController@videos']);
+Route::put('/video', ['as' => 'sendVideo', 'uses' => 'FileController@sendVideo']);
 # Кошелекы
 Route::get('/cash', ['as' => 'cash', 'uses' => 'IndexController@cash']);
 # Поиск статей по названию
@@ -54,13 +54,21 @@ Route::get('/article/{id}/delete', ['as' => 'deleteArticle', 'uses' => 'ArticleC
 #Запрос на редактирование статьи
 Route::get('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@edit']);
 # Личный кабинет
-Route::get('/lk', ['as' => 'Author', 'uses' => 'UserController@personal']);
+Route::get('/lk', ['as' => 'lk', 'uses' => 'LkUserController@index']);
+# Редактирование информации
+Route::get('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@edit']);
+# Редактирование информации - отправка данныых
+Route::post('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@editPost']);
 # Обновление или создание статуса
-Route::post('/lk', ['as' => 'status', 'uses' => 'UserController@status']);
+Route::post('/lk/status', ['as' => 'status', 'uses' => 'LkUserController@status']);
+
+Route::get('/lk/deleteStatus', ['as' => 'status.delete', 'uses' => 'LkUserController@delete']);
+# Добавление блога
+Route::post('/lk/blog', ['as' => 'lk.blog', 'uses' => 'LkUserController@blog']);
 # Загрузка аватара
 Route::put('/lk', ['as' => 'avatar', 'uses' => 'FileController@avatar']);
 # Редактирование статуса (если уже имеется)
-Route::post('/lk/editStatus', ['as' => 'editStatus', 'uses' => 'UserController@editStatus']);
+Route::post('/lk/editStatus', ['as' => 'editStatus', 'uses' => 'LkUserController@editStatus']);
 # Post запрос на отправку отредактированной статьи
 Route::post('/article/{id}/edit', ['as' => 'editArticle', 'uses' => 'ArticleController@update']);
 # Добавление комментария в статью
@@ -77,7 +85,10 @@ Route::get('/comment/{id}/resetcomment', ['as' => 'resetComment', 'uses' => 'Art
 ## АДМИНКА
 
 # Главная страница
-Route::get('/admin', ['as' => 'admin', 'uses' => 'IndexController@admin']);
+Route::get('/admin', ['as' => 'admin', 'uses' => 'AdminController@index']);
+Route::get('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@category']);
+Route::post('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@categoryPost']);
+Route::delete('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@categoryDelete']);
 # Вывод пользователя по id
 Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'UserController@user']);
 

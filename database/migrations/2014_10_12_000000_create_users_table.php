@@ -20,7 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
+            $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('stripe_id')->nullable();
+            $table->string('card_brand')->nullable();
+            $table->string('card_last_four')->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
+            $table->timestamp('age')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

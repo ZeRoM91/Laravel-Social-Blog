@@ -8,6 +8,16 @@ redis.subscribe('new-friend', function(err, count) {
 });
 redis.subscribe('new-message', function(err, count) {
 });
+redis.subscribe('new-here', function(err, count) {
+});
+redis.subscribe('new-article', function(err, count) {
+});
+redis.subscribe('user.private', function(err, count) {
+});
+
+// redis.subscribe('user.private.${id}', function(err, count) {
+// });
+
 
 
 redis.on('message', function(channel, message) {

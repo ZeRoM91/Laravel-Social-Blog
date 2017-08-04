@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Message;
@@ -13,6 +14,9 @@ use App\User;
 use App\Events\ChatMessage;
 use App\Events\NewMessage;
 use App\Events\NewFriend;
+use App\Events\IndexHere;
+
+
 class UserController extends Controller
 {
 
@@ -21,46 +25,6 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    # Вывод личного кабинета
-    public function personal()
-    {
-        // Поиск пользователя по id
-        $user = auth('web')->user();
-        // Добавляем список всех его статей с пагинацией
-        $articles = $user->articles()->paginate(2);
-        $friends = $user->friends;
-
-
-
-        return view('lk', compact('articles', 'friends'));
-    }
-
-    public function status(Request $request)
-    {
-
-        $user = auth('web')->user();
-
-        if (!isset($user->status)) {
-            $status = Status::create([
-                'user_id' => $user->id,
-                'status' => \Request::get('status')
-            ]);
-        }
-
-        return redirect()->back();
-    }
-
-    public function editStatus(Request $request)
-    {
-        $user = auth('web')->user();
-        $status = $user->status;
-        $status->status = \Request::get('status');
-        $status->save();
-
-        return redirect()->back();
-
-
-    }
 
     public function user($id)
     {
@@ -71,10 +35,16 @@ class UserController extends Controller
 
         $status = $user->status;
 
-        $isFriend = $auth->sendFriend()->where('to_user_id', $id)->get()->first();
+        $friend = $auth->friends()->where('to_user_id', $id)->first();
+
+        $isFriend = $auth->sendFriend()->where('to_user_id', $id)->first();
+
+        $inFriend = $auth->incomingRequests()->where('from_user_id', $id)->first();
+
+        $outFriend = $auth->outcomingRequests()->where('to_user_id', $id)->first();
 
 
-        return view('user', compact('user', 'isFriend', 'status'));
+        return view('user', compact('user', 'isFriend', 'inFriend', 'outFriend', 'status', 'friend'));
     }
 
     public function friend__send(Request $request, $id)
@@ -95,7 +65,7 @@ class UserController extends Controller
         ]);
         auth('web')->user()->sendFriend()->attach($id, ['status' => true]);
         \DB::table('friends')->where('from_user_id', $id)->update(['status' => true]);
-        return redirect()->route('Author');
+        return redirect()->route('lk');
     }
 
     public function friend_decline(Request $request, $id)
@@ -105,24 +75,17 @@ class UserController extends Controller
         ]);
         auth('web')->user()->sendFriend()->detach($id);
         \DB::table('friends')->where('from_user_id', $id)->delete();
-        return redirect()->route('Author');
+        return redirect()->route('lk');
     }
 
     public function messages__user($id)
     {
-
-
-
         $user = User::find($id);
         $auth = auth('web')->user();
         //  $messages_unread = $auth->messages->where('status', false);
         $friend = $auth->friends->where('to_user_id', $id);
-        $friends = $auth->friends;
+        $friends = auth('web')->user()->friends()->hasMessages()->get();
         // $messages = $auth ->incomingMessages;
-
-        if ($friend) {
-
-
         $messages = Message::where([
             'to_user_id' => $auth->id,
             'from_user_id' => $id
@@ -130,19 +93,12 @@ class UserController extends Controller
             'to_user_id' => $id,
             'from_user_id' => $auth->id
         ]);
-
-
         $messages = $messages->get();
-
         Message::where('to_user_id', $auth->id)->update(['status' => true]);
 
-
+        event(new IndexHere());
         return view('left-bar.messages__user', compact('user', 'friend', 'friends', 'messages'));
 
-        }
-        else {
-            return "У вас нет прав";
-    }
     }
 
     public function message__send(Request $request, $id)

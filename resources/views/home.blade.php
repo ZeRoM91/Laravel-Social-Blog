@@ -24,9 +24,18 @@
 
         </div>
     </form>
-    <a href="{{route('formArticle')}}"><button class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить новую статью</button></a>
     <div class="home">
+        <div class="btn-toolbar" role="toolbar" aria-label="...">
+            <div class="btn-group" role="group" aria-label="...">
 
+                <button class="btn btn-primary" DISABLED>Новые</button>
+                <button class="btn btn-default">Старые</button>
+                <button class="btn btn-default">Популярные</button>
+                <a href="{{route('formArticle')}}"><button class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить новую статью</button></a>
+
+            </div>
+
+        </div>
 
                      @foreach($articles as $article)
 
@@ -34,16 +43,37 @@
                 <div class="panel-body">
 
 
+                @if($article->created_at->diffInMinutes() < 1)
+                        <span class="article__date">{{$article->created_at->diffInSeconds()}} секунд назад</span><br>
+                    @endif
 
-                    <span class="article__date">{{$article['created_at']}}</span><br>
+                    @if($article->created_at->diffInMinutes() > 1 && $article->created_at->diffInHours() < 24)
+                        <span class="article__date">{{$article->created_at->diffInMinutes()}} минут назад</span><br>
+
+                    @endif
+
+                    @if($article->created_at->diffInHours() > 1 && $article->created_at->diffInDays() < 1)
+                        <span class="article__date">{{$article->created_at->diffInMinutes()}} часов назад</span><br>
+
+                    @endif
+                    @if($article->created_at->diffInDays() > 1 && $article->created_at->diffInYears() < 1)
+                        <span class="article__date">{{$article->created_at->diffInDays()}} дней назад</span><br>
+
+                    @endif
+
+                    @if($article->created_at->diffInDays() > 365)
+                        <span class="article__date">{{$article->created_at->diffInYears()}} год(а) назад</span><br>
+
+                    @endif
 
 
 
-                    <a href="{{ route('article', ['id' => $article['id']]) }}"><h4 class="article__title"><b>{{$article['title']}}</b></h4></a>
+
+                    <a href="{{ route('article', ['id' => $article->id]) }}"><h4 class="article__title"><b>{{$article['title']}}</b></h4></a>
                     <br>
 
                     <a href="{{route('user__profile', ['id' => $article->author])}}">
-                        <img src="{{asset('avatars/' . $article->author->avatar)}}" alt="" class="img-circle ">
+                        <img src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}" alt="" class="img-circle ">
                        <span> <b>{{$article->author -> firstname}} {{$article->author -> lastname}}</b></span>
                     </a>
                     <hr>

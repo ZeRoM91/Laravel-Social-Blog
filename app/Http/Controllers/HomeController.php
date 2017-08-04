@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         // Выводим список статей
-        $articles = Article::paginate(5);
+        $articles = Article::orderBy('created_at','desc') ->paginate(5);
         $categories = Category::all();
 
         return view('home', compact('articles','categories'));
@@ -24,7 +24,9 @@ class HomeController extends Controller
     public function category($category_id) {
         $articles = Article::all()->where('category_id', $category_id);
         // $articles = Article::where('category_id', $category_id -> id);
+
         $categories = Category::all();
+
         return view('category', compact('articles','categories'));
     }
     public function search() {

@@ -16,22 +16,20 @@ class IndexController extends Controller
 
     public function index() {
 
+
+
+
+
+
         return view('index', compact('articles','authors','category'));
     }
     public function searchUsers() {
         $query = Input::get('searchUser');
-        $users = User::where("name", "LIKE","%$query%")->get();
+
+        $users = User::where("firstname", "LIKE","%$query%")->get();
         return view('searchUsers', compact('users'));
     }
-    public function admin() {
-        $user_id = \Auth::user()->id;
-        if($user_id == 1) {
-            return view('admin.index');
-        }
-        else {
-            return "У вас нет прав на просмотр этой страницы";
-        }
-    }
+
     public function faq() {
         return view('faq');
     }
@@ -40,10 +38,6 @@ class IndexController extends Controller
         $incomings = $auth ->incomingRequests;
         $outcomings = $auth->outcomingRequests;
         $friends = $auth->friends;
-
-
-
-
 
         return view('left-bar.friends',compact('friends', 'outcomings', 'incomings'));
     }
@@ -70,17 +64,29 @@ class IndexController extends Controller
         return view('photo',compact('photos'));
 
     }
-    public function music() {
+    public function audios() {
 
 
-        return view('left-bar.music');
+
+        $user = auth('web')->user();
+
+
+        $audios = $user -> audios() ->paginate(15);
+
+
+        return view('left-bar.audio',compact('audios'));
 
     }
 
-    public function video() {
+    public function videos() {
 
 
-        return view('left-bar.video');
+        $user = auth('web')->user();
+
+
+        $videos = $user -> videos() ->paginate(15);
+
+        return view('left-bar.video',compact('videos'));
 
     }
 
@@ -88,6 +94,13 @@ class IndexController extends Controller
 
 
         return view('left-bar.cash');
+
+    }
+
+    public function task() {
+
+
+        return view('left-bar.task');
 
     }
 

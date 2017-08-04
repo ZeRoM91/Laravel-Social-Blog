@@ -23,8 +23,6 @@
 
 
 
-
-    <script src="{{ asset('js/jquery-3.2.1.js') }}" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -33,11 +31,11 @@
 <body style="background-color: #e6e5e5;">
 
 <header class="menu">
-<ul>
+<ul class="menu-list">
     <a href="/">
         <LI class="menu__list">
     <span class="glyphicon glyphicon-console" style="color: #fff; margin-left: 25px;"></span>
-    <span style="color: #fff;"> IT-Blog</span>
+    <span style="color: #fff;"> Laravel Blog</span>
         </LI>
     </a>
 
@@ -66,7 +64,11 @@
 @endif
     @if(!Auth::guest())
 
-        <a href="{{route('Author')}}"><li class="menu__list" id="menu__list-login">  <img class="img-circle" src="{{asset('avatars/' . Auth::user()->avatar)}}"> {{Auth::user()->name}}</li></a>
+        <a href="{{route('lk')}}"><li class="menu__list" id="menu__list-login">
+                <img class="img-circle" src="{{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}">
+
+
+                {{Auth::user()->name}}</li></a>
 
 @endif
         <form action="{{route('searchUsers')}}" method="post" style="padding: 0; margin: 0; display: inline-block;">
@@ -85,7 +87,7 @@
         @if(!Auth::guest())
         <div class="left-bar__menu">
             <ul>
-                <a href="{{route('Author')}}">
+                <a href="{{route('lk')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-home"></span> Моя страница</li>
                 </a>
                 <a href="{{route('friends')}}">
@@ -120,10 +122,12 @@
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
 
+                <a href="{{route('tasks')}}">
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-th-list"></span> Задачи</li>
+                </a>
 
-
-                <a href="{{route('music')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-music"></span>  Музыка</li>
+                <a href="{{route('audio')}}">
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-music"></span>  Аудиозаписи</li>
                 </a>
 
                 <a href="{{route('photos')}}">
@@ -135,18 +139,46 @@
                 </a>
 
                 <a href="{{route('cash')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-piggy-bank"></span> Кошелек
+                    <li class="left-bar__list"><span class="glyphicon glyphicon-credit-card"></span> Кошелек
                         <span class="label label-success">0 <span class="glyphicon glyphicon-ruble"></span></span>
                     </li>
 
                 </a>
+                <hr style="margin-left: 25px; margin-right: 25px;">
+
+
+              <div id="event-list">
+
+              </div>
+
+
             </ul>
+
+
+
+
 
 
 
         </div>
 
-        <hr style="margin-left: 25px; margin-right: 25px;">
+                {{--<div class="panel panel-primary" id="audioplayer">--}}
+                    {{--<!-- Default panel contents -->--}}
+                    {{--<div class="panel-heading" id="handle">Audio Player <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="function () {--}}
+{{--this.hide();--}}
+                                {{--}"><span aria-hidden="true">&times;</span></button></div>--}}
+                    {{--<div class="panel-body">--}}
+                        {{--<p>{{$audio -> name}}</p>--}}
+                        {{--<audio controls="controls">--}}
+
+                            {{--Ваш браузер не поддерживает <code>audio</code> элемент.--}}
+                            {{--<source  name="Song 1" src="{{asset('storage/' . Auth::user()->id . '/audios/' . $audio -> link)}}" type="audio/wav">--}}
+
+                        {{--</audio>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+
         @endif
     </div>
 
@@ -163,62 +195,21 @@
 </div>
 
 
+
+
 </body>
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}" ></script>
+<script src="{{ asset('js/jquery-3.2.1.js') }}" ></script>
+<script src="{{ asset('js/events.js') }}"></script>
+<script src="{{ asset('js/main.js') }}" defer></script>
+
+
+
+
+
 @stack('scripts')
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-<script>
-    var socket = io('http://localhost:3000');
 
-    socket.on("new-message:App\\Events\\NewMessage", function(message){
-        // increase the power everytime we load test route
-
-        //$('.notification').text('Польователь' + message.data.user + 'Прислал вам сообщение')
-
-        var firstname = message.data.firstname;
-
-        var lastname = message.data.firstname;
-
-        var data = 'Пользователь ' + "<b>" + firstname + ' ' + lastname + "</b>" + ' прислал вам сообщение';
-
-        var div = document.createElement("div");  // Create with DOM
-
-        div.innerHTML = data;
-
-        div.className = 'alert-message newMessage';
-
-
-        $('.notification').append(div);
-
-        $('.newMessage').fadeOut(7000);
-
-    });
-
-
-    socket.on("new-friend:App\\Events\\NewFriend", function(message){
-        // increase the power everytime we load test route
-
-        //$('.notification').text('Польователь' + message.data.user + 'Прислал вам сообщение')
-
-        var firstname = message.data.firstname;
-
-        var lastname = message.data.firstname;
-
-        var data = 'Пользователь ' + "<b>" + firstname + ' ' + lastname + "</b>" + ' хочет добавить вас в друзья';
-
-        var div = document.createElement("div");  // Create with DOM
-
-        div.innerHTML = data;
-
-        div.className = 'alert-message newFriend';
-
-
-        $('.notification').append(div);
-
-        $('.newFriend').fadeOut(7000);
-    });
-</script>
 </html>

@@ -3,18 +3,16 @@
 
 <div class="user">
 
-    <div class="grid__block lk__avatar"
-
-
-         style="background-image: url({{isset($user->avatar) ? asset('avatars/' . $user->avatar) : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538474-user_512x512.png'}}); background-size: cover;">
-
+    <div class="grid__block lk__avatar" style="background-image: url({{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}); background-size: cover;">
 
     </div>
     <div class="grid__block lk__block-info">
         <h3>{{$user->firstname}} {{$user->lastname}}</h3>
+        <div class="well">
         @if(isset($status))
         <span>{{$status  -> status}}</span>
         @endif
+        </div>
         <hr>
 
 
@@ -27,14 +25,15 @@
 
 
 @if($user -> id != Auth::user()->id)
-
-    @if(isset($isFriend -> pivot -> status))
-
+    {{-- Если пользователь являеться другом --}}
+            @if(isset($isFriend))
     @if($isFriend -> pivot -> status === 1)
-                <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-primary">Сообщение</button>
-                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-gift"></span></button>
-                </div>
+
+                    <a href="{{route('messages__user', ['id' => $isFriend -> pivot -> to_user_id])}}">
+                    <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-send"></span> Сообщение</button>
+                    </a>
+
+
                 <hr>
         <!-- Single button -->
             <div class="btn-group">
@@ -43,7 +42,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li>                <a href="{{route('user__friend-decline', ['id' => $isFriend -> pivot -> to_user_id])}}">
-                            <button class="btn btn-danger">Удалить из друзей</button>
+                            <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Удалить из друзей</button>
                         </a></li>
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
@@ -51,49 +50,61 @@
                     <li><a href="#">Separated link</a></li>
                 </ul>
             </div>
-
         @endif
-          @if($isFriend -> pivot -> status === 0)
-
-                <button type="button" class="btn btn-info" disabled>
-                    Предложение отправлено
-                </button>
-
-
-
-        @endif
-
-        @endif
-
-
-        @if(!isset($isFriend -> pivot -> status))
-
-
-            <a href="{{route('user__friend-send', ['id' => $user->id])}}">
-                <button class="btn btn-success">Добавить в друзья</button>
-            </a>
-
-
-        @endif
-
-
+        @if($isFriend -> pivot -> status === 0)
+            <button class="btn btn-info" disabled><span class="glyphicon glyphicon-ok"></span>Запрос отправлен</button>
+            @endif
     @else
-            <button class="btn btn-warning" disabled>Это ваш профиль</button>
 
         @endif
+        @endif
+        {{-- Если пользователь являеться другом --}}
+@if(isset($inFriend))
+        @if($inFriend->pivot->from_user_id == $user ->id)
+                    <p class="alert alert-success">Этот рользователь <br>
+                    хочет добавить вас в друзья <br>
+                        <a href="{{route('user__friend-accept',['id' => $user -> id])}}">
+                            <button class="btn btn-success">Принять</button>
+                        </a>
+                        <a href="{{route('user__friend-decline',['id' => $user -> id])}}">
+                            <button class="btn btn-danger">Отклонить</button>
+                        </a>
+                    </p>
+            @endif
+
+    @endif
+
+
+
+
+
+    @if($user -> id == Auth::user()->id)
+        <button class="btn btn-warning" disabled> Это ваш профиль</button>
+
+        @endif
+
+
+    @if(!$friend)
+    @if($user -> id != Auth::user()->id && !isset($outFriend ->pivot) && !isset($inFriend ->pivot))
+
+        <a href="{{route('user__friend-send',['id' => $user -> id])}}">
+            <button class="btn btn-success">Добавить в друзья</button>
+        </a>
+    @endif
+    @endif
     </div>
 
-    <div class="grid__block">
+        <div class="grid__block">
 
 
 
+
+        </div>
+
+        <div class="grid__block"></div>
 
     </div>
 
-    <div class="grid__block"></div>
-
-</div>
 
 
-
-@endsection
+    @endsection

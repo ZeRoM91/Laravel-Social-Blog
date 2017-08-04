@@ -5,6 +5,7 @@ use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
 use App\Models\Article;
 use App\Models\Category;
+use App\Events\NewArticle;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -28,12 +29,17 @@ class ArticleController extends Controller
         // Выгрузка статуса голоса пользователя для текущей статьи
         $user = auth('web')->user();
         $vote = $user->votes()->where('article_id', $id)->first();
+
+        $votes = $user -> votes;
+
+
+
         // Выводим все комментарии по id статьи
         $comments = $article->comment;
         // Увеличиваем просмотры статьи на единицу
         $article -> views++;
         $article->save();
-        return view('article', compact('articles', 'comments', 'article', 'vote'));
+        return view('article', compact('articles', 'comments', 'article', 'vote','votes'));
 
 
 
@@ -51,6 +57,8 @@ class ArticleController extends Controller
         $article = Article::create($request->except('_token'));
          //$article = Request::get('text');
 
+
+        event(new NewArticle($article));
         return redirect()->route('article', ['id' => $article->id]);
     }
     # Удаление статьи по id
@@ -242,7 +250,7 @@ class ArticleController extends Controller
         // Создание статуса голоса пользователя для текущей статьи
         $user = auth('web')->user();
 
-        $vote = $user->votes()->where('comment_id', $id)->first();
+        $vote = $user->votes()->where('comment_id', $id)->get();
 
         $comment->rating += $vote->vote ? -1 : 1;
         $comment->save();

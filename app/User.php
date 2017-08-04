@@ -5,6 +5,9 @@ namespace App;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\Blog;
+use App\Models\Audio;
+use App\Models\Video;
 use App\Models\UserSocialAccount;
 use App\Models\Rating;
 use App\Models\Photo;
@@ -12,10 +15,12 @@ use App\Models\Status;
 use App\Models\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -103,13 +108,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Photo::class,'user_id');
     }
+    public function audios()
+    {
+        return $this->hasMany(Audio::class,'user_id');
+    }
 
+    public function videos()
+    {
+        return $this->hasMany(Video::class,'user_id');
+    }
     public static function createBySocialProvider($providerUser)
     {
         return self::create([
             'email' => $providerUser->getEmail(),
-            'username' => $providerUser->getNickname(),
-            'name' => $providerUser->getName(),
+            'name' => $providerUser->getNickname(),
+            'firstname' => $providerUser->getName(),
         ]);
+    }
+
+    public function blog() {
+        return $this -> hasMany(Blog::class,'user_id');
     }
 }

@@ -18,7 +18,7 @@ body {
 
 .menu {
 
-    background-color: #577594;
+    background-color: #f55247;
     margin: 0 auto;
 
 }
@@ -35,8 +35,7 @@ body {
 }
 
 .menu__list:hover {
-    background: #495e74;
-
+    background: #ff9b7f;
     color: #eee;
     transition: .5s;
 }
@@ -73,39 +72,35 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 
 .left-bar {
 
+    background-color: #fff;
+    margin-right: 10px;
 
+    color: #444444;
 
 }
 .left-bar__menu {
-    color: #61788f;
     text-align: left;
     font-family: 'Ubuntu', sans-serif;
-
 }
 
- .left-bar__list {
-
-     list-style-type: none;
-     text-align: left;
-
-     padding: 5px 12px 5px 12px;
-     margin-bottom: 5px;
+.left-bar__list {
+    list-style-type: none;
+    text-align: left;
+    margin-bottom: 8px;
     transition: .25s;
-     width: auto;
-
 }
 .left-bar__list:hover,.right-bar__list:hover {
-    background-color: #d5d7d8;
+    background-color: rgba(245, 82, 71, 0.51);
     transition: .25s;
 }
 .left-bar__menu a,.right-bar__menu a  {
-    color: #61788f;
+    color: #444;
 }
 .grid {
     display: grid;
     margin:  0 auto;
     width: 1200px;
-
+    grid-gap: 10px;
     grid-template-columns: 1fr 4fr;
 }
 
@@ -138,19 +133,14 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     color: #666;
     font-size: 12px;
     font-family: 'Ubuntu', sans-serif;
-
-
 }
 .article {
-
-
      width: auto;
      padding: 25px;
      color: #0f0f0f;
      background-color: #fff;
      border-radius: 4px;
      border: 1px solid rgba(155,155,155,.5);
-
  }
 
 .article__full {
@@ -348,25 +338,9 @@ input[name="search"].menu__search::-webkit-input-placeholder {
     margin: 5px;
 
 }
-.newMessage {
-
-}
-
 .newFriend {
     background-color: #3e8f3e;
     color: #eee;
     border: 1px solid rgba(155,155,155,.5);
     box-shadow: 0 0 12px #fff;
-}
-
-
-#audioplayer {
-    position: fixed;
-    opacity: .5;
-z-index: 9;
-}
-
-#audioplayer:hover {
-    opacity: 1;
-
 }

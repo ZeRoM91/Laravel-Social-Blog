@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
  
 </head>
-<body style="background-color: #e6e5e5;">
+<body style="background-color: #222;">
 
 <header class="menu">
 <ul class="menu-list">

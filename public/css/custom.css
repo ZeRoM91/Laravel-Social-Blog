@@ -14,29 +14,20 @@ body {
     margin:  0 auto;
 }
 
-
-
 .menu {
-
-    background-color: #f55247;
+    background-color: #6ea9aa;
     margin: 0 auto;
-
 }
-
 .menu__list {
     display: inline-block;
     list-style-type: none;
     color: #fff;
     padding: 15px;
     font-family: 'Ubuntu', sans-serif;
-
-
-
 }
 
 .menu__list:hover {
-    background: #ff9b7f;
-    color: #eee;
+    text-decoration: underline;
     transition: .5s;
 }
 
@@ -71,12 +62,8 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 }
 
 .left-bar {
-
-    background-color: #fff;
-    margin-right: 10px;
-
+    background-color: #eee;
     color: #444444;
-
 }
 .left-bar__menu {
     text-align: left;
@@ -86,11 +73,12 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 .left-bar__list {
     list-style-type: none;
     text-align: left;
+    padding: 8px;
     margin-bottom: 8px;
     transition: .25s;
 }
 .left-bar__list:hover,.right-bar__list:hover {
-    background-color: rgba(245, 82, 71, 0.51);
+    background-color: #aaa;
     transition: .25s;
 }
 .left-bar__menu a,.right-bar__menu a  {
@@ -99,7 +87,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 .grid {
     display: grid;
     margin:  0 auto;
-    width: 1200px;
+
     grid-gap: 10px;
     grid-template-columns: 1fr 4fr;
 }

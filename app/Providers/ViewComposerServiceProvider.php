@@ -18,12 +18,11 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         view()->share('user', auth('web')->user());
 
-        //
         view()->composer('layouts.app', function ($view) {
             $user = auth('web')->user();
 
             if(!is_null($user)) {
-                $view->with('audio', $user->audios()->inRandomOrder()->first());
+
                 $view->with('messageCount', $user->messagesTo()->unread()->count());
                 $view->with('friendCount', $user->incomingRequests()->count());
                 $view->with('auth', $user);
@@ -57,7 +56,6 @@ class ViewComposerServiceProvider extends ServiceProvider
                 $view->with('commentsCount', $user->comments()->count());
             }
         });
-
     }
 
     /**

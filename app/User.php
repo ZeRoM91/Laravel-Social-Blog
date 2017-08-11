@@ -108,15 +108,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Photo::class,'user_id');
     }
-    public function audios()
-    {
-        return $this->hasMany(Audio::class,'user_id');
-    }
 
-    public function videos()
-    {
-        return $this->hasMany(Video::class,'user_id');
-    }
     public static function createBySocialProvider($providerUser)
     {
         return self::create([

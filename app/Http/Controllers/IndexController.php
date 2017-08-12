@@ -64,44 +64,7 @@ class IndexController extends Controller
         return view('photo',compact('photos'));
 
     }
-    public function audios() {
 
 
-
-        $user = auth('web')->user();
-
-
-        $audios = $user -> audios() ->paginate(15);
-
-
-        return view('left-bar.audio',compact('audios'));
-
-    }
-
-    public function videos() {
-
-
-        $user = auth('web')->user();
-
-
-        $videos = $user -> videos() ->paginate(15);
-
-        return view('left-bar.video',compact('videos'));
-
-    }
-
-    public function cash() {
-
-
-        return view('left-bar.cash');
-
-    }
-
-    public function task() {
-
-
-        return view('left-bar.task');
-
-    }
 
 }

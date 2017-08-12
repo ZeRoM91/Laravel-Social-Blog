@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Storage;
 class FileController extends Controller
 {
     //
-
     public function avatar(Request $request)
 
     {
@@ -24,79 +23,18 @@ class FileController extends Controller
         $user->save();
         return redirect('lk');
     }
-
-
     public function sendPhoto(Request $request)
 
     {
         $user = auth('web')->user();
         $photo =  $request->file('photo');
-
         $imageName = $user->id.'.'. rand() . '.'. $request->file('photo')->getClientOriginalExtension();
-
-
-
         $photo->move('storage/' . $user->id . '/photos', $imageName);
-
-
-
         $user = Photo::create([
             'user_id' => $user -> id,
             'link' => $imageName,
         ]);
-
         $user ->save();
-
         return redirect('photos');
-    }
-
-    public function sendAudio(Request $request)
-
-    {
-        $user = auth('web')->user();
-        $photo =  $request->file('audio');
-
-        $audio = $user->id.'.'. rand() . '.'. $request->file('audio')->getClientOriginalExtension();
-
-        $name = $request->file('audio')->getClientOriginalName();
-
-        $photo->move('storage/' . $user->id . '/audios', $audio);
-
-
-
-        $user = Audio::create([
-            'user_id' => $user -> id,
-            'link' => $audio,
-            'name' => $name,
-        ]);
-
-        $user ->save();
-
-        return redirect()->back();
-    }
-
-    public function sendVideo(Request $request)
-
-    {
-        $user = auth('web')->user();
-        $file =  $request->file('video');
-
-        $video = $user->id.'.'. rand() . '.'. $request->file('video')->getClientOriginalExtension();
-
-        $name = $request->file('video')->getClientOriginalName();
-
-        $file->move('storage/' . $user->id . '/videos', $video);
-
-
-
-        $user = Video::create([
-            'user_id' => $user -> id,
-            'link' => $video,
-            'name' => $name,
-        ]);
-
-        $user ->save();
-
-        return redirect()->back();
     }
 }

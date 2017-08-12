@@ -17,26 +17,19 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/animation.css') }}" rel="stylesheet">
-
-
-
-
-
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
- 
-</head>
-<body style="background-color: #e6e5e5;">
+ </head>
+<body style="background-color: #555;">
 
 <header class="menu">
 <ul class="menu-list">
     <a href="/">
-        <LI class="menu__list">
-    <span class="glyphicon glyphicon-console" style="color: #fff; margin-left: 25px;"></span>
+        <li class="menu__list">
+            <img src="/img/laravel.png" alt="" width="32" height="32">
     <span style="color: #fff;"> Laravel Blog</span>
-        </LI>
+        </li>
     </a>
 
     @if(!Auth::guest())
@@ -49,16 +42,12 @@
 @if(!Auth::guest())
 <a href="{{ route('logout') }}"
    onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();"> <li class="menu__list">
-
+          document.getElementById('logout-form').submit();"> <li class="menu__list">
         Выход
-
-
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
     </li> </a>
-
     @else
     <a href="{{route('login')}}"><li class="menu__list" >Войти</li></a>
 @endif
@@ -66,23 +55,16 @@
 
         <a href="{{route('lk')}}"><li class="menu__list" id="menu__list-login">
                 <img class="img-circle" src="{{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}">
-
-
                 {{Auth::user()->name}}</li></a>
-
 @endif
         <form action="{{route('searchUsers')}}" method="post" style="padding: 0; margin: 0; display: inline-block;">
-
            {{csrf_field()}}
 <input type="text" name="searchUser" class="menu__search" placeholder="Поиск пользователей">
         </form>
     @endif
 </ul>
-
 </header>
-
 <div class="grid">
-
     <div class="left-bar">
         @if(!Auth::guest())
         <div class="left-bar__menu">
@@ -94,9 +76,6 @@
                     <li class="left-bar__list"><span class="glyphicon glyphicon-user"></span> Мои друзья
                         @if($friendCount)
                             <span class="label label-default">{{$friendCount}}</span>
-
-
-
                     @else
 
                     @endif
@@ -122,28 +101,11 @@
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
 
-                <a href="{{route('tasks')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-th-list"></span> Задачи</li>
-                </a>
-
-                <a href="{{route('audio')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-music"></span>  Аудиозаписи</li>
-                </a>
 
                 <a href="{{route('photos')}}">
                 <li class="left-bar__list"><span class="glyphicon glyphicon-camera"></span>  Фотографии</li>
                 </a>
 
-                <a href="{{route('video')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-facetime-video"></span>  Видео</li>
-                </a>
-
-                <a href="{{route('cash')}}">
-                    <li class="left-bar__list"><span class="glyphicon glyphicon-credit-card"></span> Кошелек
-                        <span class="label label-success">0 <span class="glyphicon glyphicon-ruble"></span></span>
-                    </li>
-
-                </a>
                 <hr style="margin-left: 25px; margin-right: 25px;">
 
 

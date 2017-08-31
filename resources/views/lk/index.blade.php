@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="lk">
+    <div class="grid-lk">
         <div class="grid__block lk__avatar"
              style="background-image: url({{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}); background-size: cover;">
             <span id="photo"> <span class="glyphicon glyphicon-camera" id="lk__avatar-icon"></span><span id="lk__avatar_hidden-text" type="button" data-toggle="modal" data-target=".bs-example-modal-sm" data-target="#avatar"> Редактировать фото</span>
@@ -35,7 +35,7 @@
                         <span class="article__date">{{Auth::user()->status->created_at->diffInYears()}} год(а) назад</span><br>
 
                     @endif
-                
+
                     <p>{{Auth::user()->status->status}}</p>
                 <a href="{{route('status.delete')}}">
                     <button class="btn btn-danger glyphicon glyphicon-remove" type="submit"></button>

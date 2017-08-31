@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="user">
+<div class="grid-user">
 
     <div class="grid__block lk__avatar" style="background-image: url({{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}); background-size: cover;">
 

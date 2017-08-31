@@ -12,14 +12,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/animation.css') }}" rel="stylesheet">
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
  </head>
 <body style="background-color: #555;">
 
@@ -28,7 +27,7 @@
     <a href="/">
         <li class="menu__list">
             <img src="/img/laravel.png" alt="" width="32" height="32">
-    <span style="color: #fff;"> Laravel Blog</span>
+    <span> Laravel Blog</span>
         </li>
     </a>
 
@@ -106,7 +105,7 @@
                 <li class="left-bar__list"><span class="glyphicon glyphicon-camera"></span>  Фотографии</li>
                 </a>
 
-                <hr style="margin-left: 25px; margin-right: 25px;">
+
 
 
               <div id="event-list">
@@ -149,7 +148,13 @@
 
 
     </p>
+    <div class="panel panel-default">
+        <div class="panel-heading">....</b> </div>
+
+        <div class="panel-body">
     @yield('content')
+        </div>
+    </div>
 
 </div>
 
@@ -161,17 +166,17 @@
 
 </body>
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" ></script>
-<script src="{{ asset('js/jquery-3.2.1.js') }}" ></script>
-<script src="{{ asset('js/events.js') }}"></script>
-<script src="{{ asset('js/main.js') }}" defer></script>
+
 
 
 
 
 
 @stack('scripts')
-
+<script src="{{ asset('js/app.js') }}" ></script>
+<script src="{{ asset('js/jquery-3.2.1.js') }}" ></script>
+<script src="{{ asset('js/events.js') }}"></script>
+<script src="{{ asset('js/main.js') }}" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 
 </html>

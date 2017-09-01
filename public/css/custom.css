@@ -60,7 +60,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 }
 
 .left-bar {
-  color: rgba(255, 255, 255, .5);
+
 }
 
 .left-bar__menu {
@@ -70,6 +70,8 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 .left-bar__list {
   list-style-type: none;
   text-align: left;
+color: rgba(255, 255, 255, .5);
+  text-decoration: none;
   padding: 5px;
   margin-bottom: 8px;
   transition: .25s;
@@ -84,7 +86,7 @@ input[name="search"].menu__search::-webkit-input-placeholder {
   display: grid;
   margin: 0 auto;
   grid-gap: 5px;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 5fr 10px;
 }
 
 .grid-lk, .grid-user {
@@ -170,11 +172,12 @@ input[name="search"].menu__search::-webkit-input-placeholder {
 
 .grid__block {
   display: inline-block;
-  background-color: #ddd;
+  background-color: #e7e7e7;
   color: #444;
   border: 1px solid rgba(155, 155, 155, .5);
   padding: 12px 19px 12px 19px;
   width: auto;
+  overflow-y: auto;
 }
 
 .main__block-header {

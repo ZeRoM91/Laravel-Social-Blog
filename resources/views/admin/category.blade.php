@@ -4,15 +4,8 @@
 
 
     <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">Админ панель</b> </div>
-
-            <div class="panel-body">
 
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">Категории</div>
-                    <div class="panel-body">
                         <form class="form" method="post">
 
                             {{csrf_field()}}
@@ -68,14 +61,11 @@
                             <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Удалить</button>
                         </form>
                     </div>
-                    <div class="panel-footer"></div>
+              
                 </div>
 
 
 
-            </div>
-        </div>
-    </div>
 
 
 @endsection

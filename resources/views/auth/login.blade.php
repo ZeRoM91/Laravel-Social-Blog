@@ -4,9 +4,7 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Вход</div>
-                <div class="panel-body">
+
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -70,10 +68,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
+  
 
 @endsection
-
-

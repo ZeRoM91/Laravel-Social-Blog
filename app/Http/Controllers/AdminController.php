@@ -7,12 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 class AdminController extends Controller
 {
-    //
-
     public function index() {
+    
         $user_id = \Auth::user()->id;
         if($user_id == 1) {
-
 
             return view('admin.index');
         }

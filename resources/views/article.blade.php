@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="article__full">
+
                         <ol class="breadcrumb">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li><a href="{{route('homeCategory', ['category_id' => $article['category_id']])}}">{{$article->category['name']}}</a></li>
@@ -201,8 +201,6 @@
                                 </div>
                             </div>
                         </div>
-
-</div>
 <script src="{{ asset('js/jquery-3.2.1.js') }}" ></script>
 <script>
     $(function() {

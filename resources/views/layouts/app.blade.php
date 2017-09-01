@@ -20,14 +20,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- Fonts -->
  </head>
-<body style="background-color: #555;">
+<body style="background-color: #444;">
 
 <header class="menu">
 <ul class="menu-list">
     <a href="/">
         <li class="menu__list">
-            <img src="/img/laravel.png" alt="" width="32" height="32">
-    <span> Laravel Blog</span>
+    <span><b>Social network</b></span>
         </li>
     </a>
 
@@ -85,17 +84,12 @@
                     <span class="glyphicon glyphicon-envelope"></span>  Сообщения
                     @if($messageCount)
                     <span class="label label-default">
-
                         {{$messageCount}}
-
                     </span>
                     @else
-
                     @endif
                 </li>
                 </a>
-
-
                 <a href="{{route('home')}}">
                     <li class="left-bar__list"><span class="glyphicon glyphicon-list-alt"></span> Cтатьи</li>
                 </a>
@@ -108,38 +102,11 @@
 
 
 
-              <div id="event-list">
-
-              </div>
+              <div id="event-list"></div>
 
 
             </ul>
-
-
-
-
-
-
-
-        </div>
-
-                {{--<div class="panel panel-primary" id="audioplayer">--}}
-                    {{--<!-- Default panel contents -->--}}
-                    {{--<div class="panel-heading" id="handle">Audio Player <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="function () {--}}
-{{--this.hide();--}}
-                                {{--}"><span aria-hidden="true">&times;</span></button></div>--}}
-                    {{--<div class="panel-body">--}}
-                        {{--<p>{{$audio -> name}}</p>--}}
-                        {{--<audio controls="controls">--}}
-
-                            {{--Ваш браузер не поддерживает <code>audio</code> элемент.--}}
-                            {{--<source  name="Song 1" src="{{asset('storage/' . Auth::user()->id . '/audios/' . $audio -> link)}}" type="audio/wav">--}}
-
-                        {{--</audio>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-
+  </div>
         @endif
     </div>
 
@@ -149,7 +116,7 @@
 
     </p>
     <div class="panel panel-default">
-        <div class="panel-heading">....</b> </div>
+
 
         <div class="panel-body">
     @yield('content')

@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+
+use App\Models\Message;
 use App\User;
 use Illuminate\Support\ServiceProvider;
 
-class UserServiceProvider extends ServiceProvider
+class MessageServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -17,10 +19,9 @@ class UserServiceProvider extends ServiceProvider
         view()->share('user', auth('web')->user());
 
         view()->composer('*', function ($view) {
-         //   $user = auth('web')->user();
-         //   $view->with('userCount', User::all()->count());
-        //    $view->with('friendCount', $user->incomingRequests()->count());
-         //   $view->with('auth', $user);
+
+            $view->with('messageCount', auth('web')->user()->messages()->where('from_user_id', '<>', auth('web')->user()->id)->where('status', 0)->count());
+
         });
 
     }
@@ -33,7 +34,8 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Interfaces\IUserRepository',
-            'App\Repositories\UserRepository');
+            'App\Interfaces\IMessageRepository',
+            'App\Repositories\MessageRepository');
     }
+
 }

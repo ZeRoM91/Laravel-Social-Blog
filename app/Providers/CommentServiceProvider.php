@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use App\User;
+
+use App\Models\Comment;
 use Illuminate\Support\ServiceProvider;
 
-class UserServiceProvider extends ServiceProvider
+class CommentServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -17,10 +18,9 @@ class UserServiceProvider extends ServiceProvider
         view()->share('user', auth('web')->user());
 
         view()->composer('*', function ($view) {
-         //   $user = auth('web')->user();
-         //   $view->with('userCount', User::all()->count());
-        //    $view->with('friendCount', $user->incomingRequests()->count());
-         //   $view->with('auth', $user);
+
+            $view->with('commentCount', Comment::all()->count());
+
         });
 
     }
@@ -33,7 +33,7 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Interfaces\IUserRepository',
-            'App\Repositories\UserRepository');
+            'App\Interfaces\ICommentRepository',
+            'App\Repositories\CommentRepository');
     }
 }

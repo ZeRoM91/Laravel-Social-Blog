@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
-use App\User;
+
+use App\Models\Article;
+
 use Illuminate\Support\ServiceProvider;
 
-class UserServiceProvider extends ServiceProvider
+class ArticleServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -17,10 +19,10 @@ class UserServiceProvider extends ServiceProvider
         view()->share('user', auth('web')->user());
 
         view()->composer('*', function ($view) {
-         //   $user = auth('web')->user();
-         //   $view->with('userCount', User::all()->count());
-        //    $view->with('friendCount', $user->incomingRequests()->count());
-         //   $view->with('auth', $user);
+
+            $view->with('articleCount', Article::all()->count());
+            $view->with('topArticle', Article::orderBy('views','desc')->get()->first());
+            $view->with('ratingArticle', Article::orderBy('rating','desc')->get()->first());
         });
 
     }
@@ -33,7 +35,7 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Interfaces\IUserRepository',
-            'App\Repositories\UserRepository');
+            'App\Interfaces\IArticleRepository',
+            'App\Repositories\ArticleRepository');
     }
 }

@@ -1,63 +1,50 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Http\Requests\ArticleFormRequest;
-use App\Models\Article;
-use App\Models\Category;
 use App\Events\NewArticle;
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Support\Facades\Input;
+use App\Traits\ArticleConstructorTrait;
+use Illuminate\Http\Request;
+
 
 class ArticleController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    use ArticleConstructorTrait;
 
     # Вывод статьи по id
     public function show($id)
     {
         // Фильтр поиска статьи по id
-        $article = Article::find($id);
+        $article = $this->article->find($id);
         // если это авторская статья то дополнительно выводим его другие статьи
         // Выводим так: Ищем автора статьи -> у автора находим другие статьи -> выводим
         // все кроме этой -> но не более 3.
         $articles = $article->author->articles->where('id', '<>', $article->id)->take(3);
         // Выгрузка статуса голоса пользователя для текущей статьи
-        $user = auth('web')->user();
+        $user = $this->user->auth();
         $vote = $user->votes()->where('article_id', $id)->first();
-
-        $votes = $user -> votes;
-
-
+        $votes = $user->votes;
 
         // Выводим все комментарии по id статьи
         $comments = $article->comment;
         // Увеличиваем просмотры статьи на единицу
-        $article -> views++;
+        $article->views++;
         $article->save();
         return view('article', compact('articles', 'comments', 'article', 'vote','votes'));
-
-
 
     }
     # Вывод формы
     public function form()
     {
-        $categories = Category::all();
+        $categories = $this->category->all();
         return view('form',compact('categories'));
     }
     # Создание новой статьи
     public function create(ArticleFormRequest $request)
     {
         // создаем статью забирая все данные с формы кроме токена
-        $article = Article::create($request->except('_token'));
-         //$article = Request::get('text');
-
-
+        $article = $this->article->create($request->except('_token'));
         event(new NewArticle($article));
         return redirect()->route('article', ['id' => $article->id]);
     }
@@ -65,11 +52,10 @@ class ArticleController extends Controller
     public function delete($id)
     {
         // Фильтр поиска статьи по id
-        $article = Article::find($id);
+        $article = $this->article->find($id);
         // Если авторизованный пользователь и есть автор
         if (auth()->user()->id == $article->user_id) {
-            $delete__article = Article::find($id);
-            $delete__article->delete();
+            $article->delete();
             return redirect()->route('home');
         }
         // Иначе возвращаем исключение
@@ -81,8 +67,8 @@ class ArticleController extends Controller
     public function edit($id)
     {
         // Фильтр поиска статьи по id
-        $article = Article::find($id);
-        $categories = Category::all();
+        $article = $this->article->find($id);
+        $categories =  $this->category->all($id);
         // Если авторизованный пользователь и есть автор
         if (auth()->user()->id == $article->user_id) {
             // Выводим форму для редактирования
@@ -97,12 +83,14 @@ class ArticleController extends Controller
     public function update(ArticleFormRequest $request, $id)
     {
         // Фильтр поиска статьи по id
-        $article = Article::find($id);
+        $article = $this->article->find($id);
 
         // Забираем значения с Input form'ы
-        $article->title = Input::get('title');
-        $article->text = Input::get('text');
-        $article->category_id = \Request::get('category_id');
+        $article->update([
+            'title' => $request->title,
+            'text' => $request->text,
+            'category_id' => $request->category_id,
+            ]);
 
         // Записываем изменения
         $article->save();
@@ -112,16 +100,16 @@ class ArticleController extends Controller
 
 
     # Вывод комментариев к статье
-    public function add_comment($id)
+    public function add_comment(Request $request, $id)
     {
         // Фильтр поиска статьи по id
-        $article = Article::find($id);
+        $article = $this->article->find($id);
 
         // Создание комментария для статьи
-        $comment = Comment::create([
-            'article_id' => Input::get('article_id'),
-            'comment'    => Input::get('comment'),
-            'user_id'    => Input::get('user_id')
+        $this->comment->create([
+            'article_id' => $request->article_id,
+            'comment'    => $request->comment,
+            'user_id'    => $request->user_id,
         ]);
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);
@@ -130,14 +118,14 @@ class ArticleController extends Controller
     public function upRating($id)
     {
         // Фильтр поиска статьи по id
-        $article = Article::find($id);
+        $article = $this->article->find($id);
 
         # Увеличение рейтинга статьи на единицу
         $article->rating++;
         $article->save();
 
         // Создание статуса голоса пользователя для текущей статьи
-        $user = auth('web')->user();
+        $user = $this->user->auth();
         $vote = $user->votes()->firstOrCreate([
             'article_id' => $id
         ]);
@@ -153,14 +141,14 @@ class ArticleController extends Controller
     public function downRating($id)
     {
         // Фильтр поиска статьи по id
-        $article = Article::find($id);
+        $article = $this->article->find($id);
 
         # Уменьшение рейтинга статьи на единицу
         $article->rating--;
         $article->save();
 
         // Создание статуса голоса пользователя для текущей статьи
-        $user = auth('web')->user();
+        $user = $this->user->auth();
         $vote = $user->votes()->firstOrCreate([
             'article_id' => $id
         ]);
@@ -174,12 +162,12 @@ class ArticleController extends Controller
     }
     public function resetRating($id)
     {
-        $article = Article::find($id);
+        $article = $this->article->find($id);
 
         # Уменьшение рейтинга статьи на единицу
 
         // Создание статуса голоса пользователя для текущей статьи
-        $user = auth('web')->user();
+        $user = $this->user->auth();
 
         $vote = $user->votes()->where('article_id', $id)->first();
 
@@ -194,14 +182,14 @@ class ArticleController extends Controller
     public function upComment($id)
     {
         // Фильтр поиска статьи по id
-        $comment = Comment::find($id);
+        $comment = $this->comment->find($id);
 
         # Увеличение рейтинга статьи на единицу
         $comment->rating++;
         $comment->save();
 
         // Создание статуса голоса пользователя для текущей статьи
-        $user = auth('web')->user();
+        $user = $this->user->auth();
         $vote = $user->votes()->firstOrCreate([
             'article_id' => $comment->article_id,
             'comment_id' => $id
@@ -221,7 +209,7 @@ class ArticleController extends Controller
 
 
         // Фильтр поиска статьи по id
-        $comment = Comment::find($id);
+        $comment = $this->comment->find($id);
 
         # Увеличение рейтинга статьи на единицу
         $comment->rating--;
@@ -243,7 +231,7 @@ class ArticleController extends Controller
     }
     public function resetComment($id)
     {
-        $comment = Comment::find($id);
+        $comment = $this->comment->find($id);
 
         # Уменьшение рейтинга статьи на единицу
 

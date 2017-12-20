@@ -181,6 +181,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
+        App\Providers\UserServiceProvider::class,
+        App\Providers\MessageServiceProvider::class,
+        App\Providers\ArticleServiceProvider::class,
+        App\Providers\CommentServiceProvider::class,
+        App\Providers\CategoryServiceProvider::class,
+        App\Providers\MessageServiceProvider::class,
 
     ],
 

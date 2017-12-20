@@ -27,7 +27,7 @@
 <ul class="menu-list">
     <a href="/">
         <li class="menu__list">
-    <span><b>Social network</b></span>
+    <span><b>Social blog</b></span>
         </li>
     </a>
 

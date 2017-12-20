@@ -14,7 +14,7 @@ var socket = io('http://localhost:3000');
 //1. Получение нового сообщения
 socket.on("new-message:App\\Events\\NewMessage", function(message){
     var firstname = message.data.firstname;
-    var lastname = message.data.firstname;
+    var lastname = message.data.lastname;
     var data = 'Пользователь ' + "<b>" + firstname + ' ' + lastname + "</b>" + ' прислал вам сообщение ';
     var p = document.createElement("p");  // Create with DOM
     var span = document.createElement("span");  // Create with DOM

@@ -16,7 +16,7 @@ class IsAuthor
     public function handle($request, Closure $next)
     {
 
-        if($request -> id == Auth::user() -> id) {
+        if($request -> id == Auth::user()->id) {
 
             return view('errors.403');
         }

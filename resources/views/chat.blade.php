@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html>
 <head>
@@ -20,7 +19,6 @@
 <form action="">
     <input id="m" autocomplete="off" /><button>Send</button>
 </form>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
@@ -36,10 +34,5 @@
         });
     });
 </script>
-
-
-
 </body>
-
-
 </html>

@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
 use App\Traits\UserConstructorTrait;
 use Illuminate\Http\Request;
 use App\Events\ChatMessage;
@@ -10,7 +9,6 @@ use App\Events\IndexHere;
 class UserController extends Controller
 {
     use UserConstructorTrait;
-
     public function user($id)
     {
         $user = $this->user->find($id);

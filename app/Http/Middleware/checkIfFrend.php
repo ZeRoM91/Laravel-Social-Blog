@@ -10,7 +10,7 @@ class checkIfFrend
     public function handle($request, Closure $next)
     {
         // проверка на 'друга'
-        if ($request-> status) {
+        if ($request->status) {
             // перехватываем запрос если уже была заявка
             return redirect('lk');
         }

@@ -14,13 +14,16 @@ class UserServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('user', auth('web')->user());
 
-        view()->composer('*', function ($view) {
-         //   $user = auth('web')->user();
-         //   $view->with('userCount', User::all()->count());
-        //    $view->with('friendCount', $user->incomingRequests()->count());
-         //   $view->with('auth', $user);
+
+        view()->composer('index', function ($view) {
+            $user = auth('web')->user();
+            if(!is_null($user)) {
+                $user = auth('web')->user();
+                $view->with('userCount', User::all()->count());
+                $view->with('friendCount', $user->incomingRequests()->count());
+                $view->with('auth', $user);
+            }
         });
 
     }

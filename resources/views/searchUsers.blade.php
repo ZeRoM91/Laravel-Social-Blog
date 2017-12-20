@@ -1,31 +1,16 @@
 @extends('layouts.app')
-
 @section('content')
-
-
-
-
-
-
     <table class="table table-bordered">
-
     </table>
-
-
-
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading"><h2>Список пользователей</h2></div>
-
-
-
         <table class="table table-hover">
             <thead class="active">
             <th>ID</th>
             <th>Пользователь</th>
             <th>Участник с:</th>
             <th>Статус</th>
-
             </thead>
             @foreach($users as $user)
                 <tr>
@@ -43,10 +28,8 @@
                     @else
                         <td class="text-danger">Оффлайн</td>
                     @endif
-
                 </tr>
             @endforeach
         </table>
     </div>
-
 @endsection

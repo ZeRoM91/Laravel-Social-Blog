@@ -18,7 +18,7 @@ class MessageServiceProvider extends ServiceProvider
     {
         view()->share('user', auth('web')->user());
 
-        view()->composer('*', function ($view) {
+        view()->composer('index', function ($view) {
 
             $view->with('messageCount', auth('web')->user()->messages()->where('from_user_id', '<>', auth('web')->user()->id)->where('status', 0)->count());
 

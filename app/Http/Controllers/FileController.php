@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Photo;
@@ -13,7 +11,6 @@ class FileController extends Controller
 {
     //
     public function avatar(Request $request)
-
     {
         $user = auth('web')->user();
         $avatar =  $request->file('avatar');
@@ -24,7 +21,6 @@ class FileController extends Controller
         return redirect('lk');
     }
     public function sendPhoto(Request $request)
-
     {
         $user = auth('web')->user();
         $photo =  $request->file('photo');

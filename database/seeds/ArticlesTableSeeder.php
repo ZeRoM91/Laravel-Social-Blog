@@ -12,8 +12,8 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
 
-        DB::table('articles')->truncate();
-        DB::table('articles')->insert(
+        DB::table('article')->truncate();
+        DB::table('article')->insert(
         [
                 [
                 'user_id' => 1,

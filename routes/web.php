@@ -18,21 +18,39 @@ Route::get('/article/{id}/resetrating', 'ArticleController@resetRate')->name('ar
 # Добавление комментария в статью
 Route::post('/article/{id}', 'ArticleController@addComment')->name('article.comment.add');
 # Комментарии к статьи
-Route::get('/comment/{id}/upcomment', ['as' => 'upComment', 'uses' => 'ArticleController@upComment']);
-Route::get('/comment/{id}/downcomment', ['as' => 'downComment', 'uses' => 'ArticleController@downComment']);
-Route::get('/comment/{id}/resetcomment', ['as' => 'resetComment', 'uses' => 'ArticleController@resetComment']);
+Route::resource('article.comment', 'CommentController');
+
 # К списку статей
 Route::resource('article', 'ArticleController');
+
+# Обновление или создание статуса
+
+# Добавление блога
+Route::post('user.blog', 'UserController@storeBlog')->name('user.blog.store');
+
+Route::post('/user/status', 'UserController@storeStatus')->name('user.status.store');
+Route::get('user/deleteStatus', ['as' => 'status.delete', 'uses' => 'LkUserController@delete']);
+# Редактирование статуса (если уже имеется)
+Route::put('user.editStatus', 'UserController@updateStatus')->name('user.status.update');
+
+# Запрос на добавление/принятия/удаления в друзья
+Route::get('user.friend-send', 'UserController@createFriend')->name('user.friend.create');
+Route::get('user.friend-accept', 'UserController@storeFriend')->name('user.friend.store');
+Route::get('user.friend-decline', 'UserController@destroyFriend')->name('user.friend.destroy');
+# К списку сообщений
+Route::get('/messages', 'UserController@indexMessages')->name('user.message.index');
+
+# Ресурсная маршрутизация пользователя
+Route::resource('user', 'UserController');
+
 #FAQ
 Route::get('/faq', ['as' => 'faq', 'uses' => 'IndexController@faq']);
-# К списку сообщений
-Route::get('/messages', ['as' => 'messages', 'uses' => 'IndexController@messages']);
+
 # Чат с пользователем (id)
-Route::get('/messages/{id}', ['as' => 'messages__user', 'uses' => 'UserController@messages__user']);
+Route::get('/message/{id}', 'UserController@showMessage')->name('user.message.show');
 # Отправка сообщения пользователю
-Route::post('/messages/{id}', ['as' => 'user__message-send', 'uses' => 'UserController@message__send']);
-#Список задач
-Route::get('/tasks', ['as' => 'tasks', 'uses' => 'IndexController@task']);
+Route::post('/message/{id}', 'UserController@storeMessage')->name('user.message.store');
+
 # Фотографии
 Route::get('/photos', ['as' => 'photos', 'uses' => 'IndexController@photos']);
 # Загрузка фото
@@ -43,36 +61,13 @@ Route::post('/home', ['as' => 'home__search', 'uses' => 'HomeController@search']
 Route::get('/home/{category_id}', ['as' => 'homeCategory', 'uses' => 'HomeController@category']);
 # Поиск статей по названию в категории
 Route::post('/home/{category_id}', ['as' => 'home__search', 'uses' => 'HomeController@search']);
-# Форма для создания статьи
-//Route::get('/article', ['as' => 'formArticle', 'uses' => 'ArticleController@form']);
-//# Создание статьи
-//Route::post('/article', ['as' => 'create', 'uses' => 'ArticleController@create']);
-# Личный кабинет
-Route::get('/lk', ['as' => 'lk', 'uses' => 'LkUserController@index']);
-# Редактирование информации
-Route::get('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@edit']);
-# Редактирование информации - отправка данныых
-Route::post('/lk/edit', ['as' => 'lk.edit', 'uses' => 'LkUserController@editPost']);
-# Обновление или создание статуса
-Route::post('/lk/status', ['as' => 'status', 'uses' => 'LkUserController@status']);
-Route::get('/lk/deleteStatus', ['as' => 'status.delete', 'uses' => 'LkUserController@delete']);
-# Добавление блога
-Route::post('/lk/blog', ['as' => 'lk.blog', 'uses' => 'LkUserController@blog']);
-# Загрузка аватара
-Route::put('/lk', ['as' => 'avatar', 'uses' => 'FileController@avatar']);
-# Редактирование статуса (если уже имеется)
-Route::post('/lk/editStatus', ['as' => 'editStatus', 'uses' => 'LkUserController@editStatus']);
+
 ## АДМИНКА
 # Главная страница
 Route::get('/admin', ['as' => 'admin', 'uses' => 'AdminController@index']);
 Route::get('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@category']);
 Route::post('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@categoryPost']);
 Route::delete('/admin/categories', ['as' => 'admin.category', 'uses' => 'AdminController@categoryDelete']);
-# Вывод пользователя по id
-Route::get('/user/{id}', ['as' => 'user__profile', 'uses' => 'UserController@user']);
-# Запрос на добавление/принятия/удаления в друзья
-Route::get('/user/{id}/friend-send', ['as' => 'user__friend-send', 'uses' => 'UserController@friend__send']);
-Route::get('/user/{id}/friend-accept', ['as' => 'user__friend-accept', 'uses' => 'UserController@friend_accept']);
-Route::get('/user/{id}/friend-decline', ['as' => 'user__friend-decline', 'uses' => 'UserController@friend_decline']);
+
 # Вывод списка друзей
 Route::get('/friends', ['as' => 'friends', 'uses' => 'IndexController@friends']);

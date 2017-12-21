@@ -52,18 +52,10 @@ socket.on("new-here:App\\Events\\IndexHere", function(message){
     var firstname = message.data.firstname;
     var lastname = message.data.lastname;
     var data = "<b>" + firstname + ' ' + lastname + "</b>" + ' присоединился к чату ';
-    var p = document.createElement("p");  // Create with DOM
-    var span = document.createElement("span");  // Create with DOM
-    p.innerHTML = data;
-    span.innerHTML = 'x';
-    span.className = 'event-close label label-success';
-    p.className = 'event-elem alert alert-success';
-    $(p).append(span);
-    $('#event-list').append(p);
-    $(".event-close").click(function() {
-        $(this).closest('.event-elem').fadeOut('slow');
-    });
-    $(p).fadeOut(5000);
+    var div = document.createElement("div.notification");  // Create with DOM
+    div.innerHTML = data;
+    $(div).append(document.body);
+    $(div).fadeOut(5000);
 });
 
 //4. Уведомление о новой статье

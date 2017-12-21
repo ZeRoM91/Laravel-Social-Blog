@@ -30,10 +30,7 @@ class IndexController extends Controller
     public function news() {
         return view('header.news');
     }
-    public function messages() {
-        $friends = auth('web')->user()->friends()->hasMessages()->get();
-        return view('left-bar.messages', compact('friends'));
-    }
+
     public function photos() {
         $user = auth('web')->user();
         $photos = $user -> photos() ->paginate(12);

@@ -16,7 +16,7 @@
         <img src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}" alt=""
              class="img-circle ">
         <p>Автор статьи: {{$article->author->name}}</p>
-        <a href="{{route('user__profile', $article)}}"><span>{{$article ->author -> firstname}} {{$article ->author -> lastname}}</span></a>
+        <a href="{{route('user.show', $article)}}"><span>{{$article ->author -> firstname}} {{$article ->author -> lastname}}</span></a>
         @if($article->created_at != $article->updated_at)
             <i>Обновлена: {{$article->updated_at}}</i>
         @endif
@@ -45,10 +45,10 @@
                 @if(Auth::user()->id != $article['user_id'])
                     @if($vote['vote'] === NULL)
                         <div class="btn-group" role="group" aria-label="...">
-                            <a href="{{route('upRating',['id' => $article->id])}}">
+                            <a href="{{route('article.rate.up',$article)}}">
                                 <button class="btn btn-success">+</button>
                             </a>
-                            <a href="{{route('downRating',['id' => $article->id])}}">
+                            <a href="{{route('article.rate.down',$article)}}">
                                 <button class="btn btn-danger">-</button>
                             </a>
                         </div>

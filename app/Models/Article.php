@@ -10,7 +10,7 @@ class Article extends Model
 {
     // Модель для статей
     // имя таблицы необязательно, т.к. наследуеться из названия класса
-    // protected $table = 'article';
+    //protected $table = 'articles';
     protected $guarded = ['id','rating'];
     // Связь с моделью Комментарий, т.к. у статьи много комментариев
     public function comment() {

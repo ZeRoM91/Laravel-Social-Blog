@@ -50,7 +50,7 @@
                 </a>
             @endif
             @if(!Auth::guest())
-                <a href="{{route('lk')}}">
+                <a href="{{route('user.index')}}">
                     <li class="menu__list" id="menu__list-login">
                         <img class="img-circle"
                              src="{{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}">
@@ -69,7 +69,7 @@
         @if(!Auth::guest())
             <div class="left-bar__menu">
                 <ul>
-                    <a href="{{route('lk')}}">
+                    <a href="{{route('user.index')}}">
                         <li class="left-bar__list"><span class="glyphicon glyphicon-home"></span> Моя страница</li>
                     </a>
                     <a href="{{route('friends')}}">
@@ -80,7 +80,7 @@
                             @endif
                         </li>
                     </a>
-                    <a href="{{route('messages')}}">
+                    <a href="{{route('user.message.index')}}">
                         <li class="left-bar__list">
                             <span class="glyphicon glyphicon-envelope"></span> Сообщения
                             @if($messageCount)
@@ -103,8 +103,7 @@
         @endif
     </div>
     <div class="root" id="root">
-        <p class="notification">
-        </p>
+
         <div class="panel panel-default">
             <div class="panel-body">
                 @yield('content')

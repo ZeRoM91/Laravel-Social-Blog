@@ -56,7 +56,7 @@
                     <a href="{{ route('article.show', $article) }}"><h4 class="article__title">
                             <b>{{$article['title']}}</b></h4></a>
                     <br>
-                    <a href="{{route('user__profile', ['id' => $article->author])}}">
+                        <a href="{{route('user.show', $article->author)}}">
                         <img src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}"
                              alt="" class="img-circle ">
                         <span> <b>{{$article->author -> firstname}} {{$article->author -> lastname}}</b></span>

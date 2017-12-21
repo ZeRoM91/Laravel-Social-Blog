@@ -2,68 +2,51 @@
 @section('content')
     <div class="grid-lk">
         <div class="grid__block lk__avatar"
-             style="background-image: url({{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}); background-size: cover;">
+             style="background-image: url({{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}); background-size: cover;">
             <span id="photo"> <span class="glyphicon glyphicon-camera" id="lk__avatar-icon"></span><span
                         id="lk__avatar_hidden-text" type="button" data-toggle="modal" data-target=".bs-example-modal-sm"
                         data-target="#avatar"> Редактировать фото</span>
             </span>
         </div>
         <div class="grid__block lk__block-info">
-            <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
+            <h3>{{$user->firstname}} {{$user->lastname}}</h3>
             <div class="well">
-                @if(isset($status) )
-                    @if(Auth::user()->status->created_at->diffInMinutes() <= 1)
-                        <span class="article__date">{{Auth::user()->status->created_at->diffInSeconds()}}
-                            секунд назад</span><br>
-                    @endif
-                    @if(Auth::user()->status->created_at->diffInMinutes() >= 1 && Auth::user()->status->created_at->diffInHours() < 24)
-                        <span class="article__date">{{Auth::user()->status->created_at->diffInMinutes()}}
-                            минут назад</span><br>
-                    @endif
-                    @if(Auth::user()->status->created_at->diffInHours() >= 1 && Auth::user()->status->created_at->diffInDays() < 1)
-                        <span class="article__date">{{Auth::user()->status->created_at->diffInMinutes()}}
-                            часов назад</span><br>
-                    @endif
-                    @if(Auth::user()->status->created_at->diffInDays() >= 1 && Auth::user()->status->created_at->diffInYears() < 1)
-                        <span class="article__date">{{Auth::user()->status->created_at->diffInDays()}} дней назад</span>
-                        <br>
-                    @endif
-                    @if(Auth::user()->status->created_at->diffInDays() > 365)
-                        <span class="article__date">{{Auth::user()->status->created_at->diffInYears()}}
-                            год(а) назад</span><br>
-                    @endif
-                    <p>{{Auth::user()->status->status}}</p>
-                    <a href="{{route('status.delete')}}">
-                        <button class="btn btn-danger glyphicon glyphicon-remove" type="submit"></button>
-                    </a>
-                @endif
+                @empty(!$user->status)
+                    <p>{{$user->status->text}}</p>
+                @endempty
             </div>
             <hr>
-            <form action="{{ isset($status) ? route('editStatus') : '/lk/status'}}" method="post">
+            <form action="{{ empty(!$user->status->text) ? route('user.status.update') : route('user.status.store')}}"
+                  method="post">
                 {{ csrf_field() }}
+                @empty(!$user->status)
+                    {{method_field('PUT')}}
+                @endempty
                 <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-success glyphicon glyphicon-ok" type="submit"></button>
       </span>
                     <input name="status" type="text" class="form-control"
-                           placeholder="{{ isset($status) ? 'Заменить статус' : 'О чем вы думаете...' }}">
+                           placeholder="{{ empty(!$user->status) ? 'Заменить статус' : 'О чем вы думаете...' }}">
                 </div><!-- /input-group -->
             </form>
             <br>
             <hr>
-        </div>
-        <div class="grid__block ">
-            <p>Друзья: {{$friendsCount}}</p>
-            <p>Статей: {{$articlesCount}}</p>
-            <p>Комментариев: {{$commentsCount}}</p>
-        </div>
-        <div class="grid__block">
-            <a href="{{route('lk.edit')}}">
+            <a href="{{route('user.edit', $user)}}">
                 <button class="btn btn-danger"><span class="glyphicon glyphicon-cog"></span> Редактировать профиль
                 </button>
             </a>
         </div>
         <div class="grid__block">
+            <h4>Друзья ({{$user->friends->count()}})</h4>
+            <hr>
+            @foreach($user->friends as $friend)
+                <p>{{$friend->firstname}}</p>
+            @endforeach
+        </div>
+
+        <div class="grid__block lk__block-article">
+
             <p><b>Список ваших статей</b></p>
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -94,7 +77,7 @@
         </div>
         <div class="grid__block lk__block-footer">
             <h3>Добавить запись</h3>
-            <form action="{{route('lk.blog')}}" method="post">
+            <form action="{{route('user.blog.store')}}" method="post">
                 {{csrf_field()}}
                 <textarea class="form__input form-control" placeholder="Добавьте запись..." name="blog" rows="10"
                           style="resize: none;"></textarea>
@@ -107,8 +90,8 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <img class="img-circle"
-                             src="{{isset(Auth::user()->avatar) ? asset('storage/avatars/' . Auth::user()->avatar) : '/img/avatar.jpg'}}">
-                        <span>{{Auth::user()->firstname}}</span>
+                             src="{{isset($user->avatar) ? asset('storage/avatars/' . $user->avatar) : '/img/avatar.jpg'}}">
+                        <span>{{$user->firstname}}</span>
                     </div>
                     <div class="panel-body">
                         <p>{{$blog -> text}}</p>
@@ -143,7 +126,7 @@
                 <div class="grid__block">
                     <h3>Загрузить аватар</h3>
                     <?php
-                    echo Form::open(array('url' => '/lk', 'method' => 'PUT', 'files' => 'true'));
+                    echo Form::open(array('url' => 'user', 'method' => 'PUT', 'files' => 'true'));
                     echo 'Выберите файл для загрузки';
                     echo Form::file('avatar');
                     echo Form::submit('Загрузить файл');
@@ -154,7 +137,7 @@
         </div>
         <script>
             $('#myTabs a').click(function (e) {
-                e.preventDefault()
+                e.preventDefault();
                 $(this).tab('show')
             })
         </script>

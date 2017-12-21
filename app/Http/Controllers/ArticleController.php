@@ -112,20 +112,7 @@ class ArticleController extends Controller
         $articles = $this->article->where("title", "LIKE","%$query%")->get();
         return view('article.search',compact('articles','categories'));
     }
-    # Вывод комментариев к статье
-    public function addComment(Request $request, $id)
-    {
-        // Фильтр поиска статьи по id
-        $article = $this->article->find($id);
-        // Создание комментария для статьи
-        $this->comment->create([
-            'article_id' => $request->article_id,
-            'comment'    => $request->comment,
-            'user_id'    => $request->user_id,
-        ]);
-        // Редирект на текущюю статью
-        return redirect()->route('article', ['id' => $article->id]);
-    }
+
     # Изменение рейтинга статьи: +
     public function upRate($id)
     {
@@ -177,56 +164,6 @@ class ArticleController extends Controller
         // Редирект на текущюю статью
         return redirect()->route('article', ['id' => $article->id]);
     }
-    public function upComment($id)
-    {
-        // Фильтр поиска статьи по id
-        $comment = $this->comment->find($id);
-        # Увеличение рейтинга статьи на единицу
-        $comment->rating++;
-        $comment->save();
-        // Создание статуса голоса пользователя для текущей статьи
-        $user = $this->user->auth();
-        $vote = $user->votes()->firstOrCreate([
-            'article_id' => $comment->article_id,
-            'comment_id' => $id
-        ]);
-        // Если проголосовал за: true
-        $vote->vote = true;
-        $vote->save();
-        // Редирект на текущюю статью
-        return redirect()->route('article', ['id' => $comment->article_id]);
-    }
-    # Изменение рейтинга статьи: -
-    public function downComment($id)
-    {
-        // Фильтр поиска статьи по id
-        $comment = $this->comment->find($id);
-        # Увеличение рейтинга статьи на единицу
-        $comment->rating--;
-        $comment->save();
-        // Создание статуса голоса пользователя для текущей статьи
-        $user = auth('web')->user();
-        $vote = $user->votes()->firstOrCreate([
-            'article_id' => $comment->article_id,
-            'comment_id' => $id
-        ]);
-        // Если проголосовал за: true
-        $vote->vote = false;
-        $vote->save();
-        // Редирект на текущюю статью
-        return redirect()->route('article', ['id' => $comment->article_id]);
-    }
-    public function resetComment($id)
-    {
-        $comment = $this->comment->find($id);
-        # Уменьшение рейтинга статьи на единицу
-        // Создание статуса голоса пользователя для текущей статьи
-        $user = auth('web')->user();
-        $vote = $user->votes()->where('comment_id', $id)->get();
-        $comment->rating += $vote->vote ? -1 : 1;
-        $comment->save();
-        $vote->delete();
-        // Редирект на текущюю статью
-        return redirect()->route('article', ['id' => $comment->article_id]);
-    }
+
+
 }

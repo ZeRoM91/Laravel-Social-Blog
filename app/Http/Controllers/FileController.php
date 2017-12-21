@@ -1,18 +1,18 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\Traits\UserConstructorTrait;
 use Illuminate\Http\Request;
-use App\User;
 use App\Models\Photo;
-use App\Models\Audio;
-use App\Models\Video;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+
+
 class FileController extends Controller
 {
-    //
+    use UserConstructorTrait;
+
     public function avatar(Request $request)
     {
-        $user = auth('web')->user();
+        $user = $this->user->auth();
         $avatar =  $request->file('avatar');
         $imageName = $user->id.'.'.$request->file('avatar')->getClientOriginalExtension();
         $avatar->move('storage/avatars',$imageName);
@@ -20,6 +20,7 @@ class FileController extends Controller
         $user->save();
         return redirect('lk');
     }
+
     public function sendPhoto(Request $request)
     {
         $user = auth('web')->user();

@@ -809,7 +809,7 @@ var arrayMethods = Object.create(arrayProto);[
       case 'push':
       case 'unshift':
         inserted = args;
-        break
+          break;
       case 'splice':
         inserted = args.slice(2);
         break
@@ -5435,7 +5435,7 @@ function createPatchFunction (backend) {
 
   var bailed = false;
   // list of modules that can skip create hook during hydration because they
-  // are already rendered on the client or has no need for initialization
+    // are already rendered on the user or has no need for initialization
   var isRenderedModule = makeMap('attrs,style,class,staticClass,staticStyle,key');
 
   // Note: this is a browser-only function so we can assume elms are DOM nodes.
@@ -5464,7 +5464,7 @@ function createPatchFunction (backend) {
     }
     if (isDef(tag)) {
       if (isDef(children)) {
-        // empty element, allow client to pick up and populate children
+          // empty element, allow user to pick up and populate children
         if (!elm.hasChildNodes()) {
           createChildren(vnode, children, insertedVnodeQueue);
         } else {
@@ -5550,11 +5550,11 @@ function createPatchFunction (backend) {
               return oldVnode
             } else {
               warn(
-                'The client-side rendered virtual DOM tree is not matching ' +
+                  'The user-side rendered virtual DOM tree is not matching ' +
                 'server-rendered content. This is likely caused by incorrect ' +
                 'HTML markup, for example nesting block-level elements inside ' +
                 '<p>, or missing <tbody>. Bailing hydration and performing ' +
-                'full client-side render.'
+                  'full user-side render.'
               );
             }
           }
@@ -5873,14 +5873,30 @@ function parseFilters (exp) {
       }
     } else {
       switch (c) {
-        case 0x22: inDouble = true; break         // "
-        case 0x27: inSingle = true; break         // '
-        case 0x60: inTemplateString = true; break // `
-        case 0x28: paren++; break                 // (
-        case 0x29: paren--; break                 // )
-        case 0x5B: square++; break                // [
-        case 0x5D: square--; break                // ]
-        case 0x7B: curly++; break                 // {
+          case 0x22:
+              inDouble = true;
+              break;         // "
+          case 0x27:
+              inSingle = true;
+              break;         // '
+          case 0x60:
+              inTemplateString = true;
+              break; // `
+          case 0x28:
+              paren++;
+              break;                 // (
+          case 0x29:
+              paren--;
+              break;                 // )
+          case 0x5B:
+              square++;
+              break;                // [
+          case 0x5D:
+              square--;
+              break;                // ]
+          case 0x7B:
+              curly++;
+              break;                 // {
         case 0x7D: curly--; break                 // }
       }
       if (c === 0x2f) { // /

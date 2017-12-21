@@ -13,7 +13,7 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('article', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->default('1');
             $table->integer('tag_id')->nullable();
@@ -34,6 +34,6 @@ class CreateArticlesTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('article');
+        Schema::dropIfExists('articles');
     }
 }
